@@ -37,7 +37,7 @@ import com.watabou.pixeldungeon.ui.PrefsButton;
 
 public class TitleScene extends PixelScene {
 
-	private static final String TXT_PLAY		= "Enter the dungeon...";
+	private static final String TXT_PLAY		= "Enter the dungeon";
 	private static final String TXT_HIGHSCORES	= "";
 	private static final String TXT_BADGES		= "";
 	private static final String TXT_ABOUT		= "";
