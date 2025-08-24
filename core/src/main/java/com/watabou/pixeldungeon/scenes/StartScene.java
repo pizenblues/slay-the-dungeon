@@ -50,52 +50,37 @@ import com.watabou.pixeldungeon.windows.WndOptions;
 import com.watabou.utils.Callback;
 
 public class StartScene extends PixelScene {
-
 	private static final float BUTTON_HEIGHT	= 24;
 	private static final float GAP				= 2;
-	
 	private static final String TXT_LOAD	= "Load Game";
 	private static final String TXT_NEW		= "New Game";
-	
 	private static final String TXT_ERASE		= "Erase current game";
 	private static final String TXT_DPTH_LVL	= "Depth: %d, level: %d";
-	
 	private static final String TXT_REALLY	= "Do you really want to start new game?";
 	private static final String TXT_WARNING	= "Your current game progress will be erased.";
 	private static final String TXT_YES		= "Yes, start new game";
 	private static final String TXT_NO		= "No, return to main menu";
-	
 	private static final String TXT_UNLOCK	= "To unlock this character class, slay the 3rd boss with any other class";
-	
 	private static final String TXT_WIN_THE_GAME = 
 		"To unlock \"Challenges\", win the game with any character class.";
-	
 	private static final float WIDTH_P	= 116;
 	private static final float HEIGHT_P	= 220;
-	
 	private static final float WIDTH_L	= 224;
 	private static final float HEIGHT_L	= 124;
-	
 	private static HashMap<HeroClass, ClassShield> shields = new HashMap<HeroClass, ClassShield>();
-	
 	private float buttonX;
 	private float buttonY;
-	
+	public float bottomPadding = 12;
 	private GameButton btnLoad;
 	private GameButton btnNewGame;
-	
 	private boolean huntressUnlocked;
 	private Group unlock;
-	
 	public static HeroClass curClass;
-	
+
 	@Override
 	public void create() {
-		
 		super.create();
-		
 		Badges.loadGlobal();
-		
 		uiCamera.visible = false;
 		
 		int w = Camera.main.width;
@@ -113,18 +98,18 @@ public class StartScene extends PixelScene {
 		float left = (w - width) / 2;
 		float top = (h - height) / 2; 
 		float bottom = h - top;
-		
+
 		Archs archs = new Archs();
 		archs.setSize( w, h );
-		add( archs ); 
+		add( archs );
 		
 		Image title = BannerSprites.get( Type.SELECT_YOUR_HERO );
 		title.x = align( (w - title.width()) / 2 );
-		title.y = align( top );
+		title.y = align( 20);
 		add( title );
 		
 		buttonX = left;
-		buttonY = bottom - BUTTON_HEIGHT;
+		buttonY = h - bottomPadding - BUTTON_HEIGHT;
 		
 		btnNewGame = new GameButton( TXT_NEW ) {
 			@Override
@@ -158,7 +143,7 @@ public class StartScene extends PixelScene {
 		float centralHeight = buttonY - title.y - title.height();
 		
 		HeroClass[] classes = {
-			HeroClass.WARRIOR, HeroClass.MAGE, HeroClass.ROGUE, HeroClass.HUNTRESS	
+			HeroClass.HUNTRESS, HeroClass.ROGUE, HeroClass.MAGE, HeroClass.WARRIOR
 		};
 		for (HeroClass cl : classes) {
 			ClassShield shield = new ClassShield( cl );
@@ -169,35 +154,23 @@ public class StartScene extends PixelScene {
 			float shieldW = width / 4;
 			float shieldH = Math.min( centralHeight, shieldW );
 			top = title.y + title.height + (centralHeight - shieldH) / 2;
+
 			for (int i=0; i < classes.length; i++) {
 				ClassShield shield = shields.get( classes[i] );
 				shield.setRect( left + i * shieldW, top, shieldW, shieldH );
 			}
 			
-			ChallengeButton challenge = new ChallengeButton();
-			challenge.setPos( 
-				w / 2 - challenge.width() / 2,
-				top + shieldH - challenge.height() / 2 );
-			add( challenge );
-			
 		} else {
-			float shieldW = width / 2;
-			float shieldH = Math.min( centralHeight / 2, shieldW * 1.2f );
-			top = title.y + title.height() + centralHeight / 2 - shieldH;
 			for (int i=0; i < classes.length; i++) {
 				ClassShield shield = shields.get( classes[i] );
-				shield.setRect( 
-					left + (i % 2) * shieldW, 
-					top + (i / 2) * shieldH, 
-					shieldW, shieldH );
+				shield.setRect(0, ((buttonY - 20) - (i * 20)),
+					w, 16 );
 			}
-			
-			ChallengeButton challenge = new ChallengeButton();
-			challenge.setPos( 
-				w / 2 - challenge.width() / 2,
-				top + shieldH - challenge.height() / 2 );
-			add( challenge );
 		}
+
+		ChallengeButton challenge = new ChallengeButton();
+		challenge.setPos(w - challenge.width() - 4,4);
+		add( challenge );
 		
 		unlock = new Group();
 		add( unlock );
@@ -207,21 +180,21 @@ public class StartScene extends PixelScene {
 			BitmapTextMultiline text = PixelScene.createMultiline( TXT_UNLOCK, 9 );
 			text.maxWidth = (int)width;
 			text.measure();
-			
-			float pos = (bottom - BUTTON_HEIGHT) + (BUTTON_HEIGHT - text.height()) / 2;
+
+			float pos = buttonY;
 			for (BitmapText line : text.new LineSplitter().split()) {
 				line.measure();
 				line.hardlight( 0xFFFF00 );
 				line.x = PixelScene.align( w / 2 - line.width() / 2 );
 				line.y = PixelScene.align( pos );
 				unlock.add( line );
-				
-				pos += line.height(); 
+
+				pos += line.height();
 			}
 		}
 		
 		ExitButton btnExit = new ExitButton();
-		btnExit.setPos( Camera.main.width - btnExit.width(), 0 );
+		btnExit.setPos( 4, 4 );
 		add( btnExit );
 		
 		curClass = null;
@@ -241,15 +214,12 @@ public class StartScene extends PixelScene {
 	
 	@Override
 	public void destroy() {
-		
 		Badges.saveGlobal();
 		Badges.loadingListener = null;
-		
 		super.destroy();
 	}
 	
 	private void updateClass( HeroClass cl ) {
-		
 		if (curClass == cl) {
 			add( new WndClass( cl ) );
 			return;
@@ -261,9 +231,7 @@ public class StartScene extends PixelScene {
 		shields.get( curClass = cl ).highlight( true );
 		
 		if (cl != HeroClass.HUNTRESS || huntressUnlocked) {
-		
 			unlock.visible = false;
-			
 			GamesInProgress.Info info = GamesInProgress.check( curClass );
 			if (info != null) {
 				
@@ -282,18 +250,15 @@ public class StartScene extends PixelScene {
 				
 			} else {
 				btnLoad.visible = false;
-				
 				btnNewGame.visible = true;
 				btnNewGame.secondary( null, false );
 				btnNewGame.setRect( buttonX, buttonY, Camera.main.width - buttonX * 2, BUTTON_HEIGHT );
 			}
 			
 		} else {
-			
 			unlock.visible = true;
 			btnLoad.visible = false;
 			btnNewGame.visible = false;
-			
 		}
 	}
 	
@@ -316,22 +281,18 @@ public class StartScene extends PixelScene {
 	}
 	
 	private static class GameButton extends RedButton {
-		
 		private static final int SECONDARY_COLOR_N	= 0xCACFC2;
 		private static final int SECONDARY_COLOR_H	= 0xFFFF88;
-		
 		private BitmapText secondary;
 		
 		public GameButton( String primary ) {
 			super( primary );
-			
 			this.secondary.text( null );
 		}
 		
 		@Override
 		protected void createChildren() {
 			super.createChildren();
-			
 			secondary = createText( 6 );
 			add( secondary );
 		}
@@ -342,7 +303,6 @@ public class StartScene extends PixelScene {
 			
 			if (secondary.text().length() > 0) {
 				text.y = align( y + (height - text.height() - secondary.baseLine()) / 2 );
-				
 				secondary.x = align( x + (width - secondary.width()) / 2 );
 				secondary.y = align( text.y + text.height() ); 
 			} else {
@@ -353,44 +313,31 @@ public class StartScene extends PixelScene {
 		public void secondary( String text, boolean highlighted ) {
 			secondary.text( text );
 			secondary.measure();
-			
 			secondary.hardlight( highlighted ? SECONDARY_COLOR_H : SECONDARY_COLOR_N );
 		}
 	}
 	
 	private class ClassShield extends Button {
-		
 		private static final float MIN_BRIGHTNESS	= 0.6f;
-		
 		private static final int BASIC_NORMAL		= 0x444444;
 		private static final int BASIC_HIGHLIGHTED	= 0xCACFC2;
-		
 		private static final int MASTERY_NORMAL		= 0x666644;
 		private static final int MASTERY_HIGHLIGHTED= 0xFFFF88;
-		
-		private static final int WIDTH	= 24;
-		private static final int HEIGHT	= 28;
-		private static final int SCALE	= 2;
-		
+		private static final int WIDTH	= 12;
+		private static final int HEIGHT	= 12;
 		private HeroClass cl;
-		
 		private Image avatar;
 		private BitmapText name;
 		private Emitter emitter;
-		
 		private float brightness;
-		
 		private int normal;
 		private int highlighted;
-		
+
 		public ClassShield( HeroClass cl ) {
 			super();
-		
 			this.cl = cl;
-			
 			avatar.frame( cl.ordinal() * WIDTH, 0, WIDTH, HEIGHT );
-			avatar.scale.set( SCALE );
-			
+
 			if (Badges.isUnlocked( cl.masteryBadge() )) {
 				normal = MASTERY_NORMAL;
 				highlighted = MASTERY_HIGHLIGHTED;
@@ -398,56 +345,46 @@ public class StartScene extends PixelScene {
 				normal = BASIC_NORMAL;
 				highlighted = BASIC_HIGHLIGHTED;
 			}
-			
+
 			name.text( cl.name() );
 			name.measure();
 			name.hardlight( normal );
-			
 			brightness = MIN_BRIGHTNESS;
 			updateBrightness();
 		}
-		
+
 		@Override
 		protected void createChildren() {
-			
 			super.createChildren();
-			
 			avatar = new Image( Assets.AVATARS );
 			add( avatar );
-			
 			name = PixelScene.createText( 9 );
 			add( name );
-			
 			emitter = new BitmaskEmitter( avatar );
 			add( emitter );
 		}
-		
+
 		@Override
 		protected void layout() {
-			
 			super.layout();
-			
-			avatar.x = align( x + (width - avatar.width()) / 2 );
+			avatar.x = align( x + (width - avatar.width() - name.width()) / 2 );
 			avatar.y = align( y + (height - avatar.height() - name.height()) / 2 );
-			
-			name.x = align( x + (width - name.width()) / 2 );
-			name.y = avatar.y + avatar.height() + SCALE;
+			name.x = avatar.x + avatar.width() + 2;
+			name.y = align( y + (height - name.height()) / 2 );
 		}
-		
+
 		@Override
 		protected void onTouchDown() {
-			
 			emitter.revive();
 			emitter.start( Speck.factory( Speck.LIGHT ), 0.05f, 7 );
-			
 			Sample.INSTANCE.play( Assets.SND_CLICK, 1, 1, 1.2f );
 			updateClass( cl );
 		}
-		
+
 		@Override
 		public void update() {
 			super.update();
-			
+
 			if (brightness < 1.0f && brightness > MIN_BRIGHTNESS) {
 				if ((brightness -= Game.elapsed) <= MIN_BRIGHTNESS) {
 					brightness = MIN_BRIGHTNESS;
@@ -455,7 +392,7 @@ public class StartScene extends PixelScene {
 				updateBrightness();
 			}
 		}
-		
+
 		public void highlight( boolean value ) {
 			if (value) {
 				brightness = 1.0f;
@@ -467,39 +404,32 @@ public class StartScene extends PixelScene {
 
 			updateBrightness();
 		}
-		
+
 		private void updateBrightness() {
 			avatar.gm = avatar.bm = avatar.rm = avatar.am = brightness;
 		}
 	}
 	
 	private class ChallengeButton extends Button {
-		
 		private Image image;
 		
 		public ChallengeButton() {
 			super();
-			
 			width = image.width;
 			height = image.height;
-			
 			image.am = Badges.isUnlocked( Badges.Badge.VICTORY ) ? 1.0f : 0.5f;
 		}
 		
 		@Override
 		protected void createChildren() {
-			
 			super.createChildren();
-			
 			image = Icons.get( PixelDungeon.challenges() > 0 ? Icons.CHALLENGE_ON :Icons.CHALLENGE_OFF );
 			add( image );
 		}
 		
 		@Override
 		protected void layout() {
-			
 			super.layout();
-			
 			image.x = align( x );
 			image.y = align( y  );
 		}
