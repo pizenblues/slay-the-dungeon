@@ -92,7 +92,7 @@ public class BadgesScene extends PixelScene {
 		}
 		
 		ExitButton btnExit = new ExitButton();
-		btnExit.setPos( Camera.main.width - btnExit.width(), 0 );
+		btnExit.setPos(4,4);
 		add( btnExit );
 		
 		fadeIn();

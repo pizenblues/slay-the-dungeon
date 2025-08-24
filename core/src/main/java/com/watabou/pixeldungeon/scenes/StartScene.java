@@ -97,7 +97,6 @@ public class StartScene extends PixelScene {
 
 		float left = (w - width) / 2;
 		float top = (h - height) / 2; 
-		float bottom = h - top;
 
 		Archs archs = new Archs();
 		archs.setSize( w, h );
@@ -325,13 +324,13 @@ public class StartScene extends PixelScene {
 		private static final int MASTERY_HIGHLIGHTED= 0xFFFF88;
 		private static final int WIDTH	= 12;
 		private static final int HEIGHT	= 12;
-		private HeroClass cl;
+		private final HeroClass cl;
 		private Image avatar;
 		private BitmapText name;
 		private Emitter emitter;
 		private float brightness;
-		private int normal;
-		private int highlighted;
+		private final int normal;
+		private final int highlighted;
 
 		public ClassShield( HeroClass cl ) {
 			super();
@@ -442,7 +441,7 @@ public class StartScene extends PixelScene {
 						super.onBackPressed();
 						image.copy( Icons.get( PixelDungeon.challenges() > 0 ? 
 							Icons.CHALLENGE_ON :Icons.CHALLENGE_OFF ) );
-					};
+					}
 				} );
 			} else {
 				StartScene.this.add( new WndMessage( TXT_WIN_THE_GAME ) );
