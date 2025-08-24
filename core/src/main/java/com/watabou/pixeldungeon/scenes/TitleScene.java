@@ -44,12 +44,9 @@ public class TitleScene extends PixelScene {
 
 	@Override
 	public void create() {
-
 		super.create();
-
 		Music.INSTANCE.play( Assets.THEME, true );
 		Music.INSTANCE.volume( 1f );
-
 		uiCamera.visible = false;
 
 		int w = Camera.main.width;
