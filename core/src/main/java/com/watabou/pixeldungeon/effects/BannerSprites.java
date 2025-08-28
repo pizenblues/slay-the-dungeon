@@ -34,19 +34,19 @@ public class BannerSprites {
 		Image icon = new Image( Assets.BANNERS );
 		switch (type) {
 		case PIXEL_DUNGEON:
-			icon.frame( icon.texture.uvRect( 0, 0, 128, 70 ) );
+			icon.frame( icon.texture.uvRect( 0, 0, 115, 78 ) );
 			break;
 		case BOSS_SLAIN:
-			icon.frame( icon.texture.uvRect( 0, 70, 128, 105 ) );
+			icon.frame( icon.texture.uvRect( 0, 78, 99, 149 ) );
 			break;
 		case GAME_OVER:
-			icon.frame( icon.texture.uvRect( 0, 105, 128, 140 ) );
+			icon.frame( icon.texture.uvRect( 0, 149, 122, 219 ) );
 			break;
 		case SELECT_YOUR_HERO:
-			icon.frame( icon.texture.uvRect( 0, 140, 128, 161 ) );
+			icon.frame( icon.texture.uvRect( 0, 219, 88, 261 ) );
 			break;
 		case PIXEL_DUNGEON_SIGNS:
-			icon.frame( icon.texture.uvRect( 0, 161, 128, 218 ) );
+			icon.frame( icon.texture.uvRect( 0, 0, 0, 0 ) );
 			break;
 		}
 		return icon;

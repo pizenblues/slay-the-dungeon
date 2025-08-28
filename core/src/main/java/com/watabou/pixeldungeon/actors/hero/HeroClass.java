@@ -194,6 +194,22 @@ public enum HeroClass {
 		
 		return null;
 	}
+
+	public String splash() {
+
+		switch (this) {
+			case WARRIOR:
+				return Assets.SPLASH_warrior;
+			case MAGE:
+				return Assets.SPLASH_mage;
+			case ROGUE:
+				return Assets.SPLASH_rogue;
+			case HUNTRESS:
+				return Assets.SPLASH_huntress;
+		}
+
+		return null;
+	}
 	
 	public String[] perks() {
 		

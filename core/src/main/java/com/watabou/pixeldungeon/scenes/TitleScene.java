@@ -143,8 +143,8 @@ public class TitleScene extends PixelScene {
 	}
 
 	private static class DashboardItem extends Button {
-		public static final float SIZE	= 12;
-		private static final int IMAGE_SIZE	= 12;
+		public static final float SIZE	= 16;
+		private static final int IMAGE_SIZE	= 16;
 		private Image image;
 		private BitmapText label;
 

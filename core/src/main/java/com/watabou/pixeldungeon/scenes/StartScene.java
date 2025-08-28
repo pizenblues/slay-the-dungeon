@@ -18,6 +18,7 @@
 package com.watabou.pixeldungeon.scenes;
 
 import java.util.HashMap;
+import java.util.Objects;
 
 import com.watabou.noosa.BitmapText;
 import com.watabou.noosa.BitmapTextMultiline;
@@ -76,16 +77,17 @@ public class StartScene extends PixelScene {
 	private boolean huntressUnlocked;
 	private Group unlock;
 	public static HeroClass curClass;
+	public Image splash;
 
 	@Override
 	public void create() {
 		super.create();
 		Badges.loadGlobal();
 		uiCamera.visible = false;
-		
+
 		int w = Camera.main.width;
 		int h = Camera.main.height;
-		
+
 		float width, height;
 		if (PixelDungeon.landscape()) {
 			width = WIDTH_L;
@@ -96,59 +98,66 @@ public class StartScene extends PixelScene {
 		}
 
 		float left = (w - width) / 2;
-		float top = (h - height) / 2; 
+		float top = (h - height) / 2;
 
 		Archs archs = new Archs();
-		archs.setSize( w, h );
-		add( archs );
-		
-		Image title = BannerSprites.get( Type.SELECT_YOUR_HERO );
-		title.x = align( (w - title.width()) / 2 );
-		title.y = align( 20);
-		add( title );
-		
+		archs.setSize(w, h);
+		add(archs);
+
+		Image title = BannerSprites.get(Type.SELECT_YOUR_HERO);
+		title.x = align((w - title.width()) / 2);
+		title.y = align(12);
+		add(title);
+
+		splash = new Image();
+		splash.x = align((w - title.width()) / 2);
+		splash.y = align(title.y + title.height());
+		add(splash);
+
 		buttonX = left;
 		buttonY = h - bottomPadding - BUTTON_HEIGHT;
-		
-		btnNewGame = new GameButton( TXT_NEW ) {
+
+		btnNewGame = new GameButton(TXT_NEW) {
 			@Override
 			protected void onClick() {
-				if (GamesInProgress.check( curClass ) != null) {
-					StartScene.this.add( new WndOptions( TXT_REALLY, TXT_WARNING, TXT_YES, TXT_NO ) {
+				if (GamesInProgress.check(curClass) != null) {
+					StartScene.this.add(new WndOptions(TXT_REALLY, TXT_WARNING, TXT_YES, TXT_NO) {
 						@Override
-						protected void onSelect( int index ) {
+						protected void onSelect(int index) {
 							if (index == 0) {
 								startNewGame();
 							}
 						}
-					} );
-					
+					});
+
 				} else {
 					startNewGame();
 				}
 			}
 		};
-		add( btnNewGame );
+		add(btnNewGame);
 
-		btnLoad = new GameButton( TXT_LOAD ) {	
+		btnLoad = new GameButton(TXT_LOAD) {
 			@Override
 			protected void onClick() {
 				InterlevelScene.mode = InterlevelScene.Mode.CONTINUE;
-				Game.switchScene( InterlevelScene.class );
+				Game.switchScene(InterlevelScene.class);
 			}
 		};
-		add( btnLoad );	
-		
+		add(btnLoad);
+
 		float centralHeight = buttonY - title.y - title.height();
 		
 		HeroClass[] classes = {
 			HeroClass.HUNTRESS, HeroClass.ROGUE, HeroClass.MAGE, HeroClass.WARRIOR
 		};
+
 		for (HeroClass cl : classes) {
 			ClassShield shield = new ClassShield( cl );
 			shields.put( cl, shield );
 			add( shield );
 		}
+
 		if (PixelDungeon.landscape()) {
 			float shieldW = width / 4;
 			float shieldH = Math.min( centralHeight, shieldW );
@@ -219,6 +228,7 @@ public class StartScene extends PixelScene {
 	}
 	
 	private void updateClass( HeroClass cl ) {
+
 		if (curClass == cl) {
 			add( new WndClass( cl ) );
 			return;
@@ -228,6 +238,8 @@ public class StartScene extends PixelScene {
 			shields.get( curClass ).highlight( false );
 		}
 		shields.get( curClass = cl ).highlight( true );
+
+		splash.texture(cl.splash());
 		
 		if (cl != HeroClass.HUNTRESS || huntressUnlocked) {
 			unlock.visible = false;
@@ -357,6 +369,7 @@ public class StartScene extends PixelScene {
 			super.createChildren();
 			avatar = new Image( Assets.AVATARS );
 			add( avatar );
+
 			name = PixelScene.createText( 9 );
 			add( name );
 			emitter = new BitmaskEmitter( avatar );

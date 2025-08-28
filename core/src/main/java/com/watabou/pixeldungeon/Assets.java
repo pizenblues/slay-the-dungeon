@@ -41,6 +41,11 @@ public class Assets {
 	public static final String ROGUE	= "rogue.png";
 	public static final String HUNTRESS	= "ranger.png";
 	public static final String AVATARS	= "avatars.png";
+	public static final String SPLASH	= "splash.png";
+	public static final String SPLASH_warrior	= "spw.png";
+	public static final String SPLASH_rogue	= "spr.png";
+	public static final String SPLASH_mage	= "spm.png";
+	public static final String SPLASH_huntress = "sph.png";
 	public static final String PET		= "pet.png";
 	
 	public static final String SURFACE	= "surface.png";
