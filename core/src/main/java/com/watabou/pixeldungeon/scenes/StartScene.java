@@ -78,6 +78,7 @@ public class StartScene extends PixelScene {
 	private Group unlock;
 	public static HeroClass curClass;
 	public Image splash;
+	BitmapText heroNameText = PixelScene.createText(9 );
 
 	@Override
 	public void create() {
@@ -106,12 +107,12 @@ public class StartScene extends PixelScene {
 
 		Image title = BannerSprites.get(Type.SELECT_YOUR_HERO);
 		title.x = align((w - title.width()) / 2);
-		title.y = align(12);
+		title.y = align(4);
 		add(title);
 
 		splash = new Image();
-		splash.x = align((w - title.width()) / 2);
-		splash.y = align(title.y + title.height());
+		splash.x = align((w - 154) / 2);
+		splash.y = align(title.y + 24);
 		add(splash);
 
 		buttonX = left;
@@ -149,7 +150,7 @@ public class StartScene extends PixelScene {
 		float centralHeight = buttonY - title.y - title.height();
 		
 		HeroClass[] classes = {
-			HeroClass.HUNTRESS, HeroClass.ROGUE, HeroClass.MAGE, HeroClass.WARRIOR
+			HeroClass.WARRIOR, HeroClass.MAGE, HeroClass.ROGUE, HeroClass.HUNTRESS
 		};
 
 		for (HeroClass cl : classes) {
@@ -158,23 +159,18 @@ public class StartScene extends PixelScene {
 			add( shield );
 		}
 
-		if (PixelDungeon.landscape()) {
-			float shieldW = width / 4;
-			float shieldH = Math.min( centralHeight, shieldW );
-			top = title.y + title.height + (centralHeight - shieldH) / 2;
-
-			for (int i=0; i < classes.length; i++) {
-				ClassShield shield = shields.get( classes[i] );
-				shield.setRect( left + i * shieldW, top, shieldW, shieldH );
-			}
-			
-		} else {
-			for (int i=0; i < classes.length; i++) {
-				ClassShield shield = shields.get( classes[i] );
-				shield.setRect(0, ((buttonY - 20) - (i * 20)),
-					w, 16 );
-			}
+		float shieldW = width / 4;
+		float shieldH = Math.min( centralHeight, shieldW );
+		for (int i=0; i < classes.length; i++) {
+			ClassShield shield = shields.get(classes[i]);
+			shield.setRect(left + i * shieldW, (buttonY - 32),
+					shieldH, 18);
 		}
+
+		add(heroNameText);
+		heroNameText.hardlight( 0xFFFF00 );
+		heroNameText.x = (width - heroNameText.width()) / 2;
+		heroNameText.y = (buttonY - 48);
 
 		ChallengeButton challenge = new ChallengeButton();
 		challenge.setPos(w - challenge.width() - 4,4);
@@ -184,7 +180,6 @@ public class StartScene extends PixelScene {
 		add( unlock );
 		
 		if (!(huntressUnlocked = Badges.isUnlocked( Badges.Badge.BOSS_SLAIN_3 ))) {
-		
 			BitmapTextMultiline text = PixelScene.createMultiline( TXT_UNLOCK, 9 );
 			text.maxWidth = (int)width;
 			text.measure();
@@ -233,13 +228,14 @@ public class StartScene extends PixelScene {
 			add( new WndClass( cl ) );
 			return;
 		}
-		
+
 		if (curClass != null) {
 			shields.get( curClass ).highlight( false );
 		}
-		shields.get( curClass = cl ).highlight( true );
 
+		shields.get( curClass = cl ).highlight( true );
 		splash.texture(cl.splash());
+		heroNameText.text(cl.title().toUpperCase());
 		
 		if (cl != HeroClass.HUNTRESS || huntressUnlocked) {
 			unlock.visible = false;
@@ -334,11 +330,10 @@ public class StartScene extends PixelScene {
 		private static final int BASIC_HIGHLIGHTED	= 0xCACFC2;
 		private static final int MASTERY_NORMAL		= 0x666644;
 		private static final int MASTERY_HIGHLIGHTED= 0xFFFF88;
-		private static final int WIDTH	= 12;
-		private static final int HEIGHT	= 12;
+		private static final int WIDTH	= 20;
+		private static final int HEIGHT	= 21;
 		private final HeroClass cl;
 		private Image avatar;
-		private BitmapText name;
 		private Emitter emitter;
 		private float brightness;
 		private final int normal;
@@ -347,7 +342,7 @@ public class StartScene extends PixelScene {
 		public ClassShield( HeroClass cl ) {
 			super();
 			this.cl = cl;
-			avatar.frame( cl.ordinal() * WIDTH, 0, WIDTH, HEIGHT );
+			avatar.frame( (cl.ordinal()) * WIDTH, 0, WIDTH, HEIGHT );
 
 			if (Badges.isUnlocked( cl.masteryBadge() )) {
 				normal = MASTERY_NORMAL;
@@ -356,10 +351,6 @@ public class StartScene extends PixelScene {
 				normal = BASIC_NORMAL;
 				highlighted = BASIC_HIGHLIGHTED;
 			}
-
-			name.text( cl.name() );
-			name.measure();
-			name.hardlight( normal );
 			brightness = MIN_BRIGHTNESS;
 			updateBrightness();
 		}
@@ -369,9 +360,6 @@ public class StartScene extends PixelScene {
 			super.createChildren();
 			avatar = new Image( Assets.AVATARS );
 			add( avatar );
-
-			name = PixelScene.createText( 9 );
-			add( name );
 			emitter = new BitmaskEmitter( avatar );
 			add( emitter );
 		}
@@ -379,10 +367,8 @@ public class StartScene extends PixelScene {
 		@Override
 		protected void layout() {
 			super.layout();
-			avatar.x = align( x + (width - avatar.width() - name.width()) / 2 );
-			avatar.y = align( y + (height - avatar.height() - name.height()) / 2 );
-			name.x = avatar.x + avatar.width() + 2;
-			name.y = align( y + (height - name.height()) / 2 );
+			avatar.x = align( x + (width - avatar.width()) / 2 );
+			avatar.y = align(y);
 		}
 
 		@Override
@@ -408,10 +394,8 @@ public class StartScene extends PixelScene {
 		public void highlight( boolean value ) {
 			if (value) {
 				brightness = 1.0f;
-				name.hardlight( highlighted );
 			} else {
 				brightness = 0.999f;
-				name.hardlight( normal );
 			}
 
 			updateBrightness();
