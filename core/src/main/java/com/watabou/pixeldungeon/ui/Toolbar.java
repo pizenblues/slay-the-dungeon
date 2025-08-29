@@ -95,7 +95,7 @@ public class Toolbar extends Component {
 			}
 		} );
 		
-		add( btnInventory = new Tool( 60, 7, 23, 25 ) {
+		add( btnInventory = new Tool( 60, 7, 22, 25 ) {
 			private GoldIndicator gold;
 			@Override
 			protected void onClick() {
@@ -118,8 +118,8 @@ public class Toolbar extends Component {
 			};
 		} );
 		
-		add( btnQuick1 = new QuickslotTool( 83, 7, 22, 25, true ) );
-		add( btnQuick2 = new QuickslotTool( 83, 7, 22, 25, false ) );
+		add( btnQuick1 = new QuickslotTool( 82, 7, 23, 25, true ) );
+		add( btnQuick2 = new QuickslotTool( 82, 7, 23, 25, false ) );
 		btnQuick2.visible = (QuickSlot.secondaryValue != null);
 		
 		add( pickedUp = new PickedUpItem() );
@@ -130,12 +130,11 @@ public class Toolbar extends Component {
 		btnWait.setPos( x, y );
 		btnSearch.setPos( btnWait.right(), y );
 		btnInfo.setPos( btnSearch.right(), y );
-		btnQuick1.setPos( width - btnQuick1.width(), y );
+		btnInventory.setPos( width - btnInventory.width(), y );
+		btnQuick1.setPos( btnInventory.left() - btnInventory.width(), y);
+
 		if (btnQuick2.visible) {
-			btnQuick2.setPos(btnQuick1.left() - btnQuick2.width(), y );
-			btnInventory.setPos( btnQuick2.left() - btnInventory.width(), y );
-		} else {
-			btnInventory.setPos( btnQuick1.left() - btnInventory.width(), y );
+			btnQuick2.setPos(btnQuick1.left() - btnQuick1.width(), y );
 		}
 	}
 	
