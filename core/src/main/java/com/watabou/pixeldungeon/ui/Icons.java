@@ -72,7 +72,7 @@ public enum Icons {
 			icon.frame( icon.texture.uvRect( 30, 0, 46, 16 ) );
 			break;
 		case WARNING:
-			icon.frame( icon.texture.uvRect( 46, 0, 58, 12 ) );
+			icon.frame( icon.texture.uvRect( 46, 0, 64, 12 ) );
 			break;
 		case TARGET:
 			icon.frame( icon.texture.uvRect( 0, 13, 16, 29 ) );
@@ -81,28 +81,28 @@ public enum Icons {
 			icon.frame( icon.texture.uvRect( 30, 16, 45, 26 ) );
 			break;
 		case WARRIOR:
-			icon.frame( icon.texture.uvRect( 0, 29, 16, 45 ) );
+			icon.frame( icon.texture.uvRect( 0, 30, 16, 46 ) );
 			break;
 		case MAGE:
-			icon.frame( icon.texture.uvRect( 16, 29, 32, 45 ) );
+			icon.frame( icon.texture.uvRect( 16, 30, 32, 45 ) );
 			break;
 		case ROGUE:
-			icon.frame( icon.texture.uvRect( 32, 29, 48, 45 ) );
+			icon.frame( icon.texture.uvRect( 35, 30, 44, 41 ) );
 			break;
 		case HUNTRESS:
-			icon.frame( icon.texture.uvRect( 48, 29, 64, 45 ) );
+			icon.frame( icon.texture.uvRect( 48, 30, 62, 44 ) );
 			break;
 		case CLOSE:
-			icon.frame( icon.texture.uvRect( 0, 45, 13, 58 ) );
+			icon.frame( icon.texture.uvRect( 0, 48, 12, 60 ) );
 			break;
 		case DEPTH:
 			icon.frame( icon.texture.uvRect( 45, 12, 54, 20 ) );
 			break;
 		case SLEEP:
-			icon.frame( icon.texture.uvRect( 13, 45, 22, 53 ) );
+			icon.frame( icon.texture.uvRect( 13, 48, 22, 55 ) );
 			break;
 		case ALERT:
-			icon.frame( icon.texture.uvRect( 22, 45, 30, 53 ) );
+			icon.frame( icon.texture.uvRect( 22, 48, 30, 56 ) );
 			break;
 		case SUPPORT:
 			icon.frame( icon.texture.uvRect( 30, 45, 46, 61 ) );
@@ -114,7 +114,7 @@ public enum Icons {
 			icon.frame( icon.texture.uvRect( 58, 0, 68, 10 ) );
 			break;
 		case SCROLL_HOLDER:
-			icon.frame( icon.texture.uvRect( 68, 0, 78, 10 ) );
+			icon.frame( icon.texture.uvRect( 69, 0, 77, 10 ) );
 			break;
 		case SEED_POUCH:
 			icon.frame( icon.texture.uvRect( 78, 0, 88, 10 ) );
@@ -123,7 +123,7 @@ public enum Icons {
 			icon.frame( icon.texture.uvRect( 88, 0, 98, 10 ) );
 			break;
 		case KEYRING:
-			icon.frame( icon.texture.uvRect( 64, 29, 74, 39 ) );
+			icon.frame( icon.texture.uvRect( 66, 29, 75, 41 ) );
 			break;
 		case CHECKED:
 			icon.frame( icon.texture.uvRect( 54, 12, 66, 24 ) );
@@ -135,10 +135,10 @@ public enum Icons {
 			icon.frame( icon.texture.uvRect( 98, 0, 114, 16 ) );
 			break;
 		case CHALLENGE_OFF:
-			icon.frame( icon.texture.uvRect( 78, 16, 91, 28 ) );
+			icon.frame( icon.texture.uvRect( 78, 16, 92, 29 ) );
 			break;
 		case CHALLENGE_ON:
-			icon.frame( icon.texture.uvRect( 102, 16, 115, 28 ) );
+			icon.frame( icon.texture.uvRect( 102, 16, 116, 29 ) );
 			break;
 		case RESUME:
 			icon.frame( icon.texture.uvRect( 114, 0, 126, 11 ) );
