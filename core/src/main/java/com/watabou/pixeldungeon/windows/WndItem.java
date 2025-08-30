@@ -24,6 +24,7 @@ import com.watabou.pixeldungeon.scenes.PixelScene;
 import com.watabou.pixeldungeon.sprites.ItemSprite;
 import com.watabou.pixeldungeon.ui.ItemSlot;
 import com.watabou.pixeldungeon.ui.RedButton;
+import com.watabou.pixeldungeon.ui.SecondaryButton;
 import com.watabou.pixeldungeon.ui.Window;
 import com.watabou.pixeldungeon.utils.Utils;
 
@@ -70,27 +71,46 @@ public class WndItem extends Window {
 		if (Dungeon.hero.isAlive() && owner != null) {
 			for (final String action:item.actions( Dungeon.hero )) {
 				
-				RedButton btn = new RedButton( action ) {
-					@Override
-					protected void onClick() {
-						item.execute( Dungeon.hero, action );
-						hide();
-						owner.hide();
+				if(action == item.defaultAction){
+					RedButton primaryBtn = new RedButton( action ) {
+						@Override
+						protected void onClick() {
+							item.execute( Dungeon.hero, action );
+							hide();
+							owner.hide();
+						};
 					};
-				};
-				btn.setSize( Math.max( BUTTON_WIDTH, btn.reqWidth() ), BUTTON_HEIGHT );
-				if (x + btn.width() > WIDTH) {
-					x = 0;
-					y += BUTTON_HEIGHT + GAP;
+					primaryBtn.setSize( Math.max( BUTTON_WIDTH, primaryBtn.reqWidth() ), BUTTON_HEIGHT );
+					if (x + primaryBtn.width() > WIDTH) {
+						x = 0;
+						y += BUTTON_HEIGHT + GAP;
+					}
+					primaryBtn.setPos( x, y );
+					add( primaryBtn );
+					x += primaryBtn.width() + GAP;
+				}else{
+					SecondaryButton btn = new SecondaryButton( action ) {
+						@Override
+						protected void onClick() {
+							item.execute( Dungeon.hero, action );
+							hide();
+							owner.hide();
+						};
+					};
+					btn.setSize( Math.max( BUTTON_WIDTH, btn.reqWidth() ), BUTTON_HEIGHT );
+					if (x + btn.width() > WIDTH) {
+						x = 0;
+						y += BUTTON_HEIGHT + GAP;
+					}
+					btn.setPos( x, y );
+					add( btn );
+					x += btn.width() + GAP;
 				}
-				btn.setPos( x, y );
-				add( btn );
-				
-				if (action == item.defaultAction) {
+
+				/*if (action == item.defaultAction) {
 					btn.textColor( TITLE_COLOR );
 				}
-				
-				x += btn.width() + GAP;
+				*/
 			}
 		}
 		

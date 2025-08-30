@@ -22,6 +22,7 @@ import com.watabou.pixeldungeon.items.TomeOfMastery;
 import com.watabou.pixeldungeon.sprites.ItemSprite;
 import com.watabou.pixeldungeon.ui.HighlightedText;
 import com.watabou.pixeldungeon.ui.RedButton;
+import com.watabou.pixeldungeon.ui.SecondaryButton;
 import com.watabou.pixeldungeon.ui.Window;
 import com.watabou.pixeldungeon.utils.Utils;
 
@@ -93,7 +94,7 @@ public class WndChooseWay extends Window {
 		btnWay.setRect( 0, bottom + GAP, WIDTH, BTN_HEIGHT );
 		add( btnWay );
 		
-		RedButton btnCancel = new RedButton( TXT_CANCEL ) {
+		SecondaryButton btnCancel = new SecondaryButton( TXT_CANCEL ) {
 			@Override
 			protected void onClick() {
 				hide();

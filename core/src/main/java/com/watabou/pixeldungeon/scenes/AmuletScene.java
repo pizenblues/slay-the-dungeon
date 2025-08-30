@@ -27,6 +27,7 @@ import com.watabou.pixeldungeon.ResultDescriptions;
 import com.watabou.pixeldungeon.effects.Flare;
 import com.watabou.pixeldungeon.effects.Speck;
 import com.watabou.pixeldungeon.ui.RedButton;
+import com.watabou.pixeldungeon.ui.SecondaryButton;
 import com.watabou.utils.Random;
 
 public class AmuletScene extends PixelScene {
@@ -64,7 +65,7 @@ public class AmuletScene extends PixelScene {
 		amulet = new Image( Assets.AMULET );
 		add( amulet );
 		
-		RedButton btnExit = new RedButton( TXT_EXIT ) {
+		SecondaryButton btnExit = new SecondaryButton( TXT_EXIT ) {
 			@Override
 			protected void onClick() {
 				Dungeon.win( ResultDescriptions.WIN );

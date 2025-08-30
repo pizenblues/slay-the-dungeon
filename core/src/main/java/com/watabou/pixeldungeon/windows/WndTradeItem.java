@@ -30,6 +30,7 @@ import com.watabou.pixeldungeon.scenes.PixelScene;
 import com.watabou.pixeldungeon.sprites.ItemSprite;
 import com.watabou.pixeldungeon.ui.ItemSlot;
 import com.watabou.pixeldungeon.ui.RedButton;
+import com.watabou.pixeldungeon.ui.SecondaryButton;
 import com.watabou.pixeldungeon.ui.Window;
 import com.watabou.pixeldungeon.utils.GLog;
 import com.watabou.pixeldungeon.utils.Utils;
@@ -99,8 +100,8 @@ public class WndTradeItem extends Window {
 			pos = btnSellAll.bottom();
 			
 		}
-		
-		RedButton btnCancel = new RedButton( TXT_CANCEL ) {
+
+		SecondaryButton btnCancel = new SecondaryButton( TXT_CANCEL ) {
 			@Override
 			protected void onClick() {
 				hide();
@@ -134,8 +135,8 @@ public class WndTradeItem extends Window {
 			btnBuy.setRect( 0, pos + GAP, WIDTH, BTN_HEIGHT );
 			btnBuy.enable( price <= Dungeon.gold );
 			add( btnBuy );
-			
-			RedButton btnCancel = new RedButton( TXT_CANCEL ) {
+
+			SecondaryButton btnCancel = new SecondaryButton( TXT_CANCEL ) {
 				@Override
 				protected void onClick() {
 					hide();

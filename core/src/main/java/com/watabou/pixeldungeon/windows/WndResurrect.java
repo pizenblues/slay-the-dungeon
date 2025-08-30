@@ -27,6 +27,7 @@ import com.watabou.pixeldungeon.scenes.InterlevelScene;
 import com.watabou.pixeldungeon.scenes.PixelScene;
 import com.watabou.pixeldungeon.sprites.ItemSprite;
 import com.watabou.pixeldungeon.ui.RedButton;
+import com.watabou.pixeldungeon.ui.SecondaryButton;
 import com.watabou.pixeldungeon.ui.Window;
 
 public class WndResurrect extends Window {
@@ -74,8 +75,8 @@ public class WndResurrect extends Window {
 		};
 		btnYes.setRect( 0, message.y + message.height() + GAP, WIDTH, BTN_HEIGHT );
 		add( btnYes );
-		
-		RedButton btnNo = new RedButton( TXT_NO ) {
+
+		SecondaryButton btnNo = new SecondaryButton( TXT_NO ) {
 			@Override
 			protected void onClick() {
 				hide();

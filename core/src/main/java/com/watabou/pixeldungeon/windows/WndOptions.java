@@ -20,14 +20,14 @@ package com.watabou.pixeldungeon.windows;
 import com.watabou.noosa.BitmapTextMultiline;
 import com.watabou.pixeldungeon.scenes.PixelScene;
 import com.watabou.pixeldungeon.ui.RedButton;
+import com.watabou.pixeldungeon.ui.SecondaryButton;
 import com.watabou.pixeldungeon.ui.Window;
 
 public class WndOptions extends Window {
-
 	private static final int WIDTH			= 120;
 	private static final int MARGIN 		= 2;
 	private static final int BUTTON_HEIGHT	= 20;
-	
+
 	public WndOptions( String title, String message, String... options ) {
 		super();
 		
@@ -46,19 +46,33 @@ public class WndOptions extends Window {
 		add( tfMesage );
 		
 		float pos = tfMesage.y + tfMesage.height() + MARGIN;
-		
+
 		for (int i=0; i < options.length; i++) {
 			final int index = i;
-			RedButton btn = new RedButton( options[i] ) {
-				@Override
-				protected void onClick() {
-					hide();
-					onSelect( index );
-				}
-			};
-			btn.setRect( MARGIN, pos, WIDTH - MARGIN * 2, BUTTON_HEIGHT );
-			add( btn );
-			
+
+			if(i == 0){
+				RedButton primaryBtn = new RedButton( options[i] ) {
+					@Override
+					protected void onClick() {
+						hide();
+						onSelect( index );
+					}
+				};
+
+				primaryBtn.setRect( MARGIN, pos, WIDTH - MARGIN * 2, BUTTON_HEIGHT );
+				add( primaryBtn );
+			}else{
+				SecondaryButton btn = new SecondaryButton( options[i] ) {
+					@Override
+					protected void onClick() {
+						hide();
+						onSelect( index );
+					}
+				};
+				btn.setRect( MARGIN, pos, WIDTH - MARGIN * 2, BUTTON_HEIGHT );
+				add( btn );
+			}
+
 			pos += BUTTON_HEIGHT + MARGIN;
 		}
 		

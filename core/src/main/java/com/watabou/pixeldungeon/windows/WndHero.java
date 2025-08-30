@@ -33,7 +33,7 @@ import com.watabou.pixeldungeon.actors.hero.Hero;
 import com.watabou.pixeldungeon.scenes.GameScene;
 import com.watabou.pixeldungeon.scenes.PixelScene;
 import com.watabou.pixeldungeon.ui.BuffIndicator;
-import com.watabou.pixeldungeon.ui.RedButton;
+import com.watabou.pixeldungeon.ui.SecondaryButton;
 import com.watabou.pixeldungeon.utils.Utils;
 
 public class WndHero extends WndTabbed {
@@ -110,7 +110,7 @@ public class WndHero extends WndTabbed {
 			title.measure();
 			add( title );
 			
-			RedButton btnCatalogus = new RedButton( TXT_CATALOGUS ) {
+			SecondaryButton btnCatalogus = new SecondaryButton( TXT_CATALOGUS ) {
 				@Override
 				protected void onClick() {
 					hide();
@@ -120,7 +120,7 @@ public class WndHero extends WndTabbed {
 			btnCatalogus.setRect( 0, title.y + title.height(), btnCatalogus.reqWidth() + 2, btnCatalogus.reqHeight() + 2 );
 			add( btnCatalogus );
 			
-			RedButton btnJournal = new RedButton( TXT_JOURNAL ) {
+			SecondaryButton btnJournal = new SecondaryButton( TXT_JOURNAL ) {
 				@Override
 				protected void onClick() {
 					hide();

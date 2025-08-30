@@ -43,6 +43,7 @@ import com.watabou.pixeldungeon.ui.Archs;
 import com.watabou.pixeldungeon.ui.ExitButton;
 import com.watabou.pixeldungeon.ui.Icons;
 import com.watabou.pixeldungeon.ui.RedButton;
+import com.watabou.pixeldungeon.ui.SecondaryButton;
 import com.watabou.pixeldungeon.utils.Utils;
 import com.watabou.pixeldungeon.windows.WndChallenges;
 import com.watabou.pixeldungeon.windows.WndClass;
@@ -72,7 +73,7 @@ public class StartScene extends PixelScene {
 	private float buttonX;
 	private float buttonY;
 	public float bottomPadding = 12;
-	private GameButton btnLoad;
+	private LoadButton btnLoad;
 	private GameButton btnNewGame;
 	private boolean huntressUnlocked;
 	private Group unlock;
@@ -138,7 +139,7 @@ public class StartScene extends PixelScene {
 		};
 		add(btnNewGame);
 
-		btnLoad = new GameButton(TXT_LOAD) {
+		btnLoad = new LoadButton(TXT_LOAD) {
 			@Override
 			protected void onClick() {
 				InterlevelScene.mode = InterlevelScene.Mode.CONTINUE;
@@ -317,6 +318,43 @@ public class StartScene extends PixelScene {
 			}
 		}
 		
+		public void secondary( String text, boolean highlighted ) {
+			secondary.text( text );
+			secondary.measure();
+			secondary.hardlight( highlighted ? SECONDARY_COLOR_H : SECONDARY_COLOR_N );
+		}
+	}
+
+	private static class LoadButton extends SecondaryButton {
+		private static final int SECONDARY_COLOR_N	= 0xCACFC2;
+		private static final int SECONDARY_COLOR_H	= 0xFFFF88;
+		private BitmapText secondary;
+
+		public LoadButton( String primary ) {
+			super( primary );
+			this.secondary.text( null );
+		}
+
+		@Override
+		protected void createChildren() {
+			super.createChildren();
+			secondary = createText( 6 );
+			add( secondary );
+		}
+
+		@Override
+		protected void layout() {
+			super.layout();
+
+			if (secondary.text().length() > 0) {
+				text.y = align( y + (height - text.height() - secondary.baseLine()) / 2 );
+				secondary.x = align( x + (width - secondary.width()) / 2 );
+				secondary.y = align( text.y + text.height() );
+			} else {
+				text.y = align( y + (height - text.baseLine()) / 2 );
+			}
+		}
+
 		public void secondary( String text, boolean highlighted ) {
 			secondary.text( text );
 			secondary.measure();

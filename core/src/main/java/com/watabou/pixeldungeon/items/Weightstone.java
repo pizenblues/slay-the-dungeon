@@ -28,6 +28,7 @@ import com.watabou.pixeldungeon.scenes.GameScene;
 import com.watabou.pixeldungeon.scenes.PixelScene;
 import com.watabou.pixeldungeon.sprites.ItemSpriteSheet;
 import com.watabou.pixeldungeon.ui.RedButton;
+import com.watabou.pixeldungeon.ui.SecondaryButton;
 import com.watabou.pixeldungeon.ui.Window;
 import com.watabou.pixeldungeon.utils.GLog;
 import com.watabou.pixeldungeon.utils.Utils;
@@ -179,7 +180,7 @@ public class Weightstone extends Item {
 				pos = btnAccuracy.bottom();
 			}
 			
-			RedButton btnCancel = new RedButton( TXT_CANCEL ) {
+			SecondaryButton btnCancel = new SecondaryButton( TXT_CANCEL ) {
 				@Override
 				protected void onClick() {
 					hide();
