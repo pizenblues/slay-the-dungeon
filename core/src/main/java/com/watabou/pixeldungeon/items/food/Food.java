@@ -45,6 +45,7 @@ public class Food extends Item {
 		stackable = true;
 		name = "ration of food";
 		image = ItemSpriteSheet.RATION;
+		defaultAction = AC_EAT;
 	}
 	
 	@Override

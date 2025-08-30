@@ -106,11 +106,6 @@ public class WndItem extends Window {
 					add( btn );
 					x += btn.width() + GAP;
 				}
-
-				/*if (action == item.defaultAction) {
-					btn.textColor( TITLE_COLOR );
-				}
-				*/
 			}
 		}
 		
