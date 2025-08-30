@@ -163,6 +163,8 @@ public class Hero extends Char {
 	
 	public int lvl = 1;
 	public int exp = 0;
+
+	public boolean isLeveling = false;
 	
 	private ArrayList<Mob> visibleEnemies; 
 	
@@ -1017,10 +1019,10 @@ public class Hero extends Char {
 	}
 	
 	public void earnExp( int exp ) {
-		
 		this.exp += exp;
-		
 		boolean levelUp = false;
+		isLeveling = false;
+
 		while (this.exp >= maxExp()) {
 			this.exp -= maxExp();
 			lvl++;
@@ -1042,6 +1044,7 @@ public class Hero extends Char {
 			GLog.p( TXT_NEW_LEVEL, lvl );
 			sprite.showStatus( CharSprite.POSITIVE, TXT_LEVEL_UP );
 			Sample.INSTANCE.play( Assets.SND_LEVELUP );
+			isLeveling = true;
 			
 			Badges.validateLevelReached();
 		}

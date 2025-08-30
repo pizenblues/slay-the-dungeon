@@ -132,7 +132,7 @@ public enum HeroClass {
 	
 	private static void initWarrior( Hero hero ) {
 		hero.STR = hero.STR + 1;
-		
+
 		(hero.belongings.weapon = new ShortSword()).identify();
 		new Dart( 8 ).identify().collect();
 		
@@ -206,6 +206,22 @@ public enum HeroClass {
 				return Assets.SPLASH_rogue;
 			case HUNTRESS:
 				return Assets.SPLASH_huntress;
+		}
+
+		return null;
+	}
+
+	public String portrait() {
+
+		switch (this) {
+			case WARRIOR:
+				return Assets.PORTRAIT_warrior;
+			case MAGE:
+				return Assets.PORTRAIT_mage;
+			case ROGUE:
+				return Assets.PORTRAIT_rogue;
+			case HUNTRESS:
+				return Assets.PORTRAIT_huntress;
 		}
 
 		return null;
