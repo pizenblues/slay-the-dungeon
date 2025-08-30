@@ -29,7 +29,7 @@ public class LootIndicator extends Tag {
 	private int lastQuantity = 0;
 	
 	public LootIndicator() {
-		super( 0x1F75CC );
+		super( 0xFFFFF );
 		
 		setSize( 24, 22 );
 		

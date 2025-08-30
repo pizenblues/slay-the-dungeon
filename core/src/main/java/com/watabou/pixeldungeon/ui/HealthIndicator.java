@@ -42,11 +42,11 @@ public class HealthIndicator extends Component {
 	
 	@Override
 	protected void createChildren() {
-		bg = new Image( TextureCache.createSolid( 0xFFcc0000 ) );
+		bg = new Image( TextureCache.createSolid( 0xff1f102a ) );
 		bg.scale.y = HEIGHT;
 		add( bg );
 		
-		level = new Image( TextureCache.createSolid( 0xFF00cc00 ) );
+		level = new Image( TextureCache.createSolid( 0xFF6bc96c ) );
 		level.scale.y = HEIGHT;
 		add( level );
 	}

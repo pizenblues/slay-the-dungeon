@@ -11,7 +11,7 @@ public class HighlightedText extends Component {
 	protected BitmapTextMultiline highlighted;
 	
 	protected int nColor = 0xFFFFFF;
-	protected int hColor = 0xFFFF44;
+	protected int hColor = 0xf0e276;
 	
 	public HighlightedText( float size ) {
 		normal = PixelScene.createMultiline( size );
@@ -20,7 +20,7 @@ public class HighlightedText extends Component {
 		highlighted = PixelScene.createMultiline( size );
 		add( highlighted );
 		
-		setColor( 0xFFFFFF, 0xFFFF44 );
+		setColor( 0xFFFFFF, 0xf0e276 );
 	}
 	
 	@Override

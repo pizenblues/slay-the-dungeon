@@ -220,13 +220,13 @@ public class GameScene extends PixelScene {
 		AttackIndicator attack = new AttackIndicator();
 		attack.camera = uiCamera;
 		attack.setPos( 
-			uiCamera.width - attack.width(), 
+			uiCamera.width - attack.width() - 2,
 			toolbar.top() - attack.height() );
 		add( attack );
 		
 		log = new GameLog();
 		log.camera = uiCamera;
-		log.setRect( 0, toolbar.top(), attack.left(),  0 );
+		log.setRect( 2, toolbar.top(), attack.left() - 4,  0 );
 		add( log );
 		
 		busy = new BusyIndicator();

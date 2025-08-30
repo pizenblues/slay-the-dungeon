@@ -26,7 +26,7 @@ import com.watabou.pixeldungeon.scenes.PixelScene;
 
 public class DangerIndicator extends Tag {
 	
-	public static final int COLOR	= 0xFF4C4C;
+	public static final int COLOR	= 0xcc425e;
 	
 	private BitmapText number;
 	private Image icon;
@@ -36,7 +36,7 @@ public class DangerIndicator extends Tag {
 	private int lastNumber = -1;
 	
 	public DangerIndicator() {
-		super( 0xFF4C4C );
+		super( 0xcc425e );
 		
 		setSize( 24, 16 );
 		

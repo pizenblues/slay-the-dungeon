@@ -45,10 +45,10 @@ import com.watabou.utils.Random;
 public class CharSprite extends MovieClip implements Tweener.Listener, MovieClip.Listener {
 	
 	public static final int DEFAULT		= 0xFFFFFF;
-	public static final int POSITIVE	= 0x00FF00;
-	public static final int NEGATIVE	= 0xFF0000;
-	public static final int WARNING		= 0xFF8800;
-	public static final int NEUTRAL		= 0xFFFF00;
+	public static final int POSITIVE	= 0x6bc96c;
+	public static final int NEGATIVE	= 0xcc425e;
+	public static final int WARNING		= 0xe7933e;
+	public static final int NEUTRAL		= 0xf0e276;
 	
 	private static final float MOVE_INTERVAL	= 0.1f;
 	private static final float FLASH_INTERVAL	= 0.05f;	
@@ -241,7 +241,7 @@ public class CharSprite extends MovieClip implements Tweener.Listener, MovieClip
 	}
 	
 	public int blood() {
-		return 0xFFBB0000;
+		return 0xFFea6262;
 	}
 	
 	public void flash() {

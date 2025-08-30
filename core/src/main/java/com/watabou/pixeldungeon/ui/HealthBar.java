@@ -22,8 +22,8 @@ import com.watabou.noosa.ui.Component;
 
 public class HealthBar extends Component {
 
-	private static final int COLOR_BG	= 0xFFCC0000;
-	private static final int COLOR_LVL	= 0xFF00EE00;
+	private static final int COLOR_BG	= 0x051f102a;
+	private static final int COLOR_LVL	= 0xFF6bc96c;
 	
 	private static final int HEIGHT	= 2;
 	
