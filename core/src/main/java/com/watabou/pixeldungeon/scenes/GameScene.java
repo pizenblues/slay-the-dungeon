@@ -209,7 +209,7 @@ public class GameScene extends PixelScene {
 		
 		StatusPane sb = new StatusPane();
 		sb.camera = uiCamera;
-		sb.setSize( uiCamera.width, 0 );
+		sb.setSize( uiCamera.width - 2, 0 );
 		add( sb );
 		
 		toolbar = new Toolbar();

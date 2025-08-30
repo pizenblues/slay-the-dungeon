@@ -62,7 +62,7 @@ public class StatusPane extends Component {
 		shield = new NinePatch( Assets.STATUS, 80, 0, 30   + 18, 0 );
 		add( shield );
 		
-		add( new TouchArea( 0, 1, 30, 30 ) {
+		add( new TouchArea( 0, 0, 40, 50 ) {
 			@Override
 			protected void onClick( Touch touch ) {
 				Image sprite = Dungeon.hero.sprite;
@@ -76,8 +76,8 @@ public class StatusPane extends Component {
 		portrait = new Image();
 		portrait.texture(Dungeon.hero.heroClass.portrait());
 		portrait.frame( 0, 0, 40, 50 );
-		portrait.x = 0;
-		portrait.y = 0;
+		portrait.x = 2;
+		portrait.y = 2;
 		add(portrait);
 		
 		btnMenu = new MenuButton();
@@ -136,15 +136,15 @@ public class StatusPane extends Component {
 		compass.y = 40;
 		
 		hp.x = 55;
-		hp.y = 2;
+		hp.y = 4;
 
 		exp.x = 55;
-		exp.y = 11;
+		exp.y = 13;
 		
-		depth.x = width - 8 - depth.width() - 16;
-		depth.y = 8;
+		depth.x = width - 8 - depth.width() - 15;
+		depth.y = 11;
 		
-		keys.y = 0;
+		keys.y = 2;
 		
 		layoutTags();
 		
@@ -223,8 +223,8 @@ public class StatusPane extends Component {
 			lastLvl = Dungeon.hero.lvl;
 			level.text( "LVL " + Integer.toString( lastLvl ) );
 			level.measure();
-			level.x = 13;
-			level.y = PixelScene.align( 52.0f - level.baseLine() / 2 );
+			level.x = 15;
+			level.y = PixelScene.align( 54.0f - level.baseLine() / 2 );
 		}
 		
 		int k = IronKey.curDepthQuantity;
@@ -232,7 +232,7 @@ public class StatusPane extends Component {
 			lastKeys = k;
 			keys.text( Integer.toString( lastKeys ) );
 			keys.measure();
-			keys.x = width - 8 - keys.width() - 16;
+			keys.x = width - 8 - keys.width() - 15;
 		}
 		
 		int tier = Dungeon.hero.tier();
