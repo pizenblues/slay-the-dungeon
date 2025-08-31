@@ -33,29 +33,24 @@ import com.watabou.pixeldungeon.actors.hero.Hero;
 import com.watabou.pixeldungeon.scenes.GameScene;
 import com.watabou.pixeldungeon.scenes.PixelScene;
 import com.watabou.pixeldungeon.ui.BuffIndicator;
+import com.watabou.pixeldungeon.ui.Icons;
 import com.watabou.pixeldungeon.ui.SecondaryButton;
 import com.watabou.pixeldungeon.utils.Utils;
 
 public class WndHero extends WndTabbed {
-	
 	private static final String TXT_STATS	= "Stats";
 	private static final String TXT_BUFFS	= "Buffs";
-	
 	private static final String TXT_EXP		= "Experience";
 	private static final String TXT_STR		= "Strength";
 	private static final String TXT_HEALTH	= "Health";
 	private static final String TXT_GOLD	= "Gold Collected";
 	private static final String TXT_DEPTH	= "Maximum Depth";
-	
 	private static final int WIDTH		= 100;
 	private static final int TAB_WIDTH	= 40;
-	
 	private StatsTab stats;
 	private BuffsTab buffs;
-	
 	private SmartTexture icons;
 	private TextureFilm film;
-	
 	public WndHero() {
 		
 		super();
@@ -91,15 +86,16 @@ public class WndHero extends WndTabbed {
 	}
 	
 	private class StatsTab extends Group {
-		
 		private static final String TXT_TITLE		= "Level %d %s";
 		private static final String TXT_CATALOGUS	= "Catalogus";
 		private static final String TXT_JOURNAL		= "Journal";
-		
+		Image strengthIcon = Icons.STREGTHMINI.get();
+		Image healthIcon = Icons.HEALTHMINI.get();
+		Image expIcon = Icons.EXPMINI.get();
+		Image goldIcon = Icons.GOLDMINI.get();
+		Image depthIcon = Icons.DEPTHMINI.get();
 		private static final int GAP = 5;
-		
 		private float pos;
-		
 		public StatsTab() {
 			
 			Hero hero = Dungeon.hero; 
@@ -117,7 +113,7 @@ public class WndHero extends WndTabbed {
 					GameScene.show( new WndCatalogus() );
 				}
 			};
-			btnCatalogus.setRect( 0, title.y + title.height(), btnCatalogus.reqWidth() + 2, btnCatalogus.reqHeight() + 2 );
+			btnCatalogus.setRect( 0, title.y + title.height() + 4, btnCatalogus.reqWidth() + 2, btnCatalogus.reqHeight() + 2 );
 			add( btnCatalogus );
 			
 			SecondaryButton btnJournal = new SecondaryButton( TXT_JOURNAL ) {
@@ -133,36 +129,39 @@ public class WndHero extends WndTabbed {
 			add( btnJournal );
 			
 			pos = btnCatalogus.bottom() + GAP;
-			
-			statSlot( TXT_STR, hero.STR() );
-			statSlot( TXT_HEALTH, hero.HP + "/" + hero.HT );
-			statSlot( TXT_EXP, hero.exp + "/" + hero.maxExp() );
 
-			pos += GAP;
-			
-			statSlot( TXT_GOLD, Statistics.goldCollected );
-			statSlot( TXT_DEPTH, Statistics.deepestFloor );
+			statSlot( TXT_STR, hero.STR(), strengthIcon);
+			statSlot( TXT_HEALTH, hero.HP + "/" + hero.HT, healthIcon);
+			statSlot( TXT_EXP, hero.exp + "/" + hero.maxExp(), expIcon);
+
+			statSlot( TXT_GOLD, Statistics.goldCollected, goldIcon);
+			statSlot( TXT_DEPTH, Statistics.deepestFloor, depthIcon);
 			
 			pos += GAP;
 		}
 		
-		private void statSlot( String label, String value ) {
+		private void statSlot( String label, String value, Image icon) {
+
+			add(icon);
+			icon.y = pos;
+			icon.x = 0;
 			
 			BitmapText txt = PixelScene.createText( label, 8 );
 			txt.y = pos;
+			txt.x = 12;
 			add( txt );
 			
 			txt = PixelScene.createText( value, 8 );
 			txt.measure();
-			txt.x = PixelScene.align( WIDTH * 0.65f );
+			txt.x = PixelScene.align( WIDTH * 0.75f );
 			txt.y = pos;
 			add( txt );
 			
 			pos += GAP + txt.baseLine();
 		}
 		
-		private void statSlot( String label, int value ) {
-			statSlot( label, Integer.toString( value ) );
+		private void statSlot( String label, int value, Image icon) {
+			statSlot( label, Integer.toString( value ), icon);
 		}
 		
 		public float height() {

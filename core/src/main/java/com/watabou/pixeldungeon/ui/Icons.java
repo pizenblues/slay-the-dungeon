@@ -50,7 +50,12 @@ public enum Icons {
 	EXIT,
 	CHALLENGE_OFF,
 	CHALLENGE_ON,
-	RESUME;
+	RESUME,
+	STREGTHMINI,
+	HEALTHMINI,
+	EXPMINI,
+	DEPTHMINI,
+	GOLDMINI;
 	
 	public Image get() {
 		return get( this );
@@ -143,6 +148,21 @@ public enum Icons {
 		case RESUME:
 			icon.frame( icon.texture.uvRect( 114, 0, 126, 11 ) );
 			break;
+			case STREGTHMINI:
+				icon.frame( icon.texture.uvRect( 80, 32, 88, 40 ) );
+				break;
+			case HEALTHMINI:
+				icon.frame( icon.texture.uvRect( 88, 32, 96, 40 ) );
+				break;
+			case EXPMINI:
+				icon.frame( icon.texture.uvRect( 96, 32, 104, 40 ) );
+				break;
+			case DEPTHMINI:
+				icon.frame( icon.texture.uvRect( 104, 32, 112, 40 ) );
+				break;
+			case GOLDMINI:
+				icon.frame( icon.texture.uvRect( 112, 32, 120, 40 ) );
+				break;
 		}
 		return icon;
 	}

@@ -176,7 +176,7 @@ public class WndTabbed extends Window {
 			super.layout();
 			
 			btLabel.x = PixelScene.align( x + (width - btLabel.width()) / 2 );
-			btLabel.y = PixelScene.align( y + (height - btLabel.baseLine()) / 2 ) - 1;
+			btLabel.y = PixelScene.align( y + (height - btLabel.baseLine()) / 2 ) +1;
 			if (!selected) {
 				btLabel.y -= 2;
 			}
