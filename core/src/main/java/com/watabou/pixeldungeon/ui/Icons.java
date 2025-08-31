@@ -30,6 +30,7 @@ public enum Icons {
 	WARNING,
 	TARGET,
 	WATA,
+	PIZEN,
 	WARRIOR,
 	MAGE,
 	ROGUE,
@@ -84,6 +85,9 @@ public enum Icons {
 			break;
 		case WATA:
 			icon.frame( icon.texture.uvRect( 30, 16, 45, 26 ) );
+			break;
+			case PIZEN:
+				icon.frame(icon.texture.uvRect(64,48,79,63));
 			break;
 		case WARRIOR:
 			icon.frame( icon.texture.uvRect( 0, 30, 16, 46 ) );

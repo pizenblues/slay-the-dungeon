@@ -35,50 +35,83 @@ import com.watabou.pixeldungeon.ui.Window;
 
 public class AboutScene extends PixelScene {
 
-	private static final String TXT = 
-		"Code & graphics: Watabou\n" +
-		"Music: Cube_Code\n\n" + 
-		"This game is inspired by Brian Walker's Brogue. " +
-		"Try it on Windows, Mac OS or Linux - it's awesome! ;)\n\n" +
-		"Please visit official website for additional info:";
+	private static final String TXT =
+		"Art, code and music by Pizenblues\n";
+
+	private static final String ORIGINALTXT =
+		"Based on the original Pixel Dungeon by Watabou\n";
 	
-	private static final String LNK = "pixeldungeon.watabou.ru";
-	
+	private static final String LNK = "pixelblues.bsky.social";
+	private static final String ORIGINALLNK = "pixeldungeon.watabou.ru";
+
 	@Override
 	public void create() {
 		super.create();
-		
+
 		BitmapTextMultiline text = createMultiline( TXT, 8 );
 		text.maxWidth = Math.min( Camera.main.width, 120 );
 		text.measure();
 		add( text );
-		
+
 		text.x = align( (Camera.main.width - text.width()) / 2 );
-		text.y = align( (Camera.main.height - text.height()) / 2 );
+		text.y = align( (Camera.main.height - (text.height()*2)) / 2 );
 		
 		BitmapTextMultiline link = createMultiline( LNK, 8 );
 		link.maxWidth = Math.min( Camera.main.width, 120 );
 		link.measure();
 		link.hardlight( Window.TITLE_COLOR );
 		add( link );
-		
+
 		link.x = text.x;
 		link.y = text.y + text.height();
-		
+
 		TouchArea hotArea = new TouchArea( link ) {
+			@Override
+			protected void onClick( Touch touch ) {
+				Intent intent = new Intent( Intent.ACTION_VIEW, Uri.parse( "https://bsky.app/profile/" + LNK ) );
+				Game.instance.startActivity( intent );
+			}
+		};
+		add( hotArea );
+
+		Image pizen = Icons.PIZEN.get();
+		pizen.x = align( (Camera.main.width - pizen.width) / 2 );
+		pizen.y = text.y - pizen.height - 8;
+		add( pizen );
+		new Flare( 7, 64 ).color( 0xf0e276, true ).show( pizen, 0 ).angularSpeed = +20;
+
+
+		BitmapTextMultiline originaltext = createMultiline( ORIGINALTXT, 8 );
+		originaltext.maxWidth = Math.min( Camera.main.width, 120 );
+		originaltext.measure();
+		add( originaltext );
+
+		originaltext.x = align( (Camera.main.width - text.width()) / 2 );
+		originaltext.y = text.y+64;
+		
+		BitmapTextMultiline originallink = createMultiline( ORIGINALLNK, 8 );
+		originallink.maxWidth = Math.min( Camera.main.width, 120 );
+		originallink.measure();
+		originallink.hardlight( Window.TITLE_COLOR );
+		add( originallink );
+
+		originallink.x = originaltext.x;
+		originallink.y = originaltext.y + originaltext.height();
+		
+		TouchArea originalHotArea = new TouchArea( link ) {
 			@Override
 			protected void onClick( Touch touch ) {
 				Intent intent = new Intent( Intent.ACTION_VIEW, Uri.parse( "http://" + LNK ) );
 				Game.instance.startActivity( intent );
 			}
 		};
-		add( hotArea );
-		
+		add( originalHotArea );
+
 		Image wata = Icons.WATA.get();
 		wata.x = align( (Camera.main.width - wata.width) / 2 );
-		wata.y = text.y - wata.height - 8;
+		wata.y = originaltext.y - wata.height - 8;
 		add( wata );
-		
+
 		new Flare( 7, 64 ).color( 0x112233, true ).show( wata, 0 ).angularSpeed = +20;
 		
 		Archs archs = new Archs();
