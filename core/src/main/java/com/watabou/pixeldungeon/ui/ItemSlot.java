@@ -18,6 +18,7 @@
 package com.watabou.pixeldungeon.ui;
 
 import com.watabou.noosa.BitmapText;
+import com.watabou.noosa.NinePatch;
 import com.watabou.noosa.ui.Button;
 import com.watabou.pixeldungeon.Dungeon;
 import com.watabou.pixeldungeon.items.Item;
@@ -28,24 +29,22 @@ import com.watabou.pixeldungeon.scenes.PixelScene;
 import com.watabou.pixeldungeon.sprites.ItemSprite;
 import com.watabou.pixeldungeon.sprites.ItemSpriteSheet;
 import com.watabou.pixeldungeon.utils.Utils;
+import com.watabou.pixeldungeon.Chrome;
 
 public class ItemSlot extends Button {
-
-	public static final int DEGRADED	= 0xFF4444;
-	public static final int UPGRADED	= 0x44FF44;
-	public static final int WARNING		= 0xFF8800;
-	
+	public static final int DEGRADED	= 0xcc425e;
+	public static final int UPGRADED	= 0xFF6bc96c;
+	public static final int WARNING		= 0xe7933e;
 	private static final float ENABLED	= 1.0f;
 	private static final float DISABLED	= 0.3f;
+	protected NinePatch bg;
 	
 	protected ItemSprite icon;
 	protected BitmapText topLeft;
 	protected BitmapText topRight;
 	protected BitmapText bottomRight;
-	
 	private static final String TXT_STRENGTH	= ":%d";
 	private static final String TXT_TYPICAL_STR	= "%d?";
-	
 	private static final String TXT_LEVEL	= "%+d";
 	private static final String TXT_CURSED	= "";//"-";
 	
@@ -74,8 +73,10 @@ public class ItemSlot extends Button {
 		
 	@Override
 	protected void createChildren() {
-		
 		super.createChildren();
+
+		bg = Chrome.get( Chrome.Type.ITEMSLOT );
+		add( bg );
 		
 		icon = new ItemSprite();
 		add( icon );
@@ -93,7 +94,11 @@ public class ItemSlot extends Button {
 	@Override
 	protected void layout() {
 		super.layout();
-		
+
+		bg.x = x;
+		bg.y = y;
+		bg.size( width, height );
+
 		icon.x = x + (width - icon.width) / 2;
 		icon.y = y + (height - icon.height) / 2;
 		

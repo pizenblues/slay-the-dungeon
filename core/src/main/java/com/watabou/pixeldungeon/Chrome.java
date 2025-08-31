@@ -27,6 +27,7 @@ public class Chrome {
 		WINDOW,
 		BUTTON,
 		SECONDARYBUTTON,
+		ITEMSLOT,
 		TAG,
 		SCROLL,
 		TAB_SET,
@@ -46,6 +47,8 @@ public class Chrome {
 			return new NinePatch( Assets.CHROME, 58, 0, 6, 6, 2 );
 			case SECONDARYBUTTON:
 				return new NinePatch(Assets.CHROME, 58,6,6,6,2);
+			case ITEMSLOT:
+				return new NinePatch( Assets.CHROME, 90, 0, 22, 23, 2 );
 		case TAG:
 			return new NinePatch( Assets.CHROME, 22, 18, 16, 14, 3 );
 		case SCROLL:

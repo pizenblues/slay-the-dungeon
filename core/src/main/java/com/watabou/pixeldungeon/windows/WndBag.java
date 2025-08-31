@@ -305,8 +305,8 @@ public class WndBag extends WndTabbed {
 	
 	private class ItemButton extends ItemSlot {
 		
-		private static final int NORMAL		= 0xFF4A4D44;
-		private static final int EQUIPPED	= 0xFF63665B;
+		private static final int NORMAL		= 0x00;
+		private static final int EQUIPPED	= 0x446a2b45;
 		
 		private static final int NBARS	= 3;
 		
@@ -369,11 +369,11 @@ public class WndBag extends WndTabbed {
 					durability = new ColorBlock[NBARS];
 					int nBars = (int)GameMath.gate( 0, Math.round( (float)NBARS * item.durability() / item.maxDurability() ), NBARS );
 					for (int i=0; i < nBars; i++) {
-						durability[i] = new ColorBlock( 2, 2, 0xFF00EE00 );
+						durability[i] = new ColorBlock( 2, 2, 0xFF6bc96c );
 						add( durability[i] );
 					}
 					for (int i=nBars; i < NBARS; i++) {
-						durability[i] = new ColorBlock( 2, 2, 0xFFCC0000 );
+						durability[i] = new ColorBlock( 2, 2, 0xffcc425e );
 						add( durability[i] );
 					}
 				}
