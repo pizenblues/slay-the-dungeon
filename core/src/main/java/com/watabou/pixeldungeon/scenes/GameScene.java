@@ -63,7 +63,9 @@ import com.watabou.pixeldungeon.ui.Banner;
 import com.watabou.pixeldungeon.ui.BusyIndicator;
 import com.watabou.pixeldungeon.ui.GameLog;
 import com.watabou.pixeldungeon.ui.HealthIndicator;
+import com.watabou.pixeldungeon.ui.Icons;
 import com.watabou.pixeldungeon.ui.QuickSlot;
+import com.watabou.pixeldungeon.ui.RedButton;
 import com.watabou.pixeldungeon.ui.StatusPane;
 import com.watabou.pixeldungeon.ui.Toast;
 import com.watabou.pixeldungeon.ui.Toolbar;
@@ -72,22 +74,21 @@ import com.watabou.pixeldungeon.utils.GLog;
 import com.watabou.pixeldungeon.windows.WndBag.Mode;
 import com.watabou.pixeldungeon.windows.WndGame;
 import com.watabou.pixeldungeon.windows.WndBag;
+import com.watabou.pixeldungeon.windows.WndSettings;
 import com.watabou.pixeldungeon.windows.WndStory;
+import com.watabou.pixeldungeon.windows.WindGameOver;
 import com.watabou.utils.Random;
 
 public class GameScene extends PixelScene {
-	
 	private static final String TXT_WELCOME			= "Welcome to the level %d of Pixel Dungeon!";
 	private static final String TXT_WELCOME_BACK	= "Welcome back to the level %d of Pixel Dungeon!";
 	private static final String TXT_NIGHT_MODE		= "Be cautious, since the dungeon is even more dangerous at night!";
-	
 	private static final String TXT_CHASM	= "Your steps echo across the dungeon.";
 	private static final String TXT_WATER	= "You hear the water splashing around you.";
 	private static final String TXT_GRASS	= "The smell of vegetation is thick in the air.";
 	private static final String TXT_SECRETS	= "The atmosphere hints that this floor hides many secrets.";
-	
+	private static final String TXT_START		= "Start New Game";
 	static GameScene scene;
-	
 	private SkinnedBlock water;
 	private DungeonTilemap tiles;
 	private FogOfWar fog;
@@ -556,13 +557,42 @@ public class GameScene extends PixelScene {
 	public static void flash( int color ) {
 		scene.fadeIn( 0xFF000000 | color, true );
 	}
-	
+
+	/*
 	public static void gameOver() {
 		Banner gameOver = new Banner( BannerSprites.get( BannerSprites.Type.GAME_OVER ) );
 		gameOver.show( 0x000000, 1f );
 		scene.showBanner( gameOver );
 		
 		Sample.INSTANCE.play( Assets.SND_DEATH );
+	}
+	 */
+
+	public static void gameOver() {
+		if (scene == null) return;
+
+		Banner gameOverBanner = new Banner( BannerSprites.get( BannerSprites.Type.GAME_OVER ) );
+		gameOverBanner.show( 0x000000, 2f );
+		scene.showBanner( gameOverBanner );
+
+		RedButton btnRestart = new RedButton( TXT_START ){
+			@Override
+			protected void onClick() {
+				Dungeon.hero = null;
+				PixelDungeon.challenges( Dungeon.challenges );
+				InterlevelScene.mode = InterlevelScene.Mode.DESCEND;
+				InterlevelScene.noStory = true;
+				Game.switchScene( InterlevelScene.class );
+			}
+		};
+
+		btnRestart.camera = uiCamera;
+		btnRestart.setSize(Math.max(80, btnRestart.reqWidth()), 20);
+		btnRestart.setPos(
+				align(uiCamera, (btnRestart.camera.width - btnRestart.width()) / 2),
+				align(uiCamera, (gameOverBanner.y + gameOverBanner.height() + 12))
+		);
+		scene.add(btnRestart);
 	}
 	
 	public static void bossSlain() {
