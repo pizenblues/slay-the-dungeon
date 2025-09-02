@@ -21,7 +21,7 @@ import com.watabou.noosa.particles.Emitter;
 import com.watabou.pixeldungeon.actors.Char;
 import com.watabou.pixeldungeon.effects.Speck;
 
-public class FetidRatSprite extends RatSprite {
+public class FetidRatSprite extends AlbinoSprite {
 	
 	private Emitter cloud;
 	

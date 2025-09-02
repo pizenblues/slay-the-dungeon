@@ -27,7 +27,7 @@ public class BatSprite extends MobSprite {
 		
 		texture( Assets.BAT );
 		
-		TextureFilm frames = new TextureFilm( texture, 15, 24 );
+		TextureFilm frames = new TextureFilm( texture, 16, 24 );
 		
 		idle = new Animation( 8, true );
 		idle.frames( frames, 0, 1 );
