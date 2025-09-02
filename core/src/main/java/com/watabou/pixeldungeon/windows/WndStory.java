@@ -28,20 +28,16 @@ import com.watabou.pixeldungeon.ui.Window;
 import com.watabou.utils.SparseArray;
 
 public class WndStory extends Window {
-
 	private static final int WIDTH = 120;
 	private static final int MARGIN = 6;
-	
-	private static final float bgR	= 0.77f;
-	private static final float bgG	= 0.73f;
-	private static final float bgB	= 0.62f;
-	
+	private static final float bgR	= 0.90f;
+	private static final float bgG	= 0.90f;
+	private static final float bgB	= 0.90f;
 	public static final int ID_SEWERS		= 0;
 	public static final int ID_PRISON		= 1;
 	public static final int ID_CAVES		= 2;
 	public static final int ID_METROPOLIS	= 3;
 	public static final int ID_HALLS		= 4;
-	
 	private static final SparseArray<String> CHAPTERS = new SparseArray<String>();
 	
 	static {
@@ -75,7 +71,6 @@ public class WndStory extends Window {
 	};
 	
 	private BitmapTextMultiline tf;
-	
 	private float delay;
 	
 	public WndStory( String text ) {

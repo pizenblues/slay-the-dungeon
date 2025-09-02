@@ -63,7 +63,6 @@ import com.watabou.pixeldungeon.ui.Banner;
 import com.watabou.pixeldungeon.ui.BusyIndicator;
 import com.watabou.pixeldungeon.ui.GameLog;
 import com.watabou.pixeldungeon.ui.HealthIndicator;
-import com.watabou.pixeldungeon.ui.Icons;
 import com.watabou.pixeldungeon.ui.QuickSlot;
 import com.watabou.pixeldungeon.ui.RedButton;
 import com.watabou.pixeldungeon.ui.StatusPane;
@@ -74,9 +73,7 @@ import com.watabou.pixeldungeon.utils.GLog;
 import com.watabou.pixeldungeon.windows.WndBag.Mode;
 import com.watabou.pixeldungeon.windows.WndGame;
 import com.watabou.pixeldungeon.windows.WndBag;
-import com.watabou.pixeldungeon.windows.WndSettings;
 import com.watabou.pixeldungeon.windows.WndStory;
-import com.watabou.pixeldungeon.windows.WindGameOver;
 import com.watabou.utils.Random;
 
 public class GameScene extends PixelScene {
