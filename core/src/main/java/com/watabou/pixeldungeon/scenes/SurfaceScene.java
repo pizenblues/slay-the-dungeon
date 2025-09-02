@@ -66,7 +66,7 @@ public class SurfaceScene extends PixelScene {
 	public void create() {
 		
 		super.create();
-		
+
 		Music.INSTANCE.play( Assets.HAPPY, true );
 		Music.INSTANCE.volume( 1f );
 		

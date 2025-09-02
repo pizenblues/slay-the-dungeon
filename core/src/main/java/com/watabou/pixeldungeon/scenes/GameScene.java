@@ -25,7 +25,6 @@ import com.watabou.noosa.Game;
 import com.watabou.noosa.Group;
 import com.watabou.noosa.SkinnedBlock;
 import com.watabou.noosa.Visual;
-import com.watabou.noosa.audio.Music;
 import com.watabou.noosa.audio.Sample;
 import com.watabou.noosa.particles.Emitter;
 import com.watabou.pixeldungeon.Assets;
@@ -90,13 +89,9 @@ public class GameScene extends PixelScene {
 	private DungeonTilemap tiles;
 	private FogOfWar fog;
 	private HeroSprite hero;
-	
 	private GameLog log;
-	
 	private BusyIndicator busy;
-	
 	private static CellSelector cellSelector;
-	
 	private Group terrain;
 	private Group ripples;
 	private Group plants;
@@ -108,14 +103,12 @@ public class GameScene extends PixelScene {
 	private Group spells;
 	private Group statuses;
 	private Group emoicons;
-	
 	private Toolbar toolbar;
 	private Toast prompt;
 	
 	@Override
 	public void create() {
-		Music.INSTANCE.play( Assets.TUNE, true );
-		Music.INSTANCE.volume( 1f );
+		Dungeon.level.playLevelMusic(Dungeon.depth);
 		
 		PixelDungeon.lastClass( Dungeon.hero.heroClass.ordinal() );
 		

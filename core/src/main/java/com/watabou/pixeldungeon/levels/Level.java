@@ -24,6 +24,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 
 import com.watabou.noosa.Scene;
+import com.watabou.noosa.audio.Music;
 import com.watabou.noosa.audio.Sample;
 import com.watabou.pixeldungeon.Assets;
 import com.watabou.pixeldungeon.Challenges;
@@ -73,7 +74,6 @@ import com.watabou.utils.Random;
 import com.watabou.utils.SparseArray;
 
 public abstract class Level implements Bundlable {
-	
 	public static enum Feeling {
 		NONE,
 		CHASM,
@@ -142,6 +142,34 @@ public abstract class Level implements Bundlable {
 	private static final String PLANTS		= "plants";
 	private static final String MOBS		= "mobs";
 	private static final String BLOBS		= "blobs";
+
+	public static final String[] levelMusic = new String[]{
+			Assets.LVL1DEPTH1,
+			Assets.LVL1DEPTH2,
+			Assets.LVL1DEPTH3,
+			Assets.LVL1DEPTH4,
+			Assets.BOSS1,
+			Assets.LVL2DEPTH1,
+			Assets.LVL2DEPTH2,
+			Assets.LVL2DEPTH3,
+			Assets.LVL2DEPTH4,
+			Assets.BOSS2,
+			Assets.LVL3DEPTH1,
+			Assets.LVL3DEPTH2,
+			Assets.LVL3DEPTH3,
+			Assets.LVL3DEPTH4,
+			Assets.BOSS3,
+			Assets.LVL4DEPTH1,
+			Assets.LVL4DEPTH2,
+			Assets.LVL4DEPTH3,
+			Assets.LVL4DEPTH4,
+			Assets.BOSS4,
+			Assets.LVL5DEPTH1,
+			Assets.LVL5DEPTH2,
+			Assets.LVL5DEPTH3,
+			Assets.LVL5DEPTH4,
+			Assets.BOSS5,
+	};
 	
 	public void create() {
 		
@@ -217,7 +245,12 @@ public abstract class Level implements Bundlable {
 		}
 		createMobs();
 	}
-	
+
+	public void playLevelMusic(int currentDepth){
+		currentDepth = currentDepth - 1;
+		Music.INSTANCE.volume( 1f );
+		Music.INSTANCE.play(levelMusic[currentDepth], true);
+	}
 	@Override
 	public void restoreFromBundle( Bundle bundle ) {
 		
