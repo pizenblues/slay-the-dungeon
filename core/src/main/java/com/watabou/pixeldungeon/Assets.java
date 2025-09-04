@@ -23,6 +23,7 @@ public class Assets {
 	public static final String ARCS_FG		= "arcs2.png";
 	public static final String DASHBOARD	= "dashboard.png";
 	public static final String FILTER	= "filter.png";
+	public static final String FILTERBG	= "filterbg.png";
 	public static final String VIGNETE	= "vignete.png";
 
 	public static final String BANNERS	= "banners.png";

@@ -22,8 +22,8 @@ import java.util.ArrayList;
 
 import com.watabou.noosa.Camera;
 import com.watabou.noosa.Game;
-import com.watabou.noosa.Group;
 import com.watabou.noosa.Image;
+import com.watabou.noosa.Group;
 import com.watabou.noosa.SkinnedBlock;
 import com.watabou.noosa.Visual;
 import com.watabou.noosa.audio.Sample;
@@ -312,7 +312,9 @@ public class GameScene extends PixelScene {
 
 			fadeIn();
 		}
-		AddCRTfilter();
+
+		//add to settings menu
+		//AddCRTfilter();
 	}
 	
 	public void destroy() {
@@ -441,12 +443,51 @@ public class GameScene extends PixelScene {
 		int w = Camera.main.width;
 		int h = Camera.main.height;
 
-		SkinnedBlock arcsBg = new SkinnedBlock( 1, 1, Assets.FILTER );
-		arcsBg.camera = uiCamera;
-		arcsBg.autoAdjust = true;
-		arcsBg.size( w, h );
+		/*
+		SkinnedBlock filter = new SkinnedBlock( 1, 1, Assets.FILTER );
+		filter.camera = uiCamera;
+		filter.autoAdjust = true;
+		filter.size( w, h );
+		 */
 
-		add( arcsBg );
+		Image filterBg = new Image(Assets.FILTERBG);
+		filterBg.camera = uiCamera;
+		filterBg.alpha(0.6f);
+		filterBg.x = 0;
+		filterBg.y = 0;
+		float filterScaleX = ((w / filterBg.width));
+		float filterScaleY = ((h / filterBg.height));
+		filterBg.scale = new PointF( filterScaleX, filterScaleY);
+
+		Image vignete = new Image(Assets.VIGNETE);
+		vignete.camera = uiCamera;
+		vignete.alpha(0.9f);
+		vignete.x = 0;
+		vignete.y = 0;
+		float newScaleX = ((w / vignete.width));
+		float newScaleY = ((h / vignete.height));
+		vignete.scale = new PointF( newScaleX, newScaleY );
+
+//		ShadowBox topShadow = new ShadowBox();
+//		topShadow.am = 1f;
+//		topShadow.camera = uiCamera;
+//		topShadow.x = -50;
+//		topShadow.y = -60;
+//		topShadow.size(w+100,100);
+//
+//		ShadowBox bottomShadow = new ShadowBox();
+//		bottomShadow.am = 1f;
+//		bottomShadow.camera = uiCamera;
+//		bottomShadow.x = -50;
+//		bottomShadow.y = w + 60;
+//		bottomShadow.size(w+100,100);
+
+		//add( filter );
+		add(vignete);
+		add(filterBg);
+
+//		add( topShadow );
+//		add( bottomShadow );
 	}
 	
 	// -------------------------------------------------------
