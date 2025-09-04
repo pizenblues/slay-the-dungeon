@@ -23,6 +23,7 @@ import java.util.ArrayList;
 import com.watabou.noosa.Camera;
 import com.watabou.noosa.Game;
 import com.watabou.noosa.Group;
+import com.watabou.noosa.Image;
 import com.watabou.noosa.SkinnedBlock;
 import com.watabou.noosa.Visual;
 import com.watabou.noosa.audio.Sample;
@@ -73,6 +74,7 @@ import com.watabou.pixeldungeon.windows.WndBag.Mode;
 import com.watabou.pixeldungeon.windows.WndGame;
 import com.watabou.pixeldungeon.windows.WndBag;
 import com.watabou.pixeldungeon.windows.WndStory;
+import com.watabou.utils.PointF;
 import com.watabou.utils.Random;
 
 public class GameScene extends PixelScene {
@@ -310,6 +312,7 @@ public class GameScene extends PixelScene {
 
 			fadeIn();
 		}
+		AddCRTfilter();
 	}
 	
 	public void destroy() {
@@ -433,6 +436,18 @@ public class GameScene extends PixelScene {
 		banner.y = align( uiCamera, (uiCamera.height - banner.height) / 3 );
 		add( banner );
 	}
+
+	private void AddCRTfilter(){
+		int w = Camera.main.width;
+		int h = Camera.main.height;
+
+		SkinnedBlock arcsBg = new SkinnedBlock( 1, 1, Assets.FILTER );
+		arcsBg.camera = uiCamera;
+		arcsBg.autoAdjust = true;
+		arcsBg.size( w, h );
+
+		add( arcsBg );
+	}
 	
 	// -------------------------------------------------------
 	
@@ -548,21 +563,11 @@ public class GameScene extends PixelScene {
 		scene.fadeIn( 0xFF000000 | color, true );
 	}
 
-	/*
-	public static void gameOver() {
-		Banner gameOver = new Banner( BannerSprites.get( BannerSprites.Type.GAME_OVER ) );
-		gameOver.show( 0x000000, 1f );
-		scene.showBanner( gameOver );
-		
-		Sample.INSTANCE.play( Assets.SND_DEATH );
-	}
-	 */
-
 	public static void gameOver() {
 		if (scene == null) return;
 
 		Banner gameOverBanner = new Banner( BannerSprites.get( BannerSprites.Type.GAME_OVER ) );
-		gameOverBanner.show( 0x000000, 2f );
+		gameOverBanner.show( 0x000000, 1f );
 		scene.showBanner( gameOverBanner );
 
 		RedButton btnRestart = new RedButton( TXT_START ){

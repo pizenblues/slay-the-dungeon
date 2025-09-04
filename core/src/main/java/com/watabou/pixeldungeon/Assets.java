@@ -22,7 +22,9 @@ public class Assets {
 	public static final String ARCS_BG		= "arcs1.png";
 	public static final String ARCS_FG		= "arcs2.png";
 	public static final String DASHBOARD	= "dashboard.png";
-	
+	public static final String FILTER	= "filter.png";
+	public static final String VIGNETE	= "vignete.png";
+
 	public static final String BANNERS	= "banners.png";
 	public static final String BADGES	= "badges.png";
 	public static final String LOCKED	= "locked_badge.png";
@@ -41,10 +43,12 @@ public class Assets {
 	public static final String ROGUE	= "rogue.png";
 	public static final String HUNTRESS	= "ranger.png";
 	public static final String AVATARS	= "avatars.png";
+	public static final String FADEBG	= "fade.png";
 	public static final String SPLASH_warrior	= "spw.png";
 	public static final String SPLASH_rogue	= "spr.png";
 	public static final String SPLASH_mage	= "spm.png";
 	public static final String SPLASH_huntress = "sph.png";
+	public static final String SPLASH_beast = "spb.png";
 	public static final String PORTRAIT_warrior	= "PORTRAIT_WARRIOR.png";
 	public static final String PORTRAIT_rogue	= "PORTRAIT_ROGUE.png";
 	public static final String PORTRAIT_mage	= "PORTRAIT_MAGE.png";

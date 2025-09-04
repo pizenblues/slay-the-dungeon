@@ -79,6 +79,7 @@ public class StartScene extends PixelScene {
 	private Group unlock;
 	public static HeroClass curClass;
 	public Image splash;
+	public Image fadebg;
 	BitmapText heroNameText = PixelScene.createText(9 );
 
 	@Override
@@ -115,6 +116,13 @@ public class StartScene extends PixelScene {
 		splash.x = align((w - 154) / 2);
 		splash.y = align(title.y + 24);
 		add(splash);
+
+		int thirdOfScreenHeight = h / 2;
+		fadebg = new Image( Assets.FADEBG );
+		fadebg.frame(0,0,w,thirdOfScreenHeight);
+		fadebg.x = 0;
+		fadebg.y = h - thirdOfScreenHeight;
+		add(fadebg);
 
 		buttonX = left;
 		buttonY = h - bottomPadding - BUTTON_HEIGHT;
