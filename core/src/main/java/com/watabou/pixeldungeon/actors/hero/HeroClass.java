@@ -23,7 +23,9 @@ import com.watabou.pixeldungeon.items.TomeOfMastery;
 import com.watabou.pixeldungeon.items.armor.ClothArmor;
 import com.watabou.pixeldungeon.items.bags.Keyring;
 import com.watabou.pixeldungeon.items.food.Food;
+import com.watabou.pixeldungeon.items.potions.PotionOfLiquidFlame;
 import com.watabou.pixeldungeon.items.potions.PotionOfStrength;
+import com.watabou.pixeldungeon.items.potions.PotionOfInvisibility;
 import com.watabou.pixeldungeon.items.rings.RingOfShadows;
 import com.watabou.pixeldungeon.items.scrolls.ScrollOfIdentify;
 import com.watabou.pixeldungeon.items.scrolls.ScrollOfMagicMapping;
@@ -136,6 +138,10 @@ public enum HeroClass {
 
 		//values for testing
 		hero.HP = (hero.HT += 100);
+
+		//remove
+		new PotionOfInvisibility().collect();
+		new PotionOfLiquidFlame().collect();
 
 		(hero.belongings.weapon = new ShortSword()).identify();
 		//new Dart( 8 ).identify().collect();
