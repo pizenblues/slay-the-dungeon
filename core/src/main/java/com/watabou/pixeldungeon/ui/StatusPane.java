@@ -37,6 +37,7 @@ import com.watabou.pixeldungeon.scenes.GameScene;
 import com.watabou.pixeldungeon.scenes.PixelScene;
 import com.watabou.pixeldungeon.windows.WndGame;
 import com.watabou.pixeldungeon.windows.WndHero;
+import com.watabou.pixeldungeon.windows.WndBuff;
 
 public class StatusPane extends Component {
 	private NinePatch shield;
@@ -59,7 +60,7 @@ public class StatusPane extends Component {
 
 	@Override
 	protected void createChildren() {
-		shield = new NinePatch( Assets.STATUS, 80, 0, 30   + 18, 0 );
+		shield = new NinePatch( Assets.STATUS, 80, 0, 30 + 18, 0 );
 		add( shield );
 		
 		add( new TouchArea( 0, 0, 40, 50 ) {
@@ -73,11 +74,18 @@ public class StatusPane extends Component {
 			};			
 		} );
 
+		add( new TouchArea( 56, 24, 12, 6 ) {
+			@Override
+			protected void onClick( Touch touch ) {
+				GameScene.show( new WndBuff() );
+			};
+		} );
+
 		portrait = new Image();
 		portrait.texture(Dungeon.hero.heroClass.portrait());
 		portrait.frame( 0, 0, 40, 50 );
-		portrait.x = 2;
-		portrait.y = 2;
+		portrait.x = 4;
+		portrait.y = 4;
 		add(portrait);
 		
 		btnMenu = new MenuButton();
@@ -127,28 +135,26 @@ public class StatusPane extends Component {
 	
 	@Override
 	protected void layout() {
-		
 		height = 32;
-		
 		shield.size( width, shield.height );
 		
-		compass.x = 0;
-		compass.y = 40;
+		compass.x = 38;
+		compass.y = 53;
 		
-		hp.x = 55;
-		hp.y = 4;
+		hp.x = 57;
+		hp.y = 6;
 
-		exp.x = 55;
-		exp.y = 13;
+		exp.x = 57;
+		exp.y = 15;
 		
-		depth.x = width - 8 - depth.width() - 15;
-		depth.y = 11;
+		depth.x = width - 10 - depth.width() - 15;
+		depth.y = 13;
 		
-		keys.y = 2;
+		keys.y = 4;
 		
 		layoutTags();
 		
-		buffs.setPos( 54, 20 );
+		buffs.setPos( 56, 24 );
 		
 		btnMenu.setPos( width - btnMenu.width(), 1 );
 	}
@@ -224,7 +230,7 @@ public class StatusPane extends Component {
 			level.text( "LVL " + Integer.toString( lastLvl ) );
 			level.measure();
 			level.x = 15;
-			level.y = PixelScene.align( 54.0f - level.baseLine() / 2 );
+			level.y = PixelScene.align( 56.0f - level.baseLine() / 2 );
 		}
 		
 		int k = IronKey.curDepthQuantity;
@@ -232,7 +238,7 @@ public class StatusPane extends Component {
 			lastKeys = k;
 			keys.text( Integer.toString( lastKeys ) );
 			keys.measure();
-			keys.x = width - 8 - keys.width() - 15;
+			keys.x = width - 10 - keys.width() - 15;
 		}
 		
 		int tier = Dungeon.hero.tier();
@@ -243,12 +249,10 @@ public class StatusPane extends Component {
 	}
 	
 	private static class MenuButton extends Button {
-		
 		private Image image;
 		
 		public MenuButton() {
 			super();
-			
 			width = image.width + 4;
 			height = image.height + 4;
 		}
@@ -264,7 +268,6 @@ public class StatusPane extends Component {
 		@Override
 		protected void layout() {
 			super.layout();
-			
 			image.x = x + 2;
 			image.y = y + 2;
 		}
