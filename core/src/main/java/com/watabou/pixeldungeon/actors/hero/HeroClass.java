@@ -133,19 +133,19 @@ public enum HeroClass {
 	}
 	
 	private static void initWarrior( Hero hero ) {
-		//hero.STR = hero.STR + 1;
-		hero.STR = hero.STR + 100;
+		hero.STR = hero.STR + 1;
+		//hero.STR = hero.STR + 100;
 
 		//values for testing
-		hero.HP = (hero.HT += 100);
+		//hero.HP = (hero.HT += 100);
 
 		//remove
-		new PotionOfInvisibility().collect();
-		new PotionOfLiquidFlame().collect();
+		//new PotionOfInvisibility().collect();
+		//new PotionOfLiquidFlame().collect();
 
 		(hero.belongings.weapon = new ShortSword()).identify();
-		//new Dart( 8 ).identify().collect();
-		new Dart( 80 ).identify().collect();
+		new Dart( 8 ).identify().collect();
+		//new Dart( 80 ).identify().collect();
 
 		QuickSlot.primaryValue = Dart.class;
 		
