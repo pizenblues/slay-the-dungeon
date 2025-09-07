@@ -206,7 +206,6 @@ public class StartScene extends PixelScene {
 			float pos = buttonY;
 			for (BitmapText line : text.new LineSplitter().split()) {
 				line.measure();
-				line.hardlight( 0xf0e276 );
 				line.x = PixelScene.align( w / 2 - line.width() / 2 );
 				line.y = PixelScene.align( pos );
 				unlock.add( line );
