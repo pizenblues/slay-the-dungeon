@@ -144,7 +144,7 @@ public class Assets {
 	public static final String LVL2DEPTH2	= "music/lvl2/cherry tomato.mp3";
 	public static final String LVL2DEPTH3	= "music/lvl2/flies.mp3";
 	public static final String LVL2DEPTH4	= "music/lvl2/explorer attack.mp3";
-	public static final String BOSS2	= "music/lvl2/ghoul.mp3";
+	public static final String BOSS2	= "music/lvl2/test.mp3";
 
 	public static final String LVL3DEPTH1	= "music/lvl3/shimmering rocks.mp3";
 	public static final String LVL3DEPTH2	= "music/lvl3/channel.mp3";

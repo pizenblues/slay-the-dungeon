@@ -60,8 +60,10 @@ public enum Music implements MediaPlayer.OnPreparedListener, MediaPlayer.OnError
 			player.setOnErrorListener( this );
 			player.prepareAsync();
 		} catch (IOException e) {
-			player.release();
-			player = null;
+			if (player != null){
+				player.release();
+				player = null;
+			}
 		}
 	}
 
