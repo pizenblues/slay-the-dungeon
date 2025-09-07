@@ -45,15 +45,18 @@ public class Assets {
 	public static final String HUNTRESS	= "ranger.png";
 	public static final String AVATARS	= "avatars.png";
 	public static final String FADEBG	= "fade.png";
-	public static final String SPLASH_warrior	= "spw.png";
-	public static final String SPLASH_rogue	= "spr.png";
-	public static final String SPLASH_mage	= "spm.png";
-	public static final String SPLASH_huntress = "sph.png";
-	public static final String SPLASH_beast = "spb.png";
+	public static final String SPLASH_warrior	= "splash_warrior.png";
+	public static final String SPLASH_rogue	= "splash_rogue.png";
+	public static final String SPLASH_mage	= "splash_mage.png";
+	public static final String SPLASH_huntress = "splash_hunter.png";
 	public static final String PORTRAIT_warrior	= "PORTRAIT_WARRIOR.png";
 	public static final String PORTRAIT_rogue	= "PORTRAIT_ROGUE.png";
 	public static final String PORTRAIT_mage	= "PORTRAIT_MAGE.png";
 	public static final String PORTRAIT_huntress = "PORTRAIT_HUNTER.png";
+	public static final String bg_hunter = "bg_hunter.png";
+	public static final String bg_warrior = "bg_warrior.png";
+	public static final String bg_rogue = "bg_rogue.png";
+	public static final String bg_mage = "bg_mage.png";
 
 	public static final String PET		= "pet.png";
 	

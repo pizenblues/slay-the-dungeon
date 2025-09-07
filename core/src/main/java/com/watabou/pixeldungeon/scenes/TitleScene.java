@@ -97,12 +97,7 @@ public class TitleScene extends PixelScene {
 		};
 		add( btnAbout );
 
-		clickArea btnPlay = new clickArea( TXT_PLAY) {
-			@Override
-			protected void onClick() {
-				PixelDungeon.switchNoFade( StartScene.class );
-			}
-		};
+		clickArea btnPlay = new clickArea( TXT_PLAY);
 		add( btnPlay );
 
 		DashboardItem btnHighscores = new DashboardItem( TXT_HIGHSCORES, 2 ) {
@@ -219,6 +214,7 @@ public class TitleScene extends PixelScene {
 		@Override
 		protected void onTouchDown() {
 			Sample.INSTANCE.play(Assets.SND_CLICK, 1, 1, 0.8f);
+			PixelDungeon.switchNoFade( StartScene.class );
 		}
 	}
 }

@@ -80,7 +80,7 @@ public class StartScene extends PixelScene {
 	public static HeroClass curClass;
 	public Image splash;
 	public Image fadebg;
-	BitmapText heroNameText = PixelScene.createText(9 );
+	BitmapTextMultiline heroDescription = PixelScene.createMultiline("...", 6 );
 
 	@Override
 	public void create() {
@@ -113,15 +113,15 @@ public class StartScene extends PixelScene {
 		add(title);
 
 		splash = new Image();
-		splash.x = align((w - 154) / 2);
-		splash.y = align(title.y + 24);
+		splash.x = align((w - 180) / 2);
+		splash.y = align(title.y + 12);
 		add(splash);
 
-		int thirdOfScreenHeight = h / 2;
+		int halfScreen = h / 2;
 		fadebg = new Image( Assets.FADEBG );
-		fadebg.frame(0,0,w,thirdOfScreenHeight);
+		fadebg.frame(0,0,w,halfScreen);
 		fadebg.x = 0;
-		fadebg.y = h - thirdOfScreenHeight;
+		fadebg.y = h - halfScreen;
 		add(fadebg);
 
 		buttonX = left;
@@ -172,14 +172,24 @@ public class StartScene extends PixelScene {
 		float shieldH = Math.min( centralHeight, shieldW );
 		for (int i=0; i < classes.length; i++) {
 			ClassShield shield = shields.get(classes[i]);
-			shield.setRect(left + i * shieldW, (buttonY - 32),
+			shield.setRect(left + i * shieldW, (buttonY - 28),
 					shieldH, 18);
 		}
 
-		add(heroNameText);
-		heroNameText.hardlight( 0xf0e276 );
-		heroNameText.x = (width - heroNameText.width()) / 2;
-		heroNameText.y = (buttonY - 48);
+		heroDescription.maxWidth = Math.min( Camera.main.width, 120 );
+		heroDescription.x = align( (Camera.main.width - 120) / 2 );
+		heroDescription.y = buttonY - 58;
+		heroDescription.hardlight( 0xf0e276 );
+		add( heroDescription );
+
+		clickArea btnLearnMore = new clickArea( "") {
+			@Override
+			protected void onClick() {
+				updateClass(curClass);
+			}
+		};
+		btnLearnMore.setPos(heroDescription.x, heroDescription.y);
+		add( btnLearnMore );
 
 		ChallengeButton challenge = new ChallengeButton();
 		challenge.setPos(w - challenge.width() - 4,4);
@@ -244,8 +254,9 @@ public class StartScene extends PixelScene {
 
 		shields.get( curClass = cl ).highlight( true );
 		splash.texture(cl.splash());
-		heroNameText.text(cl.title().toUpperCase());
-		
+
+		heroDescription.text(cl.description());
+
 		if (cl != HeroClass.HUNTRESS || huntressUnlocked) {
 			unlock.visible = false;
 			GamesInProgress.Info info = GamesInProgress.check( curClass );
@@ -279,7 +290,6 @@ public class StartScene extends PixelScene {
 	}
 	
 	private void startNewGame() {
-
 		Dungeon.hero = null;
 		InterlevelScene.mode = InterlevelScene.Mode.DESCEND;
 		
@@ -461,7 +471,7 @@ public class StartScene extends PixelScene {
 			height = image.height;
 			image.am = Badges.isUnlocked( Badges.Badge.VICTORY ) ? 1.0f : 0.5f;
 		}
-		
+
 		@Override
 		protected void createChildren() {
 			super.createChildren();
@@ -494,6 +504,38 @@ public class StartScene extends PixelScene {
 		@Override
 		protected void onTouchDown() {
 			Sample.INSTANCE.play( Assets.SND_CLICK );
+		}
+	}
+
+	private static class clickArea extends Button {
+		public static final float H = 24;
+		public static final float W = 200;
+		private BitmapText label;
+
+		public clickArea(String text) {
+			super();
+			this.label.text(text);
+			this.label.measure();
+			setSize(W, H);
+		}
+
+		@Override
+		protected void createChildren() {
+			super.createChildren();
+			label = createText(7);
+			add(label);
+		}
+
+		@Override
+		protected void layout() {
+			super.layout();
+			label.x = align(x + (width - label.width()) / 2);
+			label.y = align(y + (height - label.height()) / 2);
+		}
+
+		@Override
+		protected void onTouchDown( ) {
+			Sample.INSTANCE.play(Assets.SND_CLICK, 1, 1, 0.8f);
 		}
 	}
 }

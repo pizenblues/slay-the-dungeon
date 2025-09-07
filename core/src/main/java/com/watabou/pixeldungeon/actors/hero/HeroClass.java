@@ -185,9 +185,24 @@ public enum HeroClass {
 		
 		QuickSlot.primaryValue = boomerang;
 	}
-	
+
 	public String title() {
 		return title;
+	}
+
+	public String description() {
+		switch (this) {
+			case WARRIOR:
+				return "Increased strength, but muscle power requires more food, meals can cure your wounds although! - LEARN MORE";
+			case MAGE:
+				return "Comes with a unique projectile wand, but weaker mele attacks. Food can restore your magical powers - LEARN MORE";
+			case ROGUE:
+				return "You're hard to hit, but don't have a lot of HP, so don't get hit a lot. You have a keen eye for spotting tramps - LEARN MORE";
+			case HUNTRESS:
+				return "Increased HP due to your dwarf build. Can pick extra berries (yum!) and sense extra monsters (yuck!) - LEARN MORE";
+		}
+
+		return null;
 	}
 	
 	public String spritesheet() {
@@ -207,7 +222,6 @@ public enum HeroClass {
 	}
 
 	public String splash() {
-
 		switch (this) {
 			case WARRIOR:
 				return Assets.SPLASH_warrior;
