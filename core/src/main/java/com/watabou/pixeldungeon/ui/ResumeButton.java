@@ -28,7 +28,7 @@ public class ResumeButton extends Tag {
 	public ResumeButton() {
 		super( 0xCDD5C0 );
 		
-		setSize( 24, 22 );
+		setSize( 20, 16 );
 		
 		visible = false;
 	}

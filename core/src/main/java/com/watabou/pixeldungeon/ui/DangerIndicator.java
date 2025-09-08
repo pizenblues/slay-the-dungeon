@@ -20,26 +20,21 @@ package com.watabou.pixeldungeon.ui;
 import com.watabou.noosa.BitmapText;
 import com.watabou.noosa.Camera;
 import com.watabou.noosa.Image;
+import com.watabou.pixeldungeon.Chrome;
 import com.watabou.pixeldungeon.Dungeon;
 import com.watabou.pixeldungeon.actors.mobs.Mob;
 import com.watabou.pixeldungeon.scenes.PixelScene;
 
 public class DangerIndicator extends Tag {
-	
 	public static final int COLOR	= 0xcc425e;
-	
 	private BitmapText number;
 	private Image icon;
-	
 	private int enemyIndex = 0;
-	
 	private int lastNumber = -1;
 	
 	public DangerIndicator() {
-		super( 0xcc425e );
-		
-		setSize( 24, 16 );
-		
+		super( COLOR );
+		setSize( 20, 16 );
 		visible = false;
 	}
 	
@@ -52,6 +47,7 @@ public class DangerIndicator extends Tag {
 		
 		icon = Icons.SKULL.get();
 		add( icon );
+
 	}
 	
 	@Override

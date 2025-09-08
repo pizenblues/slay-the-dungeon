@@ -44,7 +44,7 @@ public class Tag extends Button {
 		
 		super.createChildren();
 		
-		bg = Chrome.get( Chrome.Type.TAG );
+		bg = Chrome.get( Chrome.Type.NOTIF );
 		add( bg );
 	}
 	

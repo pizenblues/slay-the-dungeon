@@ -219,7 +219,7 @@ public class GameScene extends PixelScene {
 		
 		log = new GameLog();
 		log.camera = uiCamera;
-		log.setRect( 2, toolbar.top(), attack.left() - 4,  0 );
+		log.setRect( 4, toolbar.top() - 6, attack.left() - 6,  0 );
 		add( log );
 		
 		busy = new BusyIndicator();

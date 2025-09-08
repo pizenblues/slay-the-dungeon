@@ -45,31 +45,24 @@ import com.watabou.pixeldungeon.windows.WndMessage;
 import com.watabou.pixeldungeon.windows.WndTradeItem;
 
 public class Toolbar extends Component {
-
 	private Tool btnWait;
 	private Tool btnSearch;
 	private Tool btnInfo;
 	private Tool btnInventory;
 	private Tool btnQuick1;
 	private Tool btnQuick2;
-	
 	private PickedUpItem pickedUp;
-	
 	private boolean lastEnabled = true;
-	
 	private static Toolbar instance;
 	
 	public Toolbar() {
 		super();
-		
 		instance = this;
-		
 		height = btnInventory.height();
 	}
 	
 	@Override
 	protected void createChildren() {
-		
 		add( btnWait = new Tool( 0, 7, 20, 25 ) {
 			@Override
 			protected void onClick() {
@@ -121,30 +114,28 @@ public class Toolbar extends Component {
 		add( btnQuick1 = new QuickslotTool( 82, 7, 23, 25, true ) );
 		add( btnQuick2 = new QuickslotTool( 82, 7, 23, 25, false ) );
 		btnQuick2.visible = (QuickSlot.secondaryValue != null);
-		
 		add( pickedUp = new PickedUpItem() );
 	}
 	
 	@Override
 	protected void layout() {
-		btnWait.setPos( x, y );
-		btnSearch.setPos( btnWait.right(), y );
-		btnInfo.setPos( btnSearch.right(), y );
-		btnInventory.setPos( width - btnInventory.width(), y );
-		btnQuick1.setPos( btnInventory.left() - btnInventory.width(), y);
+		float bottomPadding = y - 4;
+		btnWait.setPos( x+2, bottomPadding );
+		btnSearch.setPos( btnWait.right(), bottomPadding );
+		btnInfo.setPos( btnSearch.right(), bottomPadding );
+		btnInventory.setPos( width - btnInventory.width() - 2, bottomPadding );
+		btnQuick1.setPos( btnInventory.left() - btnInventory.width(), bottomPadding);
 
 		if (btnQuick2.visible) {
-			btnQuick2.setPos(btnQuick1.left() - btnQuick1.width(), y );
+			btnQuick2.setPos(btnQuick1.left() - btnQuick1.width(), bottomPadding );
 		}
 	}
 	
 	@Override
 	public void update() {
 		super.update();
-		
 		if (lastEnabled != Dungeon.hero.ready) {
 			lastEnabled = Dungeon.hero.ready;
-			
 			for (Gizmo tool : members) {
 				if (tool instanceof Tool) {
 					((Tool)tool).enable( lastEnabled );
@@ -177,7 +168,6 @@ public class Toolbar extends Component {
 	private static CellSelector.Listener informer = new CellSelector.Listener() {
 		@Override
 		public void onSelect( Integer cell ) {
-			
 			if (cell == null) {
 				return;
 			}
@@ -228,16 +218,12 @@ public class Toolbar extends Component {
 	};
 	
 	private static class Tool extends Button {
-		
 		private static final int BGCOLOR = 0x7B8073;
-		
 		protected Image base;
 		
 		public Tool( int x, int y, int width, int height ) {
 			super();
-			
 			base.frame( x, y, width, height );
-			
 			this.width = width;
 			this.height = height;
 		}
@@ -245,7 +231,6 @@ public class Toolbar extends Component {
 		@Override
 		protected void createChildren() {
 			super.createChildren();
-			
 			base = new Image( Assets.TOOLBAR );
 			add( base );
 		}
@@ -253,7 +238,6 @@ public class Toolbar extends Component {
 		@Override
 		protected void layout() {
 			super.layout();
-			
 			base.x = x;
 			base.y = y;
 		}
@@ -300,7 +284,6 @@ public class Toolbar extends Component {
 		@Override
 		protected void createChildren() {
 			super.createChildren();
-			
 			slot = new QuickSlot();
 			add( slot );
 		}
@@ -308,7 +291,7 @@ public class Toolbar extends Component {
 		@Override
 		protected void layout() {
 			super.layout();
-			slot.setRect( x + 1, y + 2, width - 2, height - 2 );
+			slot.setRect( x, y, width, height );
 		}
 		
 		@Override
@@ -319,19 +302,15 @@ public class Toolbar extends Component {
 	}
 	
 	private static class PickedUpItem extends ItemSprite {
-		
 		private static final float DISTANCE = DungeonTilemap.SIZE;
 		private static final float DURATION = 0.2f;
-		
 		private float dstX;
 		private float dstY;
 		private float left;
 		
 		public PickedUpItem() {
 			super();
-			
 			originToCenter();
-			
 			active = 
 			visible = 
 				false;
@@ -339,15 +318,12 @@ public class Toolbar extends Component {
 		
 		public void reset( Item item, float dstX, float dstY ) {
 			view( item.image(), item.glowing() );
-			
 			active = 
 			visible = 
 				true;
-			
 			this.dstX = dstX - ItemSprite.SIZE / 2;
 			this.dstY = dstY - ItemSprite.SIZE / 2;
 			left = DURATION;
-			
 			x = this.dstX - DISTANCE;
 			y = this.dstY - DISTANCE;
 			alpha( 1 );
@@ -356,9 +332,7 @@ public class Toolbar extends Component {
 		@Override
 		public void update() {
 			super.update();
-			
 			if ((left -= Game.elapsed) <= 0) {
-				
 				visible = 
 				active = 
 					false;
