@@ -54,9 +54,9 @@ import com.watabou.utils.Callback;
 public class StartScene extends PixelScene {
 	private static final float BUTTON_HEIGHT	= 24;
 	private static final float GAP				= 2;
-	private static final String TXT_LOAD	= "Load Game";
+	private static final String TXT_LOAD	= "Continue";
 	private static final String TXT_NEW		= "New Game";
-	private static final String TXT_ERASE		= "Erase current game";
+	private static final String TXT_ERASE		= "Start from 0";
 	private static final String TXT_DPTH_LVL	= "Depth: %d, level: %d";
 	private static final String TXT_REALLY	= "Do you really want to start new game?";
 	private static final String TXT_WARNING	= "Your current game progress will be erased.";
@@ -318,7 +318,7 @@ public class StartScene extends PixelScene {
 		@Override
 		protected void createChildren() {
 			super.createChildren();
-			secondary = createText( 6 );
+			secondary = createText( 5 );
 			add( secondary );
 		}
 		
@@ -355,7 +355,7 @@ public class StartScene extends PixelScene {
 		@Override
 		protected void createChildren() {
 			super.createChildren();
-			secondary = createText( 6 );
+			secondary = createText( 5 );
 			add( secondary );
 		}
 
