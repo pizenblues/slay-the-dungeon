@@ -30,17 +30,20 @@ import com.watabou.noosa.audio.Sample;
 import com.watabou.noosa.ui.Button;
 import com.watabou.pixeldungeon.Assets;
 import com.watabou.pixeldungeon.PixelDungeon;
+import com.watabou.pixeldungeon.actors.hero.HeroClass;
 import com.watabou.pixeldungeon.effects.BannerSprites;
 import com.watabou.pixeldungeon.effects.Fireball;
 import com.watabou.pixeldungeon.ui.ExitButton;
 import com.watabou.pixeldungeon.ui.PrefsButton;
+import com.watabou.pixeldungeon.GamesInProgress;
+import com.watabou.pixeldungeon.windows.WndOptions;
 
 public class TitleScene extends PixelScene {
-
 	private static final String TXT_PLAY		= "Enter the dungeon";
 	private static final String TXT_HIGHSCORES	= "";
 	private static final String TXT_BADGES		= "";
 	private static final String TXT_ABOUT		= "";
+	private Image background;
 
 	@Override
 	public void create() {
@@ -51,17 +54,20 @@ public class TitleScene extends PixelScene {
 
 		int w = Camera.main.width;
 		int h = Camera.main.height;
-		float topPadding = 12;
-		float bottomPadding = 24;
+		float padding = 24;
+
+		background = new Image(Assets.BG);
+		background.x = (w - background.width()) / 2;
+		background.y = h /3;
+		add(background);
 
 		Image title = BannerSprites.get( BannerSprites.Type.PIXEL_DUNGEON );
 		add( title );
-
 		title.x = (w - title.width()) / 2;
-		title.y = topPadding;
+		title.y = padding;
 
-		placeTorch( title.x + 18, title.y + 20 );
-		placeTorch( title.x + title.width - 18, title.y + 20 );
+		placeTorch( title.x + 12, title.y + 24 );
+		placeTorch( title.x + title.width - 12, title.y + 24 );
 
 		Image signs = new Image( BannerSprites.get( BannerSprites.Type.PIXEL_DUNGEON_SIGNS ) ) {
 			private float time = 0;
@@ -108,9 +114,9 @@ public class TitleScene extends PixelScene {
 		};
 		add( btnHighscores );
 
-		btnHighscores.setPos( (w - 60) / 2, h - bottomPadding);
-		btnBadges.setPos( btnHighscores.right() + 12, h - bottomPadding);
-		btnAbout.setPos( btnBadges.right() + 12, h - bottomPadding);
+		btnHighscores.setPos( (w - 60) / 2, h - padding);
+		btnBadges.setPos( btnHighscores.right() + 12, h - padding);
+		btnAbout.setPos( btnBadges.right() + 12, h - padding);
 		btnPlay.setPos( (w - btnPlay.width()) / 2, btnHighscores.top() - btnPlay.height());
 
 		BitmapText version = new BitmapText( "v " + Game.version, font1x );
@@ -186,7 +192,7 @@ public class TitleScene extends PixelScene {
 	}
 
 	private static class clickArea extends Button {
-		public static final float H = 100;
+		public static final float H = 60;
 		public static final float W = 200;
 		private BitmapText label;
 

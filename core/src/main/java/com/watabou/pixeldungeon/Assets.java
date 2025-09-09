@@ -53,10 +53,11 @@ public class Assets {
 	public static final String PORTRAIT_rogue	= "PORTRAIT_ROGUE.png";
 	public static final String PORTRAIT_mage	= "PORTRAIT_MAGE.png";
 	public static final String PORTRAIT_huntress = "PORTRAIT_HUNTER.png";
-	public static final String bg_hunter = "bg_hunter.png";
-	public static final String bg_warrior = "bg_warrior.png";
-	public static final String bg_rogue = "bg_rogue.png";
-	public static final String bg_mage = "bg_mage.png";
+	public static final String BG_HUNTER = "bg_hunter.png";
+	public static final String BG_WARRIOR = "bg_warrior.png";
+	public static final String BG_ROGUE = "bg_rogue.png";
+	public static final String BG_MAGE = "bg_mage.png";
+	public static final String BG = "bg.png";
 
 	public static final String PET		= "pet.png";
 	
