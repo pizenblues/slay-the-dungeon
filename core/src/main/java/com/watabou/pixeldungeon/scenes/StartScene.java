@@ -264,27 +264,21 @@ public class StartScene extends PixelScene {
 			unlock.visible = false;
 			GamesInProgress.Info info = GamesInProgress.check( curClass );
 			if (info != null) {
-
 				btnLoad.visible = true;
 				btnLoad.secondary( Utils.format( TXT_DPTH_LVL, info.depth, info.level ), info.challenges );
-
 				btnNewGame.visible = true;
 				btnNewGame.secondary( TXT_ERASE, false );
-
 				float w = (Camera.main.width - GAP) / 2 - buttonX;
-
 				btnLoad.setRect(
 						buttonX, buttonY, w, BUTTON_HEIGHT );
 				btnNewGame.setRect(
 						btnLoad.right() + GAP, buttonY, w, BUTTON_HEIGHT );
-
 			} else {
 				btnLoad.visible = false;
 				btnNewGame.visible = true;
 				btnNewGame.secondary( null, false );
 				btnNewGame.setRect( buttonX, buttonY, Camera.main.width - buttonX * 2, BUTTON_HEIGHT );
 			}
-
 		} else {
 			unlock.visible = true;
 			btnLoad.visible = false;
