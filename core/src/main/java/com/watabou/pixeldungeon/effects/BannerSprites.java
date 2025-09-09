@@ -25,9 +25,7 @@ public class BannerSprites {
 	public enum  Type {
 		PIXEL_DUNGEON,
 		BOSS_SLAIN,
-		GAME_OVER,
-		SELECT_YOUR_HERO,
-		PIXEL_DUNGEON_SIGNS
+		GAME_OVER
 	};
 	
 	public static Image get( Type type ) {
@@ -41,12 +39,6 @@ public class BannerSprites {
 			break;
 		case GAME_OVER:
 			icon.frame( icon.texture.uvRect( 0, 149, 122, 219 ) );
-			break;
-		case SELECT_YOUR_HERO:
-			icon.frame( icon.texture.uvRect( 0, 219, 88, 261 ) );
-			break;
-		case PIXEL_DUNGEON_SIGNS:
-			icon.frame( icon.texture.uvRect( 0, 0, 0, 0 ) );
 			break;
 		}
 		return icon;

@@ -193,20 +193,19 @@ public enum HeroClass {
 	public String description() {
 		switch (this) {
 			case WARRIOR:
-				return "Increased strength, but muscle power requires more food, meals can cure your wounds although! - LEARN MORE";
+				return "The Warrior has increased strength, but muscle power requires more food, meals can cure his wounds tho!";
 			case MAGE:
-				return "Comes with a unique projectile wand, but weaker mele attacks. Food can restore your magical powers - LEARN MORE";
+				return "The Mage comes with a unique projectile wand, but has weaker mele attacks. Food can restore her magical powers!";
 			case ROGUE:
-				return "You're hard to hit, but don't have a lot of HP, so don't get hit a lot. You have a keen eye for spotting tramps - LEARN MORE";
+				return "The Rogue is hard to hit but has less HP, so try not to get hit a lot. Has a keen eye for spotting tramps";
 			case HUNTRESS:
-				return "Increased HP due to your dwarf build. Can pick extra berries (yum!) and sense extra monsters (yuck!) - LEARN MORE";
+				return "The Tank has increased HP due to his dwarf build. Can pick extra berries (yum!) and sense extra monsters (yuck!)";
 		}
 
 		return null;
 	}
 	
 	public String spritesheet() {
-		
 		switch (this) {
 		case WARRIOR:
 			return Assets.WARRIOR;
@@ -217,7 +216,6 @@ public enum HeroClass {
 		case HUNTRESS:
 			return Assets.HUNTRESS;
 		}
-		
 		return null;
 	}
 
@@ -230,14 +228,26 @@ public enum HeroClass {
 			case ROGUE:
 				return Assets.SPLASH_rogue;
 			case HUNTRESS:
-				return Assets.SPLASH_huntress;
+				return Assets.SPLASH_tank;
 		}
+		return null;
+	}
 
+	public String banner() {
+		switch (this) {
+			case WARRIOR:
+				return Assets.BANNER_WARRIOR;
+			case MAGE:
+				return Assets.BANNER_MAGE;
+			case ROGUE:
+				return Assets.BANNER_ROGUE;
+			case HUNTRESS:
+				return Assets.BANNER_TANK;
+		}
 		return null;
 	}
 
 	public String portrait() {
-
 		switch (this) {
 			case WARRIOR:
 				return Assets.PORTRAIT_warrior;
@@ -248,12 +258,10 @@ public enum HeroClass {
 			case HUNTRESS:
 				return Assets.PORTRAIT_huntress;
 		}
-
 		return null;
 	}
 	
 	public String[] perks() {
-		
 		switch (this) {
 		case WARRIOR:
 			return WAR_PERKS;
@@ -264,7 +272,6 @@ public enum HeroClass {
 		case HUNTRESS:
 			return HUN_PERKS;
 		}
-		
 		return null;
 	}
 

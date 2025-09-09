@@ -44,19 +44,20 @@ public class Assets {
 	public static final String ROGUE	= "rogue.png";
 	public static final String HUNTRESS	= "ranger.png";
 	public static final String AVATARS	= "avatars.png";
+	public static final String BANNER_WARRIOR	= "BANNER_warrior.png";
+	public static final String BANNER_MAGE	= "BANNER_mage.png";
+	public static final String BANNER_ROGUE	= "BANNER_rogue.png";
+	public static final String BANNER_TANK	= "BANNER_tank.png";
+
 	public static final String FADEBG	= "fade.png";
 	public static final String SPLASH_warrior	= "splash_warrior.png";
 	public static final String SPLASH_rogue	= "splash_rogue.png";
 	public static final String SPLASH_mage	= "splash_mage.png";
-	public static final String SPLASH_huntress = "splash_hunter.png";
+	public static final String SPLASH_tank = "splash_hunter.png";
 	public static final String PORTRAIT_warrior	= "PORTRAIT_WARRIOR.png";
 	public static final String PORTRAIT_rogue	= "PORTRAIT_ROGUE.png";
 	public static final String PORTRAIT_mage	= "PORTRAIT_MAGE.png";
 	public static final String PORTRAIT_huntress = "PORTRAIT_HUNTER.png";
-	public static final String BG_HUNTER = "bg_hunter.png";
-	public static final String BG_WARRIOR = "bg_warrior.png";
-	public static final String BG_ROGUE = "bg_rogue.png";
-	public static final String BG_MAGE = "bg_mage.png";
 	public static final String BG = "bg.png";
 
 	public static final String PET		= "pet.png";

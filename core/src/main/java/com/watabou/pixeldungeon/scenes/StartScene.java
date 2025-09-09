@@ -36,9 +36,7 @@ import com.watabou.pixeldungeon.Dungeon;
 import com.watabou.pixeldungeon.GamesInProgress;
 import com.watabou.pixeldungeon.PixelDungeon;
 import com.watabou.pixeldungeon.actors.hero.HeroClass;
-import com.watabou.pixeldungeon.effects.BannerSprites;
 import com.watabou.pixeldungeon.effects.Speck;
-import com.watabou.pixeldungeon.effects.BannerSprites.Type;
 import com.watabou.pixeldungeon.ui.Archs;
 import com.watabou.pixeldungeon.ui.ExitButton;
 import com.watabou.pixeldungeon.ui.Icons;
@@ -63,8 +61,8 @@ public class StartScene extends PixelScene {
 	private static final String TXT_YES		= "Yes, start new game";
 	private static final String TXT_NO		= "No, return to main menu";
 	private static final String TXT_UNLOCK	= "To unlock this character class, slay the 3rd boss with any other class";
-	private static final String TXT_WIN_THE_GAME = 
-		"To unlock \"Challenges\", win the game with any character class.";
+	private static final String TXT_WIN_THE_GAME =
+			"To unlock \"Challenges\", win the game with any character class.";
 	private static final float WIDTH_P	= 116;
 	private static final float HEIGHT_P	= 220;
 	private static final float WIDTH_L	= 224;
@@ -79,8 +77,11 @@ public class StartScene extends PixelScene {
 	private Group unlock;
 	public static HeroClass curClass;
 	public Image splash;
+	public Image title;
 	public Image fadebg;
 	BitmapTextMultiline heroDescription = PixelScene.createMultiline("...", 6 );
+
+	BitmapText selectText = PixelScene.createText("Play as...", 8);
 
 	@Override
 	public void create() {
@@ -107,9 +108,14 @@ public class StartScene extends PixelScene {
 		archs.setSize(w, h);
 		add(archs);
 
-		Image title = BannerSprites.get(Type.SELECT_YOUR_HERO);
-		title.x = align((w - title.width()) / 2);
-		title.y = align(4);
+		add(selectText);
+		selectText.measure();
+		selectText.y = 8;
+		selectText.x = (w - selectText.width()) / 2;
+
+		title = new Image();
+		title.x = align((w - 86) / 2);
+		title.y = align(selectText.y + 8);
 		add(title);
 
 		splash = new Image();
@@ -157,9 +163,9 @@ public class StartScene extends PixelScene {
 		add(btnLoad);
 
 		float centralHeight = buttonY - title.y - title.height();
-		
+
 		HeroClass[] classes = {
-			HeroClass.WARRIOR, HeroClass.MAGE, HeroClass.ROGUE, HeroClass.HUNTRESS
+				HeroClass.WARRIOR, HeroClass.MAGE, HeroClass.ROGUE, HeroClass.HUNTRESS
 		};
 
 		for (HeroClass cl : classes) {
@@ -168,36 +174,33 @@ public class StartScene extends PixelScene {
 			add( shield );
 		}
 
-		float shieldW = width / 4;
-		float shieldH = Math.min( centralHeight, shieldW );
-		for (int i=0; i < classes.length; i++) {
-			ClassShield shield = shields.get(classes[i]);
-			shield.setRect(left + i * shieldW, (buttonY - 28),
-					shieldH, 18);
+		if (PixelDungeon.landscape()) {
+			float shieldH = (h - 96) / 2;
+			for (int i=0; i < classes.length; i++) {
+				ClassShield shield = shields.get(classes[i]);
+				shield.setRect(w-48, shieldH + i * 24, 24, 18);
+			}
+		} else {
+			float shieldW = (w - 96) / 2;
+			for (int i=0; i < classes.length; i++) {
+				ClassShield shield = shields.get(classes[i]);
+				shield.setRect(shieldW + i * 24, (buttonY - 58), 24, 18);
+			}
 		}
 
 		heroDescription.maxWidth = Math.min( Camera.main.width, 120 );
 		heroDescription.x = align( (Camera.main.width - 120) / 2 );
-		heroDescription.y = buttonY - 58;
+		heroDescription.y = buttonY - 28;
 		heroDescription.hardlight( 0xf0e276 );
 		add( heroDescription );
-
-		clickArea btnLearnMore = new clickArea( "") {
-			@Override
-			protected void onClick() {
-				updateClass(curClass);
-			}
-		};
-		btnLearnMore.setPos(heroDescription.x, heroDescription.y);
-		add( btnLearnMore );
 
 		ChallengeButton challenge = new ChallengeButton();
 		challenge.setPos(w - challenge.width() - 4,4);
 		add( challenge );
-		
+
 		unlock = new Group();
 		add( unlock );
-		
+
 		if (!(huntressUnlocked = Badges.isUnlocked( Badges.Badge.BOSS_SLAIN_3 ))) {
 			BitmapTextMultiline text = PixelScene.createMultiline( TXT_UNLOCK, 9 );
 			text.maxWidth = (int)width;
@@ -213,16 +216,16 @@ public class StartScene extends PixelScene {
 				pos += line.height();
 			}
 		}
-		
+
 		ExitButton btnExit = new ExitButton();
 		btnExit.setPos( 4, 4 );
 		add( btnExit );
-		
+
 		curClass = null;
 		updateClass( HeroClass.values()[PixelDungeon.lastClass()] );
-		
+
 		fadeIn();
-		
+
 		Badges.loadingListener = new Callback() {
 			@Override
 			public void call() {
@@ -232,14 +235,14 @@ public class StartScene extends PixelScene {
 			}
 		};
 	}
-	
+
 	@Override
 	public void destroy() {
 		Badges.saveGlobal();
 		Badges.loadingListener = null;
 		super.destroy();
 	}
-	
+
 	private void updateClass( HeroClass cl ) {
 
 		if (curClass == cl) {
@@ -253,6 +256,7 @@ public class StartScene extends PixelScene {
 
 		shields.get( curClass = cl ).highlight( true );
 		splash.texture(cl.splash());
+		title.texture(cl.banner());
 
 		heroDescription.text(cl.description());
 
@@ -260,81 +264,81 @@ public class StartScene extends PixelScene {
 			unlock.visible = false;
 			GamesInProgress.Info info = GamesInProgress.check( curClass );
 			if (info != null) {
-				
+
 				btnLoad.visible = true;
 				btnLoad.secondary( Utils.format( TXT_DPTH_LVL, info.depth, info.level ), info.challenges );
-				
+
 				btnNewGame.visible = true;
 				btnNewGame.secondary( TXT_ERASE, false );
-				
+
 				float w = (Camera.main.width - GAP) / 2 - buttonX;
-				
+
 				btnLoad.setRect(
-					buttonX, buttonY, w, BUTTON_HEIGHT );
+						buttonX, buttonY, w, BUTTON_HEIGHT );
 				btnNewGame.setRect(
-					btnLoad.right() + GAP, buttonY, w, BUTTON_HEIGHT );
-				
+						btnLoad.right() + GAP, buttonY, w, BUTTON_HEIGHT );
+
 			} else {
 				btnLoad.visible = false;
 				btnNewGame.visible = true;
 				btnNewGame.secondary( null, false );
 				btnNewGame.setRect( buttonX, buttonY, Camera.main.width - buttonX * 2, BUTTON_HEIGHT );
 			}
-			
+
 		} else {
 			unlock.visible = true;
 			btnLoad.visible = false;
 			btnNewGame.visible = false;
 		}
 	}
-	
+
 	private void startNewGame() {
 		Dungeon.hero = null;
 		InterlevelScene.mode = InterlevelScene.Mode.DESCEND;
-		
+
 		if (PixelDungeon.intro()) {
 			PixelDungeon.intro( false );
 			Game.switchScene( IntroScene.class );
 		} else {
 			Game.switchScene( InterlevelScene.class );
-		}	
+		}
 	}
-	
+
 	@Override
 	protected void onBackPressed() {
 		PixelDungeon.switchNoFade( TitleScene.class );
 	}
-	
+
 	private static class GameButton extends RedButton {
 		private static final int SECONDARY_COLOR_N	= 0xCACFC2;
 		private static final int SECONDARY_COLOR_H	= 0xFFFF88;
 		private BitmapText secondary;
-		
+
 		public GameButton( String primary ) {
 			super( primary );
 			this.secondary.text( null );
 		}
-		
+
 		@Override
 		protected void createChildren() {
 			super.createChildren();
 			secondary = createText( 5 );
 			add( secondary );
 		}
-		
+
 		@Override
 		protected void layout() {
 			super.layout();
-			
+
 			if (secondary.text().length() > 0) {
 				text.y = align( y + (height - text.height() - secondary.baseLine()) / 2 );
 				secondary.x = align( x + (width - secondary.width()) / 2 );
-				secondary.y = align( text.y + text.height() ); 
+				secondary.y = align( text.y + text.height() );
 			} else {
 				text.y = align( y + (height - text.baseLine()) / 2 );
 			}
 		}
-		
+
 		public void secondary( String text, boolean highlighted ) {
 			secondary.text( text );
 			secondary.measure();
@@ -378,14 +382,14 @@ public class StartScene extends PixelScene {
 			secondary.hardlight( highlighted ? SECONDARY_COLOR_H : SECONDARY_COLOR_N );
 		}
 	}
-	
+
 	private class ClassShield extends Button {
 		private static final float MIN_BRIGHTNESS	= 0.6f;
 		private static final int BASIC_NORMAL		= 0x444444;
 		private static final int BASIC_HIGHLIGHTED	= 0xCACFC2;
 		private static final int MASTERY_NORMAL		= 0x666644;
 		private static final int MASTERY_HIGHLIGHTED= 0xFFFF88;
-		private static final int WIDTH	= 20;
+		private static final int WIDTH	= 22;
 		private static final int HEIGHT	= 21;
 		private final HeroClass cl;
 		private Image avatar;
@@ -460,10 +464,10 @@ public class StartScene extends PixelScene {
 			avatar.gm = avatar.bm = avatar.rm = avatar.am = brightness;
 		}
 	}
-	
+
 	private class ChallengeButton extends Button {
 		private Image image;
-		
+
 		public ChallengeButton() {
 			super();
 			width = image.width;
@@ -477,64 +481,32 @@ public class StartScene extends PixelScene {
 			image = Icons.get( PixelDungeon.challenges() > 0 ? Icons.CHALLENGE_ON :Icons.CHALLENGE_OFF );
 			add( image );
 		}
-		
+
 		@Override
 		protected void layout() {
 			super.layout();
 			image.x = align( x );
 			image.y = align( y  );
 		}
-		
+
 		@Override
 		protected void onClick() {
 			if (Badges.isUnlocked( Badges.Badge.VICTORY )) {
 				StartScene.this.add( new WndChallenges( PixelDungeon.challenges(), true ) {
 					public void onBackPressed() {
 						super.onBackPressed();
-						image.copy( Icons.get( PixelDungeon.challenges() > 0 ? 
-							Icons.CHALLENGE_ON :Icons.CHALLENGE_OFF ) );
+						image.copy( Icons.get( PixelDungeon.challenges() > 0 ?
+								Icons.CHALLENGE_ON :Icons.CHALLENGE_OFF ) );
 					}
 				} );
 			} else {
 				StartScene.this.add( new WndMessage( TXT_WIN_THE_GAME ) );
 			}
 		}
-		
+
 		@Override
 		protected void onTouchDown() {
 			Sample.INSTANCE.play( Assets.SND_CLICK );
-		}
-	}
-
-	private static class clickArea extends Button {
-		public static final float H = 24;
-		public static final float W = 200;
-		private BitmapText label;
-
-		public clickArea(String text) {
-			super();
-			this.label.text(text);
-			this.label.measure();
-			setSize(W, H);
-		}
-
-		@Override
-		protected void createChildren() {
-			super.createChildren();
-			label = createText(7);
-			add(label);
-		}
-
-		@Override
-		protected void layout() {
-			super.layout();
-			label.x = align(x + (width - label.width()) / 2);
-			label.y = align(y + (height - label.height()) / 2);
-		}
-
-		@Override
-		protected void onTouchDown( ) {
-			Sample.INSTANCE.play(Assets.SND_CLICK, 1, 1, 0.8f);
 		}
 	}
 }
