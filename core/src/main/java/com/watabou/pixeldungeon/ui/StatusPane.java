@@ -61,7 +61,7 @@ public class StatusPane extends Component {
 
 	@Override
 	protected void createChildren() {
-		shield = new NinePatch( Assets.STATUS, 80, 0, 30 + 18, 0 );
+		shield = new NinePatch( Assets.STATUS, 105, 0, 21, 0 );
 		add( shield );
 		
 		add( new TouchArea( 0, 0, 40, 50 ) {
@@ -145,11 +145,11 @@ public class StatusPane extends Component {
 		compass.x = 20;
 		compass.y = 42;
 		
-		hp.x = 57;
-		hp.y = 5;
+		hp.x = 58;
+		hp.y = 2;
 
-		exp.x = 57;
-		exp.y = 10;
+		exp.x = 58;
+		exp.y = 7;
 		
 		depth.x = width - 10 - depth.width() - 15;
 		depth.y = 10;
