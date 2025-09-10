@@ -113,7 +113,7 @@ public class Toolbar extends Component {
 		
 		add( btnQuick1 = new QuickslotTool( 82, 7, 23, 25, true ) );
 		add( btnQuick2 = new QuickslotTool( 82, 7, 23, 25, false ) );
-		btnQuick2.visible = (QuickSlot.secondaryValue != null);
+		//btnQuick2.visible = (QuickSlot.secondaryValue != null);
 		add( pickedUp = new PickedUpItem() );
 	}
 	
