@@ -26,27 +26,28 @@ import com.watabou.utils.PointF;
 import com.watabou.utils.Random;
 
 public class GooSprite extends MobSprite {
-	
 	private Animation pump;
 	private Animation jump;
-	
+	private Animation sleep;
 	private Emitter spray;
 	
 	public GooSprite() {
 		super();
 		
 		texture( Assets.GOO );
-		
 		TextureFilm frames = new TextureFilm( texture, 26, 20 );
 		
 		idle = new Animation( 10, true );
 		idle.frames( frames, 0, 1 );
+
+		sleep = new Animation(5, true);
+		sleep.frames(frames, 7,8);
 		
 		run = new Animation( 10, true );
-		run.frames( frames, 0, 1 );
+		run.frames( frames, 0, 1 ,2);
 		
-		pump = new Animation( 20, true );
-		pump.frames( frames, 0, 1 );
+		pump = new Animation( 15, true );
+		pump.frames( frames, 0,1,2,5,1,5 );
 		
 		jump = new Animation( 1, true );
 		jump.frames( frames, 6 );
@@ -55,7 +56,7 @@ public class GooSprite extends MobSprite {
 		attack.frames( frames, 5, 0, 6 );
 		
 		die = new Animation( 10, false );
-		die.frames( frames, 2, 3, 4 );
+		die.frames( frames, 2, 3, 4 ,4);
 		
 		play( idle );
 	}

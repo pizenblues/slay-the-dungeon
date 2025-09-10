@@ -27,7 +27,7 @@ public class CrabSprite extends MobSprite {
 		
 		texture( Assets.CRAB );
 		
-		TextureFilm frames = new TextureFilm( texture, 16 );
+		TextureFilm frames = new TextureFilm( texture, 18 );
 		
 		idle = new Animation( 5, true );
 		idle.frames( frames, 0, 1, 0, 2 );

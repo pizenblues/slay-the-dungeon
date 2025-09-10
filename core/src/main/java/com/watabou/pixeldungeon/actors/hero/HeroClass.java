@@ -23,9 +23,7 @@ import com.watabou.pixeldungeon.items.TomeOfMastery;
 import com.watabou.pixeldungeon.items.armor.ClothArmor;
 import com.watabou.pixeldungeon.items.bags.Keyring;
 import com.watabou.pixeldungeon.items.food.Food;
-import com.watabou.pixeldungeon.items.potions.PotionOfLiquidFlame;
 import com.watabou.pixeldungeon.items.potions.PotionOfStrength;
-import com.watabou.pixeldungeon.items.potions.PotionOfInvisibility;
 import com.watabou.pixeldungeon.items.rings.RingOfShadows;
 import com.watabou.pixeldungeon.items.scrolls.ScrollOfIdentify;
 import com.watabou.pixeldungeon.items.scrolls.ScrollOfMagicMapping;
@@ -134,18 +132,9 @@ public enum HeroClass {
 	
 	private static void initWarrior( Hero hero ) {
 		hero.STR = hero.STR + 1;
-		//hero.STR = hero.STR + 100;
-
-		//values for testing
-		//hero.HP = (hero.HT += 100);
-
-		//remove
-		//new PotionOfInvisibility().collect();
-		//new PotionOfLiquidFlame().collect();
 
 		(hero.belongings.weapon = new ShortSword()).identify();
 		new Dart( 8 ).identify().collect();
-		//new Dart( 80 ).identify().collect();
 
 		QuickSlot.primaryValue = Dart.class;
 		
@@ -165,6 +154,11 @@ public enum HeroClass {
 	
 	private static void initRogue( Hero hero ) {
 		(hero.belongings.weapon = new Dagger()).identify();
+
+		//values for testing
+		hero.STR = hero.STR + 100;
+		hero.HP = (hero.HT += 100);
+
 		(hero.belongings.ring1 = new RingOfShadows()).upgrade().identify();
 		new Dart( 8 ).identify().collect();
 		
