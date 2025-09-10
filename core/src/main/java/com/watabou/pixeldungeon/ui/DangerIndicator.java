@@ -26,14 +26,13 @@ import com.watabou.pixeldungeon.actors.mobs.Mob;
 import com.watabou.pixeldungeon.scenes.PixelScene;
 
 public class DangerIndicator extends Tag {
-	public static final int COLOR	= 0xcc425e;
 	private BitmapText number;
 	private Image icon;
 	private int enemyIndex = 0;
 	private int lastNumber = -1;
 	
 	public DangerIndicator() {
-		super( COLOR );
+		super();
 		setSize( 20, 16 );
 		visible = false;
 	}
@@ -76,24 +75,19 @@ public class DangerIndicator extends Tag {
 					number.text( Integer.toString( lastNumber ) );
 					number.measure();
 					placeNumber();
-
 					flash();
 				}
 			}
 		} else {
 			visible = false;
 		}
-		
 		super.update();
 	}
 	
 	@Override
 	protected void onClick() {
-		
 		Mob target = Dungeon.hero.visibleEnemy( enemyIndex++ );
-		
 		HealthIndicator.instance.target( target == HealthIndicator.instance.target() ? null : target );
-		
 		Camera.main.target = null;
 		Camera.main.focusOn( target.sprite );
 	}

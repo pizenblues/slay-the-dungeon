@@ -16,9 +16,11 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  */
 package com.watabou.pixeldungeon.ui;
-
 import java.util.ArrayList;
 
+import com.watabou.noosa.NinePatch;
+import com.watabou.noosa.ui.Button;
+import com.watabou.pixeldungeon.Chrome;
 import com.watabou.pixeldungeon.Dungeon;
 import com.watabou.pixeldungeon.actors.Char;
 import com.watabou.pixeldungeon.actors.mobs.Mob;
@@ -27,23 +29,19 @@ import com.watabou.pixeldungeon.scenes.PixelScene;
 import com.watabou.pixeldungeon.sprites.CharSprite;
 import com.watabou.utils.Random;
 
-public class AttackIndicator extends Tag {
-	
+public class AttackIndicator extends Button {
 	private static final float ENABLED	= 1.0f;
 	private static final float DISABLED	= 0.3f;
-	
 	private static AttackIndicator instance;
-	
 	private CharSprite sprite = null;
-	
 	private static Mob lastTarget = null;
 	private ArrayList<Mob> candidates = new ArrayList<Mob>();
+	protected NinePatch bg;
+	protected float lightness = 0;
 	
 	public AttackIndicator() {
-		super( DangerIndicator.COLOR );
-		
+		super();
 		instance = this;
-		
 		setSize( 24, 24 );
 		visible( false );
 		enable( false );
@@ -52,15 +50,20 @@ public class AttackIndicator extends Tag {
 	@Override
 	protected void createChildren() {
 		super.createChildren();
+		bg = Chrome.get( Chrome.Type.ATTACKBUTTON );
+		add( bg );
 	}
 	
 	@Override
 	protected void layout() {
 		super.layout();
-		
+		bg.x = x;
+		bg.y = y;
+		bg.size( width, height );
+
 		if (sprite != null) {
 			sprite.x = x + (width - sprite.width()) / 2;
-			sprite.y = y + (height - sprite.height()) / 2;
+			sprite.y = (y + (height - sprite.height()) / 2);
 			PixelScene.align( sprite );
 		}
 	}	
@@ -68,7 +71,6 @@ public class AttackIndicator extends Tag {
 	@Override
 	public void update() {
 		super.update();
-		
 		if (Dungeon.hero.isAlive()) {
 			
 			if (!Dungeon.hero.ready) {
@@ -125,7 +127,7 @@ public class AttackIndicator extends Tag {
 			add( sprite );
 
 			sprite.x = x + (width - sprite.width()) / 2 + 1;
-			sprite.y = y + (height - sprite.height()) / 2;
+			sprite.y = (y + (height - sprite.height()) / 2) - 3;
 			PixelScene.align( sprite );
 			
 		} catch (Exception e) {
@@ -159,6 +161,10 @@ public class AttackIndicator extends Tag {
 		instance.updateImage();
 		
 		HealthIndicator.instance.target( target );
+	}
+
+	public void flash() {
+		lightness = 1f;
 	}
 	
 	public static void updateState() {

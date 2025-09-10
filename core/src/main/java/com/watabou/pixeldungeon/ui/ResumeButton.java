@@ -22,21 +22,17 @@ import com.watabou.pixeldungeon.Dungeon;
 import com.watabou.pixeldungeon.scenes.PixelScene;
 
 public class ResumeButton extends Tag {
-	
 	private Image icon;
 	
 	public ResumeButton() {
-		super( 0xCDD5C0 );
-		
+		super();
 		setSize( 20, 16 );
-		
 		visible = false;
 	}
 	
 	@Override
 	protected void createChildren() {
 		super.createChildren();
-		
 		icon = Icons.get( Icons.RESUME );
 		add( icon );
 	}
@@ -44,7 +40,6 @@ public class ResumeButton extends Tag {
 	@Override
 	protected void layout() {
 		super.layout();
-		
 		icon.x = PixelScene.align( PixelScene.uiCamera, x+1 + (width - icon.width) / 2 );
 		icon.y = PixelScene.align( PixelScene.uiCamera, y + (height - icon.height) / 2 );
 	}
@@ -56,7 +51,6 @@ public class ResumeButton extends Tag {
 		if (visible && !prevVisible) {
 			flash();
 		}
-
 		super.update();
 	}
 	

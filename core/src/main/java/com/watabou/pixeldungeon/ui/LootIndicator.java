@@ -28,7 +28,7 @@ public class LootIndicator extends Tag {
 	private int lastQuantity = 0;
 	
 	public LootIndicator() {
-		super( 0xFFFFF );
+		super();
 		setSize( 20, 22 );
 		visible = false;
 	}
@@ -57,7 +57,6 @@ public class LootIndicator extends Tag {
 		if (Dungeon.hero.ready) {
 			Heap heap = Dungeon.level.heaps.get( Dungeon.hero.pos );
 			if (heap != null && heap.type != Heap.Type.HIDDEN) {
-				
 				Item item = 
 					heap.type == Heap.Type.CHEST || heap.type == Heap.Type.MIMIC ? ItemSlot.CHEST : 
 					heap.type == Heap.Type.LOCKED_CHEST ? ItemSlot.LOCKED_CHEST :
@@ -82,7 +81,6 @@ public class LootIndicator extends Tag {
 		}
 		
 		slot.enable( visible && Dungeon.hero.ready );
-		
 		super.update();
 	}
 }
