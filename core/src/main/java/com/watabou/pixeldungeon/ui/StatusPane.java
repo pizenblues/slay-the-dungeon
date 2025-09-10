@@ -150,12 +150,13 @@ public class StatusPane extends Component {
 
 		exp.x = 58;
 		exp.y = 7;
-		
-		depth.x = width - 10 - depth.width() - 15;
-		depth.y = 10;
-		
-		keys.y = 4;
-		
+
+		keys.y = 1;
+
+		depth.x = width - 8 - depth.width() - 16;
+		depth.y = 7;
+
+
 		layoutTags();
 		
 		buffs.setPos( 48, 16 );
@@ -241,7 +242,7 @@ public class StatusPane extends Component {
 			lastKeys = k;
 			keys.text( Integer.toString( lastKeys ) );
 			keys.measure();
-			keys.x = width - 10 - keys.width() - 15;
+			keys.x = width - 8 - keys.width() - 16;
 		}
 		
 		int tier = Dungeon.hero.tier();
