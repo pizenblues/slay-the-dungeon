@@ -39,12 +39,12 @@ public class LastShopLevel extends RegularLevel {
 	
 	@Override
 	public String tilesTex() {
-		return Assets.TILES_CITY;
+		return Assets.TILES_HALLS;
 	}
 	
 	@Override
 	public String waterTex() {
-		return Assets.WATER_CITY;
+		return Assets.WATER_HALLS;
 	}
 	
 	@Override

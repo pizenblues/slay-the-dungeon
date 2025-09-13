@@ -22,15 +22,12 @@ public class Assets {
 	public static final String ARCS_BG		= "arcs1.png";
 	public static final String ARCS_FG		= "arcs2.png";
 	public static final String DASHBOARD	= "dashboard.png";
-	public static final String FILTER	= "filter.png";
 	public static final String FILTERBG	= "filterbg.png";
 	public static final String VIGNETE	= "vignete.png";
-
 	public static final String BANNERS	= "banners.png";
 	public static final String BADGES	= "badges.png";
 	public static final String LOCKED	= "locked_badge.png";
 	public static final String AMULET	= "amulet.png";
-	
 	public static final String CHROME	= "chrome.png";
 	public static final String ICONS	= "icons.png";
 	public static final String STATUS	= "status_pane.png";
@@ -132,14 +129,14 @@ public class Assets {
 	public static final String FONTS25X	= "font25x.png";
 	public static final String FONTS3X	= "font3x.png";
 	
-	public static final String THEME	= "music/theme.mp3";
+	public static final String THEME	= "music/slime attack.mp3";
 	public static final String TUNE		= "music/game.mp3";
 	public static final String HAPPY	= "music/surface.mp3";
 
 	public static final String LVL1DEPTH1	= "music/lvl1/goblins.mp3";
 	public static final String LVL1DEPTH2	= "music/lvl1/mystery toy.mp3";
-	public static final String LVL1DEPTH3	= "music/lvl1/remains.mp3";
-	public static final String LVL1DEPTH4	= "music/lvl1/slime attack.mp3";
+	public static final String LVL1DEPTH3	= "music/lvl1/horned frog.mp3";
+	public static final String LVL1DEPTH4	= "music/lvl1/remains.mp3";
 	public static final String BOSS1	= "music/lvl1/baby dragon.mp3";
 
 	public static final String LVL2DEPTH1	= "music/lvl2/certain.mp3";
@@ -148,10 +145,10 @@ public class Assets {
 	public static final String LVL2DEPTH4	= "music/lvl2/explorer.mp3";
 	public static final String BOSS2	= "music/lvl2/witch.mp3";
 
-	public static final String LVL3DEPTH1	= "music/lvl3/shimmering rocks.mp3";
-	public static final String LVL3DEPTH2	= "music/lvl3/channel.mp3";
-	public static final String LVL3DEPTH3	= "music/lvl3/miner.mp3";
-	public static final String LVL3DEPTH4	= "music/lvl3/postal.mp3";
+	public static final String LVL3DEPTH1	= "music/lvl3/channel.mp3";
+	public static final String LVL3DEPTH2	= "music/lvl3/shimmering rocks.mp3";
+	public static final String LVL3DEPTH3	= "music/lvl3/postal.mp3";
+	public static final String LVL3DEPTH4	= "music/lvl3/miner.mp3";
 	public static final String BOSS3	= "music/lvl3/griffiths nest.mp3";
 
 	public static final String LVL4DEPTH1	= "music/lvl4/ant colony.mp3";
@@ -162,14 +159,14 @@ public class Assets {
 
 	public static final String LVL5DEPTH1	= "music/lvl5/dance macabre.mp3";
 	public static final String LVL5DEPTH2	= "music/lvl5/aluminum.mp3";
-	public static final String LVL5DEPTH3	= "music/lvl5/made of flesh.mp3";
-	public static final String LVL5DEPTH4	= "music/lvl5/from the abyss.mp3";
+	public static final String LVL5DEPTH3	= "music/lvl5/from the abyss.mp3";
+	public static final String LVL5DEPTH4	= "music/lvl5/made of flesh.mp3";
 	public static final String BOSS5	= "music/lvl5/the abomination.mp3";
+
 	
 	public static final String SND_CLICK	= "sound effects/snd_click.mp3";
 	public static final String SND_BADGE	= "sound effects/snd_badge.mp3";
 	public static final String SND_GOLD		= "sound effects/snd_gold.mp3";
-	
 	public static final String SND_OPEN		= "sound effects/snd_door_open.mp3";
 	public static final String SND_UNLOCK	= "sound effects/snd_unlock.mp3";
 	public static final String SND_ITEM		= "sound effects/snd_item.mp3";

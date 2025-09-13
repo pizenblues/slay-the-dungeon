@@ -164,12 +164,11 @@ public abstract class Level implements Bundlable {
 			Assets.LVL4DEPTH3,
 			Assets.LVL4DEPTH4,
 			Assets.BOSS4,
-			// interlevel after boss4
 			Assets.LVL5DEPTH1,
 			Assets.LVL5DEPTH2,
 			Assets.LVL5DEPTH3,
 			Assets.LVL5DEPTH4,
-			Assets.BOSS5,
+			Assets.TUNE
 	};
 	
 	public void create() {
@@ -249,12 +248,14 @@ public abstract class Level implements Bundlable {
 
 	public void playLevelMusic(int currentDepth){
 		currentDepth = currentDepth - 1;
-		Music.INSTANCE.volume( 1f );
-		if(levelMusic[currentDepth] != null){
-			Music.INSTANCE.play(levelMusic[currentDepth], true);
+
+		if(currentDepth > levelMusic.length){
+			Music.INSTANCE.play(Assets.TUNE, true);
 		}else{
-			Music.INSTANCE.stop();
+			Music.INSTANCE.play(levelMusic[currentDepth], true);
 		}
+
+		Music.INSTANCE.volume( 1f );
 	}
 	@Override
 	public void restoreFromBundle( Bundle bundle ) {
