@@ -30,7 +30,7 @@ public class ChargrilledMeat extends Food {
 	
 	@Override
 	public String info() {
-		return "It looks like a decent steak.";
+		return "A juicy steak, perfectly cooked.";
 	}
 	
 	@Override

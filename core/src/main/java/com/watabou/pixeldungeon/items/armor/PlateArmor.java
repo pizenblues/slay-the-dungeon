@@ -23,7 +23,7 @@ import com.watabou.pixeldungeon.sprites.ItemSpriteSheet;
 public class PlateArmor extends Armor {
 
 	{
-		name = "plate armor";
+		name = "Sagitarius golden armor";
 		image = ItemSpriteSheet.ARMOR_PLATE;
 	}
 	
@@ -34,7 +34,7 @@ public class PlateArmor extends Armor {
 	@Override
 	public String desc() {
 		return 
-			"Enormous plates of metal are joined together into a suit that provides " +
-			"unmatched protection to any adventurer strong enough to bear its staggering weight.";
+			"This is the legendary golden armor,with blessings and unmatched protection. " +
+			"Not every adventurer is strong enough to bear its crushing weight.";
 	}
 }

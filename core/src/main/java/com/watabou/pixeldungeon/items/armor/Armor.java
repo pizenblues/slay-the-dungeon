@@ -220,8 +220,7 @@ public class Armor extends EquipableItem {
 		
 		if (levelKnown) {
 			info.append( 
-				"\n\nThis " + name + " provides damage absorption up to " +
-				"" + Math.max( DR(), 0 ) + " points per attack. " );
+				"\n\nDefense points: " + Math.max( DR(), 0 ) );
 			
 			if (STR > Dungeon.hero.STR()) {
 				
@@ -238,23 +237,21 @@ public class Armor extends EquipableItem {
 			}
 		} else {
 			info.append( 
-				"\n\nTypical " + name + " provides damage absorption up to " + typicalDR() + " points per attack " +
-				" and requires " + typicalSTR() + " points of strength. " );
+				"\n\nDefense points [uncertain]: " + typicalDR() + " - Requires " + typicalSTR() + " points of strength. " );
 			if (typicalSTR() > Dungeon.hero.STR()) {
-				info.append( "Probably this armor is too heavy for you. " );
+				info.append( "This armor may be too heavy for you. " );
 			}
 		}
 		
 		if (glyph != null) {
-			info.append( "It is enchanted." );
+			info.append( "\nIt is enchanted." );
 		}
 		
 		if (isEquipped( Dungeon.hero )) {
-			info.append( "\n\nYou are wearing the " + name + 
-				(cursed ? ", and because it is cursed, you are powerless to remove it." : ".") ); 
+			info.append( "\n\n[Armor equipped" + (cursed ? " - Because it is cursed, you are powerless to remove it]" : "]") );
 		} else {
 			if (cursedKnown && cursed) {
-				info.append( "\n\nYou can feel a malevolent magic lurking within the " + name + "." );
+				info.append( "\n\nYou can feel a malevolent magic lurking within the this armor." );
 			}
 		}
 		

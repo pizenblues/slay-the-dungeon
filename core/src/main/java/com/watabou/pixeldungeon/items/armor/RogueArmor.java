@@ -43,7 +43,7 @@ public class RogueArmor extends ClassArmor {
 	private static final String AC_SPECIAL = "SMOKE BOMB"; 
 	
 	{
-		name = "rogue garb";
+		name = "Legendary thief's mask";
 		image = ItemSpriteSheet.ARMOR_ROGUE;
 	}
 	
@@ -70,7 +70,7 @@ public class RogueArmor extends ClassArmor {
 	@Override
 	public String desc() {
 		return 
-			"Wearing this dark garb, a rogue can perform a trick, that is called \"smoke bomb\" " +
+			"Wearing this mask, a rogue can perform a trick, that is called \"smoke bomb\" " +
 			"(though no real explosives are used): he blinds enemies who could see him and jumps aside.";
 	}
 	

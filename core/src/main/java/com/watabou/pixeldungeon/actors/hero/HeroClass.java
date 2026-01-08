@@ -31,6 +31,7 @@ import com.watabou.pixeldungeon.items.scrolls.ScrollOfMagicMapping;
 import com.watabou.pixeldungeon.items.wands.WandOfMagicMissile;
 import com.watabou.pixeldungeon.items.weapon.melee.Dagger;
 import com.watabou.pixeldungeon.items.weapon.melee.Knuckles;
+import com.watabou.pixeldungeon.items.weapon.melee.ShadowBlade;
 import com.watabou.pixeldungeon.items.weapon.melee.ShortSword;
 import com.watabou.pixeldungeon.items.weapon.missiles.Dart;
 import com.watabou.pixeldungeon.items.weapon.missiles.Boomerang;
@@ -39,7 +40,7 @@ import com.watabou.utils.Bundle;
 
 public enum HeroClass {
 
-	WARRIOR( "warrior" ), MAGE( "mage" ), ROGUE( "rogue" ), HUNTRESS( "huntress" );
+	WARRIOR( "warrior" ), MAGE( "mage" ), ROGUE( "rogue" ), HUNTRESS( "tank" );
 	
 	private String title;
 	
@@ -73,11 +74,11 @@ public enum HeroClass {
 	};
 	
 	public static final String[] HUN_PERKS = {
-		"Huntresses start with 15 points of Health.",
-		"Huntresses start with a unique upgradeable boomerang.",
-		"Huntresses are proficient with missile weapons and get a damage bonus for excessive strength when using them.",
-		"Huntresses gain more health from dewdrops.",
-		"Huntresses sense neighbouring monsters even if they are hidden behind obstacles."
+		"Tank start with 15 points of Health.",
+		"Tank start with a unique upgradeable boomerang.",
+		"Tank are proficient with missile weapons and get a damage bonus for excessive strength when using them.",
+		"Tank gain more health from dewdrops.",
+		"Tank sense neighbouring monsters even if they are hidden behind obstacles."
 	};
 	
 	public void initHero( Hero hero ) {
@@ -154,8 +155,7 @@ public enum HeroClass {
 	}
 	
 	private static void initRogue( Hero hero ) {
-		(hero.belongings.weapon = new Dagger()).identify();
-
+		(hero.belongings.weapon = new ShadowBlade()).identify();
 
 		//values for testing
 		hero.STR = hero.STR + 200;
@@ -191,26 +191,7 @@ public enum HeroClass {
 		new ScrollOfMagicMapping( ).identify().collect();
 		new ScrollOfMagicMapping( ).identify().collect();
 		new ScrollOfMagicMapping( ).identify().collect();
-		new ScrollOfMagicMapping( ).identify().collect();
-		new ScrollOfMagicMapping( ).identify().collect();
-		new ScrollOfMagicMapping( ).identify().collect();
-		new ScrollOfMagicMapping( ).identify().collect();
-		new ScrollOfMagicMapping( ).identify().collect();
-		new ScrollOfMagicMapping( ).identify().collect();
-		new ScrollOfMagicMapping( ).identify().collect();
-		new ScrollOfMagicMapping( ).identify().collect();
-		new ScrollOfMagicMapping( ).identify().collect();
-		new ScrollOfMagicMapping( ).identify().collect();
-		new ScrollOfMagicMapping( ).identify().collect();
-		new ScrollOfMagicMapping( ).identify().collect();
-		new ScrollOfMagicMapping( ).identify().collect();
-		new ScrollOfMagicMapping( ).identify().collect();
-		new ScrollOfMagicMapping( ).identify().collect();
-		new ScrollOfMagicMapping( ).identify().collect();
-		new ScrollOfMagicMapping( ).identify().collect();
-		new ScrollOfMagicMapping( ).identify().collect();
-		new ScrollOfMagicMapping( ).identify().collect();
-		new ScrollOfMagicMapping( ).identify().collect();
+		// remove testing values
 
 		(hero.belongings.ring1 = new RingOfShadows()).upgrade().identify();
 		new Dart( 8 ).identify().collect();
@@ -224,7 +205,7 @@ public enum HeroClass {
 	
 	private static void initHuntress( Hero hero ) {
 		
-		hero.HP = (hero.HT -= 5);
+		hero.HP = (hero.HT += 5);
 		
 		(hero.belongings.weapon = new Dagger()).identify();
 		Boomerang boomerang = new Boomerang();

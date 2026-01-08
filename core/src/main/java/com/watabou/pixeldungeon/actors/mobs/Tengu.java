@@ -49,7 +49,7 @@ public class Tengu extends Mob {
 	private static final int JUMP_DELAY = 5;
 	
 	{
-		name = Dungeon.depth == Statistics.deepestFloor ? "Tengu" : "memory of Tengu";
+		name = Dungeon.depth == Statistics.deepestFloor ? "Sayona" : "The vengeance of the Sayona";
 		spriteClass = TenguSprite.class;
 		
 		HP = HT = 120;
@@ -176,8 +176,8 @@ public class Tengu extends Mob {
 	@Override
 	public String description() {
 		return
-			"Tengu are members of the ancient assassins clan, which is also called Tengu. " +
-			"These assassins are noted for extensive use of shuriken and traps.";
+			"A cursed spirit trapped between these walls. " +
+			"Extremely elusive and proficient with missile weapons.";
 	}
 	
 	private static final HashSet<Class<?>> RESISTANCES = new HashSet<Class<?>>();

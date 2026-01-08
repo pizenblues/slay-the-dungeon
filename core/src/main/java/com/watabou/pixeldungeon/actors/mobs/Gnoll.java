@@ -26,7 +26,7 @@ import com.watabou.utils.Random;
 public class Gnoll extends Mob {
 	
 	{
-		name = "gnoll scout";
+		name = "orc";
 		spriteClass = GnollSprite.class;
 		
 		HP = HT = 12;
@@ -63,7 +63,6 @@ public class Gnoll extends Mob {
 	@Override
 	public String description() {
 		return
-			"Gnolls are hyena-like humanoids. They dwell in sewers and dungeons, venturing up to raid the surface from time to time. " +
-			"Gnoll scouts are regular members of their pack, they are not as strong as brutes and not as intelligent as shamans.";
+			"A greenish and aggressive creature with huge shoulders and arms. Orcs can be dangerous in pack.";
 	}
 }

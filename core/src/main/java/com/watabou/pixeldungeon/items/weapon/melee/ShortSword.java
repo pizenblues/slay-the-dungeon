@@ -97,7 +97,7 @@ public class ShortSword extends MeleeWeapon {
 	@Override
 	public String desc() {
 		return 
-			"It is indeed quite short, just a few inches longer, than a dagger.";
+			"Some might say it is an average size sword.";
 	}
 	
 	private final WndBag.Listener itemSelector = new WndBag.Listener() {

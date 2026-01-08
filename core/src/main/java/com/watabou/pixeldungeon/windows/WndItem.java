@@ -29,12 +29,10 @@ import com.watabou.pixeldungeon.ui.Window;
 import com.watabou.pixeldungeon.utils.Utils;
 
 public class WndItem extends Window {
-
 	private static final float BUTTON_WIDTH		= 36;
 	private static final float BUTTON_HEIGHT	= 16;
-	
 	private static final float GAP	= 2;
-	
+	private static final float SPACING	= 8;
 	private static final int WIDTH = 120;
 	
 	public WndItem( final WndBag owner, final Item item ) {	
@@ -62,10 +60,10 @@ public class WndItem extends Window {
 		info.maxWidth = WIDTH;
 		info.measure();
 		info.x = titlebar.left();
-		info.y = titlebar.bottom() + GAP;
+		info.y = titlebar.bottom() + SPACING;
 		add( info );
 	
-		float y = info.y + info.height() + GAP;
+		float y = info.y + info.height() + SPACING;
 		float x = 0;
 		
 		if (Dungeon.hero.isAlive() && owner != null) {

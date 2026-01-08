@@ -25,7 +25,7 @@ import com.watabou.utils.Random;
 public class Rat extends Mob {
 
 	{
-		name = "marsupial rat";
+		name = "walking mushroom";
 		spriteClass = RatSprite.class;
 		
 		HP = HT = 8;
@@ -59,7 +59,7 @@ public class Rat extends Mob {
 	@Override
 	public String description() {
 		return
-			"Marsupial rats are aggressive, but rather weak denizens " +
-			"of the sewers. They can be dangerous only in big numbers.";
+			"This mushroom has grow legs to adapt to the dungeon environment." +
+			"It looks like it may be delicious with some vegetables and soy sauce.";
 	}
 }

@@ -34,7 +34,7 @@ public class Brute extends Mob {
 	private static final String TXT_ENRAGED = "%s becomes enraged!";
 	
 	{
-		name = "gnoll brute";
+		name = "orc brute";
 		spriteClass = BruteSprite.class;
 		
 		HP = HT = 40;
@@ -89,7 +89,7 @@ public class Brute extends Mob {
 	@Override
 	public String description() {
 		return
-			"Brutes are the largest, strongest and toughest of all gnolls. When severely wounded, " +
+			"Brutes are the largest, strongest and toughest of all orcs. When severely wounded, " +
 			"they go berserk, inflicting even more damage to their enemies.";
 	}
 	

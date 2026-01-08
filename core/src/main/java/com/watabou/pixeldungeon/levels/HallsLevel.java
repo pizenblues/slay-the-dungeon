@@ -114,7 +114,9 @@ public class HallsLevel extends RegularLevel {
 			return "Emberfungi";
 		case Terrain.STATUE:
 		case Terrain.STATUE_SP:
-			return "Pillar";
+			return "Skeletal hand";
+		case Terrain.BOOKSHELF:
+			return "Bone marrow";
 		default:
 			return super.tileName( tile );
 		}
@@ -127,9 +129,9 @@ public class HallsLevel extends RegularLevel {
 			return "It looks like lava, but it's cold and probably safe to touch.";
 		case Terrain.STATUE:
 		case Terrain.STATUE_SP:
-			return "The pillar is made of real humanoid skulls. Awesome."; 
+			return "Looks like a hand crawling from the floor. But it doesn't look alive.";
 		case Terrain.BOOKSHELF:
-			return "Books in ancient languages smoulder in the bookshelf.";
+			return "It looks like a giant creature's bone marrow, sliced in half. It's mostly dried out but you can still see some tissue";
 		default:
 			return super.tileDesc( tile );
 		}

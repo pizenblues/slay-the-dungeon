@@ -390,10 +390,10 @@ public class Ghost extends NPC {
 		private static final String TXT_RAT1	=
 			"Hello adventurer... Once I was like you - strong and confident... " +
 			"And now I'm dead... But I can't leave this place... Not until I have my revenge... " +
-			"Slay the _fetid rat_, that has taken my life...";
+			"Slay the _fetid mushroom_, that has taken my life...";
 			
 		private static final String TXT_RAT2	=
-			"Please... Help me... _Slay the abomination_...";
+			"Please... Help me... _Slay the creature_...";
 		
 		private static final String TXT_RAT3	= 
 			"Yes! The ugly creature is slain and I can finally rest... " +

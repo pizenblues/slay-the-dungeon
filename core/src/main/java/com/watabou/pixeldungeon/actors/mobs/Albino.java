@@ -27,7 +27,7 @@ import com.watabou.utils.Random;
 public class Albino extends Rat {
 
 	{
-		name = "albino rat";
+		name = "rare mushroom";
 		spriteClass = AlbinoSprite.class;
 		
 		HP = HT = 15;

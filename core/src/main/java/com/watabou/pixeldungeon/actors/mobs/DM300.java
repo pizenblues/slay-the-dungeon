@@ -48,7 +48,7 @@ import com.watabou.utils.Random;
 public class DM300 extends Mob {
 	
 	{
-		name = Dungeon.depth == Statistics.deepestFloor ? "DM-300" : "DM-350";
+		name = Dungeon.depth == Statistics.deepestFloor ? "Griffin" : "The return of the Griffin";
 		spriteClass = DM300Sprite.class;
 		
 		HP = HT = 200;
@@ -90,7 +90,7 @@ public class DM300 extends Mob {
 			sprite.emitter().burst( ElmoParticle.FACTORY, 5 );
 			
 			if (Dungeon.visible[step] && Dungeon.hero.isAlive()) {
-				GLog.n( "DM-300 repairs itself!" );
+				GLog.n( "The Griffin is licking it's wounds!" );
 			}
 		}
 
@@ -132,21 +132,21 @@ public class DM300 extends Mob {
 		
 		Badges.validateBossSlain();
 		
-		yell( "Mission failed. Shutting down." );
+		yell( "GRWDRRRRRR!!" );
 	}
 	
 	@Override
 	public void notice() {
 		super.notice();
-		yell( "Unauthorised personnel detected." );
+		yell( "The Griffin locks his sight on you." );
 	}
 	
 	@Override
 	public String description() {
 		return
-			"This machine was created by the Dwarves several centuries ago. Later, Dwarves started to replace machines with " +
-			"golems, elementals and even demons. Eventually it led their civilization to the decline. The DM-300 and similar " +
-			"machines were typically used for construction and mining, and in some cases, for city defense.";
+			"A half eagle, half lion creature. With sharp claws and even sharper senses. " +
+			"The beast is protecting it's nests. It may get extremely aggressive to any invader. " +
+			"But it may be it's biggest weakness.";
 	}
 	
 	private static final HashSet<Class<?>> RESISTANCES = new HashSet<Class<?>>();

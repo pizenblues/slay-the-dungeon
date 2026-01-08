@@ -23,8 +23,8 @@ public enum HeroSubClass {
 
 	NONE( null, null ),
 	
-	GLADIATOR( "gladiator", 
-		"A successful attack with a melee weapon allows the _Gladiator_ to start a combo, " +
+	GLADIATOR( "knight",
+		"A successful attack with a melee weapon allows the _Knight_ to start a combo, " +
 		"in which every next successful hit inflicts more damage." ),
 	BERSERKER( "berserker", 
 		"When severely wounded, the _Berserker_ enters a state of wild fury " +
@@ -33,19 +33,19 @@ public enum HeroSubClass {
 	WARLOCK( "warlock", 
 		"After killing an enemy the _Warlock_ consumes its soul. " +
 		"It heals his wounds and satisfies his hunger." ),
-	BATTLEMAGE( "battlemage", 
-		"When fighting with a wand in his hands, the _Battlemage_ inflicts additional damage depending " +
+	BATTLEMAGE( "deathpriest",
+		"When fighting with a wand in his hands, the _Deathpriest_ inflicts additional damage depending " +
 		"on the current number of charges. Every successful hit restores 1 charge to this wand." ),
 	
 	ASSASSIN( "assassin", 
 		"When performing a surprise attack, the _Assassin_ inflicts additional damage to his target." ),
-	FREERUNNER( "freerunner", 
-		"The _Freerunner_ can move almost twice faster, than most of the monsters. When he " +
-		"is running, the Freerunner is much harder to hit. For that he must be unencumbered and not starving." ),
+	FREERUNNER( "shadow master",
+		"The _Shadow master_ can move almost twice faster, than most of the monsters. When he " +
+		"is running, the Shadow master is much harder to hit. For that he must be unencumbered and not starving." ),
 		
-	SNIPER( "sniper", 
-		"_Snipers_ are able to detect weak points in an enemy's armor, " +
-		"effectively ignoring it when using a missile weapon." ),
+	SNIPER( "barbarian",
+		"_Barbarian_ is able to detect weak points in an enemy's armor, " +
+		"effectively ignoring it when using a weapon." ),
 	WARDEN( "warden", 
 		"Having a strong connection with forces of nature gives _Wardens_ an ability to gather dewdrops and " +
 		"seeds from plants. Also trampling a high grass grants them a temporary armor buff." );

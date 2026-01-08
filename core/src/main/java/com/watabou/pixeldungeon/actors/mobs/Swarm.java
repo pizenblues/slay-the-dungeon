@@ -38,7 +38,7 @@ import com.watabou.utils.Random;
 public class Swarm extends Mob {
 
 	{
-		name = "swarm of flies";
+		name = "slime";
 		spriteClass = SwarmSprite.class;
 		
 		HP = HT = 80;
@@ -139,7 +139,7 @@ public class Swarm extends Mob {
 	@Override
 	public String description() {
 		return
-			"The deadly swarm of flies buzzes angrily. Every non-magical attack " +
-			"will split it into two smaller but equally dangerous swarms.";
+			"A jelly-like creature. Every non-magical attack " +
+			"will split it into two smaller but equally dangerous slimes.";
 	}
 }

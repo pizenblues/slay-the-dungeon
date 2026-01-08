@@ -128,40 +128,45 @@ public class Assets {
 	public static final String FONTS2X	= "font2x.png";
 	public static final String FONTS25X	= "font25x.png";
 	public static final String FONTS3X	= "font3x.png";
+
+	// --
 	
-	public static final String THEME	= "music/slime attack.mp3";
+	public static final String THEME	= "music/goblins.mp3";
 	public static final String TUNE		= "music/game.mp3";
-	public static final String HAPPY	= "music/surface.mp3";
+	public static final String HAPPY	= "music/fanfare.mp3";
 
-	public static final String LVL1DEPTH1	= "music/lvl1/goblins.mp3";
-	public static final String LVL1DEPTH2	= "music/lvl1/mystery toy.mp3";
-	public static final String LVL1DEPTH3	= "music/lvl1/horned frog.mp3";
-	public static final String LVL1DEPTH4	= "music/lvl1/remains.mp3";
-	public static final String BOSS1	= "music/lvl1/baby dragon.mp3";
+	// ---
 
-	public static final String LVL2DEPTH1	= "music/lvl2/certain.mp3";
-	public static final String LVL2DEPTH2	= "music/lvl2/cherry tomato.mp3";
-	public static final String LVL2DEPTH3	= "music/lvl2/flies.mp3";
-	public static final String LVL2DEPTH4	= "music/lvl2/explorer.mp3";
-	public static final String BOSS2	= "music/lvl2/witch.mp3";
+	public static final String CERTAIN	= "music/lvl1/goblins.mp3";
+	public static final String MYSTERY	= "music/lvl1/mystery toy.mp3";
+	public static final String HORNED	= "music/lvl1/horned frog.mp3";
+	public static final String REMAINS	= "music/lvl1/remains.mp3";
+	public static final String BABY	= "music/lvl1/baby dragon.mp3";
 
-	public static final String LVL3DEPTH1	= "music/lvl3/channel.mp3";
-	public static final String LVL3DEPTH2	= "music/lvl3/shimmering rocks.mp3";
-	public static final String LVL3DEPTH3	= "music/lvl3/postal.mp3";
-	public static final String LVL3DEPTH4	= "music/lvl3/miner.mp3";
-	public static final String BOSS3	= "music/lvl3/griffiths nest.mp3";
+	public static final String BOSCAGE	= "music/lvl2/boscage.mp3";
+	public static final String TOMATO	= "music/lvl2/cherry tomato.mp3";
+	public static final String FLIES	= "music/lvl2/flies.mp3";
+	public static final String EXPLORER	= "music/lvl2/explorer.mp3";
+	public static final String GHOUL	= "music/lvl2/ghoul.mp3";
 
-	public static final String LVL4DEPTH1	= "music/lvl4/ant colony.mp3";
-	public static final String LVL4DEPTH2	= "music/lvl4/damisel.mp3";
-	public static final String LVL4DEPTH3	= "music/lvl4/threadings.mp3";
-	public static final String LVL4DEPTH4	= "music/lvl4/it cralws back.mp3";
-	public static final String BOSS4	= "music/lvl4/dark elves.mp3";
+	public static final String CHANNEL	= "music/lvl3/channel.mp3";
+	public static final String SHIMMERING	= "music/lvl3/shimmering rocks.mp3";
+	public static final String POSTAL	= "music/lvl3/postal.mp3";
+	public static final String MINER	= "music/lvl3/miner.mp3";
+	public static final String GRIFFINS	= "music/lvl3/griffiths nest.mp3";
 
-	public static final String LVL5DEPTH1	= "music/lvl5/dance macabre.mp3";
-	public static final String LVL5DEPTH2	= "music/lvl5/aluminum.mp3";
-	public static final String LVL5DEPTH3	= "music/lvl5/from the abyss.mp3";
-	public static final String LVL5DEPTH4	= "music/lvl5/made of flesh.mp3";
-	public static final String BOSS5	= "music/lvl5/the abomination.mp3";
+	public static final String COLONY	= "music/lvl4/ant colony.mp3";
+	public static final String DAMISEL	= "music/lvl4/damisel.mp3";
+	public static final String THREADINGS	= "music/lvl4/threadings.mp3";
+	public static final String CRAWLS	= "music/lvl4/it cralws back.mp3";
+	public static final String NECROMANCER	= "music/lvl4/dark elves.mp3";
+
+	public static final String INTERHALL	= "music/lvl5/the abomination - intro.mp3";
+	public static final String DANCE	= "music/lvl5/dance macabre.mp3";
+	public static final String ALUMINIUM	= "music/lvl5/aluminum.mp3";
+	public static final String ABYSS	= "music/lvl5/from the abyss.mp3";
+	public static final String FLESH	= "music/lvl5/made of flesh.mp3";
+	public static final String ABOMINATION	= "music/lvl5/the abomination.mp3";
 
 	
 	public static final String SND_CLICK	= "sound effects/snd_click.mp3";

@@ -22,7 +22,7 @@ import com.watabou.pixeldungeon.sprites.ItemSpriteSheet;
 public class Mace extends MeleeWeapon {
 
 	{
-		name = "mace";
+		name = "crystal blade";
 		image = ItemSpriteSheet.MACE;
 	}
 	
@@ -32,6 +32,6 @@ public class Mace extends MeleeWeapon {
 	
 	@Override
 	public String desc() {
-		return "The iron head of this weapon inflicts substantial damage.";
+		return "Don't be deceived by this weapon's name, the sharp edge is made out of the strongest crystal.";
 	}
 }

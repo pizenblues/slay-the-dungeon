@@ -32,7 +32,7 @@ import com.watabou.utils.Random;
 public class FetidRat extends Mob {
 
 	{
-		name = "fetid rat";
+		name = "fetid mushroom";
 		spriteClass = FetidRatSprite.class;
 		
 		HP = HT = 15;
@@ -82,7 +82,7 @@ public class FetidRat extends Mob {
 	@Override
 	public String description() {
 		return
-			"This marsupial rat is much larger than a regular one. It is surrounded by a foul cloud.";
+			"This rotten mushroom walks around leaving a cloud of fetid gas.";
 	}
 	
 	private static final HashSet<Class<?>> IMMUNITIES = new HashSet<Class<?>>();

@@ -43,7 +43,7 @@ public class Food extends Item {
 	
 	{
 		stackable = true;
-		name = "ration of food";
+		name = "bread";
 		image = ItemSpriteSheet.RATION;
 		defaultAction = AC_EAT;
 	}
@@ -100,8 +100,8 @@ public class Food extends Item {
 	@Override
 	public String info() {
 		return 
-			"Nothing fancy here: dried meat, " +
-			"some biscuits - things like that.";
+			"Freshly baked bread " +
+			"in the middle of a dungeon, seems fine!";
 	}
 	
 	@Override

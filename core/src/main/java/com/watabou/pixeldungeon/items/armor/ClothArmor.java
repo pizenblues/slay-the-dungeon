@@ -33,6 +33,6 @@ public class ClothArmor extends Armor {
 	
 	@Override
 	public String desc() {
-		return "This lightweight armor offers basic protection.";
+		return "Just some basic clothes. This armor offers little protection but at least is very stylish.";
 	}
 }

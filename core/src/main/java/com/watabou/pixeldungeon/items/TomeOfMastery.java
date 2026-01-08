@@ -46,7 +46,7 @@ public class TomeOfMastery extends Item {
 	
 	{
 		stackable = false;
-		name = Dungeon.hero != null && Dungeon.hero.subClass != HeroSubClass.NONE ? "Tome of Remastery" : "Tome of Mastery";
+		name = Dungeon.hero != null && Dungeon.hero.subClass != HeroSubClass.NONE ? "Necronomicon" : "Necronomicon";
 		image = ItemSpriteSheet.MASTERY;
 		
 		unique = true;
@@ -109,9 +109,9 @@ public class TomeOfMastery extends Item {
 	@Override
 	public String info() {
 		return 
-			"This worn leather book is not that thick, but you feel somehow, " +
-			"that you can gather a lot from it. Remember though that reading " +
-			"this tome may require some time.";
+			"This book feels alive, it has a skin texture and a eyeball that follows you around." +
+			"It holds the secret knowledge to evolve to a different class." +
+			"Reading this book may require some time.";
 	}
 	
 	private void read( Hero hero, HeroSubClass sc1, HeroSubClass sc2 ) {

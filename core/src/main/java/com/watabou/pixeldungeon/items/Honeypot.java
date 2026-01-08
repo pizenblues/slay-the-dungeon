@@ -38,7 +38,7 @@ public class Honeypot extends Item {
 	public static final String AC_SHATTER	= "SHATTER";
 	
 	{
-		name = "honeypot";
+		name = "monster egg";
 		image = ItemSpriteSheet.HONEYPOT;
 		defaultAction = AC_THROW;
 		stackable = true;
@@ -131,6 +131,6 @@ public class Honeypot extends Item {
 	@Override
 	public String info() {
 		return
-			"There is not much honey in this small honeypot, but there is a golden bee there and it doesn't want to leave it.";
+			"a mysterious creature lives in this monster egg. It may not want to be disturbed, but you still are curious about it";
 	}
 }

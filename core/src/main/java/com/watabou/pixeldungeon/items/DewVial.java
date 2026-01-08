@@ -42,13 +42,13 @@ public class DewVial extends Item {
 	private static final String TXT_VALUE	= "%+dHP";
 	private static final String TXT_STATUS	= "%d/%d";
 	
-	private static final String TXT_AUTO_DRINK	= "The dew vial was emptied to heal your wounds.";
-	private static final String TXT_COLLECTED	= "You collected a dewdrop into your dew vial.";
-	private static final String TXT_FULL		= "Your dew vial is full!";
-	private static final String TXT_EMPTY		= "Your dew vial is empty!";
+	private static final String TXT_AUTO_DRINK	= "The medicine bottle was emptied to heal your wounds.";
+	private static final String TXT_COLLECTED	= "You collected a drop into your medicine bottle.";
+	private static final String TXT_FULL		= "Your medicine bottle is full!";
+	private static final String TXT_EMPTY		= "Your medicine bottle is empty!";
 	
 	{
-		name = "dew vial";
+		name = "medicine bottle";
 		image = ItemSpriteSheet.VIAL;
 		
 		defaultAction = AC_DRINK;
@@ -175,8 +175,8 @@ public class DewVial extends Item {
 	@Override
 	public String info() {
 		return 
-			"You can store excess dew in this tiny vessel for drinking it later. " +
-			"If the vial is full, in a moment of deadly peril the dew will be " +
+			"You can store excess medicine drops in this tiny bottle for drinking it later. " +
+			"If the bottle is full, in a moment of deadly peril the medicine will be " +
 			"consumed automatically.";
 	}
 	

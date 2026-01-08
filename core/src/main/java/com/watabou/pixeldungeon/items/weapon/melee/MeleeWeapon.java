@@ -20,7 +20,6 @@ package com.watabou.pixeldungeon.items.weapon.melee;
 import com.watabou.pixeldungeon.Dungeon;
 import com.watabou.pixeldungeon.items.Item;
 import com.watabou.pixeldungeon.items.weapon.Weapon;
-import com.watabou.pixeldungeon.utils.Utils;
 import com.watabou.utils.Random;
 
 public class MeleeWeapon extends Weapon {
@@ -83,37 +82,36 @@ public class MeleeWeapon extends Weapon {
 	@Override
 	public String info() {
 		
-		final String p = "\n\n";
+		final String p = "";
 		
 		StringBuilder info = new StringBuilder( desc() );
 		
 		int lvl = visiblyUpgraded();
 		String quality = lvl != 0 ? 
 			(lvl > 0 ? 
-				(isBroken() ? "broken" : "upgraded") : 
-				"degraded") : 
+				(isBroken() ? "Broken" : "Upgraded") :
+				"Degraded") :
 			"";
 		info.append( p );
-		info.append( "This " + name + " is " + Utils.indefinite( quality ) );
-		info.append( " tier-" + tier + " melee weapon. " );
+		info.append( quality );
+		info.append( "\n\nTier: " + tier );
 		
 		if (levelKnown) {
 			int min = min();
 			int max = max();
-			info.append( "Its average damage is " + (min + (max - min) / 2) + " points per hit. " );
+			info.append( "\nAttack points: " + (min + (max - min) / 2) );
 		} else {
 			int min = min0();
 			int max = max0();
 			info.append( 
-				"Its typical average damage is " + (min + (max - min) / 2) + " points per hit " +
-				"and usually it requires " + typicalSTR() + " points of strength. " );
+				"\nAttack points [uncertain]: " + (min + (max - min) / 2) + " - Requires " + typicalSTR() + " points of strength. " );
 			if (typicalSTR() > Dungeon.hero.STR()) {
-				info.append( "Probably this weapon is too heavy for you. " );
+				info.append( "This weapon may be too heavy for you. " );
 			}
 		}
 		
 		if (DLY != 1f) {
-			info.append( "This is a rather " + (DLY < 1f ? "fast" : "slow") );
+			info.append( "\nThis is a " + (DLY < 1f ? "fast" : "slow") );
 			if (ACU != 1f) {
 				if ((ACU > 1f) == (DLY < 1f)) {
 					info.append( " and ");
@@ -124,7 +122,7 @@ public class MeleeWeapon extends Weapon {
 			}
 			info.append( " weapon. ");
 		} else if (ACU != 1f) {
-			info.append( "This is a rather " + (ACU > 1f ? "accurate" : "inaccurate") + " weapon. " );
+			info.append( "\nThis is a " + (ACU > 1f ? "accurate" : "inaccurate") + " weapon. " );
 		}
 		switch (imbue) {
 		case SPEED:
@@ -137,32 +135,29 @@ public class MeleeWeapon extends Weapon {
 		}
 		
 		if (enchantment != null) {
-			info.append( "It is enchanted." );
+			info.append( "\nIt is enchanted." );
 		}
 		
 		if (levelKnown && Dungeon.hero.belongings.backpack.items.contains( this )) {
 			if (STR > Dungeon.hero.STR()) {
 				info.append( p );
 				info.append( 
-					"Because of your inadequate strength the accuracy and speed " +
-					"of your attack with this " + name + " is decreased." );
+					"\n\nAccuracy and speed decreased due to your lack of strength." );
 			}
 			if (STR < Dungeon.hero.STR()) {
 				info.append( p );
 				info.append( 
-					"Because of your excess strength the damage " +
-					"of your attack with this " + name + " is increased." );
+					"\n\nDamage increased due to your excess strength." );
 			}
 		}
 		
 		if (isEquipped( Dungeon.hero )) {
 			info.append( p );
-			info.append( "You hold the " + name + " at the ready" + 
-				(cursed ? ", and because it is cursed, you are powerless to let go." : ".") ); 
+			info.append( "\n\n[Weapon equipped" + (cursed ? " - Because it is cursed, you are powerless to remove it] " : "] ") );
 		} else {
 			if (cursedKnown && cursed) {
 				info.append( p );
-				info.append( "You can feel a malevolent magic lurking within " + name +"." );
+				info.append( "You can feel a malevolent magic lurking within this weapon." );
 			}
 		}
 		

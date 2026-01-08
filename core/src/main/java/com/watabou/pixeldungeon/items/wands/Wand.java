@@ -52,13 +52,12 @@ public abstract class Wand extends KindOfWeapon {
 	public static final String AC_ZAP	= "ZAP";
 	
 	private static final String TXT_WOOD	= "This thin %s wand is warm to the touch. Who knows what it will do when used?";
-	private static final String TXT_DAMAGE	= "When this wand is used as a melee weapon, its average damage is %d points per hit.";
+	private static final String TXT_DAMAGE	= "Damage points as melee weapon: %d";
 	private static final String TXT_WEAPON	= "You can use this wand as a melee weapon.";
-			
 	private static final String TXT_FIZZLES		= "your wand fizzles; it must be out of charges for now";
 	private static final String TXT_SELF_TARGET	= "You can't target yourself";
 	
-	private static final String TXT_IDENTIFY	= "You are now familiar enough with your %s.";
+	private static final String TXT_IDENTIFY	= "You are now familiar enough with your wand.";
 	
 	private static final float TIME_TO_ZAP	= 1f;
 	
