@@ -137,7 +137,7 @@ public class Assets {
 
 	// ---
 
-	public static final String CERTAIN	= "music/lvl1/goblins.mp3";
+	public static final String CERTAIN	= "music/lvl1/certain.mp3";
 	public static final String MYSTERY	= "music/lvl1/mystery toy.mp3";
 	public static final String HORNED	= "music/lvl1/horned frog.mp3";
 	public static final String REMAINS	= "music/lvl1/remains.mp3";

@@ -144,31 +144,39 @@ public abstract class Level implements Bundlable {
 	private static final String BLOBS		= "blobs";
 
 	public static final String[] levelMusic = new String[]{
-			Assets.LVL1DEPTH1,
-			Assets.LVL1DEPTH2,
-			Assets.LVL1DEPTH3,
-			Assets.LVL1DEPTH4,
-			Assets.BOSS1,
-			Assets.LVL2DEPTH1,
-			Assets.LVL2DEPTH2,
-			Assets.LVL2DEPTH3,
-			Assets.LVL2DEPTH4,
-			Assets.BOSS2,
-			Assets.LVL3DEPTH1,
-			Assets.LVL3DEPTH2,
-			Assets.LVL3DEPTH3,
-			Assets.LVL3DEPTH4,
-			Assets.BOSS3,
-			Assets.LVL4DEPTH1,
-			Assets.LVL4DEPTH2,
-			Assets.LVL4DEPTH3,
-			Assets.LVL4DEPTH4,
-			Assets.BOSS4,
-			Assets.LVL5DEPTH1,
-			Assets.LVL5DEPTH2,
-			Assets.LVL5DEPTH3,
-			Assets.LVL5DEPTH4,
-			Assets.TUNE
+			Assets.CERTAIN,
+			Assets.MYSTERY,
+			Assets.HORNED,
+			Assets.REMAINS,
+			Assets.BABY,
+
+			Assets.TOMATO,
+			Assets.BOSCAGE,
+			Assets.FLIES,
+			Assets.EXPLORER,
+			Assets.GHOUL,
+
+			Assets.CHANNEL,
+			Assets.SHIMMERING,
+			Assets.MINER,
+			Assets.POSTAL,
+			Assets.GRIFFINS,
+
+			Assets.COLONY,
+			Assets.CRAWLS,
+			Assets.DAMISEL,
+			Assets.THREADINGS,
+			Assets.NECROMANCER,
+
+			Assets.INTERHALL,
+
+			Assets.DANCE,
+			Assets.ABYSS,
+			Assets.FLESH,
+			Assets.ALUMINIUM,
+			Assets.ABOMINATION,
+
+			Assets.HAPPY
 	};
 	
 	public void create() {
