@@ -24,11 +24,14 @@ public class IntroScene extends PixelScene {
 
 	private static final String TEXT = 	
 		"Many heroes of all kinds ventured into the Dungeon before you. Some of them have returned with treasures and magical " +
-		"artifacts, most have never been heard of since. But none have succeeded in retrieving the Amulet of Yendor, " +
-		"which is told to be hidden in the depths of the Dungeon.\n\n" +
-		"" +
-		"You consider yourself ready for the challenge, but most importantly, you feel that fortune smiles on you. " +
-		"It's time to start your own adventure!";
+		"artifacts, most have never been heard of since. \n\n" +
+
+		"Eden was last seen entering these dungeons, looking for the King's cranium, "+
+		"a cursed artifact which is said to give unlimited power to who may possess it." +
+		"Eden is dear to you, but you know their hunger for power is their greatest weakness." + 
+		"Althought these dungeons look dangerous, you have decided to bring Eden back. \n\n" +
+
+		"You enter the dungeon...";
 	
 	@Override
 	public void create() {

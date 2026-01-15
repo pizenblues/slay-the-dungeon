@@ -23,7 +23,7 @@ import com.watabou.pixeldungeon.sprites.ItemSpriteSheet;
 public class DriedRose extends Item {
 	
 	{
-		name = "dried rose";
+		name = "Lucky 4-Leaf Clover";
 		image = ItemSpriteSheet.ROSE;
 		
 		unique = true;
@@ -42,6 +42,6 @@ public class DriedRose extends Item {
 	@Override
 	public String info() {
 		return
-			"The rose has dried long ago, but it has kept all its petals somehow.";
+			"A small leaf. You don't feel any luckier holding it.";
 	}
 }

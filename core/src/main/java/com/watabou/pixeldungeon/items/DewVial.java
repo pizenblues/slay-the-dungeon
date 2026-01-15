@@ -35,20 +35,20 @@ public class DewVial extends Item {
 
 	private static final int MAX_VOLUME	= 10;
 	
-	private static final String AC_DRINK	= "DRINK";
+	private static final String AC_DRINK	= "EAT";
 	
 	private static final float TIME_TO_DRINK = 1f;
 	
 	private static final String TXT_VALUE	= "%+dHP";
 	private static final String TXT_STATUS	= "%d/%d";
 	
-	private static final String TXT_AUTO_DRINK	= "The medicine bottle was emptied to heal your wounds.";
-	private static final String TXT_COLLECTED	= "You collected a drop into your medicine bottle.";
-	private static final String TXT_FULL		= "Your medicine bottle is full!";
-	private static final String TXT_EMPTY		= "Your medicine bottle is empty!";
+	private static final String TXT_AUTO_DRINK	= "The vial was emptied to heal your wounds.";
+	private static final String TXT_COLLECTED	= "You collected a berry into your vial.";
+	private static final String TXT_FULL		= "You have collected enough berries to make curative jelly!";
+	private static final String TXT_EMPTY		= "Your jelly vial is empty!";
 	
 	{
-		name = "medicine bottle";
+		name = "Curative jelly vial";
 		image = ItemSpriteSheet.VIAL;
 		
 		defaultAction = AC_DRINK;
@@ -175,9 +175,10 @@ public class DewVial extends Item {
 	@Override
 	public String info() {
 		return 
-			"You can store excess medicine drops in this tiny bottle for drinking it later. " +
-			"If the bottle is full, in a moment of deadly peril the medicine will be " +
-			"consumed automatically.";
+			"You can store excess salmonberries in this tiny bottle for eating it later. " +
+			"You can consume the berries or collect enough to make curative jelly and heal all your wounds. " +
+			"If the bottle is full, in a moment of deadly peril the curative jelly will be " +
+			"consumed automatically to revive you.";
 	}
 	
 	@Override

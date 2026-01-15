@@ -75,7 +75,7 @@ public class RatKing extends NPC {
 	@Override
 	public String description() {
 		return 
-			"This rat is a little bigger than a regular marsupial rat " +
+			"This rat is a little bigger than a regular rat " +
 			"and it's wearing a tiny crown on its head.";
 	}
 }

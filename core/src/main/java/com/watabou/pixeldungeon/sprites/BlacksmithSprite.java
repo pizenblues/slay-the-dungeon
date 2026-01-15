@@ -35,7 +35,7 @@ public class BlacksmithSprite extends MobSprite {
 		
 		texture( Assets.TROLL );
 		
-		TextureFilm frames = new TextureFilm( texture, 13, 16 );
+		TextureFilm frames = new TextureFilm( texture, 13, 17 );
 		
 		idle = new Animation( 15, true );
 		idle.frames( frames, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 3 );

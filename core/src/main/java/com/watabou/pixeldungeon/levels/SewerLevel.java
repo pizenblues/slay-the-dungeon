@@ -147,7 +147,7 @@ public class SewerLevel extends RegularLevel {
 	public String tileDesc(int tile) {
 		switch (tile) {
 		case Terrain.EMPTY_DECO:
-			return "Wet yellowish moss covers the floor.";
+			return "Wet moss covers the floor.";
 		case Terrain.BOOKSHELF:
 			return "The bookshelf is packed with cheap useless books. Might it burn?";
 		default:

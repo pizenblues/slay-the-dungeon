@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
+import com.watabou.noosa.Game;
 import com.watabou.noosa.audio.Sample;
 import com.watabou.pixeldungeon.Assets;
 import com.watabou.pixeldungeon.Badges;
@@ -107,6 +108,7 @@ public class Item implements Bundlable {
 			
 			GameScene.pickUp( this );
 			Sample.INSTANCE.play( Assets.SND_ITEM );
+			Game.vibrate( 20 );
 			hero.spendAndNext( TIME_TO_PICK_UP );
 			return true;
 			

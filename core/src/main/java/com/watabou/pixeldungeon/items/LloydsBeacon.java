@@ -37,19 +37,19 @@ import com.watabou.utils.Bundle;
 public class LloydsBeacon extends Item {
 
 	private static final String TXT_PREVENTING = 
-		"Strong magic aura of this place prevents you from using the lloyd's beacon!";
+		"Strong magic aura of this place prevents you from using the teleportation orb!";
 	
 	private static final String TXT_CREATURES = 
-		"Psychic aura of neighbouring creatures doesn't allow you to use the lloyd's beacon at this moment.";
+		"Psychic aura of neighbouring creatures doesn't allow you to use the teleportation orb at this moment.";
 	
 	private static final String TXT_RETURN = 
-		"The lloyd's beacon is successfully set at your current location, now you can return here anytime.";
+		"The teleportation orb is successfully set at your current location, now you can return here anytime.";
 			
 	private static final String TXT_INFO =
-		"Lloyd's beacon is an intricate magic device, that allows you to return to a place you have already been.";
+		"The teleportation orb is an intricate magic device, that allows you to return to a place you have already been.";
 	
 	private static final String TXT_SET = 
-		"\n\nThis beacon was set somewhere on the level %d of Pixel Dungeon.";
+		"\n\nThis orb was set somewhere on the level %d of this Dungeon.";
 	
 	public static final float TIME_TO_USE = 1;
 	
@@ -60,7 +60,7 @@ public class LloydsBeacon extends Item {
 	private int returnPos;
 	
 	{
-		name = "lloyd's beacon";
+		name = "teleportation orb";
 		image = ItemSpriteSheet.BEACON;
 		
 		unique = true;

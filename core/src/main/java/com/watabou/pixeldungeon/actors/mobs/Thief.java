@@ -39,7 +39,7 @@ public class Thief extends Mob {
 	public Item item;
 	
 	{
-		name = "crazy thief";
+		name = "thief";
 		spriteClass = ThiefSprite.class;
 		
 		HP = HT = 20;
@@ -136,8 +136,7 @@ public class Thief extends Mob {
 	public String description() {
 		String desc =
 			"Deeper levels of the dungeon have always been a hiding place for all kinds of criminals. " +
-			"Not all of them could keep a clear mind during their extended periods so far from daylight. Long ago, " +
-			"these crazy thieves and bandits have forgotten who they are and why they steal.";
+			"Not all of them could keep a clear mind during their extended periods so far from daylight.";
 		
 		if (item != null) {
 			desc += String.format( TXT_CARRIES, Utils.capitalize( this.name ), item.name() );

@@ -31,7 +31,7 @@ import com.watabou.pixeldungeon.windows.WndTradeItem;
 public class Shopkeeper extends NPC {
 
 	{
-		name = "shopkeeper";
+		name = "shopkeeper gnome";
 		spriteClass = ShopkeeperSprite.class;
 	}
 	
@@ -77,8 +77,8 @@ public class Shopkeeper extends NPC {
 	@Override
 	public String description() {
 		return 
-			"This stout guy looks more appropriate for a trade district in some large city " +
-			"than for a dungeon. His prices explain why he prefers to do business here.";
+			"The shopkeeper may look like a frail old fellow, but he got to this lvl of the " +
+			"dungeon before you, so you may want to give him some credit, right?";
 	}
 	
 	public static WndBag sell() {

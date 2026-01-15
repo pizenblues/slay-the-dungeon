@@ -109,9 +109,9 @@ public class TomeOfMastery extends Item {
 	@Override
 	public String info() {
 		return 
-			"This book feels alive, it has a skin texture and a eyeball that follows you around." +
-			"It holds the secret knowledge to evolve to a different class." +
-			"Reading this book may require some time.";
+			"This book feels alive, it has a skin texture and a eyeball that follows you around. " +
+			"It holds the secret knowledge to evolve to a different class. " +
+			"Reading this book may require some time. ";
 	}
 	
 	private void read( Hero hero, HeroSubClass sc1, HeroSubClass sc2 ) {

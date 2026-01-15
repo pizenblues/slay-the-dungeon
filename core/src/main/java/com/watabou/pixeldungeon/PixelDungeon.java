@@ -186,7 +186,12 @@ public class PixelDungeon extends Game {
 			Assets.SND_BONES,
 			Assets.SND_BEE,
 			Assets.SND_DEGRADE,
-			Assets.SND_MIMIC );
+			Assets.SND_MIMIC,
+
+			Assets.SND_QUESTION,
+			Assets.SND_TICK,
+			Assets.SND_TICKING,
+			Assets.SND_SCAN);
 	}
 	
 	@Override

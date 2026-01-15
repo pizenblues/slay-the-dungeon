@@ -32,19 +32,20 @@ import com.watabou.utils.Random;
 
 public class AmuletScene extends PixelScene {
 
-	private static final String TXT_EXIT	= "Let's call it a day";
-	private static final String TXT_STAY	= "I'm not done yet";
+	private static final String TXT_EXIT	= "Finish the game.";
+	private static final String TXT_STAY	= "Continue playing.";
 	
 	private static final int WIDTH			= 120;
 	private static final int BTN_HEIGHT		= 18;
 	private static final float SMALL_GAP	= 2;
 	private static final float LARGE_GAP	= 8;
 	
-	private static final String TXT = 
-		"You finally hold it in your hands, the Amulet of Yendor. Using its power " +
-		"you can take over the world or bring peace and prosperity to people or whatever. " +
-		"Anyway, your life will change forever and this game will end here. " +
-		"Or you can stay a mere mortal a little longer.";
+	private static final String TXT =
+		"You have found the king's cranium, Infinite power can be yours if you fuse your soul with the artifact and take the power. \n\n" +
+		"But so much power can be a corrupting force, blinding one's judgement and isolating you. " +
+		"It'll be easier to surrender yourself to the power; you'll become a god, and you'll rule these dungeons, but you'll never leave this place. \n\n  " +
+		"There is another alternative, but it is not an easy one. You can ascend the dungeon and bring the artifact to the surface to break the curse.  " +
+		"You'll leave these dungeons as a mere mortal, but you'll live the rest of your life away from the horrors of this dungeon, in the sun.";
 	
 	public static boolean noText = false;
 	
@@ -56,7 +57,7 @@ public class AmuletScene extends PixelScene {
 		
 		BitmapTextMultiline text = null;
 		if (!noText) {
-			text = createMultiline( TXT, 8 );
+			text = createMultiline( TXT, 7 );
 			text.maxWidth = WIDTH;
 			text.measure();
 			add( text );

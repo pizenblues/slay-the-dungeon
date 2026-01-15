@@ -107,11 +107,11 @@ public class HallsLevel extends RegularLevel {
 	public String tileName( int tile ) {
 		switch (tile) {
 		case Terrain.WATER:
-			return "Cold lava";
+			return "Creature fluids";
 		case Terrain.GRASS:
-			return "Embermoss";
+			return "Rot";
 		case Terrain.HIGH_GRASS:
-			return "Emberfungi";
+			return "Thorns";
 		case Terrain.STATUE:
 		case Terrain.STATUE_SP:
 			return "Skeletal hand";
@@ -126,7 +126,7 @@ public class HallsLevel extends RegularLevel {
 	public String tileDesc(int tile) {
 		switch (tile) {
 		case Terrain.WATER:
-			return "It looks like lava, but it's cold and probably safe to touch.";
+			return "The thick dark liquid smells putrid.";
 		case Terrain.STATUE:
 		case Terrain.STATUE_SP:
 			return "Looks like a hand crawling from the floor. But it doesn't look alive.";

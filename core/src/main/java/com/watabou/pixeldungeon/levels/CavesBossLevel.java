@@ -266,11 +266,11 @@ public class CavesBossLevel extends Level {
 	public String tileName( int tile ) {
 		switch (tile) {
 		case Terrain.GRASS:
-			return "Fluorescent moss";
+			return "Green moss";
 		case Terrain.HIGH_GRASS:
-			return "Fluorescent mushrooms";
+			return "Dense vegetation";
 		case Terrain.WATER:
-			return "Freezing cold water.";
+			return "Crystalline water.";
 		default:
 			return super.tileName( tile );
 		}
@@ -284,7 +284,7 @@ public class CavesBossLevel extends Level {
 		case Terrain.EXIT:
 			return "The ladder leads down to the lower depth.";
 		case Terrain.HIGH_GRASS:
-			return "Huge mushrooms block the view.";
+			return "Huge chunks of vegetation blocks the view.";
 		case Terrain.WALL_DECO:
 			return "A vein of some ore is visible on the wall. Gold?";
 		default:

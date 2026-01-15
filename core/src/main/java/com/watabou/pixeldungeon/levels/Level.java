@@ -168,15 +168,13 @@ public abstract class Level implements Bundlable {
 			Assets.THREADINGS,
 			Assets.NECROMANCER,
 
-			Assets.INTERHALL,
-
 			Assets.DANCE,
 			Assets.ABYSS,
 			Assets.FLESH,
 			Assets.ALUMINIUM,
 			Assets.ABOMINATION,
-
-			Assets.HAPPY
+			Assets.HAPPY,
+			Assets.EXTERIOR
 	};
 	
 	public void create() {

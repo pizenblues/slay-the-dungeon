@@ -31,7 +31,7 @@ public class Dewdrop extends Item {
 	private static final String TXT_VALUE	= "%+dHP";
 	
 	{
-		name = "medicine drop";
+		name = "Salmonberry";
 		image = ItemSpriteSheet.DEWDROP;
 		
 		stackable = true;
@@ -70,6 +70,6 @@ public class Dewdrop extends Item {
 	
 	@Override
 	public String info() {
-		return "A crystal red medicine drop. It has a heart shape.";
+		return "This fruit has the ability to cure your wounds. You can mash some berries together to get curative jelly, but you'll need a vial.";
 	}
 }

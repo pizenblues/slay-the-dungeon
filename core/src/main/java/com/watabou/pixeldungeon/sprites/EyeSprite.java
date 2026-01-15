@@ -32,7 +32,7 @@ public class EyeSprite extends MobSprite {
 		
 		texture( Assets.EYE );
 		
-		TextureFilm frames = new TextureFilm( texture, 16, 18 );
+		TextureFilm frames = new TextureFilm( texture, 16, 21 );
 		
 		idle = new Animation( 8, true );
 		idle.frames( frames, 0, 1, 2 );

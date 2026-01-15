@@ -64,18 +64,14 @@ public class Button extends Component {
 	@Override
 	public void update() {
 		super.update();
-		
 		hotArea.active = visible;
-		
 		if (pressed) {
 			if ((pressTime += Game.elapsed) >= longClick) {
 				pressed = false;
 				if (onLongClick()) {
-
 					hotArea.reset();
 					processed = true;
 					onTouchUp();
-					
 					Game.vibrate( 50 );
 				}
 			}

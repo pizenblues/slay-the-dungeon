@@ -20,6 +20,7 @@ package com.watabou.pixeldungeon.actors;
 import java.util.HashSet;
 
 import com.watabou.noosa.Camera;
+import com.watabou.noosa.Game;
 import com.watabou.noosa.audio.Sample;
 import com.watabou.pixeldungeon.Assets;
 import com.watabou.pixeldungeon.Dungeon;
@@ -65,7 +66,6 @@ public abstract class Char extends Actor {
 	protected static final String TXT_HIT		= "%s hit %s";
 	protected static final String TXT_KILL		= "%s killed you...";
 	protected static final String TXT_DEFEAT	= "%s defeated %s";
-	
 	private static final String TXT_YOU_MISSED	= "%s %s your attack";
 	private static final String TXT_SMB_MISSED	= "%s %s %s's attack";
 	
@@ -152,6 +152,7 @@ public abstract class Char extends Actor {
 			
 			if (visibleFight) {
 				Sample.INSTANCE.play( Assets.SND_HIT, 1, 1, Random.Float( 0.8f, 1.25f ) );
+				Game.vibrate( 50 );
 			}
 
 			if (enemy == Dungeon.hero) {

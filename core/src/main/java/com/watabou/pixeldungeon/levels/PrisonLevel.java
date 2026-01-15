@@ -142,7 +142,7 @@ public class PrisonLevel extends RegularLevel {
 		case Terrain.EMPTY_DECO:
 			return "There are old blood stains on the floor.";
 		case Terrain.BOOKSHELF:
-			return "This is probably a vestige of a prison library. Might it burn?";
+			return "This is probably a vestige of a library. Might it burn?";
 		default:
 			return super.tileDesc( tile );
 		}

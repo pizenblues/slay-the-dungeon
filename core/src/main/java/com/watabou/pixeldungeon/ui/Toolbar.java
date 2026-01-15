@@ -20,6 +20,7 @@ package com.watabou.pixeldungeon.ui;
 import com.watabou.noosa.Game;
 import com.watabou.noosa.Gizmo;
 import com.watabou.noosa.Image;
+import com.watabou.noosa.audio.Sample;
 import com.watabou.noosa.ui.Button;
 import com.watabou.noosa.ui.Component;
 import com.watabou.pixeldungeon.Assets;
@@ -66,9 +67,12 @@ public class Toolbar extends Component {
 		add( btnWait = new Tool( 0, 7, 20, 25 ) {
 			@Override
 			protected void onClick() {
+				Sample.INSTANCE.play( Assets.SND_TICK );
+				Game.vibrate( 20 );
 				Dungeon.hero.rest( false );
 			};
 			protected boolean onLongClick() {
+				Sample.INSTANCE.play( Assets.SND_TICKING );
 				Dungeon.hero.rest( true );
 				return true;
 			};
@@ -77,6 +81,8 @@ public class Toolbar extends Component {
 		add( btnSearch = new Tool( 20, 7, 20, 25 ) {
 			@Override
 			protected void onClick() {
+				Sample.INSTANCE.play( Assets.SND_SCAN );
+				Game.vibrate( 20 );
 				Dungeon.hero.search( true );
 			}
 		} );
@@ -84,6 +90,8 @@ public class Toolbar extends Component {
 		add( btnInfo = new Tool( 40, 7, 21, 25 ) {
 			@Override
 			protected void onClick() {
+				Game.vibrate( 20 );
+				Sample.INSTANCE.play( Assets.SND_QUESTION );
 				GameScene.selectCell( informer );
 			}
 		} );
@@ -92,9 +100,12 @@ public class Toolbar extends Component {
 			private GoldIndicator gold;
 			@Override
 			protected void onClick() {
+				Game.vibrate( 20 );
+				Sample.INSTANCE.play( Assets.SND_CLICK );
 				GameScene.show( new WndBag( Dungeon.hero.belongings.backpack, null, WndBag.Mode.ALL, null ) );
 			}
 			protected boolean onLongClick() {
+				Game.vibrate( 50 );
 				GameScene.show( new WndCatalogus() );
 				return true;
 			};

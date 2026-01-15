@@ -27,8 +27,6 @@ import com.watabou.pixeldungeon.Dungeon;
 import com.watabou.pixeldungeon.Statistics;
 import com.watabou.pixeldungeon.actors.Actor;
 import com.watabou.pixeldungeon.actors.Char;
-import com.watabou.pixeldungeon.actors.blobs.Blob;
-import com.watabou.pixeldungeon.actors.blobs.ToxicGas;
 import com.watabou.pixeldungeon.actors.buffs.Buff;
 import com.watabou.pixeldungeon.actors.buffs.Paralysis;
 import com.watabou.pixeldungeon.effects.CellEmitter;
@@ -72,12 +70,6 @@ public class DM300 extends Mob {
 	@Override
 	public int dr() {
 		return 10;
-	}
-	
-	@Override
-	public boolean act() {
-		GameScene.add( Blob.seed( pos, 30, ToxicGas.class ) );
-		return super.act();
 	}
 	
 	@Override
@@ -145,8 +137,7 @@ public class DM300 extends Mob {
 	public String description() {
 		return
 			"A half eagle, half lion creature. With sharp claws and even sharper senses. " +
-			"The beast is protecting it's nests. It may get extremely aggressive to any invader. " +
-			"But it may be it's biggest weakness.";
+			"The beast is protecting it's nests. It may get extremely aggressive to any invader.";
 	}
 	
 	private static final HashSet<Class<?>> RESISTANCES = new HashSet<Class<?>>();
@@ -159,14 +150,5 @@ public class DM300 extends Mob {
 	public HashSet<Class<?>> resistances() {
 		return RESISTANCES;
 	}
-	
-	private static final HashSet<Class<?>> IMMUNITIES = new HashSet<Class<?>>();
-	static {
-		IMMUNITIES.add( ToxicGas.class );
-	}
-	
-	@Override
-	public HashSet<Class<?>> immunities() {
-		return IMMUNITIES;
-	}
+
 }

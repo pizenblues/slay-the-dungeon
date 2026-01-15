@@ -37,11 +37,10 @@ public class Sign {
 
 			// lvl 1
 
-		"Welcome to the delicious dungeon. Nobody knows why is called that way, food is not abundant" +
+		"Welcome to the delicious dungeon. Nobody knows why is called that way, food is not abundant " +
 				"in a place like this, so manage your rations well or you'll starve.",
 
-		"Not all doors in the dungeon are visible at first sight." +
-				"If you are stuck use your magnifier glass to search for hidden doors",
+		"If you are stuck use your magnifier glass to search for hidden doors",
 
 		"Delicious pixel dungeon is a rougelike game - That means you will die. A lot.",
 
@@ -61,7 +60,7 @@ public class Sign {
 		"Surprise attack has a better chance to hit. For example, you can ambush your enemy behind " +
 			"a closed door when you know it is approaching.",
 		
-		"The Sayona's curse haunts this level...",
+		"Don't let her out...",
 
 			// lvl 4
 		
@@ -73,11 +72,11 @@ public class Sign {
 
 		"There is no sense in possessing more than one Scroll of rebirth at the same time, because you will lose them upon resurrecting.",
 		
-		"The griffith is guarding it's nest...",
+		"The griffin is guarding it's nest...",
 
 			// lvl 5
 		
-		"Delicious dungeon bazaar - Literally the only place you can get supplies in the whole dungeon.",
+		"Delicious dungeon bazaar - Dragon slaying swords? we got it!",
 
 		"When you upgrade an enchanted weapon, there is a chance to destroy that enchantment.",
 
@@ -85,13 +84,13 @@ public class Sign {
 
 		"The only way to obtain a Scroll of Wipe Out is to receive it as a gift from the dungeon spirits.",
 		
-		"This is the tune of the dance of the necromancer...",
+		"This is the dance of the necromancer...",
 		
 		"Delicious dungeon bazaar - 50% off on all Dungeon monster plushies"
 	};
 	
 	private static final String TXT_BURN =
-		"As you try to read the sign it bursts into greenish flames.";
+		"You are almost there...";
 	
 	public static void read( int pos ) {
 		

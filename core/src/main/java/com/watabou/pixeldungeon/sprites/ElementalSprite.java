@@ -28,7 +28,7 @@ public class ElementalSprite extends MobSprite {
 		
 		texture( Assets.ELEMENTAL );
 		
-		TextureFilm frames = new TextureFilm( texture, 12, 14 );
+		TextureFilm frames = new TextureFilm( texture, 16, 16 );
 		
 		idle = new Animation( 10, true );
 		idle.frames( frames, 0, 1, 2 );

@@ -59,7 +59,7 @@ public class Rat extends Mob {
 	@Override
 	public String description() {
 		return
-			"This mushroom has grow legs to adapt to the dungeon environment." +
+			"This mushroom has grow legs to adapt to the dungeon environment. " +
 			"It looks like it may be delicious with some vegetables and soy sauce.";
 	}
 }

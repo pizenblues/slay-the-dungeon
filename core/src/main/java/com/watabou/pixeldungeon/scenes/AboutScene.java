@@ -36,7 +36,7 @@ import com.watabou.pixeldungeon.ui.Window;
 public class AboutScene extends PixelScene {
 
 	private static final String TXT =
-		"Art, code and music by Pizenblues\n";
+		"Art, code and music by Dr tamagotchi\n";
 
 	private static final String ORIGINALTXT =
 		"Based on the original Pixel Dungeon by Watabou\n";

@@ -26,7 +26,7 @@ public class ThiefSprite extends MobSprite {
 		super();
 		
 		texture( Assets.THIEF );
-		TextureFilm film = new TextureFilm( texture, 12, 13 );
+		TextureFilm film = new TextureFilm( texture, 12, 14 );
 		
 		idle = new Animation( 1, true );
 		idle.frames( film, 0, 0, 0, 1, 0, 0, 0, 0, 1 );

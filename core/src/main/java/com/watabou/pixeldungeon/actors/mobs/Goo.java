@@ -23,10 +23,8 @@ import com.watabou.pixeldungeon.Badges;
 import com.watabou.pixeldungeon.Dungeon;
 import com.watabou.pixeldungeon.Statistics;
 import com.watabou.pixeldungeon.actors.Char;
-import com.watabou.pixeldungeon.actors.blobs.ToxicGas;
+import com.watabou.pixeldungeon.actors.buffs.Burning;
 import com.watabou.pixeldungeon.actors.buffs.Buff;
-import com.watabou.pixeldungeon.actors.buffs.Ooze;
-import com.watabou.pixeldungeon.effects.Speck;
 import com.watabou.pixeldungeon.items.LloydsBeacon;
 import com.watabou.pixeldungeon.items.keys.SkeletonKey;
 import com.watabou.pixeldungeon.items.scrolls.ScrollOfPsionicBlast;
@@ -52,7 +50,6 @@ public class Goo extends Mob {
 		EXP = 10;
 		defenseSkill = 12;
 		spriteClass = GooSprite.class;
-		
 		loot = new LloydsBeacon();
 		lootChance = 0.333f;
 	}
@@ -80,17 +77,6 @@ public class Goo extends Mob {
 	}
 	
 	@Override
-	public boolean act() {
-		
-		if (Level.water[pos] && HP < HT) {
-			sprite.emitter().burst( Speck.factory( Speck.HEALING ), 1 );
-			HP++;
-		}
-		
-		return super.act();
-	}
-	
-	@Override
 	protected boolean canAttack( Char enemy ) {
 		return pumpedUp ? distance( enemy ) <= 2 : super.canAttack( enemy );
 	}
@@ -98,8 +84,7 @@ public class Goo extends Mob {
 	@Override
 	public int attackProc( Char enemy, int damage ) {
 		if (Random.Int( 3 ) == 0) {
-			Buff.affect( enemy, Ooze.class );
-			enemy.sprite.burst( 0x000000, 5 );
+			Buff.affect( enemy, Burning.class ).reignite( enemy );
 		}
 		
 		return damage;
@@ -165,7 +150,7 @@ public class Goo extends Mob {
 			
 			if (Dungeon.visible[pos]) {
 				sprite.showStatus( CharSprite.NEGATIVE, "!!!" );
-				GLog.n( "The beast is charging an attack!" );
+				GLog.n( "The tiny beast is charging an attack!" );
 			}
 				
 			return true;
@@ -221,7 +206,6 @@ public class Goo extends Mob {
 	
 	private static final HashSet<Class<?>> RESISTANCES = new HashSet<Class<?>>();
 	static {
-		RESISTANCES.add( ToxicGas.class );
 		RESISTANCES.add( Death.class );
 		RESISTANCES.add( ScrollOfPsionicBlast.class );
 	}

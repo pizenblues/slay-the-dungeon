@@ -18,12 +18,9 @@
 package com.watabou.pixeldungeon;
 
 public class Assets {
-
 	public static final String ARCS_BG		= "arcs1.png";
 	public static final String ARCS_FG		= "arcs2.png";
 	public static final String DASHBOARD	= "dashboard.png";
-	public static final String FILTERBG	= "filterbg.png";
-	public static final String VIGNETE	= "vignete.png";
 	public static final String BANNERS	= "banners.png";
 	public static final String BADGES	= "badges.png";
 	public static final String LOCKED	= "locked_badge.png";
@@ -161,12 +158,12 @@ public class Assets {
 	public static final String CRAWLS	= "music/lvl4/it cralws back.mp3";
 	public static final String NECROMANCER	= "music/lvl4/dark elves.mp3";
 
-	public static final String INTERHALL	= "music/lvl5/the abomination - intro.mp3";
 	public static final String DANCE	= "music/lvl5/dance macabre.mp3";
 	public static final String ALUMINIUM	= "music/lvl5/aluminum.mp3";
 	public static final String ABYSS	= "music/lvl5/from the abyss.mp3";
 	public static final String FLESH	= "music/lvl5/made of flesh.mp3";
 	public static final String ABOMINATION	= "music/lvl5/the abomination.mp3";
+	public static final String EXTERIOR	= "music/lvl5/the exterior.mp3";
 
 	
 	public static final String SND_CLICK	= "sound effects/snd_click.mp3";
@@ -215,4 +212,9 @@ public class Assets {
 	public static final String SND_BEE		= "sound effects/snd_bee.mp3";
 	public static final String SND_DEGRADE	= "sound effects/snd_degrade.mp3";
 	public static final String SND_MIMIC	= "sound effects/snd_mimic.mp3";
+
+	public static final String SND_QUESTION	= "sound effects/question.mp3";
+	public static final String SND_SCAN	= "sound effects/scan.mp3";
+	public static final String SND_TICK	= "sound effects/tick.mp3";
+	public static final String SND_TICKING	= "sound effects/ticking.mp3";
 }

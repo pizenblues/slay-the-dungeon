@@ -320,11 +320,11 @@ public class Wandmaker extends NPC {
 		{
 			txtQuest1 = 
 				"Oh, what a pleasant surprise to meet a decent person in such place! I came here for a rare ingredient - " +
-				"_corpse dust_. It can be gathered from skeletal remains and there is an ample number of them in the dungeon. " +
+				"mummy dust_. It can be gathered from skeletal remains and there is an ample number of them in the dungeon. " +
 				"Being a magic user, I'm quite able to defend myself against local monsters, but I'm getting lost in no time, " +
 				"it's very embarrassing. Probably you could help me? I would be happy to pay for your service with one of my best wands.";
 			txtQuest2 = 
-				"Any luck with _corpse dust_, %s? Bone piles are the most obvious places to look.";
+				"Any luck with mummy dust_, %s? Bone piles are the most obvious places to look.";
 		}
 		
 		@Override

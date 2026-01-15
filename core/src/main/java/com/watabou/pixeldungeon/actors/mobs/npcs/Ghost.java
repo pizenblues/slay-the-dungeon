@@ -355,12 +355,12 @@ public class Ghost extends NPC {
 	private static final QuestHandler roseQuest = new QuestHandler() {
 		private static final String TXT_ROSE1	=
 			"Hello adventurer... Once I was like you - strong and confident... " +
-			"And now I'm dead... But I can't leave this place... Not until I have my _dried rose_... " +
+			"And now I'm dead... But I can't leave this place... Not until I have my _lucky clover_... " +
 			"It's very important to me... Some monster stole it from my body...";
 		
 		private static final String TXT_ROSE2	=
-			"Please... Help me... _Find the rose_...";
-		
+			"Please... Help me... _Find the clover_...";
+
 		private static final String TXT_ROSE3	= 
 			"Yes! Yes!!! This is it! Please give it to me! " +
 			"And you can take one of these items, maybe they " +

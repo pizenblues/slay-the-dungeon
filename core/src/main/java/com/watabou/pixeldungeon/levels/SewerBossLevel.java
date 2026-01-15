@@ -249,7 +249,7 @@ public class SewerBossLevel extends RegularLevel {
 	public String tileDesc( int tile ) {
 		switch (tile) {
 		case Terrain.EMPTY_DECO:
-			return "Wet yellowish moss covers the floor.";
+			return "Wet moss covers the floor.";
 		default:
 			return super.tileDesc( tile );
 		}

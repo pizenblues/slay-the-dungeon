@@ -42,23 +42,18 @@ public class WndStory extends Window {
 	
 	static {
 		CHAPTERS.put( ID_SEWERS, 
-		"Since Eden left your party, you have wondered around looking for answers on his whereabouts. " +
-		"All the clues led you to this dungeons. Nobody was able to give you an answer about " +
+		"Since Eden left your party, you have wondered around looking for answers on your friend's whereabouts. " +
+		"All the clues led you to this dungeon. Nobody was able to give you an answer about " +
 		"how deep this place really goes." );
 		
 		CHAPTERS.put( ID_PRISON,
-		// ADD DESCRIPTION
-		"Many years ago an underground prison was built here for the most dangerous criminals. At the time it seemed " +
-		"like a very clever idea, because this place indeed was very hard to escape. But soon dark miasma started to permeate " +
-		"from below, driving prisoners and guards insane. In the end the prison was abandoned, though some convicts " +
-		"were left locked up here." );
+		"This humid environment causes moss to grow on the walls and the wooden floor to rot. " +
+		"These abandoned prisons are still haunted by the presence of criminals, some dead and some alive.");
 		
 		CHAPTERS.put( ID_CAVES,
-		// ADD DESCRIPTION
-		"The caves, which stretch down under the abandoned prison, are sparcely populated. They lie too deep to be exploited " +
-		"by the City and they are too poor in minerals to interest the dwarves. In the past there was a trade outpost " +
-		"somewhere here on the route between these two states, but it has perished since the decline of Dwarven Metropolis. " +
-		"Only omnipresent gnolls and subterranean animals dwell here now." );
+		"The dwarf mines can be an oddly beautiful place unless you are claustrophobic. " +
+		"The rocky walls are splashed with precious minerals, and the water running under your feet looks crystalline. " +
+		"In the distance you can hear a hammering sound, perhaps produced by miners still working on this place." );
 		
 		CHAPTERS.put( ID_METROPOLIS,
 		"The royal high mage, who once lived in the halls of this castle, spent years looking for the secret of eternal life."+
@@ -66,7 +61,7 @@ public class WndStory extends Window {
 				"He drove the kingdom of Eldya to its demise. Now ruins are all that remain of the once great castle, and the high mage is damned to wander the castle forever.");
 
 		CHAPTERS.put( ID_HALLS,
-		"The floor feels soft and moist under your boots, as if you were standing in the flesh of an ancient beast. " +
+		"The floor feels soft and moist under your boots, as if you were standing in the flesh of a beast. " +
 		"You can feel how the influence of the cursed object is affecting this place. " +
 		"The putrid smell makes your eyes water, and you feel the need to run away from this hellhole. " +
 		"But turning back is not an option, not when you are so close to your goal. \n\n" +

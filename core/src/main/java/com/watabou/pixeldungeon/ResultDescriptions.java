@@ -40,5 +40,5 @@ public class ResultDescriptions {
 	public static final String OOZE		= "Killed by a caustic ooze on level %d";
 	public static final String FALL		= "Fell to death on level %d";
 	
-	public static final String WIN	= "Obtained the Amulet of Yendor";
+	public static final String WIN	= "Obtained the King's cranium";
 }

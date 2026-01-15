@@ -30,13 +30,13 @@ public class KingSprite extends MobSprite {
 		TextureFilm frames = new TextureFilm( texture, 16, 16 );
 		
 		idle = new Animation( 12, true );
-		idle.frames( frames, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2 );
+		idle.frames( frames, 0, 0, 0, 1, 2,2,2,2,2,2,12,12,12,0 );
 		
 		run = new Animation( 15, true );
 		run.frames( frames, 3, 4, 5, 6, 7, 8 );
 		
 		attack = new Animation( 15, false );
-		attack.frames( frames, 9, 10, 11 );
+		attack.frames( frames, 9,9,10,10,10,10,10,10,11,11,11 );
 		
 		die = new Animation( 8, false );
 		die.frames( frames, 12, 13, 14, 15 );

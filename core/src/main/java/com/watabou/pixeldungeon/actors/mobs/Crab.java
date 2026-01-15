@@ -26,7 +26,7 @@ import com.watabou.utils.Random;
 public class Crab extends Mob {
 
 	{
-		name = "sewer crab";
+		name = "horned frog";
 		spriteClass = CrabSprite.class;
 		
 		HP = HT = 15;
@@ -69,8 +69,7 @@ public class Crab extends Mob {
 	@Override
 	public String description() {
 		return
-			"These huge crabs are at the top of the food chain in the sewers. " +
-			"They are extremely fast and their thick exoskeleton can withstand " +
-			"heavy blows.";
+			"A thick skinned beast that can stand heavy blows. " +
+			"This creature loves the stinky dungeon water. ";
 	}
 }

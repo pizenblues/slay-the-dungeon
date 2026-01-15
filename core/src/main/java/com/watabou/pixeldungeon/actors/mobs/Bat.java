@@ -32,8 +32,8 @@ public class Bat extends Mob {
 		name = "vampire bat";
 		spriteClass = BatSprite.class;
 		
-		HP = HT = 30;
-		defenseSkill = 15;
+		HP = HT = 17;
+		defenseSkill = 7;
 		baseSpeed = 2f;
 		
 		EXP = 7;
