@@ -23,6 +23,7 @@ import com.watabou.pixeldungeon.actors.hero.HeroClass;
 
 public enum Icons {
 
+	INFOICON,
 	SKULL,
 	BUSY,
 	COMPASS, 
@@ -65,6 +66,9 @@ public enum Icons {
 	public static Image get( Icons type ) {
 		Image icon = new Image( Assets.ICONS );
 		switch (type) {
+		case INFOICON:
+			icon.frame( icon.texture.uvRect( 16, 0, 30, 14 ) );
+			break;
 		case SKULL:
 			icon.frame( icon.texture.uvRect( 0, 0, 8, 8 ) );
 			break;
@@ -72,7 +76,7 @@ public enum Icons {
 			icon.frame( icon.texture.uvRect( 8, 0, 16, 8 ) );
 			break;
 		case COMPASS:
-			icon.frame( icon.texture.uvRect( 0, 8, 7, 13 ) );
+			icon.frame( icon.texture.uvRect( 80, 48, 96, 64 ) );
 			break;
 		case PREFS:
 			icon.frame( icon.texture.uvRect( 30, 0, 46, 16 ) );
@@ -150,23 +154,23 @@ public enum Icons {
 			icon.frame( icon.texture.uvRect( 102, 16, 116, 29 ) );
 			break;
 		case RESUME:
-			icon.frame( icon.texture.uvRect( 114, 0, 126, 11 ) );
+			icon.frame( icon.texture.uvRect( 114, 0, 126, 12 ) );
 			break;
-			case STREGTHMINI:
-				icon.frame( icon.texture.uvRect( 80, 32, 88, 40 ) );
-				break;
-			case HEALTHMINI:
-				icon.frame( icon.texture.uvRect( 88, 32, 96, 40 ) );
-				break;
-			case EXPMINI:
-				icon.frame( icon.texture.uvRect( 96, 32, 104, 40 ) );
-				break;
-			case DEPTHMINI:
-				icon.frame( icon.texture.uvRect( 104, 32, 112, 40 ) );
-				break;
-			case GOLDMINI:
-				icon.frame( icon.texture.uvRect( 112, 32, 120, 40 ) );
-				break;
+		case STREGTHMINI:
+			icon.frame( icon.texture.uvRect( 80, 32, 88, 40 ) );
+			break;
+		case HEALTHMINI:
+			icon.frame( icon.texture.uvRect( 88, 32, 96, 40 ) );
+			break;
+		case EXPMINI:
+			icon.frame( icon.texture.uvRect( 96, 32, 104, 40 ) );
+			break;
+		case DEPTHMINI:
+			icon.frame( icon.texture.uvRect( 104, 32, 112, 40 ) );
+			break;
+		case GOLDMINI:
+			icon.frame( icon.texture.uvRect( 112, 32, 120, 40 ) );
+			break;
 		}
 		return icon;
 	}

@@ -28,7 +28,7 @@ import com.watabou.utils.PointF;
 
 public class ScrollPane extends Component {
 
-	protected static final int THUMB_COLOR		= 0xFF7b8073;
+	protected static final int THUMB_COLOR		= 0xFF000000;
 	protected static final float THUMB_ALPHA	= 0.5f;
 	
 	protected TouchController controller;

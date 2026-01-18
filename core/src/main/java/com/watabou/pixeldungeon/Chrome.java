@@ -53,7 +53,7 @@ public class Chrome {
 		case ATTACKBUTTON:
 			return new NinePatch( Assets.CHROME, 22, 18, 16, 14, 3 );
 		case NOTIF:
-			return new NinePatch( Assets.CHROME, 42,18,16,14, 3);
+			return new NinePatch( Assets.CHROME, 42,18,16,15, 3);
 		case SCROLL:
 			return new NinePatch( Assets.CHROME, 32, 32, 32, 32, 5, 11, 5, 11 );
 		case TAB_SET:

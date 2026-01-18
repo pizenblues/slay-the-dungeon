@@ -28,10 +28,10 @@ import com.watabou.pixeldungeon.scenes.RankingsScene;
 import com.watabou.pixeldungeon.scenes.TitleScene;
 import com.watabou.pixeldungeon.ui.Icons;
 import com.watabou.pixeldungeon.ui.RedButton;
+import com.watabou.pixeldungeon.ui.SecondaryButton;
 import com.watabou.pixeldungeon.ui.Window;
 
 public class WndGame extends Window {
-	
 	private static final String TXT_SETTINGS	= "Settings";
 	private static final String TXT_CHALLEGES	= "Challenges";
 	private static final String TXT_RANKINGS	= "Rankings";
@@ -39,7 +39,9 @@ public class WndGame extends Window {
 	private static final String TXT_MENU		= "Main Menu";
 	private static final String TXT_EXIT		= "Exit Game";
 	private static final String TXT_RETURN		= "Return to Game";
-	
+	private static final String TXT_JOURNAL		= "Journal";
+	private static final String TXT_CATALOG		= "Catalog";
+
 	private static final int WIDTH		= 120;
 	private static final int BTN_HEIGHT	= 20;
 	private static final int GAP		= 2;
@@ -50,16 +52,32 @@ public class WndGame extends Window {
 		
 		super();
 		
-		addButton( new RedButton( TXT_SETTINGS ) {
+		addSecondaryButton( new SecondaryButton( TXT_SETTINGS ) {
 			@Override
 			protected void onClick() {
 				hide();
 				GameScene.show( new WndSettings( true ) );
 			}
 		} );
+
+		addButtons(
+				new SecondaryButton( TXT_CATALOG ) {
+					@Override
+					protected void onClick() {
+						hide();
+						GameScene.show( new WndCatalogus() );
+					}
+				}, new SecondaryButton( TXT_JOURNAL ) {
+					@Override
+					protected void onClick() {
+						hide();
+						GameScene.show( new WndJournal() );
+					}
+				}
+		);
 		
 		if (Dungeon.challenges > 0) {
-			addButton( new RedButton( TXT_CHALLEGES ) {
+			addSecondaryButton( new SecondaryButton( TXT_CHALLEGES ) {
 				@Override
 				protected void onClick() {
 					hide();
@@ -67,9 +85,35 @@ public class WndGame extends Window {
 				}
 			} );
 		}
-		
+
+		addButtons(
+			new SecondaryButton( TXT_MENU ) {
+				@Override
+				protected void onClick() {
+					try {
+						Dungeon.saveAll();
+					} catch (IOException e) {
+						// Do nothing
+					}
+					Game.switchScene( TitleScene.class );
+				}
+			}, new SecondaryButton( TXT_EXIT ) {
+				@Override
+				protected void onClick() {
+					Game.instance.finish();
+				}
+			}
+		);
+
 		if (!Dungeon.hero.isAlive()) {
-			
+			addSecondaryButton( new SecondaryButton( TXT_RANKINGS ) {
+				@Override
+				protected void onClick() {
+					InterlevelScene.mode = InterlevelScene.Mode.DESCEND;
+					Game.switchScene( RankingsScene.class );
+				}
+			} );
+
 			RedButton btnStart;
 			addButton( btnStart = new RedButton( TXT_START ) {
 				@Override
@@ -82,34 +126,7 @@ public class WndGame extends Window {
 				}
 			} );
 			btnStart.icon( Icons.get( Dungeon.hero.heroClass ) );
-			
-			addButton( new RedButton( TXT_RANKINGS ) {
-				@Override
-				protected void onClick() {
-					InterlevelScene.mode = InterlevelScene.Mode.DESCEND;
-					Game.switchScene( RankingsScene.class );
-				}
-			} );
 		}
-				
-		addButtons( 
-			new RedButton( TXT_MENU ) {
-				@Override
-				protected void onClick() {
-					try {
-						Dungeon.saveAll();
-					} catch (IOException e) {
-						// Do nothing
-					}
-					Game.switchScene( TitleScene.class );
-				}
-			}, new RedButton( TXT_EXIT ) {
-				@Override
-				protected void onClick() {
-					Game.instance.finish();
-				}
-			} 
-		);
 		
 		addButton( new RedButton( TXT_RETURN ) {
 			@Override
@@ -126,8 +143,14 @@ public class WndGame extends Window {
 		btn.setRect( 0, pos > 0 ? pos += GAP : 0, WIDTH, BTN_HEIGHT );
 		pos += BTN_HEIGHT;
 	}
+
+	private void addSecondaryButton( SecondaryButton btn ) {
+		add( btn );
+		btn.setRect( 0, pos > 0 ? pos += GAP : 0, WIDTH, BTN_HEIGHT );
+		pos += BTN_HEIGHT;
+	}
 	
-	private void addButtons( RedButton btn1, RedButton btn2 ) {
+	private void addButtons( SecondaryButton btn1, SecondaryButton btn2 ) {
 		add( btn1 );
 		btn1.setRect( 0, pos > 0 ? pos += GAP : 0, (WIDTH - GAP) / 2, BTN_HEIGHT );
 		add( btn2 );

@@ -4,15 +4,15 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:8.12.1'
+        classpath 'com.android.tools.build:gradle:8.12.3'
     }
 }
 
 allprojects {
 
     ext {
-        appName = 'Delicious Pixel Dungeon'
-        appPackageName = 'com.drtamagotchi.deliciouspixeldungeon'
+        appName = 'Pixel Dungeon'
+        appPackageName = 'com.watabou.pixeldungeon'
 
         appVersionCode = 74
         appVersionName = '1.9.1'

@@ -20,86 +20,126 @@ package com.watabou.pixeldungeon.windows;
 import java.util.Locale;
 
 import com.watabou.noosa.BitmapText;
+import com.watabou.noosa.BitmapTextMultiline;
 import com.watabou.noosa.Image;
 import com.watabou.pixeldungeon.Dungeon;
-import com.watabou.pixeldungeon.PixelDungeon;
-import com.watabou.pixeldungeon.Statistics;
 import com.watabou.pixeldungeon.actors.hero.Hero;
-import com.watabou.pixeldungeon.scenes.GameScene;
 import com.watabou.pixeldungeon.scenes.PixelScene;
 import com.watabou.pixeldungeon.ui.Icons;
-import com.watabou.pixeldungeon.ui.SecondaryButton;
 import com.watabou.pixeldungeon.utils.Utils;
 import com.watabou.pixeldungeon.ui.Window;
+import com.watabou.gltextures.SmartTexture;
+import com.watabou.gltextures.TextureCache;
+import com.watabou.noosa.TextureFilm;
+import com.watabou.pixeldungeon.Assets;
+import com.watabou.pixeldungeon.actors.buffs.Buff;
+import com.watabou.pixeldungeon.ui.BuffIndicator;
 
 public class WndHero extends Window {
 	private static final String TXT_EXP		= "Experience";
 	private static final String TXT_STR		= "Strength";
 	private static final String TXT_HEALTH	= "Health";
-	private static final String TXT_GOLD	= "Gold Collected";
-	private static final String TXT_DEPTH	= "Maximum Depth";
+	private static final String TXT_DEPTH	= "Current floor";
 	private static final int WIDTH = 112;
-	private static final int HEIGHT	= 112;
-	private static final String TXT_TITLE		= "Level %d %s";
-	private static final String TXT_CATALOGUS	= "Catalogus";
-	private static final String TXT_JOURNAL		= "Journal";
+	private static final int HEIGHT	= 140;
+	private static final String TXT_TITLE		= "%s - Level %d";
 	Image strengthIcon = Icons.STREGTHMINI.get();
 	Image healthIcon = Icons.HEALTHMINI.get();
 	Image expIcon = Icons.EXPMINI.get();
-	Image goldIcon = Icons.GOLDMINI.get();
 	Image depthIcon = Icons.DEPTHMINI.get();
-	private static final int GAP = 5;
+	private static final int GAP = 4;
 	private float pos;
+	private SmartTexture icons;
+	private TextureFilm film;
+	private static final String DOT	= "\u007F";
+	public float width;
 
 	public WndHero() {
 		super();
 		resize( WIDTH, HEIGHT );
-
 		Hero hero = Dungeon.hero;
 
 		BitmapText title = PixelScene.createText(
-				Utils.format( TXT_TITLE, hero.lvl, hero.className() ).toUpperCase( Locale.ENGLISH ), 9 );
+				Utils.format( TXT_TITLE, hero.className(), hero.lvl ).toUpperCase( Locale.ENGLISH ), 9 );
 		title.hardlight( TITLE_COLOR );
 		title.measure();
 		add( title );
 
-		SecondaryButton btnCatalogus = new SecondaryButton( TXT_CATALOGUS ) {
-			@Override
-			protected void onClick() {
-				hide();
-				GameScene.show( new WndCatalogus() );
-			}
-		};
-		btnCatalogus.setRect( 0, title.y + title.height() + 4, btnCatalogus.reqWidth() + 2, btnCatalogus.reqHeight() + 2 );
-		add( btnCatalogus );
+		// stats
 
-		SecondaryButton btnJournal = new SecondaryButton( TXT_JOURNAL ) {
-			@Override
-			protected void onClick() {
-				hide();
-				GameScene.show( new WndJournal() );
-			}
-		};
-		btnJournal.setRect(
-				btnCatalogus.right() + 1, btnCatalogus.top(),
-				btnJournal.reqWidth() + 2, btnJournal.reqHeight() + 2 );
-		add( btnJournal );
-
-		pos = btnCatalogus.bottom() + GAP;
+		pos = 8 + GAP;
 
 		statSlot( TXT_STR, hero.STR(), strengthIcon);
 		statSlot( TXT_HEALTH, hero.HP + "/" + hero.HT, healthIcon);
 		statSlot( TXT_EXP, hero.exp + "/" + hero.maxExp(), expIcon);
-
-		statSlot( TXT_GOLD, Statistics.goldCollected, goldIcon);
-		statSlot( TXT_DEPTH, Statistics.deepestFloor, depthIcon);
+		statSlot( TXT_DEPTH, Dungeon.depth, depthIcon);
 
 		pos += GAP;
 
+		// hero perks
+
+		float dotWidth = 0;
+		String[] items = hero.heroClass.perks();
+
+		for (int i=0; i < items.length; i++) {
+			if (i > 0) {
+				pos++;
+			}
+
+			BitmapText dot = PixelScene.createText( DOT, 4 );
+			dot.y = pos;
+			if (dotWidth == 0) {
+				dot.measure();
+				dotWidth = dot.width();
+			}
+			add( dot );
+
+			BitmapTextMultiline item = PixelScene.createMultiline( items[i], 7 );
+			item.x = dot.x + dotWidth + 2;
+			item.y = pos;
+			item.maxWidth = (int)(WIDTH - dotWidth);
+			item.measure();
+			add( item );
+
+			pos += item.height();
+			float w = item.width();
+			if (w > width) {
+				width = w;
+			}
+		}
+
+		pos = pos+4;
+
+		// BUFF LIST
+
+		icons = TextureCache.get( Assets.BUFFS_SMALL );
+		film = new TextureFilm( icons, 7, 7 );
+
+		for (Buff buff : Dungeon.hero.buffs()) {
+			int index = buff.icon();
+			if (index != BuffIndicator.NONE) {
+				buffSlot(buff);
+			}
+		}
+
+	}
+
+	private void buffSlot( Buff buff ) {
+		Image icon = new Image( icons );
+		icon.frame( film.get( buff.icon() ) );
+		icon.y = pos;
+		add( icon );
+
+		BitmapText txt = PixelScene.createText( buff.toString(), 7 );
+		txt.x = icon.width + 2;
+		txt.y = pos + (int)(icon.height - txt.baseLine()) / 2;
+		txt.hardlight( TITLE_COLOR );
+		add( txt );
+
+		pos += GAP + icon.height;
 	}
 
 	private void statSlot( String label, String value, Image icon) {
-
 		add(icon);
 		icon.y = pos;
 		icon.x = 0;

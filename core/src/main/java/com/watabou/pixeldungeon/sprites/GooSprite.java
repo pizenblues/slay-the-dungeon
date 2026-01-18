@@ -95,7 +95,7 @@ public class GooSprite extends MobSprite {
 		public GooParticle() {
 			super();
 			
-			color( 0x000000 );
+			color( 0xf0e276 );
 			lifespan = 0.3f;
 			
 			acc.set( 0, +50 );

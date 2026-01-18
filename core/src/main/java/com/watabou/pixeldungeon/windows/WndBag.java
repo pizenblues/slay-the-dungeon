@@ -73,7 +73,7 @@ public class WndBag extends WndTabbed {
 	
 	protected static final int TAB_WIDTH	= 25;
 	
-	protected static final int TITLE_HEIGHT	= 12;
+	protected static final int TITLE_HEIGHT	= 16;
 	
 	private Listener listener;
 	private WndBag.Mode mode;
@@ -109,9 +109,10 @@ public class WndBag extends WndTabbed {
 		BitmapText txtTitle = PixelScene.createText( title != null ? title : Utils.capitalize( bag.name() ), 9 );
 		txtTitle.hardlight( TITLE_COLOR );
 		txtTitle.measure();
-		txtTitle.x = (int)(slotsWidth - txtTitle.width()) / 2;
-		txtTitle.y = (int)(TITLE_HEIGHT - txtTitle.height()) / 2;
+		txtTitle.y = 2;
 		add( txtTitle );
+
+		// bag
 		
 		placeItems( bag );
 		

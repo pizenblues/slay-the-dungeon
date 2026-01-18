@@ -84,7 +84,8 @@ public class Goo extends Mob {
 	@Override
 	public int attackProc( Char enemy, int damage ) {
 		if (Random.Int( 3 ) == 0) {
-			Buff.affect( enemy, Burning.class ).reignite( enemy );
+			Buff.affect( enemy, Burning.class );
+			enemy.sprite.burst( 0xf0e276, 5 );
 		}
 		
 		return damage;

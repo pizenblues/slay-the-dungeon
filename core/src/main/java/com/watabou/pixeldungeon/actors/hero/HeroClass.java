@@ -49,36 +49,32 @@ public enum HeroClass {
 	}
 	
 	public static final String[] WAR_PERKS = {
-		"Warriors start with 11 points of Strength.",
-		"Warriors start with a unique short sword. This sword can be later \"reforged\" to upgrade another melee weapon.",
-		"Warriors are less proficient with missile weapons.",
+		"Starts with 11 points of Strength and an unique sword.",
+		"Less proficient with missile weapons.",
 		"Any piece of food restores some health when eaten.",
 		"Potions of Strength are identified from the beginning.",
 	};
 	
 	public static final String[] MAG_PERKS = {
-		"Mages start with a unique Wand of Magic Missile. This wand can be later \"disenchanted\" to upgrade another wand.",
-		"Mages recharge their wands faster.",
+		"Starts with a unique Wand of Magic Missile.",
+		"Recharges their wands faster.",
 		"When eaten, any piece of food restores 1 charge for all wands in the inventory.",
-		"Mages can use wands as a melee weapon.",
 		"Scrolls of Identify are identified from the beginning."
 	};
 	
 	public static final String[] ROG_PERKS = {
-		"Rogues start with a Ring of Shadows+1.",
-		"Rogues identify a type of a ring on equipping it.",
-		"Rogues are proficient with light armor, dodging better while wearing one.",
-		"Rogues are proficient in detecting hidden doors and traps.",
-		"Rogues can go without food longer.",
+		"Starts with a Ring of Shadows+1.",
+		"Identify a type of a ring on equipping it.",
+		"Proficient in detecting hidden doors and traps.",
+		"Can go without food longer.",
 		"Scrolls of Magic Mapping are identified from the beginning."
 	};
 	
 	public static final String[] HUN_PERKS = {
-		"Tank start with 15 points of Health.",
-		"Tank start with a unique upgradeable boomerang.",
-		"Tank are proficient with missile weapons and get a damage bonus for excessive strength when using them.",
-		"Tank gain more health from dewdrops.",
-		"Tank sense neighbouring monsters even if they are hidden behind obstacles."
+		"Starts with 15 points of Health and a unique shield.",
+		"Gets damage bonus with missile weapons.",
+		"Gain more health from berries.",
+		"Sense neighbouring monsters even if they are hidden behind obstacles."
 	};
 	
 	public void initHero( Hero hero ) {
