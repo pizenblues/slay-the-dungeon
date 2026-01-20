@@ -22,7 +22,7 @@ import com.watabou.pixeldungeon.sprites.ItemSpriteSheet;
 public class Longsword extends MeleeWeapon {
 	
 	{
-		name = "longsword";
+		name = "melted devil";
 		image = ItemSpriteSheet.LONG_SWORD;
 	}
 	
@@ -32,6 +32,6 @@ public class Longsword extends MeleeWeapon {
 	
 	@Override
 	public String desc() {
-		return "This towering blade inflicts heavy damage by investing its heft into every cut.";
+		return "The blade of this demonic weapon looks like boiling lava.";
 	}
 }

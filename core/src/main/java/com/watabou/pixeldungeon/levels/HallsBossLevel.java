@@ -64,7 +64,7 @@ public class HallsBossLevel extends Level {
 	
 	private static final String STAIRS	= "stairs";
 	private static final String ENTERED	= "entered";
-	private static final String DROPPED	= "droppped";
+	private static final String DROPPED	= "dropped";
 	
 	@Override
 	public void storeInBundle( Bundle bundle ) {

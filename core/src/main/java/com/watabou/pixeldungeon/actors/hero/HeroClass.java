@@ -156,6 +156,15 @@ public enum HeroClass {
 		//values for testing
 		hero.STR = hero.STR + 200;
 		hero.HP = (hero.HT += 200);
+		new PotionOfStrength( ).identify().collect();
+		new PotionOfStrength( ).identify().collect();
+		new PotionOfStrength( ).identify().collect();
+		new PotionOfStrength( ).identify().collect();
+		new PotionOfStrength( ).identify().collect();
+		new PotionOfStrength( ).identify().collect();
+		new PotionOfStrength( ).identify().collect();
+		new PotionOfStrength( ).identify().collect();
+		new PotionOfStrength( ).identify().collect();
 		new PotionOfHealing( ).identify().collect();
 		new PotionOfHealing( ).identify().collect();
 		new PotionOfHealing( ).identify().collect();
@@ -167,6 +176,17 @@ public enum HeroClass {
 		new PotionOfHealing( ).identify().collect();
 		new PotionOfHealing( ).identify().collect();
 		new PotionOfHealing( ).identify().collect();
+		new PotionOfHealing( ).identify().collect();
+		new PotionOfHealing( ).identify().collect();
+		new PotionOfHealing( ).identify().collect();
+		new PotionOfHealing( ).identify().collect();
+		new PotionOfHealing( ).identify().collect();
+		new ScrollOfMagicMapping( ).identify().collect();
+		new ScrollOfMagicMapping( ).identify().collect();
+		new ScrollOfMagicMapping( ).identify().collect();
+		new ScrollOfMagicMapping( ).identify().collect();
+		new ScrollOfMagicMapping( ).identify().collect();
+		new ScrollOfMagicMapping( ).identify().collect();
 		new ScrollOfMagicMapping( ).identify().collect();
 		new ScrollOfMagicMapping( ).identify().collect();
 		new ScrollOfMagicMapping( ).identify().collect();

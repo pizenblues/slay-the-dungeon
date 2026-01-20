@@ -18,6 +18,7 @@
 package com.watabou.pixeldungeon.ui;
 import java.util.ArrayList;
 
+import com.watabou.noosa.BitmapText;
 import com.watabou.noosa.NinePatch;
 import com.watabou.noosa.ui.Button;
 import com.watabou.pixeldungeon.Chrome;
@@ -27,6 +28,7 @@ import com.watabou.pixeldungeon.actors.mobs.Mob;
 import com.watabou.pixeldungeon.levels.Level;
 import com.watabou.pixeldungeon.scenes.PixelScene;
 import com.watabou.pixeldungeon.sprites.CharSprite;
+import com.watabou.utils.PointF;
 import com.watabou.utils.Random;
 
 public class AttackIndicator extends Button {
@@ -36,8 +38,9 @@ public class AttackIndicator extends Button {
 	private CharSprite sprite = null;
 	private static Mob lastTarget = null;
 	private ArrayList<Mob> candidates = new ArrayList<Mob>();
-	protected NinePatch bg;
+	protected NinePatch buttonBackground;
 	protected float lightness = 0;
+	private BitmapText txtAttack = new BitmapText("ATTACK!", PixelScene.font1x);
 	
 	public AttackIndicator() {
 		super();
@@ -50,16 +53,16 @@ public class AttackIndicator extends Button {
 	@Override
 	protected void createChildren() {
 		super.createChildren();
-		bg = Chrome.get( Chrome.Type.ATTACKBUTTON );
-		add( bg );
+		buttonBackground = Chrome.get( Chrome.Type.ATTACKBUTTON );
+		add( buttonBackground );
 	}
 	
 	@Override
 	protected void layout() {
 		super.layout();
-		bg.x = x;
-		bg.y = y;
-		bg.size( width, height );
+		buttonBackground.x = x;
+		buttonBackground.y = y;
+		buttonBackground.size( width, height );
 
 		if (sprite != null) {
 			sprite.x = x + (width - sprite.width()) / 2;
@@ -104,13 +107,13 @@ public class AttackIndicator extends Button {
 				flash();
 			}
 		} else {
-			if (!bg.visible) {
+			if (!buttonBackground.visible) {
 				flash();
 			}
 		}
 		
 		visible( lastTarget != null );
-		enable( bg.visible );
+		enable( buttonBackground.visible );
 	}
 	
 	private void updateImage() {
@@ -122,14 +125,21 @@ public class AttackIndicator extends Button {
 		
 		try {
 			sprite = lastTarget.spriteClass.newInstance();
-			sprite.idle();
+			sprite.portrait();
 			sprite.paused = true;
 			add( sprite );
+			add( txtAttack );
 
 			sprite.x = x + (width - sprite.width()) / 2 + 1;
-			sprite.y = (y + (height - sprite.height()) / 2) - 3;
+			sprite.y = (y + (height - sprite.height()) / 2);
+
+			txtAttack.x = x + 3;
+			txtAttack.y = y + 24;
+			txtAttack.scale = new PointF(0.7f,0.7f);
+
 			PixelScene.align( sprite );
-			
+			PixelScene.align( txtAttack );
+
 		} catch (Exception e) {
 		}
 	}
@@ -143,9 +153,10 @@ public class AttackIndicator extends Button {
 	}
 	
 	private void visible( boolean value ) {
-		bg.visible = value;
+		buttonBackground.visible = value;
 		if (sprite != null) {
 			sprite.visible = value;
+			txtAttack.visible = value;
 		}
 	}
 	

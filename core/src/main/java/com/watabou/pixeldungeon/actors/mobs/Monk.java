@@ -37,7 +37,7 @@ public class Monk extends Mob {
 	public static final String TXT_DISARM	= "%s has knocked the %s from your hands!";
 	
 	{
-		name = "dwarf monk";
+		name = "Goblin";
 		spriteClass = MonkSprite.class;
 		
 		HP = HT = 70;
@@ -103,8 +103,8 @@ public class Monk extends Mob {
 	@Override
 	public String description() {
 		return
-			"These monks are fanatics, who devoted themselves to protecting their city's secrets from all aliens. " +
-			"They don't use any armor or weapons, relying solely on the art of hand-to-hand combat.";
+			"This small humanoid creature looks frenetic. Don't overestimated this goblin because of it's size, " +
+			"be careful of their quick attacks, capable of unarming you.";
 	}
 	
 	private static final HashSet<Class<?>> IMMUNITIES = new HashSet<Class<?>>();

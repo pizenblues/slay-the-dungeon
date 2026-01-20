@@ -22,7 +22,7 @@ import com.watabou.pixeldungeon.sprites.ItemSpriteSheet;
 public class Quarterstaff extends MeleeWeapon {
 
 	{
-		name = "glaive";
+		name = "lance";
 		image = ItemSpriteSheet.QUARTERSTAFF;
 	}
 	

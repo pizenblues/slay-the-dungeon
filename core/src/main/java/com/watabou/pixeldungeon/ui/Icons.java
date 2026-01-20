@@ -57,7 +57,8 @@ public enum Icons {
 	HEALTHMINI,
 	EXPMINI,
 	DEPTHMINI,
-	GOLDMINI;
+	GOLDMINI,
+	HELP;
 	
 	public Image get() {
 		return get( this );
@@ -90,8 +91,8 @@ public enum Icons {
 		case WATA:
 			icon.frame( icon.texture.uvRect( 30, 16, 45, 26 ) );
 			break;
-			case PIZEN:
-				icon.frame(icon.texture.uvRect(64,48,79,63));
+		case PIZEN:
+			icon.frame(icon.texture.uvRect(64,48,79,63));
 			break;
 		case WARRIOR:
 			icon.frame( icon.texture.uvRect( 0, 30, 16, 46 ) );
@@ -170,6 +171,9 @@ public enum Icons {
 			break;
 		case GOLDMINI:
 			icon.frame( icon.texture.uvRect( 112, 32, 120, 40 ) );
+			break;
+		case HELP:
+			icon.frame( icon.texture.uvRect( 17, 15, 29, 30 ) );
 			break;
 		}
 		return icon;

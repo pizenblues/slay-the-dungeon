@@ -51,40 +51,38 @@ public class WndGame extends Window {
 	public WndGame() {
 		
 		super();
-		
-		addSecondaryButton( new SecondaryButton( TXT_SETTINGS ) {
+		SecondaryButton settingsButton;
+		SecondaryButton catalogButton;
+		SecondaryButton journalButton;
+		SecondaryButton rankingButton;
+		RedButton resumeButton;
+
+		addSecondaryButton( settingsButton = new SecondaryButton( TXT_SETTINGS ) {
 			@Override
 			protected void onClick() {
 				hide();
 				GameScene.show( new WndSettings( true ) );
 			}
 		} );
+		settingsButton.icon(Icons.PREFS.get());
 
-		addButtons(
-				new SecondaryButton( TXT_CATALOG ) {
-					@Override
-					protected void onClick() {
-						hide();
-						GameScene.show( new WndCatalogus() );
-					}
-				}, new SecondaryButton( TXT_JOURNAL ) {
-					@Override
-					protected void onClick() {
-						hide();
-						GameScene.show( new WndJournal() );
-					}
-				}
-		);
-		
-		if (Dungeon.challenges > 0) {
-			addSecondaryButton( new SecondaryButton( TXT_CHALLEGES ) {
-				@Override
-				protected void onClick() {
-					hide();
-					GameScene.show( new WndChallenges( Dungeon.challenges, false ) );
-				}
-			} );
-		}
+		addSecondaryButton( catalogButton = new SecondaryButton( TXT_CATALOG ) {
+			@Override
+			protected void onClick() {
+				hide();
+				GameScene.show( new WndCatalogus() );
+			}
+		} );
+		catalogButton.icon(Icons.BACKPACK.get());
+
+		addSecondaryButton( journalButton = new SecondaryButton( TXT_JOURNAL ) {
+			@Override
+			protected void onClick() {
+				hide();
+				GameScene.show( new WndJournal() );
+			}
+		} );
+		journalButton.icon(Icons.HELP.get());
 
 		addButtons(
 			new SecondaryButton( TXT_MENU ) {
@@ -128,12 +126,13 @@ public class WndGame extends Window {
 			btnStart.icon( Icons.get( Dungeon.hero.heroClass ) );
 		}
 		
-		addButton( new RedButton( TXT_RETURN ) {
+		addButton( resumeButton = new RedButton( TXT_RETURN ) {
 			@Override
 			protected void onClick() {
 				hide();
 			}
 		} );
+		resumeButton.icon(Icons.EXIT.get());
 		
 		resize( WIDTH, pos );
 	}

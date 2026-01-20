@@ -19,7 +19,7 @@ package com.watabou.pixeldungeon.ui;
 
 import com.watabou.pixeldungeon.scenes.PixelScene;
 
-public class CheckBox extends RedButton {
+public class CheckBox extends SecondaryButton {
 
 	private boolean checked = false;
 	

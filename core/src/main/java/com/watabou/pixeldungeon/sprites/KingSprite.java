@@ -40,6 +40,9 @@ public class KingSprite extends MobSprite {
 		
 		die = new Animation( 8, false );
 		die.frames( frames, 12, 13, 14, 15 );
+
+		portrait = new Animation( 8, false );
+		portrait.frames( frames, 16 );
 		
 		play( idle );
 	}

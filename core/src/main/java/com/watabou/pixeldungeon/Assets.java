@@ -213,8 +213,13 @@ public class Assets {
 	public static final String SND_DEGRADE	= "sound effects/snd_degrade.mp3";
 	public static final String SND_MIMIC	= "sound effects/snd_mimic.mp3";
 
-	public static final String SND_QUESTION	= "sound effects/question.mp3";
-	public static final String SND_SCAN	= "sound effects/scan.mp3";
-	public static final String SND_TICK	= "sound effects/tick.mp3";
-	public static final String SND_TICKING	= "sound effects/ticking.mp3";
+	public static final String SND_QUESTION	= "sound effects/snd_question.mp3";
+	public static final String SND_SCAN	= "sound effects/snd_scan.mp3";
+	public static final String SND_TICK	= "sound effects/snd_tick.mp3";
+	public static final String SND_TICKING	= "sound effects/snd_ticking.mp3";
+
+	public static final String SND_WARRIOR	= "sound effects/selection-warrior.mp3";
+	public static final String SND_ROGUE	= "sound effects/selection-rogue.mp3";
+	public static final String SND_MAGE	= "sound effects/selection-mage.mp3";
+	public static final String SND_TANK	= "sound effects/selection-tank.mp3";
 }

@@ -30,6 +30,7 @@ import com.watabou.noosa.ui.Button;
 import com.watabou.noosa.ui.Component;
 import com.watabou.pixeldungeon.Assets;
 import com.watabou.pixeldungeon.Dungeon;
+import com.watabou.pixeldungeon.actors.hero.Hero;
 import com.watabou.pixeldungeon.effects.particles.BloodParticle;
 import com.watabou.pixeldungeon.items.keys.IronKey;
 import com.watabou.pixeldungeon.scenes.GameScene;
@@ -41,12 +42,13 @@ import com.watabou.utils.PointF;
 public class StatusPane extends Component {
 	private NinePatch shield;
 	private Emitter blood;
-	private int lastTier = 0;
 	private Image hp;
 	private Image exp;
 	private int lastKeys = -1;
+	private int currentSTR = 0;
 	private BitmapText depth;
 	private BitmapText keys;
+	private BitmapText strength;
 	private DangerIndicator danger;
 	private LootIndicator loot;
 	private ResumeButton resume;
@@ -63,6 +65,7 @@ public class StatusPane extends Component {
 		add( new TouchArea( 0, 0, 50, 50 ) {
 			@Override
 			protected void onClick( Touch touch ) {
+				Sample.INSTANCE.play( Assets.SND_CLICK );
 				Image sprite = Dungeon.hero.sprite;
 				if (!sprite.isVisible()) {
 					Camera.main.focusOn( sprite );
@@ -96,17 +99,22 @@ public class StatusPane extends Component {
 		exp = new Image( Assets.XP_BAR );
 		add( exp );
 		
-		depth = new BitmapText("FLOOR:"+Integer.toString( Dungeon.depth ), PixelScene.font1x );
-		depth.scale = new PointF(0.7f, 0.7f);
+		depth = new BitmapText("FLOOR "+Integer.toString( Dungeon.depth ), PixelScene.font1x );
+		depth.scale = new PointF(0.75f, 0.75f);
 		depth.hardlight( 0xCACFC2 );
 		depth.measure();
 		add( depth );
 		
 		Dungeon.hero.belongings.countIronKeys();
 		keys = new BitmapText( PixelScene.font1x );
-		keys.scale = new PointF(0.7f, 0.7f);
+		keys.scale = new PointF(0.75f, 0.75f);
 		keys.hardlight( 0xCACFC2 );
 		add( keys );
+
+		strength = new BitmapText( PixelScene.font1x );
+		strength.scale = new PointF(0.75f, 0.75f);
+		strength.hardlight( 0xFFEBA4 );
+		add( strength );
 		
 		danger = new DangerIndicator();
 		add( danger );
@@ -125,7 +133,9 @@ public class StatusPane extends Component {
 	protected void layout() {
 		height = 32;
 		shield.size( width, shield.height );
-		
+
+		buffs.setPos( 3, 44 );
+
 		compass.x = 35;
 		compass.y = 28;
 
@@ -135,14 +145,16 @@ public class StatusPane extends Component {
 		exp.x = 58;
 		exp.y = 7;
 
-		depth.x = 48;
-		depth.y = 12;
+		strength.x = 48;
+		strength.y = 12;
 
+		keys.x = 58;
 		keys.y = 12;
 
-		layoutTags();
+		depth.x = 77;
+		depth.y = 12;
 
-		buffs.setPos( 3, 44 );
+		layoutTags();
 
 		btnMenu.setPos( width - btnMenu.width(), 1 );
 	}
@@ -209,14 +221,13 @@ public class StatusPane extends Component {
 		int k = IronKey.curDepthQuantity;
 		if (k != lastKeys) {
 			lastKeys = k;
-			keys.text("KEYS:"+Integer.toString( lastKeys ) );
-			keys.measure();
-			keys.x = 68;
+			keys.text("KEYS "+Integer.toString( lastKeys ) );
 		}
 		
-		int tier = Dungeon.hero.tier();
-		if (tier != lastTier) {
-			lastTier = tier;
+		int heroSTR = Dungeon.hero.STR();
+		if (currentSTR != heroSTR) {
+			currentSTR = heroSTR;
+			strength.text( ":"+ Integer.toString(currentSTR));
 		}
 	}
 	
@@ -256,6 +267,7 @@ public class StatusPane extends Component {
 		
 		@Override
 		protected void onClick() {
+			Sample.INSTANCE.play( Assets.SND_CLICK );
 			GameScene.show( new WndGame() );
 		}
 	}

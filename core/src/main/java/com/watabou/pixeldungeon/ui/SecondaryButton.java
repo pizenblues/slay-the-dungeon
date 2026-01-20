@@ -44,8 +44,9 @@ public class SecondaryButton extends Button {
         text.y = y + (int)(height - text.baseLine()) / 2;
 
         if (icon != null) {
-            icon.x = x + text.x - icon.width() - 2;
             icon.y = y + (height - icon.height()) / 2;
+            text.x = x + icon.width + (int)(width - text.width()) / 2;
+            icon.x = x + text.x - icon.width() - 2;
         }
     };
 

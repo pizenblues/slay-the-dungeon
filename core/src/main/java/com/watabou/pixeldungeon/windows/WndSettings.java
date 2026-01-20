@@ -23,7 +23,7 @@ import com.watabou.pixeldungeon.Assets;
 import com.watabou.pixeldungeon.PixelDungeon;
 import com.watabou.pixeldungeon.scenes.PixelScene;
 import com.watabou.pixeldungeon.ui.CheckBox;
-import com.watabou.pixeldungeon.ui.RedButton;
+import com.watabou.pixeldungeon.ui.SecondaryButton;
 import com.watabou.pixeldungeon.ui.Toolbar;
 import com.watabou.pixeldungeon.ui.Window;
 
@@ -51,8 +51,8 @@ public class WndSettings extends Window {
 	private static final int BTN_HEIGHT	= 20;
 	private static final int GAP 		= 2;
 	
-	private RedButton btnZoomOut;
-	private RedButton btnZoomIn;
+	private SecondaryButton btnZoomOut;
+	private SecondaryButton btnZoomIn;
 	
 	public WndSettings( boolean inGame ) {
 		super();
@@ -62,7 +62,7 @@ public class WndSettings extends Window {
 		if (inGame) {
 			int w = BTN_HEIGHT;
 			
-			btnZoomOut = new RedButton( TXT_ZOOM_OUT ) {
+			btnZoomOut = new SecondaryButton( TXT_ZOOM_OUT ) {
 				@Override
 				protected void onClick() {
 					zoom( Camera.main.zoom - 1 );
@@ -70,7 +70,7 @@ public class WndSettings extends Window {
 			};
 			add( btnZoomOut.setRect( 0, 0, w, BTN_HEIGHT) );
 			
-			btnZoomIn = new RedButton( TXT_ZOOM_IN ) {
+			btnZoomIn = new SecondaryButton( TXT_ZOOM_IN ) {
 				@Override
 				protected void onClick() {
 					zoom( Camera.main.zoom + 1 );
@@ -78,7 +78,7 @@ public class WndSettings extends Window {
 			};
 			add( btnZoomIn.setRect( WIDTH - w, 0, w, BTN_HEIGHT) );
 			
-			add( new RedButton( TXT_ZOOM_DEFAULT ) {
+			add( new SecondaryButton( TXT_ZOOM_DEFAULT ) {
 				@Override
 				protected void onClick() {
 					zoom( PixelScene.defaultZoom );
@@ -165,7 +165,7 @@ public class WndSettings extends Window {
 			
 		} else {
 			
-			RedButton btnOrientation = new RedButton( orientationText() ) {
+			SecondaryButton btnOrientation = new SecondaryButton( orientationText() ) {
 				@Override
 				protected void onClick() {
 					PixelDungeon.landscape( !PixelDungeon.landscape() );

@@ -22,7 +22,7 @@ import com.watabou.pixeldungeon.sprites.ItemSpriteSheet;
 public class Glaive extends MeleeWeapon {
 
 	{
-		name = "glaive";
+		name = "king's glaive";
 		image = ItemSpriteSheet.GLAIVE;
 	}
 	
@@ -32,6 +32,6 @@ public class Glaive extends MeleeWeapon {
 	
 	@Override
 	public String desc() {
-		return "A polearm consisting of a sword blade on the end of a pole.";
+		return "A beautiful long glaive, used by the king's guard. The end is made of solid gold.";
 	}
 }

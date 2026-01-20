@@ -42,7 +42,7 @@ public class Warlock extends Mob implements Callback {
 	private static final String TXT_SHADOWBOLT_KILLED = "%s's shadow bolt killed you...";
 	
 	{
-		name = "dwarf warlock";
+		name = "sorcerer";
 		spriteClass = WarlockSprite.class;
 		
 		HP = HT = 70;
@@ -128,9 +128,9 @@ public class Warlock extends Mob implements Callback {
 	@Override
 	public String description() {
 		return
-			"When dwarves' interests have shifted from engineering to arcane arts, " +
-			"warlocks have come to power in the city. They started with elemental magic, " +
-			"but soon switched to demonology and necromancy.";
+			"A dark wizard, you can't see a lot of his face behind that golden mask. " +
+			"Rumors said the necromancer who haunts this floor once had a following of wizards who wanted to learn his dark ways. " +
+					"Some of his most loyal followers became a cult, and some still wander around this abandoned palace.";
 	}
 	
 	private static final HashSet<Class<?>> RESISTANCES = new HashSet<Class<?>>();

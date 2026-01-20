@@ -219,7 +219,7 @@ public class GameScene extends PixelScene {
 		
 		log = new GameLog();
 		log.camera = uiCamera;
-		log.setRect( 4, toolbar.top() - 8, uiCamera.width - 4,  0 );
+		log.setRect( 4, toolbar.top() - 8, uiCamera.width - 8,  0 );
 		add( log );
 		
 		busy = new BusyIndicator();
@@ -555,6 +555,8 @@ public class GameScene extends PixelScene {
 		gameOverBanner.show( 0x000000, 1f );
 		scene.showBanner( gameOverBanner );
 
+		Sample.INSTANCE.play( Assets.SND_DEATH );
+
 		RedButton btnRestart = new RedButton( TXT_START ){
 			@Override
 			protected void onClick() {
@@ -578,7 +580,7 @@ public class GameScene extends PixelScene {
 	public static void bossSlain() {
 		if (Dungeon.hero.isAlive()) {
 			Banner bossSlain = new Banner( BannerSprites.get( BannerSprites.Type.BOSS_SLAIN ) );
-			bossSlain.show( 0xFFFFFF, 0.3f, 5f );
+			bossSlain.show( 0xFFFFFF, 0.2f, 2f );
 			scene.showBanner( bossSlain );
 			
 			Sample.INSTANCE.play( Assets.SND_BOSS );

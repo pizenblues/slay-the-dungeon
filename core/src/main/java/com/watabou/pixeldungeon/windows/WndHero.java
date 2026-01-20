@@ -36,19 +36,21 @@ import com.watabou.pixeldungeon.actors.buffs.Buff;
 import com.watabou.pixeldungeon.ui.BuffIndicator;
 
 public class WndHero extends Window {
-	private static final String TXT_EXP		= "Experience";
-	private static final String TXT_STR		= "Strength";
-	private static final String TXT_HEALTH	= "Health";
-	private static final String TXT_DEPTH	= "Current floor";
-	private static final int WIDTH = 112;
-	private static final int HEIGHT	= 140;
+	private static final String TXT_EXP		= "XP";
+	private static final String TXT_STR		= "STR";
+	private static final String TXT_HEALTH	= "HP";
+	private static final String TXT_DEPTH	= "FLOOR";
+	private static final String TEXT_SEP	= "------------------------------------";
+	private static final int WIDTH = 120;
+	private static final int HEIGHT	= 160;
 	private static final String TXT_TITLE		= "%s - Level %d";
 	Image strengthIcon = Icons.STREGTHMINI.get();
 	Image healthIcon = Icons.HEALTHMINI.get();
 	Image expIcon = Icons.EXPMINI.get();
 	Image depthIcon = Icons.DEPTHMINI.get();
-	private static final int GAP = 4;
+	private static final int GAP = 5;
 	private float pos;
+	private float positionX;
 	private SmartTexture icons;
 	private TextureFilm film;
 	private static final String DOT	= "\u007F";
@@ -58,23 +60,30 @@ public class WndHero extends Window {
 		super();
 		resize( WIDTH, HEIGHT );
 		Hero hero = Dungeon.hero;
+		pos = 8;
 
 		BitmapText title = PixelScene.createText(
 				Utils.format( TXT_TITLE, hero.className(), hero.lvl ).toUpperCase( Locale.ENGLISH ), 9 );
 		title.hardlight( TITLE_COLOR );
-		title.measure();
 		add( title );
+
+		BitmapText separator0 = PixelScene.createText(TEXT_SEP, 9 );
+		add( separator0 );
+		separator0.y = pos;
+		pos += 8;
+
 
 		// stats
 
-		pos = 8 + GAP;
-
-		statSlot( TXT_STR, hero.STR(), strengthIcon);
 		statSlot( TXT_HEALTH, hero.HP + "/" + hero.HT, healthIcon);
 		statSlot( TXT_EXP, hero.exp + "/" + hero.maxExp(), expIcon);
+		statSlot( TXT_STR, ":"+hero.STR(), strengthIcon);
 		statSlot( TXT_DEPTH, Dungeon.depth, depthIcon);
 
-		pos += GAP;
+		BitmapText separator1 = PixelScene.createText(TEXT_SEP, 9 );
+		add( separator1 );
+		separator1.y = pos + 20;
+		pos += 24 + GAP;
 
 		// hero perks
 
@@ -97,7 +106,7 @@ public class WndHero extends Window {
 			BitmapTextMultiline item = PixelScene.createMultiline( items[i], 7 );
 			item.x = dot.x + dotWidth + 2;
 			item.y = pos;
-			item.maxWidth = (int)(WIDTH - dotWidth);
+			item.maxWidth = (int)(WIDTH - dotWidth - 5);
 			item.measure();
 			add( item );
 
@@ -108,7 +117,10 @@ public class WndHero extends Window {
 			}
 		}
 
-		pos = pos+4;
+		BitmapText separator2 = PixelScene.createText(TEXT_SEP, 9 );
+		add( separator2 );
+		separator2.y = pos;
+		pos += GAP + 4;
 
 		// BUFF LIST
 
@@ -124,6 +136,32 @@ public class WndHero extends Window {
 
 	}
 
+	private void statSlot( String label, String value, Image icon) {
+
+		add(icon);
+		icon.y = pos;
+		icon.x = positionX;
+
+		BitmapText txt = PixelScene.createText( label, 7 );
+		txt.y = pos+9;
+		txt.x = positionX;
+		txt.measure();
+		add( txt );
+
+		BitmapText stat = PixelScene.createText( value, 7 );
+		stat.hardlight( 0xFFEBA4 );
+		stat.x = positionX;
+		stat.y = pos + txt.height() + 8;
+		stat.measure();
+		add( stat );
+
+		positionX += 10 + stat.width();
+	}
+
+	private void statSlot( String label, int value, Image icon) {
+		statSlot( label, Integer.toString( value ), icon);
+	}
+
 	private void buffSlot( Buff buff ) {
 		Image icon = new Image( icons );
 		icon.frame( film.get( buff.icon() ) );
@@ -136,30 +174,7 @@ public class WndHero extends Window {
 		txt.hardlight( TITLE_COLOR );
 		add( txt );
 
-		pos += GAP + icon.height;
-	}
-
-	private void statSlot( String label, String value, Image icon) {
-		add(icon);
-		icon.y = pos;
-		icon.x = 0;
-
-		BitmapText txt = PixelScene.createText( label, 8 );
-		txt.y = pos;
-		txt.x = 12;
-		add( txt );
-
-		txt = PixelScene.createText( value, 8 );
-		txt.measure();
-		txt.x = PixelScene.align( WIDTH * 0.75f );
-		txt.y = pos;
-		add( txt );
-
-		pos += GAP + txt.baseLine();
-	}
-
-	private void statSlot( String label, int value, Image icon) {
-		statSlot( label, Integer.toString( value ), icon);
+		pos += 2 + icon.height;
 	}
 
 	public float height() {

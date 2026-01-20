@@ -63,7 +63,8 @@ public class CharSprite extends MovieClip implements Tweener.Listener, MovieClip
 	protected Animation operate;
 	protected Animation zap;
 	protected Animation die;
-	
+	protected Animation portrait;
+
 	protected Callback animCallback;
 	
 	protected Tweener motion;
@@ -131,6 +132,14 @@ public class CharSprite extends MovieClip implements Tweener.Listener, MovieClip
 	
 	public void idle() {
 		play( idle );
+	}
+
+	public void portrait() {
+		if (portrait == null) {
+			play( idle );
+		}else{
+			play( portrait );
+		}
 	}
 	
 	public void move( int from, int to ) {

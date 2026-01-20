@@ -406,8 +406,26 @@ public class StartScene extends PixelScene {
 		protected void onTouchDown() {
 			emitter.revive();
 			emitter.start( Speck.factory( Speck.LIGHT ), 0.05f, 7 );
-			Sample.INSTANCE.play( Assets.SND_CLICK, 1, 1, 1.2f );
 			updateClass( cl );
+
+			switch(cl.title()){
+				case "mage":
+					Sample.INSTANCE.play( Assets.SND_MAGE );
+					break;
+				case "warrior":
+					Sample.INSTANCE.play( Assets.SND_WARRIOR );
+					break;
+				case "tank":
+					Sample.INSTANCE.play( Assets.SND_TANK );
+					break;
+				case "rogue":
+					Sample.INSTANCE.play( Assets.SND_ROGUE );
+					break;
+				default:
+					Sample.INSTANCE.play( Assets.SND_CLICK );
+			}
+
+
 		}
 
 		@Override
@@ -462,6 +480,7 @@ public class StartScene extends PixelScene {
 
 		@Override
 		protected void onClick() {
+			Sample.INSTANCE.play( Assets.SND_CLICK );
 			add( new WndClass( curClass ) );
 		}
 	}

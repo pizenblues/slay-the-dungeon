@@ -27,7 +27,7 @@ import com.watabou.utils.Random;
 public class Tamahawk extends MissileWeapon {
 
 	{
-		name = "tomahawk";
+		name = "kunai";
 		image = ItemSpriteSheet.TOMAHAWK;
 		
 		STR = 17;
@@ -61,8 +61,8 @@ public class Tamahawk extends MissileWeapon {
 	@Override
 	public String desc() {
 		return 
-			"This throwing axe is not that heavy, but it still " +
-			"requires significant strength to be used effectively.";
+			"This little dagger is not that heavy, but it still " +
+			"requires significant strength to be used effectively as a missile.";
 	}
 	
 	@Override

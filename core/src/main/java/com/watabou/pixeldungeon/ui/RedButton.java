@@ -32,7 +32,7 @@ public class RedButton extends Button {
 	protected BitmapText text;
 	protected Image icon;
 			
-	public RedButton( String label ) {
+	public RedButton( String label) {
 		super();
 		
 		text.text( label );
@@ -63,8 +63,9 @@ public class RedButton extends Button {
 		text.y = y + (int)(height - text.baseLine()) / 2;
 		
 		if (icon != null) {
-			icon.x = x + text.x - icon.width() - 2;
 			icon.y = y + (height - icon.height()) / 2;
+			text.x = x + icon.width + (int)(width - text.width()) / 2;
+			icon.x = x + text.x - icon.width() - 2;
 		}
 	};
 	

@@ -5,7 +5,7 @@ public class ShadowBlade extends MeleeWeapon{
     {
         name = "shadow blade";
         // update sprite!
-        image = ItemSpriteSheet.DAGGER;
+        image = ItemSpriteSheet.SHADOWBLADE;
     }
 
     public ShadowBlade() {

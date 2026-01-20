@@ -57,7 +57,7 @@ import com.watabou.utils.Random;
 public class Yog extends Mob {
 	
 	{
-		name = Dungeon.depth == Statistics.deepestFloor ? "Yog-Dzewa" : "echo of Yog-Dzewa";
+		name = Dungeon.depth == Statistics.deepestFloor ? "The abomination" : "The abomination";
 		spriteClass = YogSprite.class;
 		
 		HP = HT = 300;
@@ -68,9 +68,10 @@ public class Yog extends Mob {
 	}
 	
 	private static final String TXT_DESC =
-		"Yog-Dzewa is an Old God, a powerful entity from the realms of chaos. A century ago, the ancient dwarves " +
-		"barely won the war against its army of demons, but were unable to kill the god itself. Instead, they then " +
-		"imprisoned it in the halls below their city, believing it to be too weak to rise ever again.";	
+		"A corrupted mind, prisoner of flesh, ruler of the dungeons. The abomination is the result " +
+			"of a power-hungry mortal soul that could not handle the power it was given; as a result"+
+				"it merged with the dungeon it self. \n\n" +
+		"It looks like it is in pain. You can sense the soul of Eden trapped in the abomination. The mouth looks like a weak point to attack. ";
 	
 	private static int fistsCount = 0;
 	
@@ -155,7 +156,7 @@ public class Yog extends Mob {
 	@Override
 	public void notice() {
 		super.notice();
-		yell( "Hope is an illusion..." );
+		yell( "I have no mouth and i must..." );
 	}
 	
 	@Override
