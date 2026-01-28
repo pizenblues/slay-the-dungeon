@@ -19,22 +19,15 @@ package com.watabou.pixeldungeon.scenes;
 
 import android.content.Intent;
 import android.net.Uri;
-
-import com.watabou.input.Touchscreen.Touch;
-import com.watabou.noosa.BitmapText;
 import com.watabou.noosa.BitmapTextMultiline;
 import com.watabou.noosa.Camera;
 import com.watabou.noosa.Game;
 import com.watabou.noosa.Image;
-import com.watabou.noosa.TouchArea;
 import com.watabou.pixeldungeon.PixelDungeon;
 import com.watabou.pixeldungeon.ui.Archs;
 import com.watabou.pixeldungeon.ui.ExitButton;
 import com.watabou.pixeldungeon.ui.Icons;
 import com.watabou.pixeldungeon.ui.RedButton;
-import com.watabou.pixeldungeon.ui.SecondaryButton;
-import com.watabou.pixeldungeon.ui.Window;
-import com.watabou.pixeldungeon.effects.BannerSprites;
 
 public class AboutScene extends PixelScene {
 
@@ -54,12 +47,6 @@ public class AboutScene extends PixelScene {
 		super.create();
 		float newPosition = PixelDungeon.landscape() ? 12 : 72;
 		int w = Camera.main.width;
-
-		Image title = BannerSprites.get( BannerSprites.Type.PIXEL_DUNGEON );
-		add( title );
-		title.alpha(0.2f);
-		title.x = (w - title.width()) / 2;
-		title.y = 8;
 
 		Image tamago_icon = Icons.PIZEN.get();
 		tamago_icon.x = align( (w - tamago_icon.width) / 2 );

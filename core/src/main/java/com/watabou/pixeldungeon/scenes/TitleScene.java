@@ -17,29 +17,31 @@
  */
 package com.watabou.pixeldungeon.scenes;
 
-import javax.microedition.khronos.opengles.GL10;
-import android.opengl.GLES20;
 import com.watabou.noosa.BitmapText;
 import com.watabou.noosa.Camera;
 import com.watabou.noosa.Game;
 import com.watabou.noosa.Image;
 import com.watabou.noosa.audio.Music;
 import com.watabou.noosa.audio.Sample;
+import com.watabou.noosa.particles.BitmaskEmitter;
 import com.watabou.noosa.ui.Button;
 import com.watabou.pixeldungeon.Assets;
 import com.watabou.pixeldungeon.PixelDungeon;
 import com.watabou.pixeldungeon.effects.BannerSprites;
-import com.watabou.pixeldungeon.effects.Fireball;
+import com.watabou.pixeldungeon.ui.Archs;
 import com.watabou.pixeldungeon.ui.ExitButton;
 import com.watabou.pixeldungeon.ui.PrefsButton;
-import com.watabou.pixeldungeon.windows.WndOptions;
+import com.watabou.pixeldungeon.effects.Speck;
+import com.watabou.noosa.particles.Emitter;
+import com.watabou.noosa.TouchArea;
+import com.watabou.input.Touchscreen.Touch;
 
 public class TitleScene extends PixelScene {
-	private static final String TXT_PLAY		= "Enter the dungeon";
-	private static final String TXT_HIGHSCORES	= "";
-	private static final String TXT_BADGES		= "";
-	private static final String TXT_ABOUT		= "";
-	private Image background;
+	private static final String TXT_PLAY		= "Tap to Start";
+	private static final String TXT_BUTTON = "";
+	private Image entranceImage;
+	private Emitter emitter;
+
 
 	@Override
 	public void create() {
@@ -52,50 +54,59 @@ public class TitleScene extends PixelScene {
 		int h = Camera.main.height;
 		float padding = 24;
 
-		background = new Image(Assets.BG);
-		background.x = (w - background.width()) / 2;
-		background.y = h /3;
-		add(background);
+		entranceImage = new Image(Assets.ENTRANCE);
+		entranceImage.x = (w - (entranceImage.width() * 0.7f)) / 2;
+		entranceImage.y = h/2.5f;
+		entranceImage.scale.set(0.7f);
+		add(entranceImage);
+		emitter = new BitmaskEmitter( entranceImage );
+		emitter.start( Speck.factory( Speck.LIGHT ), 0.05f, 100 );
+		add( emitter );
+
+		add( new TouchArea(entranceImage) {
+			protected void onClick( Touch touch ) {
+				emitter.revive();
+				emitter.start( Speck.factory( Speck.LIGHT ), 0.05f, 7 );
+			};
+		} );
 
 		Image title = BannerSprites.get( BannerSprites.Type.PIXEL_DUNGEON );
 		add( title );
 		title.x = (w - title.width()) / 2;
-		title.y = padding;
+		title.y = PixelDungeon.landscape() ? 8 : padding;
 
-		placeTorch( title.x + 12, title.y + 24 );
-		placeTorch( title.x + title.width - 12, title.y + 24 );
-
-		DashboardItem btnBadges = new DashboardItem( TXT_BADGES, 3 ) {
-			@Override
-			protected void onClick() {
-				PixelDungeon.switchNoFade( BadgesScene.class );
-			}
-		};
-		add( btnBadges );
-
-		DashboardItem btnAbout = new DashboardItem( TXT_ABOUT, 1 ) {
-			@Override
-			protected void onClick() {
-				PixelDungeon.switchNoFade( AboutScene.class );
-			}
-		};
-		add( btnAbout );
-
-		clickArea btnPlay = new clickArea( TXT_PLAY);
-		add( btnPlay );
-
-		DashboardItem btnHighscores = new DashboardItem( TXT_HIGHSCORES, 2 ) {
+		DashboardItem btnHighscores = new DashboardItem(TXT_BUTTON, 2 ) {
 			@Override
 			protected void onClick() {
 				PixelDungeon.switchNoFade( RankingsScene.class );
 			}
 		};
+		btnHighscores.setPos( (w - 60) / 2, h - padding);
 		add( btnHighscores );
 
-		btnHighscores.setPos( (w - 60) / 2, h - padding);
+		DashboardItem btnBadges = new DashboardItem( TXT_BUTTON, 3 ) {
+			@Override
+			protected void onClick() {
+				PixelDungeon.switchNoFade( BadgesScene.class );
+			}
+		};
 		btnBadges.setPos( btnHighscores.right() + 12, h - padding);
+		add( btnBadges );
+
+		DashboardItem btnAbout = new DashboardItem( TXT_BUTTON, 1 ) {
+			@Override
+			protected void onClick() {
+				PixelDungeon.switchNoFade( AboutScene.class );
+			}
+		};
 		btnAbout.setPos( btnBadges.right() + 12, h - padding);
-		btnPlay.setPos( (w - btnPlay.width()) / 2, btnHighscores.top() - btnPlay.height());
+		add( btnAbout );
+
+		clickArea btnPlay = new clickArea( TXT_PLAY);
+		float playTextPosition = entranceImage.y + (entranceImage.height() * 0.7f) / 2;
+		playTextPosition = PixelDungeon.landscape() ? h/2 : playTextPosition;
+		btnPlay.setPos( (w - btnPlay.width()) / 2, playTextPosition );
+		add( btnPlay );
 
 		BitmapText version = new BitmapText( "v " + Game.version, font1x );
 		version.measure();
@@ -112,13 +123,11 @@ public class TitleScene extends PixelScene {
 		btnExit.setPos( 4, 4 );
 		add( btnExit );
 
-		fadeIn();
-	}
+		Archs archs = new Archs();
+		archs.setSize( w, h );
+		addToBack( archs );
 
-	private void placeTorch( float x, float y ) {
-		Fireball fb = new Fireball();
-		fb.setPos( x, y );
-		add( fb );
+		fadeIn();
 	}
 
 	private static class DashboardItem extends Button {
@@ -172,11 +181,13 @@ public class TitleScene extends PixelScene {
 	private static class clickArea extends Button {
 		public static final float H = 60;
 		public static final float W = 200;
-		private BitmapText label;
+        private final String text;
+        private BitmapText label;
 
 		public clickArea(String text) {
 			super();
-			this.label.text(text);
+            this.text = text;
+            this.label.text(text);
 			this.label.measure();
 			setSize(W, H);
 		}

@@ -93,11 +93,9 @@ public class StartScene extends PixelScene {
 
 		float left = (w - width) / 2;
 
-		/*
 		Archs archs = new Archs();
 		archs.setSize(w, h);
 		add(archs);
-		 */
 
 		add(selectText);
 		selectText.measure();

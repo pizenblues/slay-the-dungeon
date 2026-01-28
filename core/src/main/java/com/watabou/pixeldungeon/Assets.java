@@ -22,6 +22,7 @@ public class Assets {
 	public static final String ARCS_FG		= "arcs2.png";
 	public static final String DASHBOARD	= "dashboard.png";
 	public static final String BANNERS	= "banners.png";
+	public static final String ENTRANCE	= "entrance.png";
 	public static final String BADGES	= "badges.png";
 	public static final String LOCKED	= "locked_badge.png";
 	public static final String AMULET	= "amulet.png";
@@ -52,7 +53,6 @@ public class Assets {
 	public static final String PORTRAIT_rogue	= "PORTRAIT_ROGUE.png";
 	public static final String PORTRAIT_mage	= "PORTRAIT_MAGE.png";
 	public static final String PORTRAIT_huntress = "PORTRAIT_HUNTER.png";
-	public static final String BG = "bg.png";
 
 	public static final String PET		= "pet.png";
 	
