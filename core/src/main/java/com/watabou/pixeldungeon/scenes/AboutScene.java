@@ -21,101 +21,84 @@ import android.content.Intent;
 import android.net.Uri;
 
 import com.watabou.input.Touchscreen.Touch;
+import com.watabou.noosa.BitmapText;
 import com.watabou.noosa.BitmapTextMultiline;
 import com.watabou.noosa.Camera;
 import com.watabou.noosa.Game;
 import com.watabou.noosa.Image;
 import com.watabou.noosa.TouchArea;
 import com.watabou.pixeldungeon.PixelDungeon;
-import com.watabou.pixeldungeon.effects.Flare;
 import com.watabou.pixeldungeon.ui.Archs;
 import com.watabou.pixeldungeon.ui.ExitButton;
 import com.watabou.pixeldungeon.ui.Icons;
+import com.watabou.pixeldungeon.ui.RedButton;
+import com.watabou.pixeldungeon.ui.SecondaryButton;
 import com.watabou.pixeldungeon.ui.Window;
+import com.watabou.pixeldungeon.effects.BannerSprites;
 
 public class AboutScene extends PixelScene {
 
 	private static final String TXT =
-		"Art, code and music by Dr tamagotchi\n";
+		"Delicious Pixel Dungeon is a roguelike dungeon crawler game. " +
+		"Sprites and music by Valentina.\n";
 
-	private static final String ORIGINALTXT =
-		"Based on the original Pixel Dungeon by Watabou\n";
+	private static final String TXT_THANKS =
+			"Based on the original Pixel Dungeon by Watabou, inspired by Brian Walker's Brouge. \n" +
+			"Voices (uh's and ah's) by @cicifyre, @JDSherbert, @daniconshow and @ATTurtlez. \n" +
+			"Especial thanks to Evan Debenham (Shattered pixel dungeon) for pixel-dungeon-gradle!";
 	
-	private static final String LNK = "pixelblues.bsky.social";
-	private static final String ORIGINALLNK = "pixeldungeon.watabou.ru";
+	private static final String LINK = "@drTamagotchi";
 
 	@Override
 	public void create() {
 		super.create();
+		float newPosition = PixelDungeon.landscape() ? 12 : 72;
+		int w = Camera.main.width;
 
-		BitmapTextMultiline text = createMultiline( TXT, 8 );
-		text.maxWidth = Math.min( Camera.main.width, 120 );
+		Image title = BannerSprites.get( BannerSprites.Type.PIXEL_DUNGEON );
+		add( title );
+		title.alpha(0.2f);
+		title.x = (w - title.width()) / 2;
+		title.y = 8;
+
+		Image tamago_icon = Icons.PIZEN.get();
+		tamago_icon.x = align( (w - tamago_icon.width) / 2 );
+		tamago_icon.y = newPosition;
+		add( tamago_icon );
+
+		BitmapTextMultiline text = createMultiline( TXT, 7);
+		text.maxWidth = Math.min( w, 100 );
 		text.measure();
+		text.x = align( (w - text.width()) / 2 );
+		text.y = newPosition + tamago_icon.height() + 4;
 		add( text );
 
-		text.x = align( (Camera.main.width - text.width()) / 2 );
-		text.y = align( (Camera.main.height - (text.height()*2)) / 2 );
-		
-		BitmapTextMultiline link = createMultiline( LNK, 8 );
-		link.maxWidth = Math.min( Camera.main.width, 120 );
-		link.measure();
-		link.hardlight( Window.TITLE_COLOR );
-		add( link );
+		newPosition += tamago_icon.height() + text.height() + 12;
 
-		link.x = text.x;
-		link.y = text.y + text.height();
-
-		TouchArea hotArea = new TouchArea( link ) {
-			@Override
-			protected void onClick( Touch touch ) {
-				Intent intent = new Intent( Intent.ACTION_VIEW, Uri.parse( "https://bsky.app/profile/" + LNK ) );
+		RedButton linkButton = new RedButton( "@drTamagotchi" ) {
+			protected void onClick() {
+				Intent intent = new Intent( Intent.ACTION_VIEW, Uri.parse( "https://www.instagram.com/drtamagotchi/" + LINK ) );
 				Game.instance.startActivity( intent );
 			}
 		};
-		add( hotArea );
 
-		Image pizen = Icons.PIZEN.get();
-		pizen.x = align( (Camera.main.width - pizen.width) / 2 );
-		pizen.y = text.y - pizen.height - 8;
-		add( pizen );
-		new Flare( 7, 64 ).color( 0xf0e276, true ).show( pizen, 0 ).angularSpeed = +20;
+		linkButton.setSize( 56, 16 );
+		linkButton.setPos( ((w - 56) / 2), newPosition);
+		add( linkButton );
 
+		newPosition += 24;
 
-		BitmapTextMultiline originaltext = createMultiline( ORIGINALTXT, 8 );
-		originaltext.maxWidth = Math.min( Camera.main.width, 120 );
-		originaltext.measure();
-		add( originaltext );
+		// credits
+		BitmapTextMultiline creditsText = createMultiline( TXT_THANKS, 7);
+		creditsText.maxWidth = Math.min( w, 100 );
+		creditsText.measure();
+		add( creditsText );
+		creditsText.x = align( (w - text.width()) / 2 );
+		creditsText.y = newPosition;
 
-		originaltext.x = align( (Camera.main.width - text.width()) / 2 );
-		originaltext.y = text.y+64;
-		
-		BitmapTextMultiline originallink = createMultiline( ORIGINALLNK, 8 );
-		originallink.maxWidth = Math.min( Camera.main.width, 120 );
-		originallink.measure();
-		originallink.hardlight( Window.TITLE_COLOR );
-		add( originallink );
-
-		originallink.x = originaltext.x;
-		originallink.y = originaltext.y + originaltext.height();
-		
-		TouchArea originalHotArea = new TouchArea( link ) {
-			@Override
-			protected void onClick( Touch touch ) {
-				Intent intent = new Intent( Intent.ACTION_VIEW, Uri.parse( "http://" + LNK ) );
-				Game.instance.startActivity( intent );
-			}
-		};
-		add( originalHotArea );
-
-		Image wata = Icons.WATA.get();
-		wata.x = align( (Camera.main.width - wata.width) / 2 );
-		wata.y = originaltext.y - wata.height - 8;
-		add( wata );
-
-		new Flare( 7, 64 ).color( 0x112233, true ).show( wata, 0 ).angularSpeed = +20;
-		
+		// bg and ui
 		Archs archs = new Archs();
-		archs.setSize( Camera.main.width, Camera.main.height );
+		archs.setSize( w, Camera.main.height );
 		addToBack( archs );
 		
 		ExitButton btnExit = new ExitButton();

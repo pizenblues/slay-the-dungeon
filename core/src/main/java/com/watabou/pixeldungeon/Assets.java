@@ -131,6 +131,7 @@ public class Assets {
 	public static final String THEME	= "music/goblins.mp3";
 	public static final String TUNE		= "music/game.mp3";
 	public static final String HAPPY	= "music/fanfare.mp3";
+	public static final String EXTERIOR	= "music/exterior.mp3";
 
 	// ---
 
@@ -163,7 +164,6 @@ public class Assets {
 	public static final String ABYSS	= "music/lvl5/from the abyss.mp3";
 	public static final String FLESH	= "music/lvl5/made of flesh.mp3";
 	public static final String ABOMINATION	= "music/lvl5/the abomination.mp3";
-	public static final String EXTERIOR	= "music/lvl5/the exterior.mp3";
 
 	
 	public static final String SND_CLICK	= "sound effects/snd_click.mp3";

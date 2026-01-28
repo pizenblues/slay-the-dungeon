@@ -116,7 +116,8 @@ public class Succubus extends Mob {
 	@Override
 	public String description() {
 		return
-			"The succubi are demons that look like seductive (in a slightly gothic way) girls. Using its magic, the succubus " +
+			"The succubi are demons that look like seductive redheaded woman "+
+					"(luckily for you, is not a redheaded man, or you'll be serious trouble). Using its magic, the succubus " +
 			"can charm a hero, who will become unable to attack anything until the charm wears off.";
 	}
 	

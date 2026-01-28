@@ -47,7 +47,7 @@ public class LarvaSprite extends MobSprite {
 	
 	@Override
 	public int blood() {
-		return 0xbbcc66;
+		return 0xfcf6ca;
 	}
 	
 	@Override

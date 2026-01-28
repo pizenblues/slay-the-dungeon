@@ -153,18 +153,44 @@ public enum HeroClass {
 	private static void initRogue( Hero hero ) {
 		(hero.belongings.weapon = new ShadowBlade()).identify();
 
+		(hero.belongings.ring1 = new RingOfShadows()).upgrade().identify();
+		new Dart( 8 ).identify().collect();
+		
+		hero.belongings.ring1.activate( hero );
+		
+		QuickSlot.primaryValue = Dart.class;
+		
+		new ScrollOfMagicMapping().setKnown();
+	}
+	
+	private static void initHuntress( Hero hero ) {
+		
+		hero.HP = (hero.HT += 5);
+		
+		(hero.belongings.weapon = new Dagger()).identify();
+		Boomerang boomerang = new Boomerang();
+		boomerang.identify().collect();
+		
+		QuickSlot.primaryValue = boomerang;
+
 		//values for testing
 		hero.STR = hero.STR + 200;
-		hero.HP = (hero.HT += 200);
-		new PotionOfStrength( ).identify().collect();
-		new PotionOfStrength( ).identify().collect();
-		new PotionOfStrength( ).identify().collect();
-		new PotionOfStrength( ).identify().collect();
-		new PotionOfStrength( ).identify().collect();
-		new PotionOfStrength( ).identify().collect();
-		new PotionOfStrength( ).identify().collect();
-		new PotionOfStrength( ).identify().collect();
-		new PotionOfStrength( ).identify().collect();
+		hero.HP = (hero.HT += 500);
+		new PotionOfHealing( ).identify().collect();
+		new PotionOfHealing( ).identify().collect();
+		new PotionOfHealing( ).identify().collect();
+		new PotionOfHealing( ).identify().collect();
+		new PotionOfHealing( ).identify().collect();
+		new PotionOfHealing( ).identify().collect();
+		new PotionOfHealing( ).identify().collect();
+		new PotionOfHealing( ).identify().collect();
+		new PotionOfHealing( ).identify().collect();
+		new PotionOfHealing( ).identify().collect();
+		new PotionOfHealing( ).identify().collect();
+		new PotionOfHealing( ).identify().collect();
+		new PotionOfHealing( ).identify().collect();
+		new PotionOfHealing( ).identify().collect();
+		new PotionOfHealing( ).identify().collect();
 		new PotionOfHealing( ).identify().collect();
 		new PotionOfHealing( ).identify().collect();
 		new PotionOfHealing( ).identify().collect();
@@ -208,26 +234,6 @@ public enum HeroClass {
 		new ScrollOfMagicMapping( ).identify().collect();
 		new ScrollOfMagicMapping( ).identify().collect();
 		// remove testing values
-
-		(hero.belongings.ring1 = new RingOfShadows()).upgrade().identify();
-		new Dart( 8 ).identify().collect();
-		
-		hero.belongings.ring1.activate( hero );
-		
-		QuickSlot.primaryValue = Dart.class;
-		
-		new ScrollOfMagicMapping().setKnown();
-	}
-	
-	private static void initHuntress( Hero hero ) {
-		
-		hero.HP = (hero.HT += 5);
-		
-		(hero.belongings.weapon = new Dagger()).identify();
-		Boomerang boomerang = new Boomerang();
-		boomerang.identify().collect();
-		
-		QuickSlot.primaryValue = boomerang;
 	}
 
 	public String title() {

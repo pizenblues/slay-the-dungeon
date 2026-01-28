@@ -250,7 +250,7 @@ public class CharSprite extends MovieClip implements Tweener.Listener, MovieClip
 	}
 	
 	public int blood() {
-		return 0xFFea6262;
+		return 0xFFa32858;
 	}
 	
 	public void flash() {

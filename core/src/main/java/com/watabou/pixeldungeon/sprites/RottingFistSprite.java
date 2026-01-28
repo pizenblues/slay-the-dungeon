@@ -23,26 +23,26 @@ import com.watabou.pixeldungeon.Assets;
 
 public class RottingFistSprite extends MobSprite {
 	
-	private static final float FALL_SPEED	= 64;
+	private static final float FALL_SPEED	= 28;
 	
 	public RottingFistSprite() {
 		super();
 		
 		texture( Assets.ROTTING );
 		
-		TextureFilm frames = new TextureFilm( texture, 24, 17 );
-		
-		idle = new Animation( 2, true );
-		idle.frames( frames, 0, 0, 1 );
-		
-		run = new Animation( 3, true );
-		run.frames( frames, 0, 1 );
-		
-		attack = new Animation( 2, false );
-		attack.frames( frames, 0 );
-		
-		die = new Animation( 10, false );
-		die.frames( frames, 0, 2, 3, 4 );
+		TextureFilm frames = new TextureFilm( texture, 24, 32 );
+
+		idle = new Animation( 8, true );
+		idle.frames( frames, 4,5,6,7,6,5,4 );
+
+		run = new Animation( 12, true );
+		run.frames( frames, 3,2, 1, 0, 3 );
+
+		attack = new Animation( 12, false );
+		attack.frames( frames, 3,0,1,2,4,5,6,7,3,3,3,3);
+
+		die = new Animation( 8, false );
+		die.frames( frames, 2,4,5,6,7,7,7,7,7,7,7,7,7 );
 		
 		play( idle );
 	}

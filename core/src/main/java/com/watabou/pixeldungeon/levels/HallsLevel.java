@@ -197,7 +197,7 @@ public class HallsLevel extends RegularLevel {
 		public FireParticle() {
 			super();
 			
-			color( 0xEE7722 );
+			color( 0xcc425e );
 			lifespan = 1f;
 			
 			acc.set( 0, +80 );
