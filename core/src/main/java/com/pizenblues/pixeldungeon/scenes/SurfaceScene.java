@@ -63,10 +63,8 @@ public class SurfaceScene extends PixelScene {
 		Music.INSTANCE.volume( 1f );
 
 		uiCamera.visible = false;
-
 		int w = Camera.main.width;
 		int h = Camera.main.height;
-
 		float vx = align( (w - SKY_WIDTH) / 2 );
 		float vy = align( (h - SKY_HEIGHT) / 2 );
 
@@ -82,7 +80,7 @@ public class SurfaceScene extends PixelScene {
 		sky.scale.set( SKY_WIDTH, SKY_HEIGHT );
 		window.add( sky );
 
-		Cloud cloud = new Cloud(40);
+		Cloud cloud = new Cloud(41);
 		window.add( cloud );
 
 		Image frame = new Image( Assets.SURFACE );
@@ -95,35 +93,36 @@ public class SurfaceScene extends PixelScene {
 		BitmapTextMultiline text = createMultiline( TXT, 7);
 		text.maxWidth = Math.min( w, 100 );
 		text.measure();
-		text.x = align( (w - text.width()) / 2 );
-		text.y = 0;
+		text.x = PixelDungeon.landscape() ? (w - text.width() - 8) : align( (w - text.width()) / 2 );
+		text.y = PixelDungeon.landscape() ? 8 : h - text.height() - BUTTON_HEIGHT - 24;
 		add( text );
+
+		float buttonPositionY = text.y + text.height() + 8;
+		float buttonPositionX = PixelDungeon.landscape() ? text.x : (w - BUTTON_WIDTH) / 2;
 
 		RedButton gameOverButton = new RedButton( "Leave dungeon" ) {
 			protected void onClick() {
 				Game.switchScene( TitleScene.class );
 			}
 		};
-
 		gameOverButton.setSize( BUTTON_WIDTH, BUTTON_HEIGHT );
-		gameOverButton.setPos( ((w - BUTTON_WIDTH) / 2), h - BUTTON_HEIGHT - 16);
+		gameOverButton.setPos(buttonPositionX,buttonPositionY);
+		add( gameOverButton );
 
-		//Avatar a = new Avatar( Dungeon.hero.heroClass.title());
-		Avatar characteravatar = new Avatar( "tank");
+		Avatar characteravatar = new Avatar( Dungeon.hero.heroClass.title());
+		//Avatar characteravatar = new Avatar( "tank");
 		characteravatar.scale.set(0.6f);
 		float avatarTrueWidth = characteravatar.width() * 0.6f;
 		characteravatar.x = (w - avatarTrueWidth) / 2;
 		characteravatar.y = (frame.y + (frame.height() * 0.5f)) - 5;
 		add( characteravatar );
 
-		add( gameOverButton );
-
 		Image title = BannerSprites.get( BannerSprites.Type.THE_END );
 		add( title );
 		title.x = (w - title.width()) / 2;
 		title.y = 4;
 
-		//Badges.validateHappyEnd();
+		Badges.validateHappyEnd();
 
 		fadeIn();
 	}
@@ -144,8 +143,6 @@ public class SurfaceScene extends PixelScene {
 		private static final int[] day		= {0xFF4b54d4, 0xFF4b54d4};
 		private SmartTexture texture;
 		private FloatBuffer verticesBuffer;
-
-		private ColorBlock skyBackground;
 
 		public Sky( boolean dayTime ) {
 			super( 0, 0, 1, 1 );
@@ -198,7 +195,7 @@ public class SurfaceScene extends PixelScene {
 
 			scale.set( 1 - y / SKY_HEIGHT );
 			x = Random.Float( SKY_WIDTH + width() ) - width();
-			speed.x = 8;
+			speed.x = 12;
 		}
 
 		@Override
