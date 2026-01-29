@@ -17,10 +17,16 @@
  */
 package com.pizenblues.pixeldungeon.scenes;
 
+import com.pizenblues.gltextures.Gradient;
+import com.pizenblues.gltextures.SmartTexture;
+import com.pizenblues.glwrap.Quad;
 import com.pizenblues.noosa.BitmapText;
 import com.pizenblues.noosa.Camera;
 import com.pizenblues.noosa.Game;
+import com.pizenblues.noosa.Group;
 import com.pizenblues.noosa.Image;
+import com.pizenblues.noosa.NoosaScript;
+import com.pizenblues.noosa.Visual;
 import com.pizenblues.noosa.audio.Music;
 import com.pizenblues.noosa.audio.Sample;
 import com.pizenblues.noosa.particles.BitmaskEmitter;
@@ -34,40 +40,80 @@ import com.pizenblues.pixeldungeon.effects.Speck;
 import com.pizenblues.noosa.particles.Emitter;
 import com.pizenblues.noosa.TouchArea;
 import com.pizenblues.input.Touchscreen.Touch;
+import com.pizenblues.utils.Point;
+import com.pizenblues.utils.Random;
+
+import java.nio.Buffer;
+import java.nio.FloatBuffer;
 
 public class TitleScene extends PixelScene {
 	private static final String TXT_PLAY		= "Tap to Start";
 	private static final String TXT_BUTTON = "";
-	private Image entranceImage;
 	private Emitter emitter;
-
+	private static final int FRAME_WIDTH	= 120;
+	private static final int FRAME_HEIGHT	= 180;
+	private static final int FRAME_PADDING	= 14;
+	private static final int ENTRANCE_W	= 79;
+	private static final int ENTRANCE_H	= 155;
+	private Camera viewport;
 
 	@Override
 	public void create() {
 		super.create();
-		Music.INSTANCE.play( Assets.THEME, true );
-		Music.INSTANCE.volume( 1f );
+		Music.INSTANCE.play(Assets.THEME, true);
+		Music.INSTANCE.volume(1f);
 		uiCamera.visible = false;
 
 		int w = Camera.main.width;
 		int h = Camera.main.height;
 		float padding = 24;
 
-		entranceImage = new Image(Assets.ENTRANCE);
-		entranceImage.x = (w - (entranceImage.width() * 0.7f)) / 2;
-		entranceImage.y = h/2.5f;
-		entranceImage.scale.set(0.7f);
-		add(entranceImage);
-		emitter = new BitmaskEmitter( entranceImage );
-		emitter.start( Speck.factory( Speck.LIGHT ), 0.05f, 100 );
-		add( emitter );
+		float entranceTrueHeight = ENTRANCE_H * 0.7f;
+		float entranceTrueWidth = ENTRANCE_W * 0.7f;
 
-		add( new TouchArea(entranceImage) {
-			protected void onClick( Touch touch ) {
+		// frame
+		float vx = align( (w - (entranceTrueWidth)) / 2 );
+		float vy = align( h / 2.5f);
+
+		Point s = Camera.main.cameraToScreen( vx, vy );
+		viewport = new Camera( s.x, s.y, ENTRANCE_W, Math.round(entranceTrueHeight), defaultZoom );
+		Camera.add( viewport );
+
+		Group window = new Group();
+		window.camera = viewport;
+		add( window );
+
+		entranceBackground entranceBg = new entranceBackground( true );
+		entranceBg.scale.set( entranceTrueWidth, entranceTrueHeight );
+		window.add( entranceBg );
+
+		Image floor = new Image( Assets.DOOR );
+		floor.frame( 163, 0, 66, 19 );
+		floor.scale.set(0.7f);
+		floor.x = (entranceTrueWidth - floor.width()) / 2;
+		floor.y = entranceTrueHeight - floor.height();
+		window.add( floor );
+
+		Stars stars = new Stars(10 );
+		window.add( stars );
+
+		Image frame = new Image( Assets.DOOR );
+		frame.frame( 0, 0, FRAME_WIDTH, FRAME_HEIGHT );
+		frame.scale.set(0.7f);
+		frame.x = vx - FRAME_PADDING;
+		frame.y = vy - FRAME_PADDING;
+		add( frame );
+
+		emitter = new BitmaskEmitter(frame);
+		emitter.start(Speck.factory(Speck.LIGHT), 0.05f, 50);
+		add(emitter);
+
+		add(new TouchArea(frame) {
+			protected void onClick(Touch touch) {
 				emitter.revive();
-				emitter.start( Speck.factory( Speck.LIGHT ), 0.05f, 7 );
-			};
-		} );
+				emitter.start(Speck.factory(Speck.LIGHT), 0.05f, 50);
+			}
+		});
 
 		Image title = BannerSprites.get( BannerSprites.Type.PIXEL_DUNGEON );
 		add( title );
@@ -86,7 +132,7 @@ public class TitleScene extends PixelScene {
 		DashboardItem btnBadges = new DashboardItem( TXT_BUTTON, 3 ) {
 			@Override
 			protected void onClick() {
-				PixelDungeon.switchNoFade( SurfaceScene.class );
+				PixelDungeon.switchNoFade( BadgesScene.class );
 			}
 		};
 		btnBadges.setPos( btnHighscores.right() + 12, h - padding);
@@ -102,7 +148,7 @@ public class TitleScene extends PixelScene {
 		add( btnAbout );
 
 		clickArea btnPlay = new clickArea( TXT_PLAY);
-		float playTextPosition = entranceImage.y + (entranceImage.height() * 0.7f) / 2;
+		float playTextPosition = frame.y + (frame.height() * 0.7f) / 2;
 		playTextPosition = PixelDungeon.landscape() ? h/2 : playTextPosition;
 		btnPlay.setPos( (w - btnPlay.width()) / 2, playTextPosition );
 		add( btnPlay );
@@ -205,6 +251,74 @@ public class TitleScene extends PixelScene {
 		protected void onTouchDown() {
 			Sample.INSTANCE.play(Assets.SND_CLICK, 1, 1, 0.8f);
 			PixelDungeon.switchNoFade( StartScene.class );
+		}
+	}
+
+	private static class entranceBackground extends Visual {
+		private static final int[] colors		= {0xFF000000, 0xFF751756};
+		private SmartTexture texture;
+		private FloatBuffer verticesBuffer;
+
+		public entranceBackground( boolean dayTime ) {
+			super( 0, 0, 1, 1 );
+
+			texture = new Gradient( colors );
+
+			float[] vertices = new float[16];
+			verticesBuffer = Quad.create();
+			vertices[2]		= 0.25f;
+			vertices[6]		= 0.25f;
+			vertices[10]	= 0.75f;
+			vertices[14]	= 0.75f;
+			vertices[3]		= 0;
+			vertices[7]		= 1;
+			vertices[11]	= 1;
+			vertices[15]	= 0;
+			vertices[0] 	= 0;
+			vertices[1] 	= 0;
+			vertices[4] 	= 1;
+			vertices[5] 	= 0;
+			vertices[8] 	= 1;
+			vertices[9] 	= 1;
+			vertices[12]	= 0;
+			vertices[13]	= 1;
+			((Buffer)verticesBuffer).position( 0 );
+			verticesBuffer.put( vertices );
+		}
+
+		@Override
+		public void draw() {
+			super.draw();
+			NoosaScript script = NoosaScript.get();
+			texture.bind();
+			script.camera( camera() );
+			script.uModel.valueM4( matrix );
+			script.lighting(
+					rm, gm, bm, am,
+					ra, ga, ba, aa );
+			script.drawQuad( verticesBuffer );
+		}
+	}
+
+	private static class Stars extends Image {
+		public Stars( float positionX) {
+			super( Assets.DOOR );
+			frame( 120, 0, 43, 180 );
+			this.x = positionX;
+
+			scale.set( 1 - positionX / ENTRANCE_W );
+			y = 0;
+			speed.y = 48;
+		}
+
+		@Override
+		public void update() {
+			super.update();
+			if (speed.y > 0 && y > ENTRANCE_H) {
+				y = -height();
+			} else if (speed.y < 0 && y < -height()) {
+				y = 100;
+			}
 		}
 	}
 }
