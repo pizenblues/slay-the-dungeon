@@ -11,8 +11,8 @@ buildscript {
 allprojects {
 
     ext {
-        appName = 'Pixel Dungeon'
-        appPackageName = 'com.watabou.pixeldungeon'
+        appName = 'Delicious Pixel Dungeon'
+        appPackageName = 'com.pizenblues.pixeldungeon'
 
         appVersionCode = 74
         appVersionName = '1.9.1'

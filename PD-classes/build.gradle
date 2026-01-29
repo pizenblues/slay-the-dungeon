@@ -1,7 +1,7 @@
 apply plugin: 'com.android.library'
 
 android {
-    namespace 'com.watabou'
+    namespace 'com.pizenblues'
     compileSdkVersion appAndroidCompileSDK
 
     defaultConfig {
