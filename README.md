@@ -1,24 +1,15 @@
-This repository contains the original Pixel Dungeon code, adapted to work with modern Android build tools. The original codebase for the game uses the outdated ADT build system, this codebase uses Gradle but is otherwise functionally identical.
+# Delicious Pixel Dungeon
 
-Look below for compilation instructions
+Delicious Pixel Dungeon is a roguelike dungeon crawler game. Sprites and music by Valentina:
+www.instagram.com/drtamagotchi/
 
-# Pixel Dungeon
-
-Traditional roguelike game with pixel-art graphics and simple interface.
-
-Pixel Dungeon on Google Play:
-https://play.google.com/store/apps/details?id=com.watabou.pixeldungeon
+Based on Pixel Dungeon Graddle by Evan Debenham:
+https://github.com/00-Evan/pixel-dungeon-gradle
 
 Original Pixel Dungeon Source Code:
 https://GitHub.com/watabou/pixel-dungeon
 
-Official web-site:
-http://pixeldungeon.watabou.ru/
-
-Developer's blog:
-http://pixeldungeon.tumblr.com/
-
-# Compiling Pixel Dungeon
+# Compiling Delicious Pixel Dungeon
 
 To compile Pixel Dungeon you will need:
 - (required) A computer which meets the [system requirements for Android Studio](https://developer.android.com/studio#get-android-studio)
@@ -66,11 +57,3 @@ This guide includes a [section on physical android devices...](https://developer
 APK (Android PacKage) and AAB (Android App Bundle) files are used to distribute Android applications. The Android studio website has [a guide which covers building your app.](https://developer.android.com/studio/run/build-for-release) Note that the option you will likely want to use is 'Generate Signed Bundle / APK'. APK files are best used when you are not trying to upload your app to Google Play, otherwise you must provide Google with an AAB file and they will used that to generate APK files for you.
 
 Note that APK and AAB files must be signed with a signing key. If you are making a small personal modification to Pixel Dungeon then your signing key is not important, but **if you intend to distribute your modification to other people and want them to be able to receive updates, then your signing key is critical.** Google will also sign your app for you on Google Play, but you can provide them with the same key that you use to sign your own APKs. The Android studio website has [a guide on signing keys](https://developer.android.com/studio/publish/app-signing.html) that covers both personal and Google Play distribution.
-
-### 6. Distributing Your APK
-
-The Android Studio website includes [a guide for ways to distribute your app.](https://developer.android.com/studio/publish)
-
-Note that by distributing your modification of Shattered Pixel Dungeon, you are bound by the terms of the GPLv3 license, which requires that you make any modifications you have made open-source. If you followed this guide and are using version control, that is already set up for you as your forked repository is publicly hosted on GitHub. Just make sure to push any changes you make back to that repository.
-
-**If you intend to make your version of the game available on Google Play PLEASE CONTACT ME AT THE FOLLOWING EMAIL ADDRESS:** Evan@ShatteredPixel.com . There are various aspects of Google's Developer Policies that go beyond the scope of a simple 'how to compile' guide. If you do not take necessary precautions before attempting to publish on Google Play, your version of the game will almost certainly be taken down for impersonating Pixel Dungeon.
