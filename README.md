@@ -1,18 +1,18 @@
-# 🍄‍🟫 Delicious Pixel Dungeon
+# Slay the Dungeon
 
-Delicious Pixel Dungeon is a roguelike dungeon crawler game. This is a remade of the classic Pixel Dungeon featuring:
-- 🗺️ New sprites and tilesets for a refreshed new look.
+Slay the Dungeon is a roguelike dungeon crawler game. This is a remade of the classic Pixel Dungeon featuring:
+- 🗺️ New sprites and tilesets.
 - ⚔️ New character perks added to the existing characters and a new class.
-- 🌞 New GUI with improved usability.
+- 🌞 New GUI.
 - 👺 New monsters and lore.
 - 🎹 Brand new soundtrack with a different theme for each level.
 
 What's coming up for v2?
-- 🍳 Spanish translation.
-- 🍳 New recipes
-- 🍳 Monster meat buffs
+-  Spanish translation.
+-  New recipes
+-  Monster meat buffs
 
-Sprites and music by Valentina:
+Sprites and music by me:
 www.instagram.com/drtamagotchi/
 
 Based on Pixel Dungeon Graddle by Evan Debenham:
@@ -21,9 +21,9 @@ https://github.com/00-Evan/pixel-dungeon-gradle
 Original Pixel Dungeon Source Code:
 https://GitHub.com/watabou/pixel-dungeon
 
-# Compiling DPD
+# Compiling STD
 
-To compile DPD you will need:
+To compile STD you will need:
 - (required) A computer which meets the [system requirements for Android Studio](https://developer.android.com/studio#get-android-studio)
 - (recommended) A GitHub account to fork this repository, if you wish to use version control
 - (recommended) An Android phone to test your build
@@ -35,8 +35,6 @@ Download and install the latest version of [Android Studio](https://developer.an
 ### 2. Setting up your copy of the code
 
 If you are using version control, fork this repository using the 'fork' button at the top-right of this web page, so that you have your own copy of the code on GitHub.
-
-If you do not wish to use version control, press the green 'code' button on [this repository's main page](https://github.com/00-Evan/pixel-dungeon-gradle), and then 'Download ZIP'. Unzip the downloaded zip to any directory on your computer you like.
 
 ### 3. Opening the code in Android Studio
 
@@ -66,4 +64,4 @@ This guide includes a [section on physical android devices...](https://developer
 
 APK (Android PacKage) and AAB (Android App Bundle) files are used to distribute Android applications. The Android studio website has [a guide which covers building your app.](https://developer.android.com/studio/run/build-for-release) Note that the option you will likely want to use is 'Generate Signed Bundle / APK'. APK files are best used when you are not trying to upload your app to Google Play, otherwise you must provide Google with an AAB file and they will used that to generate APK files for you.
 
-Note that APK and AAB files must be signed with a signing key. If you are making a small personal modification to DPD then your signing key is not important, but **if you intend to distribute your modification to other people and want them to be able to receive updates, then your signing key is critical.** Google will also sign your app for you on Google Play, but you can provide them with the same key that you use to sign your own APKs. The Android studio website has [a guide on signing keys](https://developer.android.com/studio/publish/app-signing.html) that covers both personal and Google Play distribution.
+Note that APK and AAB files must be signed with a signing key. If you are making a small personal modification to STD then your signing key is not important, but **if you intend to distribute your modification to other people and want them to be able to receive updates, then your signing key is critical.** Google will also sign your app for you on Google Play, but you can provide them with the same key that you use to sign your own APKs. The Android studio website has [a guide on signing keys](https://developer.android.com/studio/publish/app-signing.html) that covers both personal and Google Play distribution.

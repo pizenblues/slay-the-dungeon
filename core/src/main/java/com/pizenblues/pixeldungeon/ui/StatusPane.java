@@ -45,6 +45,7 @@ public class StatusPane extends Component {
 	private Image exp;
 	private int lastKeys = -1;
 	private int currentSTR = 0;
+	private float currentHealth = 0;
 	private BitmapText depth;
 	private BitmapText keys;
 	private BitmapText strength;
@@ -54,7 +55,7 @@ public class StatusPane extends Component {
 	private BuffIndicator buffs;
 	private Compass compass;
 	private MenuButton btnMenu;
-	private Image portrait;
+	private Image heroImage;
 
 	@Override
 	protected void createChildren() {
@@ -73,17 +74,23 @@ public class StatusPane extends Component {
 			};			
 		} );
 
-		portrait = new Image();
-		portrait.texture(Dungeon.hero.heroClass.portrait());
-		portrait.frame( 0, 0, 44, 40 );
-		portrait.x = 2;
-		portrait.y = 2;
-		add(portrait);
+		//portrait = new Image();
+		//portrait.texture(Dungeon.hero.heroClass.portrait());
+		//portrait.frame( 0, 0, 44, 40 );
+		//portraitDefault = new Image( Dungeon.hero.heroClass.portrait(), 0, 0, 48, 40 );
+
+		heroImage = new Image();
+		heroImage.texture(Dungeon.hero.heroClass.portrait());
+		updatePortrait(Dungeon.hero.HP, false);
+		heroImage.x = 2;
+		heroImage.y = 2;
+		add(heroImage);
 		
 		btnMenu = new MenuButton();
 		add( btnMenu );
-		
-		blood = new BitmaskEmitter( portrait );
+
+
+		blood = new BitmaskEmitter( heroImage );
 		blood.pour( BloodParticle.FACTORY, 0.3f );
 		blood.autoKill = false;
 		blood.on = false;
@@ -98,7 +105,7 @@ public class StatusPane extends Component {
 		exp = new Image( Assets.XP_BAR );
 		add( exp );
 		
-		depth = new BitmapText("FLOOR "+Integer.toString( Dungeon.depth ), PixelScene.font1x );
+		depth = new BitmapText("FLOOR: "+Integer.toString( Dungeon.depth ), PixelScene.font1x );
 		depth.scale = new PointF(0.75f, 0.75f);
 		depth.hardlight( 0xCACFC2 );
 		depth.measure();
@@ -150,7 +157,7 @@ public class StatusPane extends Component {
 		keys.x = 58;
 		keys.y = 12;
 
-		depth.x = 77;
+		depth.x = 78;
 		depth.y = 12;
 
 		layoutTags();
@@ -176,6 +183,23 @@ public class StatusPane extends Component {
 			resume.setPos( width - resume.width(), pos );
 		}
 	}
+
+	private void updatePortrait(float health, boolean leveling){
+		if(leveling){
+			heroImage.frame( 0, 40, 48, 40 );
+		}else{
+			if (health < 0.25f) {
+				heroImage.frame( 144, 0, 48, 40 );
+			} else if (health < 0.55f) {
+				blood.on = true;
+				heroImage.frame( 96, 0, 48, 40);
+			}else if(health < 0.85f){
+				heroImage.frame( 48, 0, 48, 40 );
+			} else {
+				heroImage.frame( 0, 0, 48, 40 );
+			}
+		}
+	}
 	
 	private boolean tagDanger	= false;
 	private boolean tagLoot		= false;
@@ -184,7 +208,7 @@ public class StatusPane extends Component {
 	@Override
 	public void update() {
 		super.update();
-		
+
 		if (tagDanger != danger.visible || tagLoot != loot.visible || tagResume != resume.visible) {
 			tagDanger = danger.visible;
 			tagLoot = loot.visible;
@@ -195,34 +219,22 @@ public class StatusPane extends Component {
 		float health = (float)Dungeon.hero.HP / Dungeon.hero.HT;
 		float experience = (float)Dungeon.hero.exp / Dungeon.hero.maxExp();
 
-		if(Dungeon.hero.isLeveling){
-			portrait.frame( 0, 40, 48, 40 );
-			blood.on = false;
-		}else{
-			if (health < 0.25f) {
-				portrait.frame( 144, 0, 48, 40 );
-				blood.on = true;
-			} else if (health < 0.55f) {
-				portrait.frame( 96, 0, 48, 40);
-				blood.on = true;
-			}else if(health < 0.85f){
-				portrait.frame( 48, 0, 48, 40 );
-				blood.on = false;
-			} else {
-				portrait.frame( 0, 0, 48, 40 );
-				blood.on = false;
-			}
-		}
-
 		hp.scale.x = health;
 		exp.scale.x = experience;
+
+		if (health != currentHealth){
+			updatePortrait(health, false);
+			currentHealth = health;
+		}else if(Dungeon.hero.isLeveling){
+			updatePortrait(health , true);
+		}
 		
 		int k = IronKey.curDepthQuantity;
 		if (k != lastKeys) {
 			lastKeys = k;
-			keys.text("KEYS "+Integer.toString( lastKeys ) );
+			keys.text("KEYS: "+Integer.toString( lastKeys ) );
 		}
-		
+
 		int heroSTR = Dungeon.hero.STR();
 		if (currentSTR != heroSTR) {
 			currentSTR = heroSTR;
@@ -266,7 +278,6 @@ public class StatusPane extends Component {
 		
 		@Override
 		protected void onClick() {
-			Sample.INSTANCE.play( Assets.SND_CLICK );
 			GameScene.show( new WndGame() );
 		}
 	}

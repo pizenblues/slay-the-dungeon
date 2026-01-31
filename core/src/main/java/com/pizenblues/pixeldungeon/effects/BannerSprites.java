@@ -33,16 +33,16 @@ public class BannerSprites {
 		Image icon = new Image( Assets.BANNERS );
 		switch (type) {
 		case PIXEL_DUNGEON:
-			icon.frame( icon.texture.uvRect( 0, 0, 115, 78 ) );
+			icon.frame( icon.texture.uvRect( 0, 0, 119, 78 ) );
 			break;
 		case BOSS_SLAIN:
-			icon.frame( icon.texture.uvRect( 0, 78, 99, 149 ) );
+			icon.frame( icon.texture.uvRect( 0, 80, 99, 151 ) );
 			break;
 		case GAME_OVER:
-			icon.frame( icon.texture.uvRect( 0, 149, 122, 219 ) );
+			icon.frame( icon.texture.uvRect( 0, 151, 122, 221 ) );
 			break;
 		case THE_END:
-			icon.frame( icon.texture.uvRect( 0, 223, 98, 270 ) );
+			icon.frame( icon.texture.uvRect( 0, 225, 98, 272 ) );
 			break;
 		}
 		return icon;

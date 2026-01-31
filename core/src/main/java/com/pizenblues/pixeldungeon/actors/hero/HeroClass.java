@@ -131,48 +131,6 @@ public enum HeroClass {
 	private static void initWarrior( Hero hero ) {
 		hero.STR = hero.STR + 1;
 
-		(hero.belongings.weapon = new ShortSword()).identify();
-		new Dart( 8 ).identify().collect();
-
-		QuickSlot.primaryValue = Dart.class;
-		
-		new PotionOfStrength().setKnown();
-	}
-	
-	private static void initMage( Hero hero ) {	
-		(hero.belongings.weapon = new Knuckles()).identify();
-		
-		WandOfMagicMissile wand = new WandOfMagicMissile();
-		wand.identify().collect();
-		
-		QuickSlot.primaryValue = wand;
-		
-		new ScrollOfIdentify().setKnown();
-	}
-	
-	private static void initRogue( Hero hero ) {
-		(hero.belongings.weapon = new ShadowBlade()).identify();
-
-		(hero.belongings.ring1 = new RingOfShadows()).upgrade().identify();
-		new Dart( 8 ).identify().collect();
-		
-		hero.belongings.ring1.activate( hero );
-		
-		QuickSlot.primaryValue = Dart.class;
-		
-		new ScrollOfMagicMapping().setKnown();
-	}
-	
-	private static void initHuntress( Hero hero ) {
-		
-		hero.HP = (hero.HT += 5);
-		
-		(hero.belongings.weapon = new Dagger()).identify();
-		Boomerang boomerang = new Boomerang();
-		boomerang.identify().collect();
-		
-		QuickSlot.primaryValue = boomerang;
-
 		//values for testing
 		hero.STR = hero.STR + 200;
 		hero.HP = (hero.HT += 500);
@@ -234,6 +192,48 @@ public enum HeroClass {
 		new ScrollOfMagicMapping( ).identify().collect();
 		new ScrollOfMagicMapping( ).identify().collect();
 		// remove testing values
+
+		(hero.belongings.weapon = new ShortSword()).identify();
+		new Dart( 8 ).identify().collect();
+
+		QuickSlot.primaryValue = Dart.class;
+		
+		new PotionOfStrength().setKnown();
+	}
+	
+	private static void initMage( Hero hero ) {	
+		(hero.belongings.weapon = new Knuckles()).identify();
+		
+		WandOfMagicMissile wand = new WandOfMagicMissile();
+		wand.identify().collect();
+		
+		QuickSlot.primaryValue = wand;
+		
+		new ScrollOfIdentify().setKnown();
+	}
+	
+	private static void initRogue( Hero hero ) {
+		(hero.belongings.weapon = new ShadowBlade()).identify();
+
+		(hero.belongings.ring1 = new RingOfShadows()).upgrade().identify();
+		new Dart( 8 ).identify().collect();
+		
+		hero.belongings.ring1.activate( hero );
+		
+		QuickSlot.primaryValue = Dart.class;
+		
+		new ScrollOfMagicMapping().setKnown();
+	}
+	
+	private static void initHuntress( Hero hero ) {
+		
+		hero.HP = (hero.HT += 5);
+		
+		(hero.belongings.weapon = new Dagger()).identify();
+		Boomerang boomerang = new Boomerang();
+		boomerang.identify().collect();
+		
+		QuickSlot.primaryValue = boomerang;
 	}
 
 	public String title() {
