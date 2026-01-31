@@ -25,7 +25,7 @@ https://GitHub.com/watabou/pixel-dungeon
 
 # Compiling STD
 
-To compile STD you will need:
+To compile STD (that doesn't sound like fun) you will need:
 - (required) A computer which meets the [system requirements for Android Studio](https://developer.android.com/studio#get-android-studio)
 - (recommended) A GitHub account to fork this repository, if you wish to use version control
 - (recommended) An Android phone to test your build
