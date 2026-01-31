@@ -1,5 +1,7 @@
 # Slay the Dungeon
 
+![Logo illustrating a warrior character](core/src/main/res/drawable-xxxhdpi/ic_launcher.png "Warrior guy")
+
 Slay the Dungeon is a roguelike dungeon crawler game. This is a remade of the classic Pixel Dungeon featuring:
 - 🗺️ New sprites and tilesets.
 - ⚔️ New character perks added to the existing characters and a new class.
