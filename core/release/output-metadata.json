@@ -1,0 +1,21 @@
+{
+  "version": 3,
+  "artifactType": {
+    "type": "APK",
+    "kind": "Directory"
+  },
+  "applicationId": "com.pizenblues.pixeldungeon",
+  "variantName": "release",
+  "elements": [
+    {
+      "type": "SINGLE",
+      "filters": [],
+      "attributes": [],
+      "versionCode": 74,
+      "versionName": "1.9.1",
+      "outputFile": "core-release.apk"
+    }
+  ],
+  "elementType": "File",
+  "minSdkVersionForDexing": 8
+}
