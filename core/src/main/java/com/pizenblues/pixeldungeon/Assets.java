@@ -20,10 +20,9 @@ package com.pizenblues.pixeldungeon;
 public class Assets {
 	public static final String ARCS_BG		= "arcs1.png";
 	public static final String ARCS_FG		= "arcs2.png";
+	public static final String ENTER		= "door.png";
 	public static final String DASHBOARD	= "dashboard.png";
 	public static final String BANNERS	= "banners.png";
-	public static final String ENTRANCE	= "entrance.png";
-	public static final String DOOR	= "door.png";
 	public static final String BADGES	= "badges.png";
 	public static final String LOCKED	= "locked_badge.png";
 	public static final String AMULET	= "amulet.png";

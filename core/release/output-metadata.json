@@ -11,11 +11,11 @@
       "type": "SINGLE",
       "filters": [],
       "attributes": [],
-      "versionCode": 74,
-      "versionName": "1.9.1",
+      "versionCode": 78,
+      "versionName": "1.0.0",
       "outputFile": "core-release.apk"
     }
   ],
   "elementType": "File",
-  "minSdkVersionForDexing": 8
+  "minSdkVersionForDexing": 21
 }

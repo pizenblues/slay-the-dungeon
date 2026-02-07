@@ -37,20 +37,19 @@ public class Sign {
 
 			// lvl 1
 
-		"Welcome to the delicious dungeon. Nobody knows why is called that way, food is not abundant " +
-				"in a place like this, so manage your rations well or you'll starve.",
+		"In this dungeon food is not abundant, so manage your rations well or you'll starve.",
 
 		"If you are stuck use your magnifier glass to search for hidden doors",
 
-		"Delicious pixel dungeon is a rougelike game - That means you will die. A lot.",
+		"Slay the Dungeon is a rougelike game - That means you will die. A lot.",
 
-		"You can spend your gold in shops on deeper levels of the dungeon. The first one is on the 6th level.",
+		"You can spend your gold in stores on deeper levels of the dungeon. The first one is on the 6th level.",
 			
 		"Beware of the baby dragon...",
 
 			// lvl 3
 		
-		"Delicious dungeon bazaar - You'll get stocked up, and we'll get richer!",
+		"Dungeon Store (tm) - You will S-L-A-Y with our brand new armors! ",
 
 		"Identify your potions and scrolls as soon as possible. Don't put it off to the moment " +
 			"when you actually need them.",
@@ -64,7 +63,7 @@ public class Sign {
 
 			// lvl 4
 		
-		"Delicious dungeon bazaar - Not other store can beat our prices, cause there are no other stores.",
+		"Dungeon Store (tm) - Not other store can beat our prices, cause there are no other stores.",
 
 		"When you're attacked by several monsters at the same time, try to retreat behind a door.",
 
@@ -76,7 +75,7 @@ public class Sign {
 
 			// lvl 5
 		
-		"Delicious dungeon bazaar - Dragon slaying swords? we got it!",
+		"Dungeon Store (tm) - Necromancer keychans? we got it!",
 
 		"When you upgrade an enchanted weapon, there is a chance to destroy that enchantment.",
 
@@ -86,11 +85,11 @@ public class Sign {
 		
 		"This is the dance of the necromancer...",
 		
-		"Delicious dungeon bazaar - 50% off on all Dungeon monster plushies"
+		"Dungeon Store (tm) - 50% off on all Dungeon monster plushies"
 	};
 	
 	private static final String TXT_BURN =
-		"You are almost there...";
+		"Save me, friend...";
 	
 	public static void read( int pos ) {
 		

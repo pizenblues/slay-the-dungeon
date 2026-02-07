@@ -24,13 +24,10 @@ import com.pizenblues.noosa.Image;
 import com.pizenblues.noosa.NinePatch;
 import com.pizenblues.noosa.TouchArea;
 import com.pizenblues.noosa.audio.Sample;
-import com.pizenblues.noosa.particles.BitmaskEmitter;
-import com.pizenblues.noosa.particles.Emitter;
 import com.pizenblues.noosa.ui.Button;
 import com.pizenblues.noosa.ui.Component;
 import com.pizenblues.pixeldungeon.Assets;
 import com.pizenblues.pixeldungeon.Dungeon;
-import com.pizenblues.pixeldungeon.effects.particles.BloodParticle;
 import com.pizenblues.pixeldungeon.items.keys.IronKey;
 import com.pizenblues.pixeldungeon.scenes.GameScene;
 import com.pizenblues.pixeldungeon.scenes.PixelScene;
@@ -40,7 +37,6 @@ import com.pizenblues.utils.PointF;
 
 public class StatusPane extends Component {
 	private NinePatch shield;
-	private Emitter blood;
 	private Image hp;
 	private Image exp;
 	private int lastKeys = -1;
@@ -74,11 +70,6 @@ public class StatusPane extends Component {
 			};			
 		} );
 
-		//portrait = new Image();
-		//portrait.texture(Dungeon.hero.heroClass.portrait());
-		//portrait.frame( 0, 0, 44, 40 );
-		//portraitDefault = new Image( Dungeon.hero.heroClass.portrait(), 0, 0, 48, 40 );
-
 		heroImage = new Image();
 		heroImage.texture(Dungeon.hero.heroClass.portrait());
 		updatePortrait(Dungeon.hero.HP, false);
@@ -88,13 +79,6 @@ public class StatusPane extends Component {
 		
 		btnMenu = new MenuButton();
 		add( btnMenu );
-
-
-		blood = new BitmaskEmitter( heroImage );
-		blood.pour( BloodParticle.FACTORY, 0.3f );
-		blood.autoKill = false;
-		blood.on = false;
-		add( blood );
 		
 		compass = new Compass( Dungeon.level.exit );
 		add( compass );
@@ -191,7 +175,6 @@ public class StatusPane extends Component {
 			if (health < 0.25f) {
 				heroImage.frame( 144, 0, 48, 40 );
 			} else if (health < 0.55f) {
-				blood.on = true;
 				heroImage.frame( 96, 0, 48, 40);
 			}else if(health < 0.85f){
 				heroImage.frame( 48, 0, 48, 40 );

@@ -51,8 +51,8 @@ public class WndStory extends Window {
 		"These abandoned prisons are still haunted by the presence of criminals, some dead and some alive.");
 		
 		CHAPTERS.put( ID_CAVES,
-		"The dwarf mines can be an oddly beautiful place unless you are claustrophobic. " +
-		"The rocky walls are splashed with precious minerals, and the water running under your feet looks crystalline. " +
+		"The dwarf mines can be an oddly beautiful place, unless you are claustrophobic. " +
+		"The rocky walls are splashed with precious stones, and the water running under your feet looks like crystalline. " +
 		"In the distance you can hear a hammering sound, perhaps produced by miners still working on this place." );
 		
 		CHAPTERS.put( ID_METROPOLIS,

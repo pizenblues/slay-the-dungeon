@@ -17,117 +17,75 @@
  */
 package com.pizenblues.pixeldungeon.scenes;
 
-import com.pizenblues.gltextures.Gradient;
-import com.pizenblues.gltextures.SmartTexture;
-import com.pizenblues.glwrap.Quad;
 import com.pizenblues.noosa.BitmapText;
 import com.pizenblues.noosa.Camera;
-import com.pizenblues.noosa.Game;
-import com.pizenblues.noosa.Group;
 import com.pizenblues.noosa.Image;
-import com.pizenblues.noosa.NoosaScript;
-import com.pizenblues.noosa.Visual;
 import com.pizenblues.noosa.audio.Music;
 import com.pizenblues.noosa.audio.Sample;
-import com.pizenblues.noosa.particles.BitmaskEmitter;
 import com.pizenblues.noosa.ui.Button;
 import com.pizenblues.pixeldungeon.Assets;
 import com.pizenblues.pixeldungeon.PixelDungeon;
 import com.pizenblues.pixeldungeon.effects.BannerSprites;
 import com.pizenblues.pixeldungeon.ui.ExitButton;
 import com.pizenblues.pixeldungeon.ui.PrefsButton;
-import com.pizenblues.pixeldungeon.effects.Speck;
-import com.pizenblues.noosa.particles.Emitter;
-import com.pizenblues.noosa.TouchArea;
-import com.pizenblues.input.Touchscreen.Touch;
-import com.pizenblues.utils.Point;
-import com.pizenblues.utils.Random;
+import com.pizenblues.pixeldungeon.effects.FireDoor;
 
-import java.nio.Buffer;
-import java.nio.FloatBuffer;
+import com.pizenblues.noosa.particles.Emitter;
+import com.pizenblues.noosa.particles.BitmaskEmitter;
+import com.pizenblues.pixeldungeon.effects.particles.SmokeParticle;
 
 public class TitleScene extends PixelScene {
-	private static final String TXT_PLAY		= "Tap to Start";
+	private static final String TXT_PLAY = "Tap to Start";
 	private static final String TXT_BUTTON = "";
+	private FireDoor doorAnimation;
 	private Emitter emitter;
-	private static final int FRAME_WIDTH	= 120;
-	private static final int FRAME_HEIGHT	= 180;
-	private static final int FRAME_PADDING	= 14;
-	private static final int ENTRANCE_W	= 79;
-	private static final int ENTRANCE_H	= 155;
-	private Camera viewport;
 
 	@Override
 	public void create() {
 		super.create();
+
 		Music.INSTANCE.play(Assets.THEME, true);
 		Music.INSTANCE.volume(1f);
+
 		uiCamera.visible = false;
 
 		int w = Camera.main.width;
 		int h = Camera.main.height;
-		float padding = 24;
 
-		float entranceTrueHeight = ENTRANCE_H * 0.7f;
-		float entranceTrueWidth = ENTRANCE_W * 0.7f;
+		doorAnimation = placeAnim();
 
-		// frame
-		float vx = align( (w - (entranceTrueWidth)) / 2 );
-		float vy = align( h / 2.5f);
-
-		Point s = Camera.main.cameraToScreen( vx, vy );
-		viewport = new Camera( s.x, s.y, ENTRANCE_W, Math.round(entranceTrueHeight), defaultZoom );
-		Camera.add( viewport );
-
-		Group window = new Group();
-		window.camera = viewport;
-		add( window );
-
-		entranceBackground entranceBg = new entranceBackground( true );
-		entranceBg.scale.set( entranceTrueWidth, entranceTrueHeight );
-		window.add( entranceBg );
-
-		Image floor = new Image( Assets.DOOR );
-		floor.frame( 163, 0, 66, 19 );
-		floor.scale.set(0.7f);
-		floor.x = (entranceTrueWidth - floor.width()) / 2;
-		floor.y = entranceTrueHeight - floor.height();
-		window.add( floor );
-
-		Stars stars = new Stars(10 );
-		window.add( stars );
-
-		Image frame = new Image( Assets.DOOR );
-		frame.frame( 0, 0, FRAME_WIDTH, FRAME_HEIGHT );
-		frame.scale.set(0.7f);
-		frame.x = vx - FRAME_PADDING;
-		frame.y = vy - FRAME_PADDING;
-		add( frame );
-
-		emitter = new BitmaskEmitter(frame);
-		emitter.start(Speck.factory(Speck.LIGHT), 0.05f, 50);
-		add(emitter);
-
-		add(new TouchArea(frame) {
-			protected void onClick(Touch touch) {
-				emitter.revive();
-				emitter.start(Speck.factory(Speck.LIGHT), 0.05f, 50);
-			}
-		});
+		//emitter = new BitmaskEmitter(doorAnimation);
+		//emitter.start(Speck.factory(Speck.LIGHT), 0.05f, 50);
+		//emitter.start(SmokeParticle.FACTORY, 0.5f, 1000);
+		//add(emitter);
 
 		Image title = BannerSprites.get( BannerSprites.Type.PIXEL_DUNGEON );
 		add( title );
 		title.x = (w - title.width()) / 2;
-		title.y = PixelDungeon.landscape() ? 8 : padding;
+		title.y = PixelDungeon.landscape() ? 0 : doorAnimation.y - title.height() - 20;
 
-		DashboardItem btnHighscores = new DashboardItem(TXT_BUTTON, 2 ) {
+		clickArea btnPlay = new clickArea( TXT_PLAY);
+		float titlePositionY = doorAnimation.y;
+		btnPlay.setPos( (w - btnPlay.width()) / 2, titlePositionY );
+		add( btnPlay );
+
+	// buttons - let's turn this into a menu later pls!
+
+		PrefsButton btnPrefs = new PrefsButton();
+		btnPrefs.setPos( w - btnPrefs.width() - 4, 5);
+		add( btnPrefs );
+
+		ExitButton btnExit = new ExitButton();
+		btnExit.setPos( 4, 4 );
+		add( btnExit );
+
+		DashboardItem btnRank = new DashboardItem(TXT_BUTTON, 2 ) {
 			@Override
 			protected void onClick() {
 				PixelDungeon.switchNoFade( RankingsScene.class );
 			}
 		};
-		btnHighscores.setPos( (w - 60) / 2, h - padding);
-		add( btnHighscores );
+		add( btnRank );
 
 		DashboardItem btnBadges = new DashboardItem( TXT_BUTTON, 3 ) {
 			@Override
@@ -135,7 +93,6 @@ public class TitleScene extends PixelScene {
 				PixelDungeon.switchNoFade( BadgesScene.class );
 			}
 		};
-		btnBadges.setPos( btnHighscores.right() + 12, h - padding);
 		add( btnBadges );
 
 		DashboardItem btnAbout = new DashboardItem( TXT_BUTTON, 1 ) {
@@ -144,36 +101,24 @@ public class TitleScene extends PixelScene {
 				PixelDungeon.switchNoFade( AboutScene.class );
 			}
 		};
-		btnAbout.setPos( btnBadges.right() + 12, h - padding);
 		add( btnAbout );
 
-		clickArea btnPlay = new clickArea( TXT_PLAY);
-		float playTextPosition = frame.y + (frame.height() * 0.7f) / 2;
-		playTextPosition = PixelDungeon.landscape() ? h/2 : playTextPosition;
-		btnPlay.setPos( (w - btnPlay.width()) / 2, playTextPosition );
-		add( btnPlay );
-
-		BitmapText version = new BitmapText( "v " + Game.version, font1x );
-		version.measure();
-		version.hardlight( 0x888888 );
-		version.x = w - version.width();
-		version.y = h - version.height();
-		add( version );
-
-		PrefsButton btnPrefs = new PrefsButton();
-		btnPrefs.setPos( w - btnPrefs.width() - 4, 4);
-		add( btnPrefs );
-
-		ExitButton btnExit = new ExitButton();
-		btnExit.setPos( 4, 4 );
-		add( btnExit );
+		if(PixelDungeon.landscape()){
+			btnBadges.setPos( w - btnRank.width() - 4, btnPrefs.bottom() + 8);
+			btnRank.setPos( w - btnRank.width() - 4, btnBadges.bottom() + 8);
+			btnAbout.setPos( w - btnRank.width() - 4, btnRank.bottom() + 8);
+		}else{
+			btnRank.setPos( (w - btnRank.width()) / 2, 4);
+			btnAbout.setPos( btnRank.right() + 4, 4);
+			btnBadges.setPos( btnRank.left() - btnBadges.width() - 4, 4);
+		}
 
 		fadeIn();
 	}
 
 	private static class DashboardItem extends Button {
-		public static final float SIZE	= 16;
-		private static final int IMAGE_SIZE	= 16;
+		public static final float SIZE	= 14;
+		private static final int IMAGE_SIZE	= 14;
 		private Image image;
 		private BitmapText label;
 
@@ -220,8 +165,8 @@ public class TitleScene extends PixelScene {
 	}
 
 	private static class clickArea extends Button {
-		public static final float H = 60;
-		public static final float W = 200;
+		public static final float H = 180;
+		public static final float W = 256;
         private final String text;
         private BitmapText label;
 
@@ -254,71 +199,13 @@ public class TitleScene extends PixelScene {
 		}
 	}
 
-	private static class entranceBackground extends Visual {
-		private static final int[] colors		= {0xFF000000, 0xFF751756};
-		private SmartTexture texture;
-		private FloatBuffer verticesBuffer;
+	private FireDoor placeAnim() {
+		FireDoor doorSprite = new FireDoor();
+		doorSprite.scale.set(0.6f);
+		doorSprite.x = (Camera.main.width - doorSprite.width()) / 2f;
+		doorSprite.y = Camera.main.height - doorSprite.height();
 
-		public entranceBackground( boolean dayTime ) {
-			super( 0, 0, 1, 1 );
-
-			texture = new Gradient( colors );
-
-			float[] vertices = new float[16];
-			verticesBuffer = Quad.create();
-			vertices[2]		= 0.25f;
-			vertices[6]		= 0.25f;
-			vertices[10]	= 0.75f;
-			vertices[14]	= 0.75f;
-			vertices[3]		= 0;
-			vertices[7]		= 1;
-			vertices[11]	= 1;
-			vertices[15]	= 0;
-			vertices[0] 	= 0;
-			vertices[1] 	= 0;
-			vertices[4] 	= 1;
-			vertices[5] 	= 0;
-			vertices[8] 	= 1;
-			vertices[9] 	= 1;
-			vertices[12]	= 0;
-			vertices[13]	= 1;
-			((Buffer)verticesBuffer).position( 0 );
-			verticesBuffer.put( vertices );
-		}
-
-		@Override
-		public void draw() {
-			super.draw();
-			NoosaScript script = NoosaScript.get();
-			texture.bind();
-			script.camera( camera() );
-			script.uModel.valueM4( matrix );
-			script.lighting(
-					rm, gm, bm, am,
-					ra, ga, ba, aa );
-			script.drawQuad( verticesBuffer );
-		}
-	}
-
-	private static class Stars extends Image {
-		public Stars( float positionX) {
-			super( Assets.DOOR );
-			frame( 120, 0, 43, 180 );
-			this.x = positionX;
-
-			scale.set( 1 - positionX / ENTRANCE_W );
-			y = 0;
-			speed.y = 48;
-		}
-
-		@Override
-		public void update() {
-			super.update();
-			if (speed.y > 0 && y > ENTRANCE_H) {
-				y = -height();
-			} else if (speed.y < 0 && y < -height()) {
-				y = 100;
-			}
-		}
+		add( doorSprite );
+		return doorSprite;
 	}
 }

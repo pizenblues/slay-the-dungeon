@@ -19,6 +19,8 @@ package com.pizenblues.pixeldungeon.scenes;
 
 import android.content.Intent;
 import android.net.Uri;
+
+import com.pizenblues.noosa.BitmapText;
 import com.pizenblues.noosa.BitmapTextMultiline;
 import com.pizenblues.noosa.Camera;
 import com.pizenblues.noosa.Game;
@@ -33,7 +35,7 @@ import com.pizenblues.pixeldungeon.ui.Banner;
 public class AboutScene extends PixelScene {
 
 	private static final String TXT =
-		"Delicious Pixel Dungeon is a roguelike dungeon crawler game. " +
+		"Slay the Dungeon is a roguelike dungeon crawler game. " +
 		"Sprites and music by Valentina.\n";
 
 	private static final String TXT_THANKS =
@@ -48,6 +50,7 @@ public class AboutScene extends PixelScene {
 		super.create();
 		float newPosition = PixelDungeon.landscape() ? 12 : 72;
 		int w = Camera.main.width;
+		int h = Camera.main.height;
 
 		Image tamago_icon = Icons.PIZEN.get();
 		tamago_icon.x = align( (w - tamago_icon.width) / 2 );
@@ -83,10 +86,18 @@ public class AboutScene extends PixelScene {
 		add( creditsText );
 		creditsText.x = align( (w - text.width()) / 2 );
 		creditsText.y = newPosition;
+		
+		//version
+		BitmapText version = new BitmapText( "v " + Game.version, font1x );
+		version.measure();
+		version.hardlight( 0x888888 );
+		version.x = (w - version.width()) / 2;
+		version.y = h - version.height() - 8;
+		add( version );
 
 		// bg and ui
 		Archs archs = new Archs();
-		archs.setSize( w, Camera.main.height );
+		archs.setSize( w, h );
 		addToBack( archs );
 		
 		ExitButton btnExit = new ExitButton();

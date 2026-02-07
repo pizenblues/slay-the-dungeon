@@ -131,68 +131,6 @@ public enum HeroClass {
 	private static void initWarrior( Hero hero ) {
 		hero.STR = hero.STR + 1;
 
-		//values for testing
-		hero.STR = hero.STR + 200;
-		hero.HP = (hero.HT += 500);
-		new PotionOfHealing( ).identify().collect();
-		new PotionOfHealing( ).identify().collect();
-		new PotionOfHealing( ).identify().collect();
-		new PotionOfHealing( ).identify().collect();
-		new PotionOfHealing( ).identify().collect();
-		new PotionOfHealing( ).identify().collect();
-		new PotionOfHealing( ).identify().collect();
-		new PotionOfHealing( ).identify().collect();
-		new PotionOfHealing( ).identify().collect();
-		new PotionOfHealing( ).identify().collect();
-		new PotionOfHealing( ).identify().collect();
-		new PotionOfHealing( ).identify().collect();
-		new PotionOfHealing( ).identify().collect();
-		new PotionOfHealing( ).identify().collect();
-		new PotionOfHealing( ).identify().collect();
-		new PotionOfHealing( ).identify().collect();
-		new PotionOfHealing( ).identify().collect();
-		new PotionOfHealing( ).identify().collect();
-		new PotionOfHealing( ).identify().collect();
-		new PotionOfHealing( ).identify().collect();
-		new PotionOfHealing( ).identify().collect();
-		new PotionOfHealing( ).identify().collect();
-		new PotionOfHealing( ).identify().collect();
-		new PotionOfHealing( ).identify().collect();
-		new PotionOfHealing( ).identify().collect();
-		new PotionOfHealing( ).identify().collect();
-		new PotionOfHealing( ).identify().collect();
-		new PotionOfHealing( ).identify().collect();
-		new PotionOfHealing( ).identify().collect();
-		new PotionOfHealing( ).identify().collect();
-		new PotionOfHealing( ).identify().collect();
-		new ScrollOfMagicMapping( ).identify().collect();
-		new ScrollOfMagicMapping( ).identify().collect();
-		new ScrollOfMagicMapping( ).identify().collect();
-		new ScrollOfMagicMapping( ).identify().collect();
-		new ScrollOfMagicMapping( ).identify().collect();
-		new ScrollOfMagicMapping( ).identify().collect();
-		new ScrollOfMagicMapping( ).identify().collect();
-		new ScrollOfMagicMapping( ).identify().collect();
-		new ScrollOfMagicMapping( ).identify().collect();
-		new ScrollOfMagicMapping( ).identify().collect();
-		new ScrollOfMagicMapping( ).identify().collect();
-		new ScrollOfMagicMapping( ).identify().collect();
-		new ScrollOfMagicMapping( ).identify().collect();
-		new ScrollOfMagicMapping( ).identify().collect();
-		new ScrollOfMagicMapping( ).identify().collect();
-		new ScrollOfMagicMapping( ).identify().collect();
-		new ScrollOfMagicMapping( ).identify().collect();
-		new ScrollOfMagicMapping( ).identify().collect();
-		new ScrollOfMagicMapping( ).identify().collect();
-		new ScrollOfMagicMapping( ).identify().collect();
-		new ScrollOfMagicMapping( ).identify().collect();
-		new ScrollOfMagicMapping( ).identify().collect();
-		new ScrollOfMagicMapping( ).identify().collect();
-		new ScrollOfMagicMapping( ).identify().collect();
-		new ScrollOfMagicMapping( ).identify().collect();
-		new ScrollOfMagicMapping( ).identify().collect();
-		// remove testing values
-
 		(hero.belongings.weapon = new ShortSword()).identify();
 		new Dart( 8 ).identify().collect();
 

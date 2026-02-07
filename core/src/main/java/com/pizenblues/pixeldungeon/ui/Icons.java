@@ -80,7 +80,7 @@ public enum Icons {
 			icon.frame( icon.texture.uvRect( 80, 48, 96, 64 ) );
 			break;
 		case PREFS:
-			icon.frame( icon.texture.uvRect( 30, 0, 46, 16 ) );
+			icon.frame( icon.texture.uvRect( 32, 0, 45, 13 ) );
 			break;
 		case WARNING:
 			icon.frame( icon.texture.uvRect( 46, 0, 64, 12 ) );
