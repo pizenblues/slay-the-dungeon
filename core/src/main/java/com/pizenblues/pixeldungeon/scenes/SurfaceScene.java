@@ -25,7 +25,6 @@ import com.pizenblues.gltextures.SmartTexture;
 import com.pizenblues.glwrap.Quad;
 import com.pizenblues.noosa.BitmapTextMultiline;
 import com.pizenblues.noosa.Camera;
-import com.pizenblues.noosa.ColorBlock;
 import com.pizenblues.noosa.Game;
 import com.pizenblues.noosa.Group;
 import com.pizenblues.noosa.Image;
@@ -37,10 +36,9 @@ import com.pizenblues.pixeldungeon.Badges;
 import com.pizenblues.pixeldungeon.Dungeon;
 import com.pizenblues.pixeldungeon.PixelDungeon;
 import com.pizenblues.pixeldungeon.effects.BannerSprites;
-import com.pizenblues.pixeldungeon.ui.RedButton;
+import com.pizenblues.pixeldungeon.ui.PrimaryButton;
 import com.pizenblues.utils.Point;
 import com.pizenblues.utils.Random;
-import com.pizenblues.pixeldungeon.ui.Banner;
 
 public class SurfaceScene extends PixelScene {
 	private static final int FRAME_WIDTH	= 255;
@@ -100,7 +98,7 @@ public class SurfaceScene extends PixelScene {
 		float buttonPositionY = text.y + text.height() + 8;
 		float buttonPositionX = PixelDungeon.landscape() ? text.x : (w - BUTTON_WIDTH) / 2;
 
-		RedButton gameOverButton = new RedButton( "Leave dungeon" ) {
+		PrimaryButton gameOverButton = new PrimaryButton( "Leave dungeon" ) {
 			protected void onClick() {
 				Game.switchScene( TitleScene.class );
 			}

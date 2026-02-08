@@ -26,15 +26,15 @@ import com.pizenblues.noosa.ui.Button;
 import com.pizenblues.pixeldungeon.Assets;
 import com.pizenblues.pixeldungeon.PixelDungeon;
 import com.pizenblues.pixeldungeon.effects.BannerSprites;
-import com.pizenblues.pixeldungeon.ui.ExitButton;
-import com.pizenblues.pixeldungeon.ui.PrefsButton;
 import com.pizenblues.pixeldungeon.effects.FireDoor;
+import com.pizenblues.pixeldungeon.windows.WndMenu;
 
 
 public class TitleScene extends PixelScene {
 	private static final String TXT_PLAY = "Tap to Start";
 	private static final String TXT_BUTTON = "";
 	private FireDoor doorAnimation;
+    private MenuButton btnMenu;
 
 	@Override
 	public void create() {
@@ -53,106 +53,18 @@ public class TitleScene extends PixelScene {
 		Image title = BannerSprites.get( BannerSprites.Type.PIXEL_DUNGEON );
 		add( title );
 		title.x = (w - title.width()) / 2;
-		title.y = PixelDungeon.landscape() ? 0 : doorAnimation.y - title.height() - 20;
+		title.y = PixelDungeon.landscape() ? 8 : doorAnimation.y - title.height() - 20;
 
 		clickArea btnPlay = new clickArea( TXT_PLAY);
 		float titlePositionY = doorAnimation.y;
 		btnPlay.setPos( (w - btnPlay.width()) / 2, titlePositionY );
 		add( btnPlay );
 
-	// buttons - let's turn this into a menu later pls!
-
-		PrefsButton btnPrefs = new PrefsButton();
-		btnPrefs.setPos( w - btnPrefs.width() - 4, 5);
-		add( btnPrefs );
-
-		ExitButton btnExit = new ExitButton();
-		btnExit.setPos( 4, 4 );
-		add( btnExit );
-
-		DashboardItem btnRank = new DashboardItem(TXT_BUTTON, 2 ) {
-			@Override
-			protected void onClick() {
-				PixelDungeon.switchNoFade( RankingsScene.class );
-			}
-		};
-		add( btnRank );
-
-		DashboardItem btnBadges = new DashboardItem( TXT_BUTTON, 3 ) {
-			@Override
-			protected void onClick() {
-				PixelDungeon.switchNoFade( BadgesScene.class );
-			}
-		};
-		add( btnBadges );
-
-		DashboardItem btnAbout = new DashboardItem( TXT_BUTTON, 1 ) {
-			@Override
-			protected void onClick() {
-				PixelDungeon.switchNoFade( AboutScene.class );
-			}
-		};
-		add( btnAbout );
-
-		if(PixelDungeon.landscape()){
-			btnBadges.setPos( w - btnRank.width() - 4, btnPrefs.bottom() + 8);
-			btnRank.setPos( w - btnRank.width() - 4, btnBadges.bottom() + 8);
-			btnAbout.setPos( w - btnRank.width() - 4, btnRank.bottom() + 8);
-		}else{
-			btnRank.setPos( (w - btnRank.width()) / 2, 4);
-			btnAbout.setPos( btnRank.right() + 4, 4);
-			btnBadges.setPos( btnRank.left() - btnBadges.width() - 4, 4);
-		}
+        btnMenu = new MenuButton();
+        add( btnMenu );
+        btnMenu.setPos( w - btnMenu.width(), 1 );
 
 		fadeIn();
-	}
-
-	private static class DashboardItem extends Button {
-		public static final float SIZE	= 14;
-		private static final int IMAGE_SIZE	= 14;
-		private Image image;
-		private BitmapText label;
-
-		public DashboardItem( String text, int index ) {
-			super();
-
-			image.frame( image.texture.uvRect( index * IMAGE_SIZE, 0, (index + 1) * IMAGE_SIZE, IMAGE_SIZE ) );
-			this.label.text( text );
-			this.label.measure();
-
-			setSize( SIZE, SIZE );
-		}
-
-		@Override
-		protected void createChildren() {
-			super.createChildren();
-
-			image = new Image( Assets.DASHBOARD );
-			add( image );
-
-			label = createText( 9 );
-			add( label );
-		}
-
-		@Override
-		protected void layout() {
-			super.layout();
-			image.x = align( x + (width - image.width()) / 2 );
-			image.y = align( y );
-			label.x = align( image.x + image.width() + 2 );
-			label.y = align( y + 4);
-		}
-
-		@Override
-		protected void onTouchDown() {
-			image.brightness( 1.5f );
-			Sample.INSTANCE.play( Assets.SND_CLICK, 1, 1, 0.8f );
-		}
-
-		@Override
-		protected void onTouchUp() {
-			image.resetColor();
-		}
 	}
 
 	private static class clickArea extends Button {
@@ -199,4 +111,44 @@ public class TitleScene extends PixelScene {
 		add( doorSprite );
 		return doorSprite;
 	}
+
+    private static class MenuButton extends Button {
+        private Image image;
+
+        public MenuButton() {
+            super();
+            width = image.width + 4;
+            height = image.height + 4;
+        }
+
+        @Override
+        protected void createChildren() {
+            super.createChildren();
+            image = new Image(Assets.STATUS, 113, 2, 14, 15);
+            add(image);
+        }
+
+        @Override
+        protected void layout() {
+            super.layout();
+            image.x = x + 2;
+            image.y = y + 2;
+        }
+
+        @Override
+        protected void onTouchDown() {
+            image.brightness( 1.5f );
+            Sample.INSTANCE.play( Assets.SND_CLICK );
+        }
+
+        @Override
+        protected void onTouchUp() {
+            image.resetColor();
+        }
+
+        @Override
+        protected void onClick() {
+            parent.add( new WndMenu() );
+        }
+    }
 }

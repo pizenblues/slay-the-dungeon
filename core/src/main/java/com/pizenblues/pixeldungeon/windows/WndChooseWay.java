@@ -21,7 +21,7 @@ import com.pizenblues.pixeldungeon.actors.hero.HeroSubClass;
 import com.pizenblues.pixeldungeon.items.TomeOfMastery;
 import com.pizenblues.pixeldungeon.sprites.ItemSprite;
 import com.pizenblues.pixeldungeon.ui.HighlightedText;
-import com.pizenblues.pixeldungeon.ui.RedButton;
+import com.pizenblues.pixeldungeon.ui.PrimaryButton;
 import com.pizenblues.pixeldungeon.ui.SecondaryButton;
 import com.pizenblues.pixeldungeon.ui.Window;
 import com.pizenblues.pixeldungeon.utils.Utils;
@@ -41,7 +41,7 @@ public class WndChooseWay extends Window {
 		
 		float bottom = createCommonStuff( tome, way1.desc() + "\n\n" + way2.desc() + "\n\n" + TXT_MASTERY );
 		
-		RedButton btnWay1 = new RedButton( Utils.capitalize( way1.title() ) ) {
+		PrimaryButton btnWay1 = new PrimaryButton( Utils.capitalize( way1.title() ) ) {
 			@Override
 			protected void onClick() {
 				hide();
@@ -51,7 +51,7 @@ public class WndChooseWay extends Window {
 		btnWay1.setRect( 0, bottom + GAP, (WIDTH - GAP) / 2, BTN_HEIGHT );
 		add( btnWay1 );
 		
-		RedButton btnWay2 = new RedButton( Utils.capitalize( way2.title() ) ) {
+		PrimaryButton btnWay2 = new PrimaryButton( Utils.capitalize( way2.title() ) ) {
 			@Override
 			protected void onClick() {
 				hide();
@@ -61,7 +61,7 @@ public class WndChooseWay extends Window {
 		btnWay2.setRect( btnWay1.right() + GAP, btnWay1.top(), btnWay1.width(), BTN_HEIGHT );
 		add( btnWay2 );
 		
-		RedButton btnCancel = new RedButton( TXT_CANCEL ) {
+		PrimaryButton btnCancel = new PrimaryButton( TXT_CANCEL ) {
 			@Override
 			protected void onClick() {
 				hide();
@@ -84,7 +84,7 @@ public class WndChooseWay extends Window {
 		
 		float bottom = createCommonStuff( tome, way.desc() + "\n\n" + Utils.format( TXT_REMASTERY, Utils.indefinite( way.title() ) ) );
 		
-		RedButton btnWay = new RedButton( TXT_OK ) {
+		PrimaryButton btnWay = new PrimaryButton( TXT_OK ) {
 			@Override
 			protected void onClick() {
 				hide();

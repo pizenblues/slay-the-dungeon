@@ -23,7 +23,7 @@ import com.pizenblues.pixeldungeon.items.Item;
 import com.pizenblues.pixeldungeon.scenes.PixelScene;
 import com.pizenblues.pixeldungeon.sprites.ItemSprite;
 import com.pizenblues.pixeldungeon.ui.ItemSlot;
-import com.pizenblues.pixeldungeon.ui.RedButton;
+import com.pizenblues.pixeldungeon.ui.PrimaryButton;
 import com.pizenblues.pixeldungeon.ui.SecondaryButton;
 import com.pizenblues.pixeldungeon.ui.Window;
 import com.pizenblues.pixeldungeon.utils.Utils;
@@ -70,7 +70,7 @@ public class WndItem extends Window {
 			for (final String action:item.actions( Dungeon.hero )) {
 				
 				if(action == item.defaultAction){
-					RedButton primaryBtn = new RedButton( action ) {
+					PrimaryButton primaryBtn = new PrimaryButton( action ) {
 						@Override
 						protected void onClick() {
 							item.execute( Dungeon.hero, action );

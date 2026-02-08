@@ -38,7 +38,7 @@ import com.pizenblues.pixeldungeon.ui.BadgesList;
 import com.pizenblues.pixeldungeon.ui.Icons;
 import com.pizenblues.pixeldungeon.ui.ItemSlot;
 import com.pizenblues.pixeldungeon.ui.QuickSlot;
-import com.pizenblues.pixeldungeon.ui.RedButton;
+import com.pizenblues.pixeldungeon.ui.PrimaryButton;
 import com.pizenblues.pixeldungeon.ui.ScrollPane;
 import com.pizenblues.pixeldungeon.utils.Utils;
 
@@ -174,7 +174,7 @@ public class WndRanking extends WndTabbed {
 			float pos = title.bottom();
 			
 			if (Dungeon.challenges > 0) {
-				RedButton btnCatalogus = new RedButton( TXT_CHALLENGES ) {
+				PrimaryButton btnCatalogus = new PrimaryButton( TXT_CHALLENGES ) {
 					@Override
 					protected void onClick() {
 						Game.scene().add( new WndChallenges( Dungeon.challenges, false ) );

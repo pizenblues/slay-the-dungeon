@@ -37,14 +37,16 @@ import com.pizenblues.pixeldungeon.GamesInProgress;
 import com.pizenblues.pixeldungeon.PixelDungeon;
 import com.pizenblues.pixeldungeon.actors.hero.HeroClass;
 import com.pizenblues.pixeldungeon.effects.Speck;
-import com.pizenblues.pixeldungeon.ui.Archs;
 import com.pizenblues.pixeldungeon.ui.ExitButton;
 import com.pizenblues.pixeldungeon.ui.Icons;
-import com.pizenblues.pixeldungeon.ui.RedButton;
+import com.pizenblues.pixeldungeon.ui.PrimaryButton;
 import com.pizenblues.pixeldungeon.ui.SecondaryButton;
 import com.pizenblues.pixeldungeon.utils.Utils;
 import com.pizenblues.pixeldungeon.windows.WndClass;
 import com.pizenblues.pixeldungeon.windows.WndOptions;
+
+import com.pizenblues.pixeldungeon.effects.FireDoor;
+import com.pizenblues.pixeldungeon.effects.FireAnimation;
 
 public class StartScene extends PixelScene {
 	private static final float BUTTON_HEIGHT	= 24;
@@ -72,6 +74,8 @@ public class StartScene extends PixelScene {
 	public Image splash;
 	public Image title;
 	public Image fadebg;
+    private FireAnimation fireAnim;
+    private FireDoor doorAnim;
 	BitmapTextMultiline heroDescription = PixelScene.createMultiline("...", 6 );
 	BitmapText selectText = PixelScene.createText("Play as...", 8);
 
@@ -93,31 +97,32 @@ public class StartScene extends PixelScene {
 
 		float left = (w - width) / 2;
 
-		Archs archs = new Archs();
-		archs.setSize(w, h);
-		add(archs);
-
 		add(selectText);
 		selectText.measure();
 		selectText.y = 6;
 		selectText.x = (w - selectText.width()) / 2;
 
-		title = new Image();
-		title.x = align((w - 86) / 2);
-		title.y = align(selectText.y + 8);
-		add(title);
+        doorAnim = placeDoorAnim();
 
-		splash = new Image();
-		splash.x = align((w - 180) / 2);
-		splash.y = align(title.y + 12);
-		add(splash);
+        title = new Image();
+        title.x = align((w - 86) / 2);
+        title.y = align(selectText.y + 8);
+        add(title);
 
-		int halfScreen = h / 2;
-		fadebg = new Image( Assets.FADEBG );
-		fadebg.frame(0,0,w,halfScreen);
-		fadebg.x = 0;
-		fadebg.y = h - halfScreen;
-		add(fadebg);
+        splash = new Image();
+        splash.x = align((w - 180) / 2);
+        splash.y = align(title.y + 12);
+        add(splash);
+
+        int halfScreen = h / 2;
+
+        fadebg = new Image( Assets.FADEBG );
+        fadebg.frame(0,0,w,halfScreen);
+        fadebg.x = 0;
+        fadebg.y = h - halfScreen;
+        add(fadebg);
+
+        //fireAnim = placeAnim();
 
 		buttonX = left;
 		buttonY = h - bottomPadding - BUTTON_HEIGHT;
@@ -281,7 +286,7 @@ public class StartScene extends PixelScene {
 		PixelDungeon.switchNoFade( TitleScene.class );
 	}
 
-	private static class GameButton extends RedButton {
+	private static class GameButton extends PrimaryButton {
 		private static final int SECONDARY_COLOR_N	= 0xCACFC2;
 		private static final int SECONDARY_COLOR_H	= 0xFFFF88;
 		private BitmapText secondary;
@@ -484,4 +489,26 @@ public class StartScene extends PixelScene {
 			add( new WndClass( curClass ) );
 		}
 	}
+
+    private FireAnimation placeAnim() {
+        FireAnimation fireSprite = new FireAnimation();
+        fireSprite.scale.set(0.6f);
+        fireSprite.x = (Camera.main.width - fireSprite.width()) / 2f;
+        fireSprite.y = Camera.main.height - fireSprite.height();
+
+        add( fireSprite );
+        return fireSprite;
+    }
+
+    private FireDoor placeDoorAnim() {
+        FireDoor doorAnim = new FireDoor();
+        doorAnim.scale.set(0.6f);
+        doorAnim.alpha(0.5f);
+        doorAnim.x = (Camera.main.width - doorAnim.width()) / 2f;
+        doorAnim.y = 32;
+
+        add( doorAnim );
+        return doorAnim;
+    }
+
 }

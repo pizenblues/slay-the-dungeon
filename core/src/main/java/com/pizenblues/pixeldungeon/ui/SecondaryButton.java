@@ -41,10 +41,10 @@ public class SecondaryButton extends Button {
         bg.size( width, height );
 
         text.x = x + (int)(width - text.width()) / 2;
-        text.y = y + (int)(height - text.baseLine()) / 2;
+        text.y = y + (int)((height - text.baseLine()) / 2) - 1;
 
         if (icon != null) {
-            icon.y = y + (height - icon.height()) / 2;
+            icon.y = y + ((height - icon.height()) / 2) - 1;
             text.x = x + icon.width + (int)(width - text.width()) / 2;
             icon.x = x + text.x - icon.width() - 2;
         }

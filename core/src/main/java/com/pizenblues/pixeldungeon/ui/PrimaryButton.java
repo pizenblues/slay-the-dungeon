@@ -26,15 +26,13 @@ import com.pizenblues.pixeldungeon.Assets;
 import com.pizenblues.pixeldungeon.Chrome;
 import com.pizenblues.pixeldungeon.scenes.PixelScene;
 
-public class RedButton extends Button {
-	
+public class PrimaryButton extends Button {
 	protected NinePatch bg;
 	protected BitmapText text;
 	protected Image icon;
 			
-	public RedButton( String label) {
+	public PrimaryButton(String label) {
 		super();
-		
 		text.text( label );
 		text.measure();
 	}
@@ -60,10 +58,10 @@ public class RedButton extends Button {
 		bg.size( width, height );
 		
 		text.x = x + (int)(width - text.width()) / 2;
-		text.y = y + (int)(height - text.baseLine()) / 2;
+        text.y = y + (int)((height - text.baseLine()) / 2) - 1;
 		
 		if (icon != null) {
-			icon.y = y + (height - icon.height()) / 2;
+            icon.y = y + ((height - icon.height()) / 2) - 1;
 			text.x = x + icon.width + (int)(width - text.width()) / 2;
 			icon.x = x + text.x - icon.width() - 2;
 		}

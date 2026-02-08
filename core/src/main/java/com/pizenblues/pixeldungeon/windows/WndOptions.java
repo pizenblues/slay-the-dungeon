@@ -19,7 +19,7 @@ package com.pizenblues.pixeldungeon.windows;
 
 import com.pizenblues.noosa.BitmapTextMultiline;
 import com.pizenblues.pixeldungeon.scenes.PixelScene;
-import com.pizenblues.pixeldungeon.ui.RedButton;
+import com.pizenblues.pixeldungeon.ui.PrimaryButton;
 import com.pizenblues.pixeldungeon.ui.SecondaryButton;
 import com.pizenblues.pixeldungeon.ui.Window;
 
@@ -51,7 +51,7 @@ public class WndOptions extends Window {
 			final int index = i;
 
 			if(i == 0){
-				RedButton primaryBtn = new RedButton( options[i] ) {
+				PrimaryButton primaryBtn = new PrimaryButton( options[i] ) {
 					@Override
 					protected void onClick() {
 						hide();

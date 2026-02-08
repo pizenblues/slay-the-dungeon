@@ -40,10 +40,10 @@ public class WndHero extends Window {
 	private static final String TXT_STR		= "STR";
 	private static final String TXT_HEALTH	= "HP";
 	private static final String TXT_DEPTH	= "FLOOR";
-	private static final String TEXT_SEP	= "------------------------------------";
+	private static final String TEXT_SEP	= " ";
 	private static final int WIDTH = 120;
 	private static final int HEIGHT	= 160;
-	private static final String TXT_TITLE		= "%s - Level %d";
+	private static final String TXT_TITLE		= "%s - lvl %d";
 	Image strengthIcon = Icons.STREGTHMINI.get();
 	Image healthIcon = Icons.HEALTHMINI.get();
 	Image expIcon = Icons.EXPMINI.get();
@@ -65,11 +65,9 @@ public class WndHero extends Window {
 		BitmapText title = PixelScene.createText(
 				Utils.format( TXT_TITLE, hero.className(), hero.lvl ).toUpperCase( Locale.ENGLISH ), 9 );
 		title.hardlight( TITLE_COLOR );
+        title.y = 2;
 		add( title );
 
-		BitmapText separator0 = PixelScene.createText(TEXT_SEP, 9 );
-		add( separator0 );
-		separator0.y = pos;
 		pos += 8;
 
 
@@ -82,8 +80,8 @@ public class WndHero extends Window {
 
 		BitmapText separator1 = PixelScene.createText(TEXT_SEP, 9 );
 		add( separator1 );
-		separator1.y = pos + 20;
-		pos += 24 + GAP;
+		separator1.y = pos + 22;
+		pos += 28 + GAP;
 
 		// hero perks
 
@@ -110,7 +108,7 @@ public class WndHero extends Window {
 			item.measure();
 			add( item );
 
-			pos += item.height();
+			pos += item.height() + 2;
 			float w = item.width();
 			if (w > width) {
 				width = w;
@@ -120,7 +118,7 @@ public class WndHero extends Window {
 		BitmapText separator2 = PixelScene.createText(TEXT_SEP, 9 );
 		add( separator2 );
 		separator2.y = pos;
-		pos += GAP + 4;
+		pos += GAP + 8;
 
 		// BUFF LIST
 

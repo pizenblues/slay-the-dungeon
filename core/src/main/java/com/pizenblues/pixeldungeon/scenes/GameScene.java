@@ -63,7 +63,7 @@ import com.pizenblues.pixeldungeon.ui.BusyIndicator;
 import com.pizenblues.pixeldungeon.ui.GameLog;
 import com.pizenblues.pixeldungeon.ui.HealthIndicator;
 import com.pizenblues.pixeldungeon.ui.QuickSlot;
-import com.pizenblues.pixeldungeon.ui.RedButton;
+import com.pizenblues.pixeldungeon.ui.PrimaryButton;
 import com.pizenblues.pixeldungeon.ui.StatusPane;
 import com.pizenblues.pixeldungeon.ui.Toast;
 import com.pizenblues.pixeldungeon.ui.Toolbar;
@@ -555,7 +555,7 @@ public class GameScene extends PixelScene {
 
 		Sample.INSTANCE.play( Assets.SND_DEATH );
 
-		RedButton btnRestart = new RedButton( TXT_START ){
+		PrimaryButton btnRestart = new PrimaryButton( TXT_START ){
 			@Override
 			protected void onClick() {
 				Dungeon.hero = null;

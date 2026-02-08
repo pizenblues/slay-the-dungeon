@@ -58,7 +58,8 @@ public enum Icons {
 	EXPMINI,
 	DEPTHMINI,
 	GOLDMINI,
-	HELP;
+	HELP,
+    BOOK;
 	
 	public Image get() {
 		return get( this );
@@ -80,7 +81,7 @@ public enum Icons {
 			icon.frame( icon.texture.uvRect( 80, 48, 96, 64 ) );
 			break;
 		case PREFS:
-			icon.frame( icon.texture.uvRect( 32, 0, 45, 13 ) );
+			icon.frame( icon.texture.uvRect( 32, 0, 46, 14 ) );
 			break;
 		case WARNING:
 			icon.frame( icon.texture.uvRect( 46, 0, 64, 12 ) );
@@ -107,7 +108,7 @@ public enum Icons {
 			icon.frame( icon.texture.uvRect( 48, 30, 62, 44 ) );
 			break;
 		case CLOSE:
-			icon.frame( icon.texture.uvRect( 0, 48, 12, 60 ) );
+			icon.frame( icon.texture.uvRect( 0, 48, 13, 61 ) );
 			break;
 		case DEPTH:
 			icon.frame( icon.texture.uvRect( 45, 12, 54, 20 ) );
@@ -152,10 +153,10 @@ public enum Icons {
 			icon.frame( icon.texture.uvRect( 78, 16, 92, 29 ) );
 			break;
 		case CHALLENGE_ON:
-			icon.frame( icon.texture.uvRect( 102, 16, 116, 29 ) );
+			icon.frame( icon.texture.uvRect( 102, 16, 117, 30 ) );
 			break;
 		case RESUME:
-			icon.frame( icon.texture.uvRect( 114, 0, 126, 12 ) );
+			icon.frame( icon.texture.uvRect( 115, 0, 128, 13 ) );
 			break;
 		case STREGTHMINI:
 			icon.frame( icon.texture.uvRect( 80, 32, 88, 40 ) );
@@ -175,6 +176,9 @@ public enum Icons {
 		case HELP:
 			icon.frame( icon.texture.uvRect( 17, 15, 29, 30 ) );
 			break;
+        case BOOK:
+            icon.frame( icon.texture.uvRect( 112, 48, 124, 63 ) );
+            break;
 		}
 		return icon;
 	}

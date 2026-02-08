@@ -26,11 +26,10 @@ import com.pizenblues.noosa.Camera;
 import com.pizenblues.noosa.Game;
 import com.pizenblues.noosa.Image;
 import com.pizenblues.pixeldungeon.PixelDungeon;
-import com.pizenblues.pixeldungeon.ui.Archs;
+import com.pizenblues.pixeldungeon.effects.FireAnimation;
 import com.pizenblues.pixeldungeon.ui.ExitButton;
 import com.pizenblues.pixeldungeon.ui.Icons;
-import com.pizenblues.pixeldungeon.ui.RedButton;
-import com.pizenblues.pixeldungeon.ui.Banner;
+import com.pizenblues.pixeldungeon.ui.PrimaryButton;
 
 public class AboutScene extends PixelScene {
 
@@ -45,12 +44,16 @@ public class AboutScene extends PixelScene {
 	
 	private static final String LINK = "@drTamagotchi";
 
+    private FireAnimation fireAnim;
+
 	@Override
 	public void create() {
 		super.create();
 		float newPosition = PixelDungeon.landscape() ? 12 : 72;
 		int w = Camera.main.width;
 		int h = Camera.main.height;
+
+        fireAnim = placeAnim();
 
 		Image tamago_icon = Icons.PIZEN.get();
 		tamago_icon.x = align( (w - tamago_icon.width) / 2 );
@@ -66,7 +69,7 @@ public class AboutScene extends PixelScene {
 
 		newPosition += tamago_icon.height() + text.height() + 12;
 
-		RedButton linkButton = new RedButton( "@drTamagotchi" ) {
+		PrimaryButton linkButton = new PrimaryButton( "@drTamagotchi" ) {
 			protected void onClick() {
 				Intent intent = new Intent( Intent.ACTION_VIEW, Uri.parse( "https://www.instagram.com/drtamagotchi/" + LINK ) );
 				Game.instance.startActivity( intent );
@@ -94,11 +97,6 @@ public class AboutScene extends PixelScene {
 		version.x = (w - version.width()) / 2;
 		version.y = h - version.height() - 8;
 		add( version );
-
-		// bg and ui
-		Archs archs = new Archs();
-		archs.setSize( w, h );
-		addToBack( archs );
 		
 		ExitButton btnExit = new ExitButton();
 		btnExit.setPos( 4, 4 );
@@ -111,4 +109,14 @@ public class AboutScene extends PixelScene {
 	protected void onBackPressed() {
 		PixelDungeon.switchNoFade( TitleScene.class );
 	}
+
+    private FireAnimation placeAnim() {
+        FireAnimation fireSprite = new FireAnimation();
+        fireSprite.scale.set(0.6f);
+        fireSprite.x = (Camera.main.width - fireSprite.width()) / 2f;
+        fireSprite.y = Camera.main.height - fireSprite.height();
+
+        add( fireSprite );
+        return fireSprite;
+    }
 }

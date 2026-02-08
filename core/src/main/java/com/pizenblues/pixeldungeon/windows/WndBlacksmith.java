@@ -29,7 +29,7 @@ import com.pizenblues.pixeldungeon.items.Item;
 import com.pizenblues.pixeldungeon.scenes.GameScene;
 import com.pizenblues.pixeldungeon.scenes.PixelScene;
 import com.pizenblues.pixeldungeon.ui.ItemSlot;
-import com.pizenblues.pixeldungeon.ui.RedButton;
+import com.pizenblues.pixeldungeon.ui.PrimaryButton;
 import com.pizenblues.pixeldungeon.ui.Window;
 import com.pizenblues.pixeldungeon.utils.Utils;
 
@@ -44,7 +44,7 @@ public class WndBlacksmith extends Window {
 	
 	private ItemButton btnItem1;
 	private ItemButton btnItem2;
-	private RedButton btnReforge;
+	private PrimaryButton btnReforge;
 	
 	private static final String TXT_PROMPT =
 		"Ok, a deal is a deal, dat's what I can do for you: I can reforge " +
@@ -90,7 +90,7 @@ public class WndBlacksmith extends Window {
 		btnItem2.setRect( btnItem1.right() + BTN_GAP, btnItem1.top(), BTN_SIZE, BTN_SIZE );
 		add( btnItem2 );
 		
-		btnReforge = new RedButton( TXT_REFORGE ) {
+		btnReforge = new PrimaryButton( TXT_REFORGE ) {
 			@Override
 			protected void onClick() {
 				Blacksmith.upgrade( btnItem1.item, btnItem2.item );

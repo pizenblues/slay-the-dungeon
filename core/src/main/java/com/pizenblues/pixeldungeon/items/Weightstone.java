@@ -27,7 +27,7 @@ import com.pizenblues.pixeldungeon.items.weapon.Weapon;
 import com.pizenblues.pixeldungeon.scenes.GameScene;
 import com.pizenblues.pixeldungeon.scenes.PixelScene;
 import com.pizenblues.pixeldungeon.sprites.ItemSpriteSheet;
-import com.pizenblues.pixeldungeon.ui.RedButton;
+import com.pizenblues.pixeldungeon.ui.PrimaryButton;
 import com.pizenblues.pixeldungeon.ui.SecondaryButton;
 import com.pizenblues.pixeldungeon.ui.Window;
 import com.pizenblues.pixeldungeon.utils.GLog;
@@ -153,7 +153,7 @@ public class Weightstone extends Item {
 			float pos = tfMesage.y + tfMesage.height();
 			
 			if (weapon.imbue != Weapon.Imbue.SPEED) {
-				RedButton btnSpeed = new RedButton( TXT_SPEED ) {
+				PrimaryButton btnSpeed = new PrimaryButton( TXT_SPEED ) {
 					@Override
 					protected void onClick() {
 						hide();
@@ -167,7 +167,7 @@ public class Weightstone extends Item {
 			}
 			
 			if (weapon.imbue != Weapon.Imbue.ACCURACY) {
-				RedButton btnAccuracy = new RedButton( TXT_ACCURACY ) {
+				PrimaryButton btnAccuracy = new PrimaryButton( TXT_ACCURACY ) {
 					@Override
 					protected void onClick() {
 						hide();

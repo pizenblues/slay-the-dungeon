@@ -25,7 +25,7 @@ import com.pizenblues.pixeldungeon.scenes.PixelScene;
 
 public class Toast extends Component {
 
-	private static final float MARGIN_HOR	= 2;
+	private static final float MARGIN_HOR	= 1;
 	private static final float MARGIN_VER	= 2;
 	
 	protected NinePatch bg;

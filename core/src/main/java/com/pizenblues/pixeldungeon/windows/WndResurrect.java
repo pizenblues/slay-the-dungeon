@@ -26,7 +26,7 @@ import com.pizenblues.pixeldungeon.items.Ankh;
 import com.pizenblues.pixeldungeon.scenes.InterlevelScene;
 import com.pizenblues.pixeldungeon.scenes.PixelScene;
 import com.pizenblues.pixeldungeon.sprites.ItemSprite;
-import com.pizenblues.pixeldungeon.ui.RedButton;
+import com.pizenblues.pixeldungeon.ui.PrimaryButton;
 import com.pizenblues.pixeldungeon.ui.SecondaryButton;
 import com.pizenblues.pixeldungeon.ui.Window;
 
@@ -62,7 +62,7 @@ public class WndResurrect extends Window {
 		message.y = titlebar.bottom() + GAP;
 		add( message );
 		
-		RedButton btnYes = new RedButton( TXT_YES ) {
+		PrimaryButton btnYes = new PrimaryButton( TXT_YES ) {
 			@Override
 			protected void onClick() {
 				hide();

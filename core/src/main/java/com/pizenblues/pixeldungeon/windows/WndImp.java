@@ -25,7 +25,7 @@ import com.pizenblues.pixeldungeon.items.Item;
 import com.pizenblues.pixeldungeon.items.quest.DwarfToken;
 import com.pizenblues.pixeldungeon.scenes.PixelScene;
 import com.pizenblues.pixeldungeon.sprites.ItemSprite;
-import com.pizenblues.pixeldungeon.ui.RedButton;
+import com.pizenblues.pixeldungeon.ui.PrimaryButton;
 import com.pizenblues.pixeldungeon.ui.Window;
 import com.pizenblues.pixeldungeon.utils.GLog;
 import com.pizenblues.pixeldungeon.utils.Utils;
@@ -58,7 +58,7 @@ public class WndImp extends Window {
 		message.y = titlebar.bottom() + GAP;
 		add( message );
 		
-		RedButton btnReward = new RedButton( TXT_REWARD ) {
+		PrimaryButton btnReward = new PrimaryButton( TXT_REWARD ) {
 			@Override
 			protected void onClick() {
 				takeReward( imp, tokens, Imp.Quest.reward );

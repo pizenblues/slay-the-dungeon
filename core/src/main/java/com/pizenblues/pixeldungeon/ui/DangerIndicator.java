@@ -53,14 +53,14 @@ public class DangerIndicator extends Tag {
 		super.layout();
 		
 		icon.x = right() - 10;
-		icon.y = y + (height - icon.height) / 2;
+		icon.y = (y + (height - icon.height) / 2) - 2;
 		
 		placeNumber();
 	}
 	
 	private void placeNumber() {
 		number.x = right() - 11 - number.width();
-		number.y = PixelScene.align( y + (height - number.baseLine()) / 2 );
+		number.y = PixelScene.align( y + ((height - number.baseLine()) / 2 ) - 2);
 	}
 	
 	@Override

@@ -20,7 +20,7 @@ package com.pizenblues.pixeldungeon.windows;
 import com.pizenblues.pixeldungeon.PixelDungeon;
 import com.pizenblues.pixeldungeon.actors.mobs.npcs.NPC;
 import com.pizenblues.pixeldungeon.ui.HighlightedText;
-import com.pizenblues.pixeldungeon.ui.RedButton;
+import com.pizenblues.pixeldungeon.ui.PrimaryButton;
 import com.pizenblues.pixeldungeon.ui.Window;
 import com.pizenblues.pixeldungeon.utils.Utils;
 
@@ -55,7 +55,7 @@ public class WndQuest extends Window {
 				pos += GAP;
 				
 				final int index = i;
-				RedButton btn = new RedButton( options[i] ) {
+				PrimaryButton btn = new PrimaryButton( options[i] ) {
 					@Override
 					protected void onClick() {
 						hide();

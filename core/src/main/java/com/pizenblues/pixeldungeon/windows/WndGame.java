@@ -27,7 +27,7 @@ import com.pizenblues.pixeldungeon.scenes.InterlevelScene;
 import com.pizenblues.pixeldungeon.scenes.RankingsScene;
 import com.pizenblues.pixeldungeon.scenes.TitleScene;
 import com.pizenblues.pixeldungeon.ui.Icons;
-import com.pizenblues.pixeldungeon.ui.RedButton;
+import com.pizenblues.pixeldungeon.ui.PrimaryButton;
 import com.pizenblues.pixeldungeon.ui.SecondaryButton;
 import com.pizenblues.pixeldungeon.ui.Window;
 
@@ -43,7 +43,7 @@ public class WndGame extends Window {
 	private static final String TXT_CATALOG		= "Catalog";
 
 	private static final int WIDTH		= 120;
-	private static final int BTN_HEIGHT	= 20;
+	private static final int BTN_HEIGHT	= 22;
 	private static final int GAP		= 2;
 	
 	private int pos;
@@ -54,8 +54,7 @@ public class WndGame extends Window {
 		SecondaryButton settingsButton;
 		SecondaryButton catalogButton;
 		SecondaryButton journalButton;
-		SecondaryButton rankingButton;
-		RedButton resumeButton;
+		PrimaryButton resumeButton;
 
 		addSecondaryButton( settingsButton = new SecondaryButton( TXT_SETTINGS ) {
 			@Override
@@ -84,24 +83,17 @@ public class WndGame extends Window {
 		} );
 		journalButton.icon(Icons.HELP.get());
 
-		addButtons(
-			new SecondaryButton( TXT_MENU ) {
-				@Override
-				protected void onClick() {
-					try {
-						Dungeon.saveAll();
-					} catch (IOException e) {
-						// Do nothing
-					}
-					Game.switchScene( TitleScene.class );
-				}
-			}, new SecondaryButton( TXT_EXIT ) {
-				@Override
-				protected void onClick() {
-					Game.instance.finish();
-				}
-			}
-		);
+        addSecondaryButton( journalButton = new SecondaryButton( TXT_MENU ) {
+            @Override
+            protected void onClick() {
+                try {
+                    Dungeon.saveAll();
+                } catch (IOException e) {
+                    // Do nothing
+                }
+                Game.switchScene( TitleScene.class );
+            }
+        } );
 
 		if (!Dungeon.hero.isAlive()) {
 			addSecondaryButton( new SecondaryButton( TXT_RANKINGS ) {
@@ -112,8 +104,8 @@ public class WndGame extends Window {
 				}
 			} );
 
-			RedButton btnStart;
-			addButton( btnStart = new RedButton( TXT_START ) {
+			PrimaryButton btnStart;
+			addButton( btnStart = new PrimaryButton( TXT_START ) {
 				@Override
 				protected void onClick() {
 					Dungeon.hero = null;
@@ -126,18 +118,17 @@ public class WndGame extends Window {
 			btnStart.icon( Icons.get( Dungeon.hero.heroClass ) );
 		}
 		
-		addButton( resumeButton = new RedButton( TXT_RETURN ) {
+		addButton( resumeButton = new PrimaryButton( TXT_RETURN ) {
 			@Override
 			protected void onClick() {
 				hide();
 			}
 		} );
-		resumeButton.icon(Icons.EXIT.get());
-		
+
 		resize( WIDTH, pos );
 	}
 	
-	private void addButton( RedButton btn ) {
+	private void addButton( PrimaryButton btn ) {
 		add( btn );
 		btn.setRect( 0, pos > 0 ? pos += GAP : 0, WIDTH, BTN_HEIGHT );
 		pos += BTN_HEIGHT;
@@ -146,14 +137,6 @@ public class WndGame extends Window {
 	private void addSecondaryButton( SecondaryButton btn ) {
 		add( btn );
 		btn.setRect( 0, pos > 0 ? pos += GAP : 0, WIDTH, BTN_HEIGHT );
-		pos += BTN_HEIGHT;
-	}
-	
-	private void addButtons( SecondaryButton btn1, SecondaryButton btn2 ) {
-		add( btn1 );
-		btn1.setRect( 0, pos > 0 ? pos += GAP : 0, (WIDTH - GAP) / 2, BTN_HEIGHT );
-		add( btn2 );
-		btn2.setRect( btn1.right() + GAP, btn1.top(), WIDTH - btn1.right() - GAP, BTN_HEIGHT );
 		pos += BTN_HEIGHT;
 	}
 }

@@ -26,7 +26,7 @@ import com.pizenblues.pixeldungeon.Dungeon;
 import com.pizenblues.pixeldungeon.ResultDescriptions;
 import com.pizenblues.pixeldungeon.effects.Flare;
 import com.pizenblues.pixeldungeon.effects.Speck;
-import com.pizenblues.pixeldungeon.ui.RedButton;
+import com.pizenblues.pixeldungeon.ui.PrimaryButton;
 import com.pizenblues.pixeldungeon.ui.SecondaryButton;
 import com.pizenblues.utils.Random;
 
@@ -77,7 +77,7 @@ public class AmuletScene extends PixelScene {
 		btnExit.setSize( WIDTH, BTN_HEIGHT );
 		add( btnExit );
 		
-		RedButton btnStay = new RedButton( TXT_STAY ) {
+		PrimaryButton btnStay = new PrimaryButton( TXT_STAY ) {
 			@Override
 			protected void onClick() {
 				onBackPressed();

@@ -45,13 +45,13 @@ public class Chrome {
 		case TOAST_TR:
 			return new NinePatch( Assets.CHROME, 40, 0, 18, 18, 5 );
 		case BUTTON:
-			return new NinePatch( Assets.CHROME, 58, 0, 6, 6, 2 );
-			case SECONDARYBUTTON:
-				return new NinePatch(Assets.CHROME, 58,6,6,6,2);
-			case ITEMSLOT:
-				return new NinePatch( Assets.CHROME, 90, 0, 22, 23, 2 );
+			return new NinePatch( Assets.CHROME, 1, 34, 11, 11, 4 );
+        case SECONDARYBUTTON:
+            return new NinePatch(Assets.CHROME, 1,47,11,11,4);
+        case ITEMSLOT:
+            return new NinePatch( Assets.CHROME, 90, 0, 22, 23, 2 );
 		case ATTACKBUTTON:
-			return new NinePatch( Assets.CHROME, 22, 18, 16, 14, 3 );
+			return new NinePatch( Assets.CHROME, 22, 18, 16, 14, 4 );
 		case NOTIF:
 			return new NinePatch( Assets.CHROME, 42,18,16,15, 3);
 		case SCROLL:

@@ -29,7 +29,7 @@ import com.pizenblues.pixeldungeon.items.rings.RingOfHaggler;
 import com.pizenblues.pixeldungeon.scenes.PixelScene;
 import com.pizenblues.pixeldungeon.sprites.ItemSprite;
 import com.pizenblues.pixeldungeon.ui.ItemSlot;
-import com.pizenblues.pixeldungeon.ui.RedButton;
+import com.pizenblues.pixeldungeon.ui.PrimaryButton;
 import com.pizenblues.pixeldungeon.ui.SecondaryButton;
 import com.pizenblues.pixeldungeon.ui.Window;
 import com.pizenblues.pixeldungeon.utils.GLog;
@@ -63,7 +63,7 @@ public class WndTradeItem extends Window {
 		
 		if (item.quantity() == 1) {
 			
-			RedButton btnSell = new RedButton( Utils.format( TXT_SELL, item.price() ) ) {
+			PrimaryButton btnSell = new PrimaryButton( Utils.format( TXT_SELL, item.price() ) ) {
 				@Override
 				protected void onClick() {
 					sell( item );
@@ -78,7 +78,7 @@ public class WndTradeItem extends Window {
 		} else {
 			
 			int priceAll= item.price();
-			RedButton btnSell1 = new RedButton( Utils.format( TXT_SELL_1, priceAll / item.quantity() ) ) {
+			PrimaryButton btnSell1 = new PrimaryButton( Utils.format( TXT_SELL_1, priceAll / item.quantity() ) ) {
 				@Override
 				protected void onClick() {
 					sellOne( item );
@@ -87,7 +87,7 @@ public class WndTradeItem extends Window {
 			};
 			btnSell1.setRect( 0, pos + GAP, WIDTH, BTN_HEIGHT );
 			add( btnSell1 );
-			RedButton btnSellAll = new RedButton( Utils.format( TXT_SELL_ALL, priceAll ) ) {
+			PrimaryButton btnSellAll = new PrimaryButton( Utils.format( TXT_SELL_ALL, priceAll ) ) {
 				@Override
 				protected void onClick() {
 					sell( item );
@@ -125,7 +125,7 @@ public class WndTradeItem extends Window {
 		
 		if (canBuy) {
 			
-			RedButton btnBuy = new RedButton( Utils.format( TXT_BUY, price ) ) {
+			PrimaryButton btnBuy = new PrimaryButton( Utils.format( TXT_BUY, price ) ) {
 				@Override
 				protected void onClick() {
 					hide();
