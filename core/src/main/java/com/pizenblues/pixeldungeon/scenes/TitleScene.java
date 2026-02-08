@@ -30,15 +30,11 @@ import com.pizenblues.pixeldungeon.ui.ExitButton;
 import com.pizenblues.pixeldungeon.ui.PrefsButton;
 import com.pizenblues.pixeldungeon.effects.FireDoor;
 
-import com.pizenblues.noosa.particles.Emitter;
-import com.pizenblues.noosa.particles.BitmaskEmitter;
-import com.pizenblues.pixeldungeon.effects.particles.SmokeParticle;
 
 public class TitleScene extends PixelScene {
 	private static final String TXT_PLAY = "Tap to Start";
 	private static final String TXT_BUTTON = "";
 	private FireDoor doorAnimation;
-	private Emitter emitter;
 
 	@Override
 	public void create() {
@@ -53,11 +49,6 @@ public class TitleScene extends PixelScene {
 		int h = Camera.main.height;
 
 		doorAnimation = placeAnim();
-
-		//emitter = new BitmaskEmitter(doorAnimation);
-		//emitter.start(Speck.factory(Speck.LIGHT), 0.05f, 50);
-		//emitter.start(SmokeParticle.FACTORY, 0.5f, 1000);
-		//add(emitter);
 
 		Image title = BannerSprites.get( BannerSprites.Type.PIXEL_DUNGEON );
 		add( title );
