@@ -131,46 +131,35 @@ public enum HeroClass {
 	private static void initWarrior( Hero hero ) {
 		hero.STR = hero.STR + 1;
 
-		(hero.belongings.weapon = new ShortSword()).identify();
+        (hero.belongings.weapon = new ShortSword()).identify();
 		new Dart( 8 ).identify().collect();
-
 		QuickSlot.primaryValue = Dart.class;
-		
 		new PotionOfStrength().setKnown();
 	}
 	
-	private static void initMage( Hero hero ) {	
+	private static void initMage( Hero hero ) {
 		(hero.belongings.weapon = new Knuckles()).identify();
-		
 		WandOfMagicMissile wand = new WandOfMagicMissile();
 		wand.identify().collect();
-		
 		QuickSlot.primaryValue = wand;
-		
 		new ScrollOfIdentify().setKnown();
 	}
 	
 	private static void initRogue( Hero hero ) {
 		(hero.belongings.weapon = new ShadowBlade()).identify();
-
 		(hero.belongings.ring1 = new RingOfShadows()).upgrade().identify();
 		new Dart( 8 ).identify().collect();
-		
 		hero.belongings.ring1.activate( hero );
-		
 		QuickSlot.primaryValue = Dart.class;
-		
 		new ScrollOfMagicMapping().setKnown();
 	}
 	
 	private static void initHuntress( Hero hero ) {
-		
 		hero.HP = (hero.HT += 5);
 		
 		(hero.belongings.weapon = new Dagger()).identify();
 		Boomerang boomerang = new Boomerang();
 		boomerang.identify().collect();
-		
 		QuickSlot.primaryValue = boomerang;
 	}
 
@@ -181,13 +170,13 @@ public enum HeroClass {
 	public String description() {
 		switch (this) {
 			case WARRIOR:
-				return "The Warrior has increased strength, but muscle power requires more food, meals can cure his wounds tho!";
+				return "The Warrior has increased strength, but muscle power requires more food, meals can cure his wounds although!";
 			case MAGE:
-				return "The Mage comes with a unique projectile wand, but has weaker mele attacks. Food can restore her magical powers!";
+				return "The Mage comes with a unique projectile wand, but has weaker meele attacks. Food can restore her magical powers! (same)";
 			case ROGUE:
-				return "The Rogue is hard to hit but has less HP, so try not to get hit a lot. Has a keen eye for spotting tramps";
+				return "The Rogue is hard to hit but has less HP, so try not to get hit a lot. Has a keen eye for spotting secrets";
 			case HUNTRESS:
-				return "The Tank has increased HP due to his dwarf build. Can pick extra berries (yum!) and sense extra monsters (yuck!)";
+				return "The Tank has increased HP and is good at throwing stuff. Can pick up extra berries (yum!) and sense extra monsters (yuck!)";
 		}
 
 		return null;

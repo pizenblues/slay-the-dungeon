@@ -53,7 +53,7 @@ public class IceBlock extends Gizmo {
 		killAndErase();
 
 		if (visible) {
-			Splash.at( target.center(), 0xFFB2D6FF, 5 );
+			Splash.at( target.center(), 0xFF8db7ff, 5 );
 			Sample.INSTANCE.play( Assets.SND_SHATTER );
 		}
 	}

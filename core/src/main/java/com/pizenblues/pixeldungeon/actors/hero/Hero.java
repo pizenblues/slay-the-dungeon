@@ -121,8 +121,8 @@ public class Hero extends Char {
 	public static final String TXT_YOU_NOW_HAVE	= "You now have %s";
 	
 	private static final String TXT_SOMETHING_ELSE	= "There is something else here";
-	private static final String TXT_LOCKED_CHEST	= "This chest is locked and you don't have matching key";
-	private static final String TXT_LOCKED_DOOR		= "You don't have a matching key";
+	private static final String TXT_LOCKED_CHEST	= "This chest is locked, you need a key";
+	private static final String TXT_LOCKED_DOOR		= "You don't have a key";
 	private static final String TXT_NOTICED_SMTH	= "You noticed something";
 	
 	private static final String TXT_WAIT	= "...";
@@ -1147,7 +1147,7 @@ public class Hero extends Char {
 		
 		DewVial.autoDrink( this );
 		if (isAlive()) {
-			new Flare( 8, 32 ).color( 0xFFFF66, true ).show( sprite, 2f ) ;
+			new Flare( 8, 32 ).color( 0xd8f196, true ).show( sprite, 2f ) ;
 			return;
 		}
 		

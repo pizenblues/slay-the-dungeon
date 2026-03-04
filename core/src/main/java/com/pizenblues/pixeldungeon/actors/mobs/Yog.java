@@ -229,7 +229,7 @@ public class Yog extends Mob {
 		public int attackProc( Char enemy, int damage ) {
 			if (Random.Int( 3 ) == 0) {
 				Buff.affect( enemy, Ooze.class );
-				enemy.sprite.burst( 0xFF000000, 5 );
+				enemy.sprite.burst( 0xFF1f102a, 5 );
 			}
 			
 			return damage;

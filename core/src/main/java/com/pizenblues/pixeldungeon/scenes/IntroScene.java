@@ -23,11 +23,8 @@ import com.pizenblues.pixeldungeon.windows.WndStory;
 public class IntroScene extends PixelScene {
 
 	private static final String TEXT = 	
-		"Eden was last seen entering these dungeons, looking for the King's cranium, "+
-		"a cursed artifact which is said to give unlimited power to who may possess it. \n\n" +
-		
-		"Despite being dear to you, tou know your friend's many flaws, and sadly their hunger for power is their greatest weakness." + 
-		"Althought these dungeons look dangerous, you have decided to bring Eden back. \n\n" +
+		"Tap on the screen to move to that location. "+
+		"Slay your way down on the dungeon and don't starve!. \n\n" +
 
 		"You enter the dungeon...";
 	

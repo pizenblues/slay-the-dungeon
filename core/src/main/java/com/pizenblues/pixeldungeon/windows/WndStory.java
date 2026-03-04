@@ -43,20 +43,19 @@ public class WndStory extends Window {
 	static {
 		CHAPTERS.put( ID_SEWERS, 
 		"Since Eden left your party, you have wondered around looking for answers on your friend's whereabouts. " +
-		"All the clues led you to this dungeon. Nobody was able to give you an answer about " +
-		"how deep this place really goes." );
+		"All the clues led you to this dungeon. You must go deeper to find more clues." );
 		
 		CHAPTERS.put( ID_PRISON,
 		"This humid environment causes moss to grow on the walls and the wooden floor to rot. " +
 		"These abandoned prisons are still haunted by the presence of criminals, some dead and some alive.");
 		
 		CHAPTERS.put( ID_CAVES,
-		"The dwarf mines can be an oddly beautiful place, unless you are claustrophobic. " +
+		"The mines can be an oddly beautiful place, unless you are claustrophobic. " +
 		"The rocky walls are splashed with precious stones, and the water running under your feet looks like crystalline. " +
 		"In the distance you can hear a hammering sound, perhaps produced by miners still working on this place." );
 		
 		CHAPTERS.put( ID_METROPOLIS,
-		"The royal high mage, who once lived in the halls of this castle, spent years looking for the secret of eternal life."+
+		"The high mage, who once lived in the halls of this castle, spent years looking for the secret of eternal life."+
 				"His insatiable hunger for knowledge led him to his goal, but in exchange his soul was corrupted by dark magic."+
 				"He drove the kingdom of Eldya to its demise. Now ruins are all that remain of the once great castle, and the high mage is damned to wander the castle forever.");
 

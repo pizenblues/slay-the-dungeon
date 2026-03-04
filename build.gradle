@@ -13,8 +13,8 @@ allprojects {
     ext {
         appName = 'Slay the Dungeon'
         appPackageName = 'com.pizenblues.pixeldungeon'
-        appVersionCode = 84
-        appVersionName = '1.0.0'
+        appVersionCode = 86
+        appVersionName = '1.0.1'
 
         appAndroidCompileSDK = 35
         appAndroidMinSDK = 21

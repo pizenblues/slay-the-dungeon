@@ -52,7 +52,7 @@ public class King extends Mob {
 	private static final int MAX_ARMY_SIZE	= 5;
 	
 	{
-		name = Dungeon.depth == Statistics.deepestFloor ? "King of Dwarves" : "undead King of Dwarves";
+		name = Dungeon.depth == Statistics.deepestFloor ? "Necromancer" : "Necromancer";
 		spriteClass = KingSprite.class;
 		
 		HP = HT = 300;
@@ -144,7 +144,7 @@ public class King extends Mob {
 		
 		Badges.validateBossSlain();
 		
-		yell( "You cannot kill me, " + Dungeon.hero.heroClass.title() + "... I am... immortal..." );
+		yell( "Try harder, " + Dungeon.hero.heroClass.title() + "... I am... immortal..." );
 	}
 	
 	private int maxArmySize() {
@@ -204,12 +204,15 @@ public class King extends Mob {
 	@Override
 	public String description() {
 		return
-			"The last king of dwarves was known for his deep understanding of processes of life and death. " +
-			"He has persuaded members of his court to participate in a ritual, that should have granted them " +
-			"eternal youthfulness. In the end he was the only one, who got it - and an army of undead " +
-			"as a bonus.";
+			"The former high mage, now known as The Necromancer, who's soul has been corrupted by dark magic and ambition. " +
+                    "He uncovered the secrets of eternal life, but as with everything, " +
+                    "you needed to give something back to death in order to gain eternal youth. " +
+                    "The Necromancer and his cult participated in a ceremonial dance, " +
+                    "in which those who couldn't follow his dancemoves would perish. " +
+                    "giving their mortal souls in exchange for the mage's eternal youth. Now they are his eternal slaves. " +
+                    "But that's what they get for following a narcissistic maniac, I guess.";
 	}
-	
+
 	private static final HashSet<Class<?>> RESISTANCES = new HashSet<Class<?>>();
 	static {
 		RESISTANCES.add( ToxicGas.class );
@@ -239,7 +242,7 @@ public class King extends Mob {
 		public static int count = 0;
 		
 		{
-			name = "undead dwarf";
+			name = "undead cultist";
 			spriteClass = UndeadSprite.class;
 			
 			HP = HT = 28;
@@ -311,8 +314,9 @@ public class King extends Mob {
 		@Override
 		public String description() {
 			return
-				"These undead dwarves, risen by the will of the King of Dwarves, were members of his court. " +
-				"They appear as skeletons with a stunning amount of facial hair.";
+				"Zombified cultist, who now obey the Necromancer's will, " +
+				"just like they did when they were alive. " +
+                        "Looks like they are trying (very badly) to dance.";
 		}
 		
 		private static final HashSet<Class<?>> IMMUNITIES = new HashSet<Class<?>>();

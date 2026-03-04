@@ -118,7 +118,7 @@ public class Degradation extends Group {
 	
 	public static class Speck extends PixelParticle {
 		
-		private static final int COLOR = 0xFF4422;
+		private static final int COLOR = 0xe7933e;
 		private static final int SIZE = 3;
 		
 		public Speck( float x0, float y0, int mx, int my ) {

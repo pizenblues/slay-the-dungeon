@@ -76,9 +76,9 @@ import com.pizenblues.pixeldungeon.windows.WndStory;
 import com.pizenblues.utils.Random;
 
 public class GameScene extends PixelScene {
-	private static final String TXT_WELCOME			= "Welcome to the level %d of Pixel Dungeon!";
-	private static final String TXT_WELCOME_BACK	= "Welcome back to the level %d of Pixel Dungeon!";
-	private static final String TXT_NIGHT_MODE		= "Be cautious, since the dungeon is even more dangerous at night!";
+	private static final String TXT_WELCOME			= "Welcome to level %d!";
+	private static final String TXT_WELCOME_BACK	= "Welcome back to level %d!";
+	private static final String TXT_NIGHT_MODE		= "Be careful, monsters come out at night!";
 	private static final String TXT_CHASM	= "Your steps echo across the dungeon.";
 	private static final String TXT_WATER	= "You hear the water splashing around you.";
 	private static final String TXT_GRASS	= "The smell of vegetation is thick in the air.";
