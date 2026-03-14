@@ -62,7 +62,7 @@ public class TitleScene extends PixelScene {
 
         btnMenu = new MenuButton();
         add( btnMenu );
-        btnMenu.setPos( w - btnMenu.width(), 1 );
+        btnMenu.setPos( w - btnMenu.width() - 5, 8 );
 
 		fadeIn();
 	}

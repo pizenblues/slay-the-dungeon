@@ -58,7 +58,7 @@ public class StatusPane extends Component {
 		shield = new NinePatch( Assets.STATUS, 105, 0, 21, 0 );
 		add( shield );
 		
-		add( new TouchArea( 0, 0, 50, 50 ) {
+		add( new TouchArea( 0, 10, 50, 50 ) {
 			@Override
 			protected void onClick( Touch touch ) {
 				Sample.INSTANCE.play( Assets.SND_CLICK );
@@ -74,7 +74,7 @@ public class StatusPane extends Component {
 		heroImage.texture(Dungeon.hero.heroClass.portrait());
 		updatePortrait(Dungeon.hero.HP, false);
 		heroImage.x = 2;
-		heroImage.y = 2;
+		heroImage.y = 12;
 		add(heroImage);
 		
 		btnMenu = new MenuButton();
@@ -123,30 +123,31 @@ public class StatusPane extends Component {
 	protected void layout() {
 		height = 32;
 		shield.size( width, shield.height );
+        shield.y = 10;
 
-		buffs.setPos( 3, 44 );
+        buffs.setPos( 3, 54 );
 
 		compass.x = 35;
-		compass.y = 28;
+		compass.y = 38;
 
 		hp.x = 58;
-		hp.y = 2;
+		hp.y = 12;
 
 		exp.x = 58;
-		exp.y = 7;
+		exp.y = 17;
 
 		strength.x = 48;
-		strength.y = 12;
+		strength.y = 22;
 
 		keys.x = 58;
-		keys.y = 12;
+		keys.y = 22;
 
 		depth.x = 78;
-		depth.y = 12;
+		depth.y = 22;
 
 		layoutTags();
 
-		btnMenu.setPos( width - btnMenu.width(), 1 );
+		btnMenu.setPos( width - btnMenu.width() - 2, 11 );
 	}
 	
 	private void layoutTags() {

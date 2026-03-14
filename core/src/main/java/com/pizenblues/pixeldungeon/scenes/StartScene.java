@@ -99,7 +99,7 @@ public class StartScene extends PixelScene {
 
 		add(selectText);
 		selectText.measure();
-		selectText.y = 6;
+		selectText.y = 10;
 		selectText.x = (w - selectText.width()) / 2;
 
         doorAnim = placeDoorAnim();
@@ -187,7 +187,7 @@ public class StartScene extends PixelScene {
 		add( heroDescription );
 
 		ClassInfoButton challenge = new ClassInfoButton();
-		challenge.setPos(w - challenge.width() - 4,4);
+		challenge.setPos(w - challenge.width() - 4,10);
 		add( challenge );
 
 		unlock = new Group();
@@ -210,7 +210,7 @@ public class StartScene extends PixelScene {
 		}
 
 		ExitButton btnExit = new ExitButton();
-		btnExit.setPos( 4, 4 );
+		btnExit.setPos( 4, 10 );
 		add( btnExit );
 
 		curClass = null;

@@ -4,7 +4,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:8.13.2'
+        classpath 'com.android.tools.build:gradle:9.0.1'
     }
 }
 
@@ -13,7 +13,7 @@ allprojects {
     ext {
         appName = 'Slay the Dungeon'
         appPackageName = 'com.pizenblues.pixeldungeon'
-        appVersionCode = 86
+        appVersionCode = 89
         appVersionName = '1.0.1'
 
         appAndroidCompileSDK = 35

@@ -130,7 +130,6 @@ public enum HeroClass {
 	
 	private static void initWarrior( Hero hero ) {
 		hero.STR = hero.STR + 1;
-
         (hero.belongings.weapon = new ShortSword()).identify();
 		new Dart( 8 ).identify().collect();
 		QuickSlot.primaryValue = Dart.class;
@@ -156,7 +155,6 @@ public enum HeroClass {
 	
 	private static void initHuntress( Hero hero ) {
 		hero.HP = (hero.HT += 5);
-		
 		(hero.belongings.weapon = new Dagger()).identify();
 		Boomerang boomerang = new Boomerang();
 		boomerang.identify().collect();
