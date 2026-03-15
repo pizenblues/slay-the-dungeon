@@ -108,6 +108,11 @@ public class GameScene extends PixelScene {
 	
 	@Override
 	public void create() {
+
+        // padding to prevent cutouts
+        int cutoutSidePadding = PixelDungeon.landscape() ? 22 : 0;
+        int cutoutBottonPadding = PixelDungeon.landscape() ? 0 : 16;
+
 		Dungeon.level.playLevelMusic(Dungeon.depth);
 		
 		PixelDungeon.lastClass( Dungeon.hero.heroClass.ordinal() );
@@ -200,12 +205,12 @@ public class GameScene extends PixelScene {
 		
 		StatusPane sb = new StatusPane();
 		sb.camera = uiCamera;
-		sb.setSize( uiCamera.width, 0 );
+		sb.setSize( uiCamera.width - cutoutSidePadding, 0 );
 		add( sb );
 		
 		toolbar = new Toolbar();
 		toolbar.camera = uiCamera;
-		toolbar.setRect( 0,uiCamera.height - toolbar.height(), uiCamera.width, toolbar.height() );
+		toolbar.setRect( 0,uiCamera.height - toolbar.height() - cutoutBottonPadding, uiCamera.width - cutoutSidePadding, toolbar.height() );
 		add( toolbar );
 		
 		AttackIndicator attack = new AttackIndicator();

@@ -53,13 +53,17 @@ public class BadgesScene extends PixelScene {
 		
 		int w = Camera.main.width;
 		int h = Camera.main.height;
+
+        // padding to prevent cutouts
+        int cutoutSidePadding = 8;
+        int cutoutTopPadding = 12;
 		
 		Archs archs = new Archs();
 		archs.setSize( w, h );
 		add( archs );
 		
 		int pw = (int)Math.min( w, (PixelDungeon.landscape() ? MIN_WIDTH_L : MIN_WIDTH_P) * 3 ) - 16;
-		int ph = (int)Math.min( h, (PixelDungeon.landscape() ? MIN_HEIGHT_L : MIN_HEIGHT_P) * 3 ) - 32;
+		int ph = (int)Math.min( h, (PixelDungeon.landscape() ? MIN_HEIGHT_L : MIN_HEIGHT_P) * 3 ) - 48;
 		
 		float size = (float)Math.sqrt( pw * ph / 27f );
 		int nCols = (int)Math.ceil( pw / size );
@@ -73,7 +77,7 @@ public class BadgesScene extends PixelScene {
 		title.hardlight( Window.TITLE_COLOR );
 		title.measure();
 		title.x = align( (w - title.width()) / 2 );
-		title.y = align( (top - title.baseLine()) / 2 );
+		title.y = cutoutTopPadding + 2;
 		add( title );
 		
 		Badges.loadGlobal();
@@ -92,7 +96,7 @@ public class BadgesScene extends PixelScene {
 		}
 		
 		ExitButton btnExit = new ExitButton();
-		btnExit.setPos(4,10);
+		btnExit.setPos(cutoutSidePadding,cutoutTopPadding);
 		add( btnExit );
 		
 		fadeIn();

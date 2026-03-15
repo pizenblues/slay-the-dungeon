@@ -60,11 +60,13 @@ public class SurfaceScene extends PixelScene {
 		Music.INSTANCE.play( Assets.EXTERIOR, true );
 		Music.INSTANCE.volume( 1f );
 
+        int cutoutTopPadding = PixelDungeon.landscape() ? -8 : 16;
+
 		uiCamera.visible = false;
 		int w = Camera.main.width;
 		int h = Camera.main.height;
 		float vx = align( (w - SKY_WIDTH) / 2 );
-		float vy = align( (h - SKY_HEIGHT) / 2 );
+		float vy = align( (h - SKY_HEIGHT) / 2 ) - cutoutTopPadding;
 
 		Point s = Camera.main.cameraToScreen( vx, vy );
 		viewport = new Camera( s.x, s.y, SKY_WIDTH, SKY_HEIGHT, defaultZoom );
@@ -88,37 +90,39 @@ public class SurfaceScene extends PixelScene {
 		frame.y = vy - FRAME_MARGIN_TOP;
 		add( frame );
 
-		BitmapTextMultiline text = createMultiline( TXT, 7);
-		text.maxWidth = Math.min( w, 100 );
-		text.measure();
-		text.x = PixelDungeon.landscape() ? (w - text.width() - 8) : align( (w - text.width()) / 2 );
-		text.y = PixelDungeon.landscape() ? 8 : h - text.height() - BUTTON_HEIGHT - 24;
-		add( text );
-
-		float buttonPositionY = text.y + text.height() + 8;
-		float buttonPositionX = PixelDungeon.landscape() ? text.x : (w - BUTTON_WIDTH) / 2;
-
-		PrimaryButton gameOverButton = new PrimaryButton( "Leave dungeon" ) {
-			protected void onClick() {
-				Game.switchScene( TitleScene.class );
-			}
-		};
-		gameOverButton.setSize( BUTTON_WIDTH, BUTTON_HEIGHT );
-		gameOverButton.setPos(buttonPositionX,buttonPositionY);
-		add( gameOverButton );
+        Image title = BannerSprites.get( BannerSprites.Type.THE_END );
+        add( title );
+        title.x = (w - title.width()) / 2;
+        title.y = PixelDungeon.landscape() ? 16 : 4;
 
 		Avatar characteravatar = new Avatar( Dungeon.hero.heroClass.title());
 		//Avatar characteravatar = new Avatar( "tank");
+
 		characteravatar.scale.set(0.6f);
 		float avatarTrueWidth = characteravatar.width() * 0.6f;
 		characteravatar.x = (w - avatarTrueWidth) / 2;
 		characteravatar.y = (frame.y + (frame.height() * 0.5f)) - 5;
 		add( characteravatar );
 
-		Image title = BannerSprites.get( BannerSprites.Type.THE_END );
-		add( title );
-		title.x = (w - title.width()) / 2;
-		title.y = 4;
+        float buttonPositionY = h - BUTTON_HEIGHT - 24;
+        float buttonPositionX = PixelDungeon.landscape() ? (w - BUTTON_WIDTH - 24) : align( (w - BUTTON_WIDTH) / 2 );
+
+        PrimaryButton gameOverButton = new PrimaryButton( "Leave dungeon" ) {
+            protected void onClick() {
+                Game.switchScene( TitleScene.class );
+            }
+        };
+        gameOverButton.setSize( BUTTON_WIDTH, BUTTON_HEIGHT );
+        gameOverButton.setPos(buttonPositionX,buttonPositionY);
+        add( gameOverButton );
+
+        BitmapTextMultiline text = createMultiline( TXT, 7);
+        int textWidth = 100;
+        text.maxWidth = Math.min( w, textWidth);
+        text.measure();
+        text.x = align( (w - text.width()) / 2 );
+        text.y = title.y + title.height() + 4;
+        add( text );
 
 		Badges.validateHappyEnd();
 

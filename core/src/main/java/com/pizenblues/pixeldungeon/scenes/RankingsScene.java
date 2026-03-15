@@ -67,6 +67,10 @@ public class RankingsScene extends PixelScene {
 		
 		int w = Camera.main.width;
 		int h = Camera.main.height;
+
+        // padding to prevent cutouts
+        int cutoutSidePadding = 8;
+        int cutoutTopPadding = 12;
 		
 		archs = new Archs();
 		archs.setSize( w, h );
@@ -135,7 +139,7 @@ public class RankingsScene extends PixelScene {
 		}
 		
 		ExitButton btnExit = new ExitButton();
-		btnExit.setPos(4,10);
+		btnExit.setPos(cutoutSidePadding, cutoutTopPadding);
 		add( btnExit );
 		
 		fadeIn();

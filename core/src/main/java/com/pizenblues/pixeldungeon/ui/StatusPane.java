@@ -28,6 +28,7 @@ import com.pizenblues.noosa.ui.Button;
 import com.pizenblues.noosa.ui.Component;
 import com.pizenblues.pixeldungeon.Assets;
 import com.pizenblues.pixeldungeon.Dungeon;
+import com.pizenblues.pixeldungeon.PixelDungeon;
 import com.pizenblues.pixeldungeon.items.keys.IronKey;
 import com.pizenblues.pixeldungeon.scenes.GameScene;
 import com.pizenblues.pixeldungeon.scenes.PixelScene;
@@ -55,10 +56,14 @@ public class StatusPane extends Component {
 
 	@Override
 	protected void createChildren() {
+
+        int cutoutSidePadding = PixelDungeon.landscape() ? 22 : 8;
+        int cutoutTopPadding = 10;
+
 		shield = new NinePatch( Assets.STATUS, 105, 0, 21, 0 );
 		add( shield );
 		
-		add( new TouchArea( 0, 10, 50, 50 ) {
+		add( new TouchArea( 0, cutoutTopPadding, 50, 50 ) {
 			@Override
 			protected void onClick( Touch touch ) {
 				Sample.INSTANCE.play( Assets.SND_CLICK );
@@ -74,7 +79,7 @@ public class StatusPane extends Component {
 		heroImage.texture(Dungeon.hero.heroClass.portrait());
 		updatePortrait(Dungeon.hero.HP, false);
 		heroImage.x = 2;
-		heroImage.y = 12;
+		heroImage.y = cutoutTopPadding;
 		add(heroImage);
 		
 		btnMenu = new MenuButton();
@@ -121,33 +126,35 @@ public class StatusPane extends Component {
 	
 	@Override
 	protected void layout() {
+        int cutoutTopPadding = 10;
+
 		height = 32;
 		shield.size( width, shield.height );
-        shield.y = 10;
+        shield.y = cutoutTopPadding;
 
-        buffs.setPos( 3, 54 );
+        buffs.setPos( 3, cutoutTopPadding + 44 );
 
 		compass.x = 35;
-		compass.y = 38;
+		compass.y = cutoutTopPadding + 28;
 
 		hp.x = 58;
-		hp.y = 12;
+		hp.y = cutoutTopPadding + 2;
 
 		exp.x = 58;
-		exp.y = 17;
+		exp.y = cutoutTopPadding + 7;
 
 		strength.x = 48;
-		strength.y = 22;
+		strength.y = cutoutTopPadding + 12;
 
 		keys.x = 58;
-		keys.y = 22;
+		keys.y = cutoutTopPadding + 12;
 
 		depth.x = 78;
-		depth.y = 22;
+		depth.y = cutoutTopPadding + 12;
 
 		layoutTags();
 
-		btnMenu.setPos( width - btnMenu.width() - 2, 11 );
+		btnMenu.setPos( width - btnMenu.width() - 2, cutoutTopPadding + 1 );
 	}
 	
 	private void layoutTags() {

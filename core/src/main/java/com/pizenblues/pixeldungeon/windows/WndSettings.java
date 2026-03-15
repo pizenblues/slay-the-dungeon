@@ -160,23 +160,22 @@ public class WndSettings extends Window {
 			btnQuickslot.setRect( 0, btnBrightness.bottom() + GAP, WIDTH, BTN_HEIGHT );
 			btnQuickslot.checked( Toolbar.secondQuickslot() );
 			add( btnQuickslot );
-			
-			resize( WIDTH, (int)btnQuickslot.bottom() );
-			
-		} else {
-			
-			SecondaryButton btnOrientation = new SecondaryButton( orientationText() ) {
-				@Override
-				protected void onClick() {
-					PixelDungeon.landscape( !PixelDungeon.landscape() );
-				}
-			};
-			btnOrientation.setRect( 0, btnSound.bottom() + GAP, WIDTH, BTN_HEIGHT );
-			add( btnOrientation );
-			
-			resize( WIDTH, (int)btnOrientation.bottom() );
-			
+
+            resize( WIDTH, (int)btnQuickslot.bottom() );
 		}
+
+        float menuBottom = inGame ? 110 : btnSound.bottom() + GAP;
+
+        SecondaryButton btnOrientation = new SecondaryButton( orientationText() ) {
+            @Override
+            protected void onClick() {
+                PixelDungeon.landscape( !PixelDungeon.landscape() );
+            }
+        };
+        btnOrientation.setRect( 0, menuBottom, WIDTH, BTN_HEIGHT );
+        add( btnOrientation );
+
+        resize( WIDTH, (int)btnOrientation.bottom() );
 	}
 	
 	private void zoom( float value ) {

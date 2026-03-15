@@ -49,9 +49,13 @@ public class AboutScene extends PixelScene {
 	@Override
 	public void create() {
 		super.create();
-		float newPosition = PixelDungeon.landscape() ? 12 : 72;
+		float newPosition = PixelDungeon.landscape() ? 12 : 60;
 		int w = Camera.main.width;
 		int h = Camera.main.height;
+
+        // padding to prevent cutouts
+        int cutoutSidePadding = 8;
+        int cutoutTopPadding = 12;
 
         fireAnim = placeAnim();
 
@@ -99,7 +103,7 @@ public class AboutScene extends PixelScene {
 		add( version );
 		
 		ExitButton btnExit = new ExitButton();
-		btnExit.setPos( 4, 10 );
+		btnExit.setPos( cutoutSidePadding, cutoutTopPadding );
 		add( btnExit );
 		
 		fadeIn();

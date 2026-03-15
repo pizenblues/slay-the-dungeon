@@ -6,18 +6,23 @@
 		android:glEsVersion="0x00020000"/>
 	
 	<supports-screens
-		android:smallScreens="false"
+		android:smallScreens="true"
 		android:normalScreens="true"
-		android:largeScreens="true"/>
-		<!--android:xlargeScreens="true"-->
+		android:largeScreens="true"
+        android:xlargeScreens="true"/>
 
 	<application
-		android:icon="@drawable/ic_launcher"
+        android:icon="@mipmap/ic_launcher"
 		android:label="${appName}"
-		android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
+        android:theme="@style/Theme.GameTheme"
+        android:appCategory="game"
+        android:isGame="true"
+        android:resizeableActivity="true"
+        android:fullBackupOnly="true"
 		android:allowBackup="true">
 	    
 		<activity
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize"
 			android:name=".PixelDungeon"
 			android:screenOrientation="portrait"
 			android:exported="true">

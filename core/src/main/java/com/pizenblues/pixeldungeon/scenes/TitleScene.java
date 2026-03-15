@@ -46,14 +46,18 @@ public class TitleScene extends PixelScene {
 		uiCamera.visible = false;
 
 		int w = Camera.main.width;
-		int h = Camera.main.height;
+
+        // padding to prevent cutouts
+        int cutoutSidePadding = PixelDungeon.landscape() ? 22 : 8;
+        int cutoutTopPadding = 12;
+        //int cutoutBottonPadding = 20;
 
 		doorAnimation = placeAnim();
 
 		Image title = BannerSprites.get( BannerSprites.Type.PIXEL_DUNGEON );
 		add( title );
 		title.x = (w - title.width()) / 2;
-		title.y = PixelDungeon.landscape() ? 8 : doorAnimation.y - title.height() - 20;
+		title.y = PixelDungeon.landscape() ? cutoutTopPadding : doorAnimation.y - title.height() - cutoutTopPadding;
 
 		clickArea btnPlay = new clickArea( TXT_PLAY);
 		float titlePositionY = doorAnimation.y;
@@ -62,7 +66,7 @@ public class TitleScene extends PixelScene {
 
         btnMenu = new MenuButton();
         add( btnMenu );
-        btnMenu.setPos( w - btnMenu.width() - 5, 8 );
+        btnMenu.setPos( w - btnMenu.width() - cutoutSidePadding, cutoutTopPadding );
 
 		fadeIn();
 	}

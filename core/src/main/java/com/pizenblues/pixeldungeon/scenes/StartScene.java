@@ -65,7 +65,6 @@ public class StartScene extends PixelScene {
 	private static HashMap<HeroClass, ClassShield> shields = new HashMap<HeroClass, ClassShield>();
 	private float buttonX;
 	private float buttonY;
-	public float bottomPadding = 12;
 	private LoadButton btnLoad;
 	private GameButton btnNewGame;
 	private boolean huntressUnlocked;
@@ -88,6 +87,11 @@ public class StartScene extends PixelScene {
 		int w = Camera.main.width;
 		int h = Camera.main.height;
 
+        // padding to prevent cutouts
+        int cutoutSidePadding = PixelDungeon.landscape() ? 22 : 8;
+        int cutoutTopPadding = 12;
+        int cutoutBottonPadding = PixelDungeon.landscape() ? 8 : 20;
+
 		float width;
 		if (PixelDungeon.landscape()) {
 			width = WIDTH_L;
@@ -99,14 +103,14 @@ public class StartScene extends PixelScene {
 
 		add(selectText);
 		selectText.measure();
-		selectText.y = 10;
+		selectText.y = cutoutTopPadding + 2;
 		selectText.x = (w - selectText.width()) / 2;
 
         doorAnim = placeDoorAnim();
 
         title = new Image();
         title.x = align((w - 86) / 2);
-        title.y = align(selectText.y + 8);
+        title.y = align(selectText.y + 10);
         add(title);
 
         splash = new Image();
@@ -125,7 +129,7 @@ public class StartScene extends PixelScene {
         //fireAnim = placeAnim();
 
 		buttonX = left;
-		buttonY = h - bottomPadding - BUTTON_HEIGHT;
+		buttonY = h - cutoutBottonPadding - BUTTON_HEIGHT;
 
 		btnNewGame = new GameButton(TXT_NEW) {
 			@Override
@@ -187,7 +191,7 @@ public class StartScene extends PixelScene {
 		add( heroDescription );
 
 		ClassInfoButton challenge = new ClassInfoButton();
-		challenge.setPos(w - challenge.width() - 4,10);
+		challenge.setPos(w - challenge.width() - cutoutSidePadding,cutoutTopPadding);
 		add( challenge );
 
 		unlock = new Group();
@@ -210,7 +214,7 @@ public class StartScene extends PixelScene {
 		}
 
 		ExitButton btnExit = new ExitButton();
-		btnExit.setPos( 4, 10 );
+		btnExit.setPos( cutoutSidePadding, cutoutTopPadding );
 		add( btnExit );
 
 		curClass = null;
