@@ -9,10 +9,26 @@ Slay the Dungeon is a roguelike dungeon crawler game. This is a remade of the cl
 - 👺 New monsters and lore.
 - 🎹 Brand new soundtrack with a different theme for each level.
 
-What's coming up for v2?
--  Spanish translation.
--  New recipes
--  Monster meat buffs
+---
+
+**What's coming up for v2?**
+- Spanish translation
+- New items
+- New drops
+- New recipes
+- Monster meat buffs
+- Save/load option
+- Additional settings:
+  - UI customization
+  - Vibration control
+  - Sound/music volume
+
+---
+
+**Known issues:**
+- In horizontal mode, somethings the text turns into black boxes (working on solving this)
+
+---
 
 Sprites and music by me:
 www.instagram.com/drtamagotchi/
