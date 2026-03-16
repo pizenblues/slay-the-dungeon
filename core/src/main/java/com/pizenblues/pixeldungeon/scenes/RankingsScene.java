@@ -70,7 +70,7 @@ public class RankingsScene extends PixelScene {
 
         // padding to prevent cutouts
         int cutoutSidePadding = 8;
-        int cutoutTopPadding = 12;
+        int cutoutTopPadding = 16;
 		
 		archs = new Archs();
 		archs.setSize( w, h );

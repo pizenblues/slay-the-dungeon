@@ -56,7 +56,7 @@ public class BadgesScene extends PixelScene {
 
         // padding to prevent cutouts
         int cutoutSidePadding = 8;
-        int cutoutTopPadding = 12;
+        int cutoutTopPadding = 16;
 		
 		Archs archs = new Archs();
 		archs.setSize( w, h );

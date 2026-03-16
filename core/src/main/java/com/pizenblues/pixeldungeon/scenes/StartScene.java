@@ -89,7 +89,7 @@ public class StartScene extends PixelScene {
 
         // padding to prevent cutouts
         int cutoutSidePadding = PixelDungeon.landscape() ? 22 : 8;
-        int cutoutTopPadding = 12;
+        int cutoutTopPadding = 16;
         int cutoutBottonPadding = PixelDungeon.landscape() ? 8 : 20;
 
 		float width;

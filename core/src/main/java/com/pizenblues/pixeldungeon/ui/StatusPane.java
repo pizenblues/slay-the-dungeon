@@ -57,8 +57,7 @@ public class StatusPane extends Component {
 	@Override
 	protected void createChildren() {
 
-        int cutoutSidePadding = PixelDungeon.landscape() ? 22 : 8;
-        int cutoutTopPadding = 10;
+        int cutoutTopPadding = PixelDungeon.landscape() ? 12 : 16;
 
 		shield = new NinePatch( Assets.STATUS, 105, 0, 21, 0 );
 		add( shield );
@@ -126,7 +125,7 @@ public class StatusPane extends Component {
 	
 	@Override
 	protected void layout() {
-        int cutoutTopPadding = 10;
+        int cutoutTopPadding = PixelDungeon.landscape() ? 12 : 16;
 
 		height = 32;
 		shield.size( width, shield.height );
