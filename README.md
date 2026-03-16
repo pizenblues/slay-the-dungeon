@@ -1,6 +1,7 @@
 # Slay the Dungeon
 
-![Logo illustrating a warrior character](core/src/main/res/drawable-xxxhdpi/ic_launcher.png "Warrior guy")
+[![Warrior](Logo illustrating a warrior character)](https://play.google.com/store/apps/details?id=com.pizenblues.pixeldungeon)
+
 [Available on the Play Store](https://play.google.com/store/apps/details?id=com.pizenblues.pixeldungeon)
 
 Slay the Dungeon is a roguelike dungeon crawler game. This is a remade of the classic Pixel Dungeon featuring:
