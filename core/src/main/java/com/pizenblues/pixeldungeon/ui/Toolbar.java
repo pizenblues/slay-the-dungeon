@@ -130,7 +130,7 @@ public class Toolbar extends Component {
 	
 	@Override
 	protected void layout() {
-		float bottomPadding = y - 6;
+		float bottomPadding = y;
 		btnWait.setPos( x+2, bottomPadding );
 		btnSearch.setPos( btnWait.right(), bottomPadding );
 		btnInfo.setPos( btnSearch.right(), bottomPadding );

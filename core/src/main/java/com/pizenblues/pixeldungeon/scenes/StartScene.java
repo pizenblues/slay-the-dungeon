@@ -88,9 +88,9 @@ public class StartScene extends PixelScene {
 		int h = Camera.main.height;
 
         // padding to prevent cutouts
-        int cutoutSidePadding = PixelDungeon.landscape() ? 22 : 8;
-        int cutoutTopPadding = 16;
-        int cutoutBottonPadding = PixelDungeon.landscape() ? 8 : 20;
+        int cutoutSidePadding = PixelDungeon.landscape() ? 24 : 8;
+        int cutoutBottonPadding = PixelDungeon.landscape() ? 8 : 16;
+        int cutoutTopPadding = 12;
 
 		float width;
 		if (PixelDungeon.landscape()) {
@@ -184,8 +184,8 @@ public class StartScene extends PixelScene {
 			}
 		}
 
-		heroDescription.maxWidth = Math.min( Camera.main.width, 120 );
-		heroDescription.x = align( (Camera.main.width - 120) / 2 );
+		heroDescription.maxWidth = Math.min( Camera.main.width, 110 );
+		heroDescription.x = align( (Camera.main.width - 110) / 2 );
 		heroDescription.y = buttonY - 28;
 		heroDescription.hardlight( 0xf0e276 );
 		add( heroDescription );

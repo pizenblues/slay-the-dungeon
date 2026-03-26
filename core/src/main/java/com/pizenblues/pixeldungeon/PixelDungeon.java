@@ -125,9 +125,9 @@ public class PixelDungeon extends Game {
 	@Override
 	protected void onCreate( Bundle savedInstanceState ) {
 		super.onCreate( savedInstanceState );
-		
-		updateImmersiveMode();
-		
+
+		//updateImmersiveMode();
+
 		DisplayMetrics metrics = new DisplayMetrics();
 		instance.getWindowManager().getDefaultDisplay().getMetrics( metrics );
 		boolean landscape = metrics.widthPixels > metrics.heightPixels;
@@ -201,11 +201,11 @@ public class PixelDungeon extends Game {
 	
 	@Override
 	public void onWindowFocusChanged( boolean hasFocus ) {
-		
+
 		super.onWindowFocusChanged( hasFocus );
-		
+
 		if (hasFocus) {
-			updateImmersiveMode();
+			//updateImmersiveMode();
 		}
 	}
 	
@@ -230,13 +230,14 @@ public class PixelDungeon extends Game {
 	}
 	
 	// *** IMMERSIVE MODE ****
-	
+
 	private static boolean immersiveModeChanged = false;
-	
-	@SuppressLint("NewApi")
+
+
+    @SuppressLint("NewApi")
 	public static void immerse( boolean value ) {
 		Preferences.INSTANCE.put( Preferences.KEY_IMMERSIVE, value );
-		
+
 		instance.runOnUiThread( new Runnable() {
 			@Override
 			public void run() {
@@ -249,26 +250,26 @@ public class PixelDungeon extends Game {
 	@Override
 	public void onSurfaceChanged( GL10 gl, int width, int height ) {
 		super.onSurfaceChanged( gl, width, height );
-		
+
 		if (immersiveModeChanged) {
 			requestedReset = true;
 			immersiveModeChanged = false;
 		}
 	}
-	
+
 	@SuppressLint("NewApi")
 	public static void updateImmersiveMode() {
-		if (android.os.Build.VERSION.SDK_INT >= 19) {
+		if (android.os.Build.VERSION.SDK_INT >= 21) {
 			try {
 				// Sometime NullPointerException happens here
-				instance.getWindow().getDecorView().setSystemUiVisibility( 
+				instance.getWindow().getDecorView().setSystemUiVisibility(
 					immersed() ?
-					View.SYSTEM_UI_FLAG_LAYOUT_STABLE | 
-					View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION | 
-					View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | 
-					View.SYSTEM_UI_FLAG_HIDE_NAVIGATION | 
-					View.SYSTEM_UI_FLAG_FULLSCREEN | 
-					View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY 
+					View.SYSTEM_UI_FLAG_LAYOUT_STABLE |
+					View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION |
+					View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN |
+					View.SYSTEM_UI_FLAG_HIDE_NAVIGATION |
+					View.SYSTEM_UI_FLAG_FULLSCREEN |
+					View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
 					:
 					0 );
 			} catch (Exception e) {
@@ -276,11 +277,11 @@ public class PixelDungeon extends Game {
 			}
 		}
 	}
-	
+
 	public static boolean immersed() {
 		return Preferences.INSTANCE.getBoolean( Preferences.KEY_IMMERSIVE, false );
 	}
-	
+
 	// *****************************
 	
 	public static void scaleUp( boolean value ) {
@@ -327,14 +328,6 @@ public class PixelDungeon extends Game {
 	
 	public static boolean brightness() {
 		return Preferences.INSTANCE.getBoolean( Preferences.KEY_BRIGHTNESS, false );
-	}
-	
-	public static void donated( String value ) {
-		Preferences.INSTANCE.put( Preferences.KEY_DONATED, value );
-	}
-	
-	public static String donated() {
-		return Preferences.INSTANCE.getString( Preferences.KEY_DONATED, "" );
 	}
 	
 	public static void lastClass( int value ) {

@@ -69,8 +69,8 @@ public class RankingsScene extends PixelScene {
 		int h = Camera.main.height;
 
         // padding to prevent cutouts
-        int cutoutSidePadding = 8;
-        int cutoutTopPadding = 16;
+        int cutoutSidePadding = PixelDungeon.landscape() ? 24 : 8;
+        int cutoutTopPadding = 12;
 		
 		archs = new Archs();
 		archs.setSize( w, h );

@@ -55,8 +55,8 @@ public class BadgesScene extends PixelScene {
 		int h = Camera.main.height;
 
         // padding to prevent cutouts
-        int cutoutSidePadding = 8;
-        int cutoutTopPadding = 16;
+        int cutoutSidePadding = PixelDungeon.landscape() ? 24 : 8;
+        int cutoutTopPadding = 12;
 		
 		Archs archs = new Archs();
 		archs.setSize( w, h );
@@ -77,7 +77,7 @@ public class BadgesScene extends PixelScene {
 		title.hardlight( Window.TITLE_COLOR );
 		title.measure();
 		title.x = align( (w - title.width()) / 2 );
-		title.y = cutoutTopPadding + 2;
+		title.y = cutoutTopPadding + 4;
 		add( title );
 		
 		Badges.loadGlobal();

@@ -17,6 +17,8 @@
  */
 package com.pizenblues.pixeldungeon.scenes;
 
+import android.util.Log;
+
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -110,8 +112,8 @@ public class GameScene extends PixelScene {
 	public void create() {
 
         // padding to prevent cutouts
-        int cutoutSidePadding = PixelDungeon.landscape() ? 22 : 0;
-        int cutoutBottonPadding = PixelDungeon.landscape() ? 0 : 16;
+        int cutoutSidePadding = PixelDungeon.landscape() ? 24 : 2;
+        int cutoutBottonPadding = PixelDungeon.landscape() ? 12 : 16;
 
 		Dungeon.level.playLevelMusic(Dungeon.depth);
 		
@@ -205,12 +207,12 @@ public class GameScene extends PixelScene {
 		
 		StatusPane sb = new StatusPane();
 		sb.camera = uiCamera;
-		sb.setSize( uiCamera.width - cutoutSidePadding, 0 );
+		sb.setSize( uiCamera.width, 0 );
 		add( sb );
 		
 		toolbar = new Toolbar();
 		toolbar.camera = uiCamera;
-		toolbar.setRect( 0,uiCamera.height - toolbar.height() - cutoutBottonPadding, uiCamera.width - cutoutSidePadding, toolbar.height() );
+		toolbar.setRect( cutoutSidePadding,uiCamera.height - toolbar.height() - cutoutBottonPadding, uiCamera.width - cutoutSidePadding, toolbar.height() );
 		add( toolbar );
 		
 		AttackIndicator attack = new AttackIndicator();
@@ -222,7 +224,7 @@ public class GameScene extends PixelScene {
 		
 		log = new GameLog();
 		log.camera = uiCamera;
-		log.setRect( 4, toolbar.top() - 8, uiCamera.width - 8,  0 );
+		log.setRect( cutoutSidePadding + 4, toolbar.top() - 2, uiCamera.width - 8,  0 );
 		add( log );
 		
 		busy = new BusyIndicator();
@@ -316,15 +318,15 @@ public class GameScene extends PixelScene {
 			fadeIn();
 		}
 	}
-	
+
 	public void destroy() {
-		
+
 		scene = null;
 		Badges.saveGlobal();
-		
+
 		super.destroy();
 	}
-	
+
 	@Override
 	public synchronized void pause() {
 		try {
@@ -334,31 +336,33 @@ public class GameScene extends PixelScene {
 			//
 		}
 	}
-	
+
 	@Override
 	public synchronized void update() {
 		if (Dungeon.hero == null) {
 			return;
 		}
-			
+
 		super.update();
-		
+
 		water.offset( 0, -5 * Game.elapsed );
-		
+
 		Actor.process();
-		
+
 		if (Dungeon.hero.ready && !Dungeon.hero.paralysed) {
 			log.newLine();
 		}
-		
+		// ACA????
 		cellSelector.enabled = Dungeon.hero.ready;
-	}
+    }
 	
 	@Override
 	protected void onBackPressed() {
+        /*
 		if (!cancel()) {
 			add( new WndGame() );
 		}
+         */
 	}
 	
 	@Override
@@ -413,7 +417,6 @@ public class GameScene extends PixelScene {
 	}
 	
 	private void prompt( String text ) {
-		
 		if (prompt != null) {
 			prompt.killAndErase();
 			prompt = null;
@@ -433,9 +436,10 @@ public class GameScene extends PixelScene {
 	}
 	
 	private void showBanner( Banner banner ) {
+        // un cambio de camara inabilita lo que esta atras?
 		banner.camera = uiCamera;
 		banner.x = align( uiCamera, (uiCamera.width - banner.width) / 2 );
-		banner.y = align( uiCamera, (uiCamera.height - banner.height) / 3 );
+		banner.y = align( uiCamera, (uiCamera.height - banner.height) / 4 );
 		add( banner );
 	}
 	
@@ -608,6 +612,7 @@ public class GameScene extends PixelScene {
 		}
 	}
 	
+
 	public static WndBag selectItem( WndBag.Listener listener, WndBag.Mode mode, String title ) {
 		cancelCellSelector();
 		

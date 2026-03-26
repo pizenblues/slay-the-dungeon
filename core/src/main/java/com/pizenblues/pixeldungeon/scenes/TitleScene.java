@@ -48,9 +48,8 @@ public class TitleScene extends PixelScene {
 		int w = Camera.main.width;
 
         // padding to prevent cutouts
-        int cutoutSidePadding = PixelDungeon.landscape() ? 22 : 8;
-        int cutoutTopPadding = 16;
-        //int cutoutBottonPadding = 20;
+        int cutoutSidePadding = PixelDungeon.landscape() ? 24 : 8;
+        int cutoutTopPadding = 12;
 
 		doorAnimation = placeAnim();
 

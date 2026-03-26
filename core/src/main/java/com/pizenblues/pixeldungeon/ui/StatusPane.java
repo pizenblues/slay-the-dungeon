@@ -57,12 +57,13 @@ public class StatusPane extends Component {
 	@Override
 	protected void createChildren() {
 
-        int cutoutTopPadding = PixelDungeon.landscape() ? 12 : 16;
+        int cutoutTopPadding = PixelDungeon.landscape() ? 0 : 8;
+        int cutoutSidePadding = PixelDungeon.landscape() ? 16 : 2;
 
 		shield = new NinePatch( Assets.STATUS, 105, 0, 21, 0 );
 		add( shield );
 		
-		add( new TouchArea( 0, cutoutTopPadding, 50, 50 ) {
+		add( new TouchArea( cutoutSidePadding, cutoutTopPadding, 40, 40 ) {
 			@Override
 			protected void onClick( Touch touch ) {
 				Sample.INSTANCE.play( Assets.SND_CLICK );
@@ -77,7 +78,7 @@ public class StatusPane extends Component {
 		heroImage = new Image();
 		heroImage.texture(Dungeon.hero.heroClass.portrait());
 		updatePortrait(Dungeon.hero.HP, false);
-		heroImage.x = 2;
+		heroImage.x = cutoutSidePadding;
 		heroImage.y = cutoutTopPadding;
 		add(heroImage);
 		
@@ -125,35 +126,38 @@ public class StatusPane extends Component {
 	
 	@Override
 	protected void layout() {
-        int cutoutTopPadding = PixelDungeon.landscape() ? 12 : 16;
-
+        int cutoutTopPadding = PixelDungeon.landscape() ? 0 : 8;
+        int cutoutSidePadding = PixelDungeon.landscape() ? 16 : 2;
+        int shieldPadding = 8;
 		height = 32;
-		shield.size( width, shield.height );
-        shield.y = cutoutTopPadding;
 
-        buffs.setPos( 3, cutoutTopPadding + 44 );
+		shield.size( width - (cutoutSidePadding * 2), shield.height );
+        shield.y = cutoutTopPadding + shieldPadding;
+        shield.x = cutoutSidePadding;
 
-		compass.x = 35;
+        buffs.setPos( cutoutSidePadding, cutoutTopPadding + 44 );
+
+		compass.x = cutoutSidePadding + 35;
 		compass.y = cutoutTopPadding + 28;
 
-		hp.x = 58;
-		hp.y = cutoutTopPadding + 2;
+		hp.x = cutoutSidePadding + 58;
+		hp.y = cutoutTopPadding + 2 + shieldPadding;
 
-		exp.x = 58;
-		exp.y = cutoutTopPadding + 7;
+		exp.x = cutoutSidePadding + 58;
+		exp.y = cutoutTopPadding + 7 + shieldPadding;
 
-		strength.x = 48;
-		strength.y = cutoutTopPadding + 12;
+		strength.x = cutoutSidePadding + 48;
+		strength.y = cutoutTopPadding + 12 + shieldPadding;
 
-		keys.x = 58;
-		keys.y = cutoutTopPadding + 12;
+		keys.x = cutoutSidePadding + 58;
+		keys.y = cutoutTopPadding + 12 + shieldPadding;
 
-		depth.x = 78;
-		depth.y = cutoutTopPadding + 12;
+		depth.x = cutoutSidePadding + 78;
+		depth.y = cutoutTopPadding + 12 + shieldPadding;
 
 		layoutTags();
 
-		btnMenu.setPos( width - btnMenu.width() - 2, cutoutTopPadding + 1 );
+		btnMenu.setPos( (width - btnMenu.width() - shieldPadding) - cutoutSidePadding, cutoutTopPadding + shieldPadding - 1);
 	}
 	
 	private void layoutTags() {
@@ -225,6 +229,7 @@ public class StatusPane extends Component {
 			keys.text("KEYS: "+Integer.toString( lastKeys ) );
 		}
 
+
 		int heroSTR = Dungeon.hero.STR();
 		if (currentSTR != heroSTR) {
 			currentSTR = heroSTR;
@@ -237,8 +242,8 @@ public class StatusPane extends Component {
 		
 		public MenuButton() {
 			super();
-			width = image.width + 4;
-			height = image.height + 4;
+			width = image.width;
+			height = image.height;
 		}
 		
 		@Override
